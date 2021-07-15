@@ -1,16 +1,15 @@
 PODS:
   - Flutter (1.0.0)
-  - idenfy_sdk_flutter (1.0.0):
+  - idenfy_sdk_flutter (1.2.0):
     - Flutter
-    - iDenfySDK/iDenfyLiveness (= 6.2.3)
-  - iDenfySDK/iDenfyLiveness (6.2.3):
+    - iDenfySDK/iDenfyLiveness (= 6.6.0)
+  - iDenfySDK/iDenfyLiveness (6.6.0):
     - JGProgressHUD
     - lottie-ios
     - MaterialComponents/ActivityIndicator
-    - Pulsator
     - ZIPFoundation (= 0.9.11)
   - JGProgressHUD (2.2)
-  - lottie-ios (3.2.1)
+  - lottie-ios (3.2.3)
   - MaterialComponents/ActivityIndicator (112.1.0):
     - MaterialComponents/Palettes
     - MaterialComponents/private/Application
@@ -22,7 +21,6 @@ PODS:
   - MotionAnimator (2.8.1):
     - MotionInterchange (~> 1.6)
   - MotionInterchange (1.6.0)
-  - Pulsator (0.6.0)
   - ZIPFoundation (0.9.11)
 
 DEPENDENCIES:
@@ -38,7 +36,6 @@ SPEC REPOS:
     - MDFInternationalization
     - MotionAnimator
     - MotionInterchange
-    - Pulsator
     - ZIPFoundation
 
 EXTERNAL SOURCES:
@@ -49,17 +46,16 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Flutter: 434fef37c0980e73bb6479ef766c45957d4b510c
-  idenfy_sdk_flutter: 1cfb29d7438771d0e469d167e6026e8fe3d4c950
-  iDenfySDK: b903c1673a45ebec3ad90cda4318c73874d19324
+  idenfy_sdk_flutter: b8341c2a9eeeb25c2c165e56f8553c06c6fbecdc
+  iDenfySDK: 448073474878061f551e5d4ed1fef36a39600ebe
   JGProgressHUD: d83d7a981b85d11205e19ff8ad5bb9c40571c847
-  lottie-ios: 106e92eaf11fbed0a76590b4cdb9b5ec26123ff7
+  lottie-ios: c058aeafa76daa4cf64d773554bccc8385d0150e
   MaterialComponents: ba54523b921faa5c2adaaa692048c6b95a09263d
   MDFInternationalization: 010097556d6b09d2c4ea38e0820ea6d37be6a314
   MotionAnimator: ee16aa30567c5bae0fb2750c132915829cfaaf8a
   MotionInterchange: ead0e3ae1f3a5fb539e289debbc7ae036160a10d
-  Pulsator: eb5a9f9be4bdcbd19903984c65deca6aabe50a17
   ZIPFoundation: b1f0de4eed33e74a676f76e12559ab6b75990197
 
-PODFILE CHECKSUM: aafe91acc616949ddb318b77800a7f51bffa2a4c
+PODFILE CHECKSUM: f55344c7b9f72a20150841590ce0053011d59f98
 
 COCOAPODS: 1.10.1

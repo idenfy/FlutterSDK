@@ -38,7 +38,7 @@ Once the setup is completed successfully, you can add iDenfy SDK dependencies.
 To add iDenfy SDK plugin, open your project's `pubspec.yaml` file and append it with the latest iDenfy SDK flutter plugin:
 ```yaml
 dependencies:
-    idenfy_sdk_flutter: ^1.1.1
+    idenfy_sdk_flutter: ^1.2.0
 ```
 
 #### 3.1 Configuring Android project
@@ -92,7 +92,9 @@ cd ios
 pod install
 cd ..
 ```
+If you face compiling issues, like "using bridging headers with module interfaces is unsupported" you should set **Build libraries for distribution** to NO in your app build settings.
 
+The example IOS app has the correct configuration.
 ## Usage
 
 Firstly, import idenfysdkflutter.dart file:
@@ -215,7 +217,7 @@ Currently, @idenfy/idenfysdk_flutter_plugin does not provide customization optio
 We suggest creating a fork of this repository. After editing the code, you can include the plugin in the following way:
 ```yaml
 dependencies:
-    idenfy_sdk_flutter: ^1.1.1
+    idenfy_sdk_flutter: ^1.2.0
       git: https://github.com/your_repo/FlutterSDK.git
 ```
 
