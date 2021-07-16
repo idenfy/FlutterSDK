@@ -1,4 +1,3 @@
-
 import 'dart:async';
 
 import 'package:flutter/services.dart';
@@ -6,14 +5,14 @@ import 'dart:convert';
 import 'models/IdenfyIdentificationResult.dart';
 
 class IdenfySdkFlutter {
-  static const MethodChannel _channel =
-      const MethodChannel('idenfy_sdk_flutter');
+  static const MethodChannel _channel = const MethodChannel('idenfy_sdk_flutter');
 
-  static Future<IdenfyIdentificationResult> start(String token) async {
+
+  static Future<IdenfyIdentificationResult?> start(String token) async {
     final dynamic result = await _channel.invokeMethod('start', <String, String>{
       'authToken': token,
     });
-    IdenfyIdentificationResult idenfyIdentificationResult = IdenfyIdentificationResult.fromJson(jsonDecode(result));
+    IdenfyIdentificationResult? idenfyIdentificationResult = IdenfyIdentificationResult.fromJson(jsonDecode(result));
     return idenfyIdentificationResult;
   }
 
