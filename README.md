@@ -95,6 +95,35 @@ cd ..
 If you face compiling issues, like "using bridging headers with module interfaces is unsupported" you should set **Build libraries for distribution** to NO in your app build settings.
 
 The example IOS app has the correct configuration.
+
+### 5. Troubleshooting compile errors
+If your application uses **Objective-C bridging headers** you might face the following compile error:
+**using bridging headers with module interfaces is unsupported.
+Command CompileSwiftSources failed with a nonzero exit code**.
+
+
+<img alt="Embed & Sign" width="700" src={useBaseUrl('img/mobile/idenfy_ios_compile_error.png')} />
+
+To solve this error, you should try these steps:
+#### 1. You should set ```Build libraries for distribution``` to ```NO``` in your Runner app build settings.
+
+#### 2. Change post_install script in the Runner app Podfile to the following:
+```ruby
+post_install do |installer|
+    installer.pods_project.targets.each do |target|
+        if target.name == "ZIPFoundation" || target.name == "lottie-ios"
+          target.build_configurations.each do |config|
+            config.build_settings['BUILD_LIBRARY_FOR_DISTRIBUTION'] = 'YES'
+        end
+      end
+    end
+end
+```
+#### 3. Use different Subspec.
+If the first solution does not help, then use the Subspec, which uses "Fat" legacy frameworks instead of the **xcframeworks**.
+
+To include it, change pod 'iDenfySDK/iDenfyLiveness' to **pod 'iDenfySDK/iDenfyLiveness-Legacy'**
+
 ## Usage
 
 Firstly, import idenfysdkflutter.dart file:
