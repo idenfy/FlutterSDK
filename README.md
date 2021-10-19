@@ -8,6 +8,7 @@
     - [4. Adding iDenfy Flutter SDK manually](#4-adding-idenfy-flutter-sdk-manually)
       - [4.1 Configuring Android project](#41-configuring-android-project)
           - [4.2 Configuring IOS project](#42-configuring-ios-project)
+    - [5. Troubleshooting compile errors](#5-troubleshooting-compile-errors)
 *   [Usage](#usage)
 *   [Callbacks](#callbacks)
 *   [Additional customization](#additional-customization)
