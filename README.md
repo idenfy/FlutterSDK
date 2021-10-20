@@ -103,8 +103,6 @@ If your application uses **Objective-C bridging headers** you might face the fol
 Command CompileSwiftSources failed with a nonzero exit code**.
 
 
-<img alt="Embed & Sign" width="700" src={useBaseUrl('img/mobile/idenfy_ios_compile_error.png')} />
-
 To solve this error, you should try these steps:
 #### 1. You should set ```Build libraries for distribution``` to ```NO``` in your Runner app build settings.
 
