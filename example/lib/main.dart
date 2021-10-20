@@ -18,8 +18,8 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
 
-  IdenfyIdentificationResult _idenfySDKresult;
-  Exception exception;
+  IdenfyIdentificationResult? _idenfySDKresult;
+  Exception? exception;
 
   @override
   void initState() {
@@ -46,8 +46,8 @@ class _MyAppState extends State<MyApp> {
   }
 
   Future<void> initIdenfySdk() async {
-    IdenfyIdentificationResult idenfySDKresult;
-    Exception localException;
+    IdenfyIdentificationResult? idenfySDKresult;
+    Exception? localException;
     try {
     String authToken = await getAuthTokenRequest();
       idenfySDKresult = await IdenfySdkFlutter.start(authToken);
@@ -116,7 +116,7 @@ class _MyAppState extends State<MyApp> {
             ),
             children: <TextSpan>[
               TextSpan(text: "IdenfyIdentificationStatus:  \n", style: TextStyle( height: 4, color: Color.fromRGBO(83, 109, 254, 1), fontFamily: "HKGrotesk_bold", fontSize: 18)),
-              TextSpan(text: "${_idenfySDKresult.autoIdentificationStatus} \n ${_idenfySDKresult.manualIdentificationStatus}",
+              TextSpan(text: "${_idenfySDKresult!.autoIdentificationStatus} \n ${_idenfySDKresult!.manualIdentificationStatus}",
                   style: TextStyle(fontFamily: "HKGrotesk_regular", fontSize: 14)),
             ],
           ),

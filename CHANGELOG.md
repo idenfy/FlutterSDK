@@ -1,3 +1,7 @@
+## 1.3.0
+
+* Android SDK updated to 5.3.2 and IOS SDK updated to 6.6.3, fixed IOS compile issue for Example Application
+
 ## 1.2.0
 
 * Android SDK updated to 5.3.0 and IOS SDK updated to 6.6.0

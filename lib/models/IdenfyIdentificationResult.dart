@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+
 import 'AutoIdentificationStatus.dart';
 import 'ManualIdentificationStatus.dart';
 
@@ -10,25 +12,15 @@ class IdenfyIdentificationResult {
 
   factory IdenfyIdentificationResult.fromJson(dynamic json) {
     return IdenfyIdentificationResult(
-        AutoIdentificationStatus.values
-            .enumFromString(json['autoIdentificationStatus']),
-        ManualIdentificationStatus.values
-            .enumFromString(json['manualIdentificationStatus']));
+        EnumTransform.valueOf(
+            AutoIdentificationStatus.values, json['autoIdentificationStatus']),
+        EnumTransform.valueOf(ManualIdentificationStatus.values,
+            json['manualIdentificationStatus']));
   }
 }
 
 extension EnumTransform on List {
-  String string<T>(T value) {
-    if (value == null || (isEmpty)) return null;
-    var occurence = singleWhere(
-        (enumItem) => enumItem.toString() == value.toString(),
-        orElse: () => null);
-    if (occurence == null) return null;
-    return occurence.toString().split('.').last;
-  }
-
-  T enumFromString<T>(String value) {
-    return firstWhere((type) => type.toString().split('.').last == value,
-        orElse: () => null);
+  static T valueOf<T>(Iterable<T> values, String value) {
+    return values.where((e) => describeEnum(e!) == value).first;
   }
 }
