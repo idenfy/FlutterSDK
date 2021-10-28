@@ -39,7 +39,7 @@ Once the setup is completed successfully, you can add iDenfy SDK dependencies.
 To add iDenfy SDK plugin, open your project's `pubspec.yaml` file and append it with the latest iDenfy SDK flutter plugin:
 ```yaml
 dependencies:
-    idenfy_sdk_flutter: ^1.3.0
+    idenfy_sdk_flutter: ^1.4.0
 ```
 
 #### 3.1 Configuring Android project
