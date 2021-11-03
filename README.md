@@ -3,12 +3,11 @@
     - [1. Obtaining an authentication token](#1-obtaining-an-authentication-token)
     - [2. Availability information & new project setup](#2-availability-information--new-project-setup)
     - [3. Adding iDenfy Flutter SDK](#3-adding-idenfy-flutter-sdk)
-      - [3.1 Configuring Android project](#31-configuring-android-project)
-        - [3.2 Configuring IOS project](#32-configuring-ios-project)
+        - [3.1 Configuring Android project](#31-configuring-android-project)
+            - [3.2 Configuring IOS project](#32-configuring-ios-project)
     - [4. Adding iDenfy Flutter SDK manually](#4-adding-idenfy-flutter-sdk-manually)
-      - [4.1 Configuring Android project](#41-configuring-android-project)
-          - [4.2 Configuring IOS project](#42-configuring-ios-project)
-    - [5. Troubleshooting compile errors](#5-troubleshooting-compile-errors)
+        - [4.1 Configuring Android project](#41-configuring-android-project)
+            - [4.2 Configuring IOS project](#42-configuring-ios-project)
 *   [Usage](#usage)
 *   [Callbacks](#callbacks)
 *   [Additional customization](#additional-customization)
@@ -27,7 +26,7 @@ The SDK requires token for starting initialization. [Token generation guide](htt
 
 Minimum required versions by the platform:
 
-**IOS - 9**
+**IOS - 11.0 (Can be configured for 10.0, but will require Xcode 12.5.1)**
 
 **Android - API 19**
 
@@ -39,7 +38,7 @@ Once the setup is completed successfully, you can add iDenfy SDK dependencies.
 To add iDenfy SDK plugin, open your project's `pubspec.yaml` file and append it with the latest iDenfy SDK flutter plugin:
 ```yaml
 dependencies:
-    idenfy_sdk_flutter: ^1.4.0
+  idenfy_sdk_flutter: ^1.4.0
 ```
 
 #### 3.1 Configuring Android project
@@ -82,46 +81,43 @@ Having done that, sync gradle project files.
 
 #### 4.2 Configuring IOS Project
 
+#### 1. Installing dependency
 Please make sure you use the latest iDenfy SDK dependency in `idenfy_sdk_flutter.podspec` file:
 ```xml
 s.dependency 'iDenfySDK/iDenfyLiveness', 'x.y.z'
 ```
 
+#### 2. Updating post install script
+Navigate to the ios/Podfile file and edit the post_install script.
+```shell
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    if target.name == "ZIPFoundation" || target.name == "lottie-ios"
+      target.build_configurations.each do |config|
+        config.build_settings['BUILD_LIBRARY_FOR_DISTRIBUTION'] = 'YES'
+      end
+    end
+    if target.name == "idenfy_sdk_flutter"
+      target.build_configurations.each do |config|
+        config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '11.0'
+      end
+    end
+    flutter_additional_ios_build_settings(target)
+  end
+end
+```
+This script ensures that both "ZIPFoundation" and  "lottie-ios" have module stability as well as IOS 11.0 support, which is required for the NFC feature.
+#### 3. Running pod install
 After that, install the pods:
 ```shell
 cd ios
 pod install
 cd ..
 ```
+
 If you face compiling issues, like "using bridging headers with module interfaces is unsupported" you should set **Build libraries for distribution** to NO in your app build settings.
 
 The example IOS app has the correct configuration.
-
-### 5. Troubleshooting compile errors
-If your application uses **Objective-C bridging headers** you might face the following compile error:
-**using bridging headers with module interfaces is unsupported.
-Command CompileSwiftSources failed with a nonzero exit code**.
-
-
-To solve this error, you should try these steps:
-#### 1. You should set ```Build libraries for distribution``` to ```NO``` in your Runner app build settings.
-
-#### 2. Change post_install script in the Runner app Podfile to the following:
-```ruby
-post_install do |installer|
-    installer.pods_project.targets.each do |target|
-        if target.name == "ZIPFoundation" || target.name == "lottie-ios"
-          target.build_configurations.each do |config|
-            config.build_settings['BUILD_LIBRARY_FOR_DISTRIBUTION'] = 'YES'
-        end
-      end
-    end
-end
-```
-#### 3. Use different Subspec.
-If the first solution does not help, then use the Subspec, which uses "Fat" legacy frameworks instead of the **xcframeworks**.
-
-To include it, change pod 'iDenfySDK/iDenfyLiveness' to **pod 'iDenfySDK/iDenfyLiveness-Legacy'**
 
 ## Usage
 
@@ -165,7 +161,7 @@ Once you have an authentication token, which can be retrieved with following cod
       } on Exception catch(e) {
         localException = e;
       }
-  
+
       setState(() {
         _idenfySDKresult = idenfySDKresult;
         exception = localException;
@@ -245,8 +241,8 @@ Currently, @idenfy/idenfysdk_flutter_plugin does not provide customization optio
 We suggest creating a fork of this repository. After editing the code, you can include the plugin in the following way:
 ```yaml
 dependencies:
-    idenfy_sdk_flutter: ^1.3.0
-      git: https://github.com/your_repo/FlutterSDK.git
+  idenfy_sdk_flutter: ^1.4.0
+    git: https://github.com/your_repo/FlutterSDK.git
 ```
 
 **Android customization:**
