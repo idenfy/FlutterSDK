@@ -45,7 +45,7 @@ class IdenfySdkFlutterPlugin: FlutterPlugin, MethodCallHandler, ActivityAware, P
 
       IdenfyController.getInstance().initializeIdenfySDKV2WithManual(this.activity, IdenfyController.IDENFY_REQUEST_CODE, idenfySettingsV2)
     } else {
-      result.notImplemented()
+      //result.notImplemented()
     }
   }
 
@@ -77,7 +77,7 @@ class IdenfySdkFlutterPlugin: FlutterPlugin, MethodCallHandler, ActivityAware, P
         }
       }
     } else {
-      mResult?.notImplemented()
+      //mResult?.notImplemented()
     }
     return true
   }
