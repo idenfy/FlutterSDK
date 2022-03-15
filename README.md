@@ -62,6 +62,8 @@ android.jetifier.ignorelist=bcprov
 android.jetifier.blacklist=bcprov
 ```
 
+Make sure you are using Kotlin >= 1.5.31 version (Since 1.5 version of iDenfy package)
+
 #### 3.2 Configuring IOS project
 `NSCameraUsageDescription` must be provided in the application's `Info.plist` file:
 ```xml
@@ -177,6 +179,18 @@ android {
     resolutionStrategy { force 'androidx.core:core:1.6.0' }
   }
 }
+```
+
+If this error occurs:
+
+Failed to transform bcprov-jdk15on-1.69.jar (org.bouncycastle:bcprov-jdk15on:1.69) to match attributes {artifactType=android-java-res, org.gradle.category=library, org.gradle.libraryelements=jar, org.gradle.status=release, org.gradle.usage=java-runtime}.
+
+Be sure to add the following lines to your application's `gradle.properties` file:
+```gradle
+//For gradle 7+
+android.jetifier.ignorelist=bcprov
+//otherwise
+android.jetifier.blacklist=bcprov
 ```
 
 ## Usage

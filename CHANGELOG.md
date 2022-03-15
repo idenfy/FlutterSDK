@@ -10,6 +10,7 @@
   Full flow with the latest UI changes is visible here: [Android](https://documentation.idenfy.com/mobile/Android/android-sdk#full-flow-starting-v7), [IOS](https://documentation.idenfy.com/mobile/Android/android-sdk#full-flow-starting-v7)
 * New views are created with Jetpack Compose in Android! Read our [customization capabilities](/UI/AndroidUICustomization#customization-by-providing-your-own-implementations-of-jetpack-compose-composables).
 * Also the minimum Android version was raised to API 21.
+* Increased Kotlin version to 1.5.31
 
 ## 1.4.0
 
