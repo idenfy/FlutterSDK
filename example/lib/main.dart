@@ -116,7 +116,7 @@ class _MyAppState extends State<MyApp> {
             ),
             children: <TextSpan>[
               TextSpan(text: "IdenfyIdentificationStatus:  \n", style: TextStyle( height: 4, color: Color.fromRGBO(83, 109, 254, 1), fontFamily: "HKGrotesk_bold", fontSize: 18)),
-              TextSpan(text: "${_idenfySDKresult!.autoIdentificationStatus} \n ${_idenfySDKresult!.manualIdentificationStatus}",
+              TextSpan(text: "${_idenfySDKresult!.autoIdentificationStatus} \n ${_idenfySDKresult!.manualIdentificationStatus} \n autoSuspected: ${_idenfySDKresult!.suspectedIdentificationStatus.autoSuspected} \n manualSuspected: ${_idenfySDKresult!.suspectedIdentificationStatus.manualSuspected}",
                   style: TextStyle(fontFamily: "HKGrotesk_regular", fontSize: 14)),
             ],
           ),

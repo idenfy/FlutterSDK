@@ -2,7 +2,10 @@ group 'com.example.idenfy_sdk_flutter'
 version '1.0-SNAPSHOT'
 
 buildscript {
-    ext.kotlin_version = '1.3.50'
+    ext {
+        compose_version = '1.0.5'
+    }
+    ext.kotlin_version = '1.5.31'
     repositories {
         google()
         jcenter()
@@ -34,12 +37,17 @@ android {
     }
     defaultConfig {
         multiDexEnabled true
-        minSdkVersion 19
+        minSdkVersion 21
+
+        configurations.all {
+            resolutionStrategy { force 'androidx.core:core-ktx:1.3.2' }
+            resolutionStrategy { force 'androidx.core:core:1.6.0' }
+        }
     }
 }
 
 dependencies {
-    implementation 'com.github.idenfy:sdk-api:5.3.2'
+    api 'com.github.idenfy:sdk-api:7.1.0'
     implementation 'com.google.code.gson:gson:2.8.6'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'com.android.support:support-annotations:28.0.0'

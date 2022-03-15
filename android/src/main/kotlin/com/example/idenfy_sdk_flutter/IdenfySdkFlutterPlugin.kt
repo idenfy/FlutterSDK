@@ -7,7 +7,6 @@ import com.google.gson.Gson
 import com.idenfy.idenfySdk.CoreSdkInitialization.IdenfyController
 import com.idenfy.idenfySdk.api.initialization.IdenfySettingsV2
 import com.idenfy.idenfySdk.api.response.IdenfyIdentificationResult
-
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
@@ -15,7 +14,6 @@ import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
-import io.flutter.plugin.common.PluginRegistry.Registrar
 import io.flutter.plugin.common.PluginRegistry
 
 /** IdenfySdkFlutterPlugin */

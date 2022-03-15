@@ -8,6 +8,7 @@
     - [4. Adding iDenfy Flutter SDK manually](#4-adding-idenfy-flutter-sdk-manually)
         - [4.1 Configuring Android project](#41-configuring-android-project)
             - [4.2 Configuring IOS project](#42-configuring-ios-project)
+    - [5. Troubleshooting compile errors](#5-troubleshooting-compile-errors)
 *   [Usage](#usage)
 *   [Callbacks](#callbacks)
 *   [Additional customization](#additional-customization)
@@ -28,7 +29,7 @@ Minimum required versions by the platform:
 
 **IOS - 11.0 (Can be configured for 10.0, but will require Xcode 12.5.1)**
 
-**Android - API 19**
+**Android - API 21**
 
 If you are starting a new Flutter project you can follow [Flutter install guide](https://flutter.dev/docs/get-started/install).
 Once the setup is completed successfully, you can add iDenfy SDK dependencies.
@@ -38,7 +39,7 @@ Once the setup is completed successfully, you can add iDenfy SDK dependencies.
 To add iDenfy SDK plugin, open your project's `pubspec.yaml` file and append it with the latest iDenfy SDK flutter plugin:
 ```yaml
 dependencies:
-  idenfy_sdk_flutter: ^1.4.0
+  idenfy_sdk_flutter: ^1.5.0
 ```
 
 #### 3.1 Configuring Android project
@@ -49,6 +50,16 @@ android {
      multiDexEnabled true
   }
 }
+```
+
+Configure your application's `gradle.properties` file:
+```gradle
+android.useAndroidX=true
+android.enableJetifier=true
+//For gradle 7+
+android.jetifier.ignorelist=bcprov
+//otherwise
+android.jetifier.blacklist=bcprov
 ```
 
 #### 3.2 Configuring IOS project
@@ -118,6 +129,55 @@ cd ..
 If you face compiling issues, like "using bridging headers with module interfaces is unsupported" you should set **Build libraries for distribution** to NO in your app build settings.
 
 The example IOS app has the correct configuration.
+
+### 5. Troubleshooting compile errors
+
+#### IOS
+
+If your application uses **Objective-C bridging headers** you might face the following compile error:
+**using bridging headers with module interfaces is unsupported.
+Command CompileSwiftSources failed with a nonzero exit code**.
+
+
+<img alt="Embed & Sign" width="700" src={useBaseUrl('img/mobile/idenfy_ios_compile_error.png')} />
+
+To solve this error, you should try these steps:
+#### 1. You should set ```Build libraries for distribution``` to ```NO``` in your Runner app build settings.
+
+#### 2. Change post_install script in the Runner app Podfile to the following:
+```ruby
+post_install do |installer|
+    installer.pods_project.targets.each do |target|
+        if target.name == "ZIPFoundation" || target.name == "lottie-ios"
+          target.build_configurations.each do |config|
+            config.build_settings['BUILD_LIBRARY_FOR_DISTRIBUTION'] = 'YES'
+        end
+      end
+    end
+end
+```
+#### 3. Use different Subspec.
+If the first solution does not help, then use the Subspec, which uses "Fat" legacy frameworks instead of the **xcframeworks**.
+
+To include it, change pod 'iDenfySDK/iDenfyLiveness' to **pod 'iDenfySDK/iDenfyLiveness-Legacy'**
+
+#### Android
+If you run into this issue:
+
+The minCompileSdk (31) specified in a dependency's AAR metadata (META-INF/com/android/build/gradle/aar-metadata.properties) is greater than this module's compileSdkVersion (android-30).Dependency: androidx.core:core:1.7.0.
+
+Add the following lines to your `app/build.gradle` file:
+```gradle
+android {
+
+    ....
+    
+  configurations.all {
+    resolutionStrategy { force 'androidx.core:core-ktx:1.3.2' }
+    resolutionStrategy { force 'androidx.core:core:1.6.0' }
+  }
+}
+```
 
 ## Usage
 
@@ -205,12 +265,13 @@ setState(() {
     _idenfySDKresult = idenfySDKresult;
 });
 ````
-Result is an `IdenfyIdentificationResult` class with `AutoIdentificationStatus` and `ManualIdentificationStatus` enums:
+Result is an `IdenfyIdentificationResult` class with `AutoIdentificationStatus`, `ManualIdentificationStatus` enums and additional `SuspectedIdentificationStatus`:
 
 ```javascript
 class IdenfyIdentificationResult {
     AutoIdentificationStatus autoIdentificationStatus;
     ManualIdentificationStatus manualIdentificationStatus;
+    SuspectedIdentificationStatus suspectedIdentificationStatus;
 }
 ```
 
@@ -231,6 +292,13 @@ Information about the IdenfyIdentificationResult **manualIdentificationStatus** 
 |`WAITING`|The user completed an identification flow and started waiting for the manual verification results in the iDenfy SDK. Then he/she decided to stop waiting and pressed a "BACK TO ACCOUNT" button. The manual identification review is **still ongoing**.
 |`INACTIVE`   |The user was only verified by an automated platform, not by a manual reviewer. The identification performed by the user can still be verified by the manual review if your system uses the manual verification service.
 
+Information about the IdenfyIdentificationResult **suspectedIdentificationStatus** statuses:
+
+|Name            |Description
+|-------------------|------------------------------------
+|`autoSuspected`   |The user completed an identification flow and the identification status, provided by an automated platform, is SUSPECTED.
+|`manualSuspected`|The user completed an identification flow and the identification status, provided by a manual reviewer, is SUSPECTED.
+
 *Note
 The manualIdentificationStatus status always returns INACTIVE status, unless your system implements manual identification callback, but does not create **a separate waiting screen** for indicating about the ongoing manual identity verification process.
 For better customization we suggest using the [immediate redirect feature ](#customizing-results-callbacks-v2-optional). As a result, the user will not see an automatic identification status, provided by iDenfy service. The SDK will be closed while showing loading indicators.
@@ -241,20 +309,18 @@ Currently, @idenfy/idenfysdk_flutter_plugin does not provide customization optio
 We suggest creating a fork of this repository. After editing the code, you can include the plugin in the following way:
 ```yaml
 dependencies:
-  idenfy_sdk_flutter: ^1.4.0
+  idenfy_sdk_flutter: ^1.5.0
     git: https://github.com/your_repo/FlutterSDK.git
 ```
 
 **Android customization:**
-Follow [Android native SDK](https://github.com/idenfy/Documentation/blob/master/pages/ANDROID-SDK.md#customizing-sdk-v2-optional) guide and edit **IdenfysdkFlutterPlugin.kt**.
+Follow [Android native SDK](https://documentation.idenfy.com/UI/AndroidUICustomization) guide and edit **IdenfysdkFlutterPlugin.kt**.
 
 **IOS customization:**
-Follow [IOS native SDK guide](https://github.com/idenfy/Documentation/blob/master/pages/ios-sdk.md#customizing-sdk-v2-optional) and edit **SwiftIdenfysdkFlutterPlugin.swift**.
+Follow [IOS native SDK guide](https://documentation.idenfy.com/UI/IOSUICustomization) and edit **SwiftIdenfysdkFlutterPlugin.swift**.
 
 ## SDK Integration tutorials
 For more information visit [SDK integration tutorials](https://github.com/idenfy/Documentation/blob/master/pages/tutorials/mobile-sdk-tutorials.md).
-
-
 
 
 
