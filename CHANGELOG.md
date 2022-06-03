@@ -1,3 +1,12 @@
+## 1.6.0
+
+* Android and IOS SDK's updated to 7.2.1
+* New Camera OnBoarding view with static instruction list. All possible onboarding view variations are explained [here](https://documentation.idenfy.com/UI/AndroidUICustomization#camera-onboarding-view).
+* Urjanet utility bill service now supporting Multi-Factor authentication
+* Support email added to manual review screen
+* Minor UI changes to the iDenfy IOS loading HUD
+* Bug fixes
+
 ## 1.5.0
 
 * Android and IOS SDK's updated to 7.1.0

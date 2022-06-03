@@ -17,7 +17,7 @@ class Application: FlutterApplication() {
         val idenfyComposeViews = IdenfyComposeViewBuilder()
             .withIdentificationSuspectedResultsComposable { data -> IdentificationSuspectedResultsTestComposable.compose(data) }
             .withManualReviewingIdentificationResultsStatusWaitingComposable { data -> ManualReviewingIdentificationResultsWaitingTestComposable.composeManualView(data) }
-            .withCameraOnBoardingComposable { data -> CameraOnBoardingTestComposable.composeOnBoardingView(data) }
+            .withDynamicCameraOnBoardingComposable { data -> CameraOnBoardingTestComposable.composeOnBoardingView(data) }
             .build()
         IdenfyController.getInstance().idenfyComposableViews = idenfyComposeViews
     }

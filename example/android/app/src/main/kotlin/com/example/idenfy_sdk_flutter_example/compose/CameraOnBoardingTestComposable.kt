@@ -32,7 +32,7 @@ import androidx.compose.ui.viewinterop.AndroidView
 import com.example.idenfy_sdk_flutter_example.R
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.ui.PlayerView
-import com.idenfy.idenfySdk.api.ui.IdenfyCameraOnBoardingComposeViewData
+import com.idenfy.idenfySdk.api.ui.IdenfyDynamicCameraOnBoardingComposeViewData
 import com.idenfy.idenfySdk.features.confirmation.ui.state.CameraOnBoardingScreenButtonState
 import com.idenfy.idenfySdk.uicomponents.core.IdenfyFonts
 
@@ -40,13 +40,13 @@ import com.idenfy.idenfySdk.uicomponents.core.IdenfyFonts
 object CameraOnBoardingTestComposable {
 
     @Composable
-    fun composeOnBoardingView(data: IdenfyCameraOnBoardingComposeViewData) {
+    fun composeOnBoardingView(data: IdenfyDynamicCameraOnBoardingComposeViewData) {
         //All needed resources for the view
         val resources = data.resources
         //A base for the composable
         val composeBases = data.idenfyComposeBases
 
-        composeBases.cameraOnBoardingViewComposableBase(
+        composeBases.cameraDynamicOnBoardingViewComposableBase(
             //Do not forget to pass the data class
             data = data,
             cameraOnBoardingViewTitle = { title ->
