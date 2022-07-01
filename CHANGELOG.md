@@ -1,3 +1,10 @@
+## 1.7.0
+
+* Android SDK updated to 7.4.1
+* IOS SDK updated to 7.4.0
+* New Face Reauthentication feature introduced. More on this feature, read [here](https://documentation.idenfy.com/other-fraud/FaceReauthentication).
+* Bug fixes
+
 ## 1.6.0
 
 * Android and IOS SDK's updated to 7.2.1

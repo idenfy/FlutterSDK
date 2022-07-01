@@ -39,6 +39,27 @@ public class SwiftIdenfySdkFlutterPlugin: NSObject, FlutterPlugin {
                     }
                 })
             }
+        } else if call.method == "startFaceReauth" {
+            if let arguments = call.arguments as? [String: Any],
+               let withImmediateRedirect = arguments["withImmediateRedirect"] as? Bool,
+               let reauthenticationToken = arguments["token"] as? String {
+            let idenfyController = IdenfyController.shared
+            let faceReauthenticationInitialization = FaceReauthenticationInitialization(reauthenticationToken: reauthenticationToken, withImmediateRedirect: withImmediateRedirect)
+            idenfyController.initializeFaceReauthentication(faceReauthenticationInitialization: faceReauthenticationInitialization)
+            let idenfyVC = idenfyController.instantiateNavigationController()
+
+            UIApplication.shared.keyWindow?.rootViewController?.present(idenfyVC, animated: true, completion: nil)
+            
+            idenfyController.handleIdenfyCallbacksForFaceReauthentication(faceReauthenticationResult: { faceReauthenticationResult in
+                do {
+                    let jsonEncoder = JSONEncoder()
+                    let jsonData = try jsonEncoder.encode(faceReauthenticationResult)
+                    let string = String(data: jsonData, encoding: String.Encoding.utf8)
+                    result(string)
+                } catch {
+                }
+            })
+            }
         }
     }
 }

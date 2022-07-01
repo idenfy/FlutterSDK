@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'dart:convert';
-import 'package:flutter/services.dart';
 import 'package:idenfy_sdk_flutter/idenfy_sdk_flutter.dart';
 import 'package:idenfy_sdk_flutter/models/IdenfyIdentificationResult.dart';
 import 'package:http/http.dart' as http;
 import 'constants.dart' as Constants;
+import 'face_reauthentication_start_screen.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(MaterialApp(debugShowCheckedModeBanner: false, home: MyApp()));
 }
 
 class MyApp extends StatefulWidget {
@@ -17,7 +17,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-
   IdenfyIdentificationResult? _idenfySDKresult;
   Exception? exception;
 
@@ -32,9 +31,11 @@ class _MyAppState extends State<MyApp> {
       headers: <String, String>{
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'Authorization': 'Basic ' + base64Encode(utf8.encode('${Constants.apiKey}:${Constants.apiSecret}')),
+        'Authorization': 'Basic ' +
+            base64Encode(
+                utf8.encode('${Constants.apiKey}:${Constants.apiSecret}')),
       },
-      body: jsonEncode(<String, String> {
+      body: jsonEncode(<String, String>{
         "clientId": Constants.clientId,
       }),
     );
@@ -49,9 +50,9 @@ class _MyAppState extends State<MyApp> {
     IdenfyIdentificationResult? idenfySDKresult;
     Exception? localException;
     try {
-    String authToken = await getAuthTokenRequest();
+      String authToken = await getAuthTokenRequest();
       idenfySDKresult = await IdenfySdkFlutter.start(authToken);
-    } on Exception catch(e) {
+    } on Exception catch (e) {
       localException = e;
     }
 
@@ -63,12 +64,11 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
+    return Material(
+      child: Scaffold(
         appBar: AppBar(
           title: Image.asset('assets/ic_idenfy_logo_vector_v2.png',
-              width: 70,
-              fit: BoxFit.cover),
+              width: 70, fit: BoxFit.cover),
           centerTitle: true,
           backgroundColor: Colors.white,
           brightness: Brightness.light,
@@ -78,11 +78,82 @@ class _MyAppState extends State<MyApp> {
           children: [
             topTitle(),
             Spacer(),
-            exceptionTitle(),
+            IntrinsicHeight(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Expanded(
+                      child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              splashFactory: NoSplash.splashFactory,
+                              primary: Colors.transparent,
+                              onSurface: Colors.transparent,
+                              shadowColor: Colors.transparent),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Image.asset(
+                                  'assets/idenfy_ic_documents_type_selection_passport_front_v2.png',
+                                  width: 90,
+                                  fit: BoxFit.fitWidth),
+                              Padding(
+                                padding: const EdgeInsets.only(top: 8.0),
+                                child: Text(
+                                  "IDENTIFICATION UI",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(color: Colors.grey),
+                                ),
+                              )
+                            ],
+                          ),
+                          onPressed: initIdenfySdk)),
+                  const Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: VerticalDivider(color: Colors.black, thickness: 1.2),
+                  ),
+                  Expanded(
+                      child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              splashFactory: NoSplash.splashFactory,
+                              primary: Colors.transparent,
+                              onSurface: Colors.transparent,
+                              shadowColor: Colors.transparent),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.only(left: 16),
+                                child: Image.asset(
+                                    'assets/idenfy_ic_face_step_v2.png',
+                                    width: 90,
+                                    fit: BoxFit.fitWidth),
+                              ),
+                              Padding(
+                                padding:
+                                    const EdgeInsets.only(top: 12, right: 8),
+                                child: Text(
+                                  "FACE REAUTHENTICATION",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(color: Colors.grey),
+                                ),
+                              )
+                            ],
+                          ),
+                          onPressed: () {
+                            Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        FaceReathenticationStartScreen()));
+                          }))
+                ],
+              ),
+            ),
             Spacer(),
-            centerTitle(),
+            _idenfySDKresult != null
+                ? idenfyResult()
+                : (exception != null ? exceptionTitle() : Container()),
             Spacer(),
-            beginIdentificationButton()
           ],
         ),
       ),
@@ -90,91 +161,72 @@ class _MyAppState extends State<MyApp> {
   }
 
   Widget exceptionTitle() {
-    return exception == null ? Container() : Container(
+    return Container(
         child: RichText(
-          textAlign: TextAlign.center,
-          text: TextSpan(
-            style: TextStyle(
-              fontSize: 14.0,
-              color: Colors.black,
-            ),
-            children: <TextSpan>[
-              TextSpan(text: exception.toString(), style: TextStyle( height: 4, color: Colors.red, fontFamily: "HKGrotesk_bold", fontSize: 18)),
-            ],
-          ),
-        ));
+      textAlign: TextAlign.center,
+      text: TextSpan(
+        style: TextStyle(
+          fontSize: 14.0,
+          color: Colors.black,
+        ),
+        children: <TextSpan>[
+          TextSpan(
+              text: exception.toString(),
+              style: TextStyle(
+                  height: 4,
+                  color: Colors.red,
+                  fontFamily: "HKGrotesk_bold",
+                  fontSize: 18)),
+        ],
+      ),
+    ));
   }
 
-  Widget centerTitle() {
-    return _idenfySDKresult == null ? Container() : Container(
-        child: RichText(
-          textAlign: TextAlign.center,
-          text: TextSpan(
-            style: TextStyle(
-              fontSize: 14.0,
-              color: Colors.black,
+  Widget idenfyResult() {
+    return _idenfySDKresult == null
+        ? Container()
+        : Container(
+            child: RichText(
+            textAlign: TextAlign.center,
+            text: TextSpan(
+              style: TextStyle(
+                fontSize: 14.0,
+                color: Colors.black,
+              ),
+              children: <TextSpan>[
+                TextSpan(
+                    text: "IdenfyIdentificationStatus:  \n",
+                    style: TextStyle(
+                        height: 4,
+                        color: Color.fromRGBO(83, 109, 254, 1),
+                        fontFamily: "HKGrotesk_bold",
+                        fontSize: 18)),
+                TextSpan(
+                    text:
+                        "${_idenfySDKresult!.autoIdentificationStatus} \n ${_idenfySDKresult!.manualIdentificationStatus} \n autoSuspected: ${_idenfySDKresult!.suspectedIdentificationStatus.autoSuspected} \n manualSuspected: ${_idenfySDKresult!.suspectedIdentificationStatus.manualSuspected}",
+                    style: TextStyle(
+                        fontFamily: "HKGrotesk_regular", fontSize: 14)),
+              ],
             ),
-            children: <TextSpan>[
-              TextSpan(text: "IdenfyIdentificationStatus:  \n", style: TextStyle( height: 4, color: Color.fromRGBO(83, 109, 254, 1), fontFamily: "HKGrotesk_bold", fontSize: 18)),
-              TextSpan(text: "${_idenfySDKresult!.autoIdentificationStatus} \n ${_idenfySDKresult!.manualIdentificationStatus} \n autoSuspected: ${_idenfySDKresult!.suspectedIdentificationStatus.autoSuspected} \n manualSuspected: ${_idenfySDKresult!.suspectedIdentificationStatus.manualSuspected}",
-                  style: TextStyle(fontFamily: "HKGrotesk_regular", fontSize: 14)),
-            ],
-          ),
-        ));
+          ));
   }
 
   Widget topTitle() {
     return Container(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 24),
-              child: Text(
-                  "Sample iDenfy App",
-                  style: TextStyle(fontFamily: "HKGrotesk_bold", fontSize: 22)
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 16),
-              child: Text(
-                  "Press button to begin identification!",
-                  style: TextStyle(fontFamily: "HKGrotesk_regular", fontSize: 14)
-              ),
-            ),
-          ],
-        )
-    );
-  }
-
-  Widget beginIdentificationButton() {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 40, left: 24, right: 24),
-      child: Container(
-        height: 42,
-        width: double.infinity,
-        decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [ Color.fromRGBO(83, 109, 254, 1),
-                Color.fromRGBO(141, 108, 251, 1)],
-              begin: Alignment.centerLeft,
-              end: Alignment.centerRight,
-            ),
-            borderRadius: BorderRadius.all(Radius.circular(4))
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(top: 24),
+          child: Text("Sample iDenfy App",
+              style: TextStyle(fontFamily: "HKGrotesk_bold", fontSize: 22)),
         ),
-        child: InkWell(
-          onTap: () {
-            initIdenfySdk();
-          },
-          child: Center(
-            child: Text(
-                "BEGIN IDENTIFICATION",
-                style: TextStyle(fontFamily: "HKGrotesk_bold", color: Colors.white)
-            ),
-          ),
+        Padding(
+          padding: const EdgeInsets.only(top: 16),
+          child: Text("Press button to your desired flow!",
+              style: TextStyle(fontFamily: "HKGrotesk_regular", fontSize: 14)),
         ),
-      ),
-    );
+      ],
+    ));
   }
-
 }

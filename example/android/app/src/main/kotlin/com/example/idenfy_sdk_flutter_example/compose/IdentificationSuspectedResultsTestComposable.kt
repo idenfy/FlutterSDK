@@ -24,6 +24,7 @@ import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
 import com.example.idenfy_sdk_flutter_example.R
 import com.idenfy.idenfySdk.api.ui.IdentificationSuspectedResultsViewComposeViewData
+import com.idenfy.idenfySdk.api.ui.SuspectedResultsButton
 import com.idenfy.idenfySdk.uicomponents.core.IdenfyFonts
 
 @ExperimentalUnitApi
@@ -44,7 +45,7 @@ object IdentificationSuspectedResultsTestComposable {
                         .padding(16.dp, 32.dp, 16.dp, 0.dp),
                     text = title,
                     textAlign = TextAlign.Center,
-                    color = colorResource(R.color.idenfySecondColorV2),
+                    color = colorResource(R.color.idenfyIdentificationSuspectedResultsViewTitleColor),
                     fontSize = TextUnit(20f, TextUnitType.Sp),
                     fontWeight = FontWeight.Bold,
                     fontFamily = IdenfyFonts.hkGrotesk
@@ -61,7 +62,7 @@ object IdentificationSuspectedResultsTestComposable {
                     text = buildAnnotatedString {
                         withStyle(
                             style = SpanStyle(
-                                color = colorResource(id = R.color.idenfySecondColor50percentV2),
+                                color = colorResource(id = R.color.idenfyIdentificationSuspectedResultsViewDescriptionColor),
                                 fontSize = TextUnit(15f, TextUnitType.Sp),
                                 fontWeight = FontWeight.Normal,
                                 fontFamily = IdenfyFonts.hkGrotesk
@@ -72,7 +73,7 @@ object IdentificationSuspectedResultsTestComposable {
                         append(" ")
                         withStyle(
                             style = SpanStyle(
-                                color = colorResource(id = R.color.idenfyMainColorV2),
+                                color = colorResource(id = R.color.idenfyIdentificationSuspectedResultsViewDescriptionEmailColor),
                                 fontSize = TextUnit(15f, TextUnitType.Sp),
                                 fontWeight = FontWeight.Bold,
                                 fontFamily = IdenfyFonts.hkGrotesk
@@ -91,28 +92,33 @@ object IdentificationSuspectedResultsTestComposable {
                         .size(130.dp)
                 )
             }, identificationSuspectedResultsButton = { buttonResources ->
-                Surface(
-                    shape = RoundedCornerShape(4.dp),
-                    color = colorResource(R.color.idenfyMainColorV2),
-                    modifier = Modifier
-                        .requiredHeight(42.dp)
-                        .padding(start = 16.dp, end = 16.dp)
-                        .clickable(onClick = buttonResources.buttonAction)
-                        .fillMaxWidth()
-                ) {
-                    Row(
-                        horizontalArrangement = Arrangement.Center,
-                        modifier = Modifier.requiredHeight(42.dp)
-                    ) {
-                        Text(
-                            text = buttonResources.buttonTitle,
-                            color = colorResource(R.color.idenfyWhite),
-                            fontSize = TextUnit(12f, TextUnitType.Sp),
-                            fontWeight = FontWeight.Bold,
-                            fontFamily = IdenfyFonts.hkGrotesk,
+                when (val visibleButton = buttonResources.suspectedResultsButton) {
+                    SuspectedResultsButton.SuspectedResultsButtonHidden -> {}
+                    is SuspectedResultsButton.SuspectedResultsButtonVisible -> {
+                        Surface(
+                            shape = RoundedCornerShape(4.dp),
+                            color = colorResource(R.color.idenfyIdentificationSuspectedResultsViewContinueButtonBackgroundColor),
                             modifier = Modifier
-                                .align(Alignment.CenterVertically)
-                        )
+                                .requiredHeight(42.dp)
+                                .padding(start = 16.dp, end = 16.dp)
+                                .clickable(onClick = visibleButton.buttonAction)
+                                .fillMaxWidth()
+                        ) {
+                            Row(
+                                horizontalArrangement = Arrangement.Center,
+                                modifier = Modifier.requiredHeight(42.dp)
+                            ) {
+                                Text(
+                                    text = visibleButton.buttonTitle,
+                                    color = colorResource(R.color.idenfyIdentificationSuspectedResultsViewContinueButtonTitleColor),
+                                    fontSize = TextUnit(12f, TextUnitType.Sp),
+                                    fontWeight = FontWeight.Bold,
+                                    fontFamily = IdenfyFonts.hkGrotesk,
+                                    modifier = Modifier
+                                        .align(Alignment.CenterVertically)
+                                )
+                            }
+                        }
                     }
                 }
             })

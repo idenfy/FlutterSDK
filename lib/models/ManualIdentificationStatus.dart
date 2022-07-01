@@ -1,4 +1,5 @@
 enum ManualIdentificationStatus {
+
   ///The user completed an identification flow and was verified manually while waiting for the manual verification results in the iDenfy SDK. The identification status, provided by a manual review, is APPROVED.
   APPROVED,
 

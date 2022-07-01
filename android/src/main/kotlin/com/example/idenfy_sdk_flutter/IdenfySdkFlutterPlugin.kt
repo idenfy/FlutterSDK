@@ -6,7 +6,9 @@ import androidx.annotation.NonNull
 import com.google.gson.Gson
 import com.idenfy.idenfySdk.CoreSdkInitialization.IdenfyController
 import com.idenfy.idenfySdk.api.initialization.IdenfySettingsV2
+import com.idenfy.idenfySdk.api.response.FaceReauthenticationResult
 import com.idenfy.idenfySdk.api.response.IdenfyIdentificationResult
+import com.idenfy.idenfySdk.facereauthentication.api.FaceReauthenticationInitialization
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
@@ -42,6 +44,10 @@ class IdenfySdkFlutterPlugin: FlutterPlugin, MethodCallHandler, ActivityAware, P
               .build()
 
       IdenfyController.getInstance().initializeIdenfySDKV2WithManual(this.activity, IdenfyController.IDENFY_REQUEST_CODE, idenfySettingsV2)
+    } else if (call.method == "startFaceReauth") {
+      mResult = result
+      val faceReauthenticationInitialization = FaceReauthenticationInitialization(call.argument<String>("token")!!, call.argument<Boolean>("withImmediateRedirect")!!)
+      IdenfyController.getInstance().initializeFaceReauthenticationSDKV2(this.activity, IdenfyController.IDENFY_REQUEST_CODE, faceReauthenticationInitialization)
     } else {
       //result.notImplemented()
     }
@@ -71,6 +77,11 @@ class IdenfySdkFlutterPlugin: FlutterPlugin, MethodCallHandler, ActivityAware, P
         IdenfyController.IDENFY_IDENTIFICATION_RESULT_CODE -> {
           val idenfyIdentificationResult: IdenfyIdentificationResult = data!!.getParcelableExtra(IdenfyController.IDENFY_IDENTIFICATION_RESULT)!!
           val jsonString = Gson().toJson(idenfyIdentificationResult)
+          mResult?.success(jsonString)
+        }
+        IdenfyController.IDENFY_FACE_REAUTHENTICATION_RESULT_CODE -> {
+          val faceReauthenticationResult: FaceReauthenticationResult = data!!.getParcelableExtra(IdenfyController.IDENFY_FACE_REAUTHENTICATION_RESULT)!!
+          val jsonString = Gson().toJson(faceReauthenticationResult)
           mResult?.success(jsonString)
         }
       }

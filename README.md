@@ -39,7 +39,7 @@ Once the setup is completed successfully, you can add iDenfy SDK dependencies.
 To add iDenfy SDK plugin, open your project's `pubspec.yaml` file and append it with the latest iDenfy SDK flutter plugin:
 ```yaml
 dependencies:
-  idenfy_sdk_flutter: ^1.6.0
+  idenfy_sdk_flutter: ^1.7.0
 ```
 
 #### 3.1 Configuring Android project
@@ -195,6 +195,7 @@ android.jetifier.blacklist=bcprov
 
 ## Usage
 
+### Identity verification flow
 Firstly, import idenfysdkflutter.dart file:
 ```javascript
 import 'package:idenfy_sdk_flutter/idenfy_sdk_flutter.dart';
@@ -266,8 +267,100 @@ Calling IdenfySdkFlutter.start with provided authToken:
         _idenfySDKresult = idenfySDKresult;
     });
 ```
+
+### Face reauthentication flow
+
+More on this flow, read [here](https://documentation.idenfy.com/other-fraud/FaceReauthentication).
+
+Firstly, import idenfysdkflutter.dart file:
+```javascript
+import 'package:idenfy_sdk_flutter/idenfy_sdk_flutter.dart';
+```
+
+After successful integration you should be able to call IdenfySdkFlutter.startFaceReauth method.
+
+If the project is not successfully compiled or runtime issues occur, make sure you have followed the steps. For better understanding you may check the sample app in this repository.
+
+Once you have a face authentication token, which can be retrieved with following code, found in the example app, you can call IdenfySdkFlutter.startFaceReauth:
+
+```javascript
+  Future<String> getFaceReauthTokenRequest(String scanref) async {
+    final response = await http.post(
+      Uri.https(Constants.BASE_URL, '/partner/authentication-info'),
+      headers: <String, String>{
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Basic ' +
+            base64Encode(
+                utf8.encode('${Constants.apiKey}:${Constants.apiSecret}')),
+      },
+      body: jsonEncode(<String, String>{
+        "scanRef": scanref,
+      }),
+    );
+    if (response.statusCode == 200) {
+      return jsonDecode(response.body)["token"];
+    } else {
+      throw Exception('Failed to fetch token');
+    }
+  }
+
+  Future<void> initIdenfyFaceReauth(String scanref) async {
+    FaceReauthenticationResult? faceReauthenticationResult;
+    Exception? localException;
+    try {
+      String token = await getFaceReauthTokenRequest(scanref);
+      faceReauthenticationResult = await IdenfySdkFlutter.startFaceReauth(token, false);
+    } on Exception catch (e) {
+      localException = e;
+    }
+
+    setState(() {
+      _faceReauthenticationResult = faceReauthenticationResult;
+      exception = localException;
+    });
+  }
+```
+
+An additional bool can be passed to the function to set the immediate redirect feature. 
+This sets whether the results from iDenfy SDK should be received immediately without any additional result pages
+
+```javascript
+IdenfySdkFlutter.startFaceReauth(token, true);
+```
+
+Please make sure to provide your cliendId, apikey and apisecret constants, they can be found in `constants.dart` file:
+```javascript
+const String BASE_URL = 'ivs.idenfy.com';
+const String clientId = 'idenfySampleClientID';
+const String apiKey = 'PUT_YOUR_IDENFY_API_KEY_HERE';
+const String apiSecret = 'PUT_YOUR_IDENFY_API_SECRET_HERE';
+```
+
+Calling IdenfySdkFlutter.startFaceReauth with provided scanRef of a completed identify verification:
+
+
+```javascript
+  Future<void> initIdenfyFaceReauth(String scanref) async {
+    FaceReauthenticationResult? faceReauthenticationResult;
+    Exception? localException;
+    try {
+      String token = await getFaceReauthTokenRequest(scanref);
+      faceReauthenticationResult = await IdenfySdkFlutter.startFaceReauth(token, false);
+    } on Exception catch (e) {
+      localException = e;
+    }
+
+    setState(() {
+      _faceReauthenticationResult = faceReauthenticationResult;
+      exception = localException;
+    });
+  }
+```
+
 ## Callbacks
 
+### Identity verification flow
 Callback from the SDK can be retrieved from IdenfySdkFlutter.start future:
 ````javascript
 try {
@@ -317,13 +410,42 @@ Information about the IdenfyIdentificationResult **suspectedIdentificationStatus
 The manualIdentificationStatus status always returns INACTIVE status, unless your system implements manual identification callback, but does not create **a separate waiting screen** for indicating about the ongoing manual identity verification process.
 For better customization we suggest using the [immediate redirect feature ](#customizing-results-callbacks-v2-optional). As a result, the user will not see an automatic identification status, provided by iDenfy service. The SDK will be closed while showing loading indicators.
 
+### Face reauthentication flow
+Callback from the SDK can be retrieved from IdenfySdkFlutter.startFaceReauth future:
+````javascript
+    FaceReauthenticationResult? faceReauthenticationResult;
+    try {
+      faceReauthenticationResult = await IdenfySdkFlutter.startFaceReauth(token, false);
+    } on Exception catch (e) {
+    }
+
+    setState(() {
+      _faceReauthenticationResult = faceReauthenticationResult;
+    });
+````
+Result is an `FaceReauthenticationResult` class with `FaceReauthenticationStatus` enum:
+
+```javascript
+class FaceReauthenticationResult {
+    FaceReauthenticationStatus faceReauthenticationStatus;
+}
+```
+
+Information about the FaceReauthenticationResult **faceReauthenticationStatus** statuses:
+
+|Name            |Description
+|-------------------|------------------------------------
+|`SUCCESS`   |The user completed face reauthentication flow and the reauthentication status, provided by an automated platform, is SUCCESS.
+|`FAILED`|The user completed face reauthentication flow and the reauthentication status, provided by an automated platform, is FAILED.
+|`EXIT`   |The user did not complete face reauthentication flow and the identification status, provided by an automated platform, is EXIT.
+
 ## Additional customization
 Currently, @idenfy/idenfysdk_flutter_plugin does not provide customization options via Dart code directly. For any additional SDK customization, you need to use the sample in this repository and edit native code inside of the plugin.
 
 We suggest creating a fork of this repository. After editing the code, you can include the plugin in the following way:
 ```yaml
 dependencies:
-  idenfy_sdk_flutter: ^1.6.0
+  idenfy_sdk_flutter: ^1.7.0
     git: https://github.com/your_repo/FlutterSDK.git
 ```
 
