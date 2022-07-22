@@ -9,16 +9,19 @@ class IdenfyIdentificationResult {
   final ManualIdentificationStatus manualIdentificationStatus;
   final SuspectedIdentificationStatus suspectedIdentificationStatus;
 
-  IdenfyIdentificationResult(
-      this.autoIdentificationStatus, this.manualIdentificationStatus, this.suspectedIdentificationStatus);
+  IdenfyIdentificationResult(this.autoIdentificationStatus,
+      this.manualIdentificationStatus, this.suspectedIdentificationStatus);
 
   factory IdenfyIdentificationResult.fromJson(dynamic json) {
-    var suspectedStatus = SuspectedIdentificationStatus(json['suspectedIdentificationStatus']['autoSuspected'], json['suspectedIdentificationStatus']['manualSuspected']);
+    var suspectedStatus = SuspectedIdentificationStatus(
+        json['suspectedIdentificationStatus']['autoSuspected'],
+        json['suspectedIdentificationStatus']['manualSuspected']);
     return IdenfyIdentificationResult(
         EnumTransform.valueOf(
             AutoIdentificationStatus.values, json['autoIdentificationStatus']),
         EnumTransform.valueOf(ManualIdentificationStatus.values,
-            json['manualIdentificationStatus']), suspectedStatus);
+            json['manualIdentificationStatus']),
+        suspectedStatus);
   }
 }
 

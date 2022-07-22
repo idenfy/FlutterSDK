@@ -20,13 +20,15 @@ class IdenfySdkFlutter {
     return idenfyIdentificationResult;
   }
 
-  static Future<FaceReauthenticationResult> startFaceReauth(String token, bool withImmediateRedirect) async {
-    final dynamic result =
-    await _channel.invokeMethod('startFaceReauth', <String, dynamic> {
+  static Future<FaceReauthenticationResult> startFaceReauth(
+      String token, bool withImmediateRedirect) async {
+    final dynamic result = await _channel.invokeMethod(
+        'startFaceReauth', <String, dynamic>{
       'token': token,
       'withImmediateRedirect': withImmediateRedirect
     });
-    FaceReauthenticationResult faceReauthenticationResult = FaceReauthenticationResult.fromJson(jsonDecode(result));
+    FaceReauthenticationResult faceReauthenticationResult =
+        FaceReauthenticationResult.fromJson(jsonDecode(result));
     return faceReauthenticationResult;
   }
 

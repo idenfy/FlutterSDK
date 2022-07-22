@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'dart:async';
 import 'dart:convert';
 import 'package:idenfy_sdk_flutter/idenfy_sdk_flutter.dart';
@@ -71,7 +72,8 @@ class _MyAppState extends State<MyApp> {
               width: 70, fit: BoxFit.cover),
           centerTitle: true,
           backgroundColor: Colors.white,
-          brightness: Brightness.light,
+          systemOverlayStyle:
+              SystemUiOverlayStyle(statusBarBrightness: Brightness.light),
         ),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.center,

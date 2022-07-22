@@ -1,4 +1,3 @@
-
 enum FaceReauthenticationStatus {
   ///The user completed face reauthentication flow and the reauthentication status, provided by an automated platform, is SUCCESS.
   SUCCESS,

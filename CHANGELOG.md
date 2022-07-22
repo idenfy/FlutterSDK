@@ -1,3 +1,9 @@
+## 1.7.1
+
+* Code formatting
+* IOS SDK updated to 7.4.1
+* Bug fixes
+
 ## 1.7.0
 
 * Android SDK updated to 7.4.1

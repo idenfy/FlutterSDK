@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'package:idenfy_sdk_flutter/idenfy_sdk_flutter.dart';
 import 'constants.dart' as Constants;
@@ -53,7 +54,8 @@ class _FaceReathenticationStartScreenState
     Exception? localException;
     try {
       String token = await getFaceReauthTokenRequest(scanref);
-      faceReauthenticationResult = await IdenfySdkFlutter.startFaceReauth(token, false);
+      faceReauthenticationResult =
+          await IdenfySdkFlutter.startFaceReauth(token, false);
     } on Exception catch (e) {
       localException = e;
     }
@@ -70,18 +72,19 @@ class _FaceReathenticationStartScreenState
     return Material(
         child: Scaffold(
             appBar: AppBar(
-              leading: IconButton(onPressed: () {
-                Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            MyApp()));
-              }, icon: Icon(Icons.arrow_back, color: Color.fromRGBO(83, 109, 254, 1))),
+              leading: IconButton(
+                  onPressed: () {
+                    Navigator.pushReplacement(context,
+                        MaterialPageRoute(builder: (context) => MyApp()));
+                  },
+                  icon: Icon(Icons.arrow_back,
+                      color: Color.fromRGBO(83, 109, 254, 1))),
               title: Image.asset('assets/ic_idenfy_logo_vector_v2.png',
                   width: 70, fit: BoxFit.cover),
               centerTitle: true,
               backgroundColor: Colors.white,
-              brightness: Brightness.light,
+              systemOverlayStyle:
+                  SystemUiOverlayStyle(statusBarBrightness: Brightness.light),
             ),
             body: GestureDetector(
                 behavior: HitTestBehavior.opaque,
