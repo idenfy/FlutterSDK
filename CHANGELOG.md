@@ -1,3 +1,8 @@
+## 1.7.2
+
+* IOS SDK updated to 7.4.2
+* Bug fixes
+
 ## 1.7.1
 
 * Code formatting
