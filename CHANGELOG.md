@@ -1,3 +1,11 @@
+## 1.7.3
+
+* IOS SDK updated to 7.4.3
+* NFC Reading now supports PACE reading method
+* Android SDK updated to 7.4.2
+* Added Dutch translations
+* Bug fixes
+
 ## 1.7.2
 
 * IOS SDK updated to 7.4.2
