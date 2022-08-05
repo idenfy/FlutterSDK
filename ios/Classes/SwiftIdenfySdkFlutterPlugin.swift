@@ -39,21 +39,21 @@ public class SwiftIdenfySdkFlutterPlugin: NSObject, FlutterPlugin {
                     }
                 })
             }
-        } else if call.method == "startFaceReauth" {
+        } else if call.method == "startFaceAuth" {
             if let arguments = call.arguments as? [String: Any],
                let withImmediateRedirect = arguments["withImmediateRedirect"] as? Bool,
-               let reauthenticationToken = arguments["token"] as? String {
+               let authenticationToken = arguments["token"] as? String {
             let idenfyController = IdenfyController.shared
-            let faceReauthenticationInitialization = FaceReauthenticationInitialization(reauthenticationToken: reauthenticationToken, withImmediateRedirect: withImmediateRedirect)
-            idenfyController.initializeFaceReauthentication(faceReauthenticationInitialization: faceReauthenticationInitialization)
+            let faceAuthenticationInitialization = FaceAuthenticationInitialization(authenticationToken: authenticationToken, withImmediateRedirect: withImmediateRedirect)
+            idenfyController.initializeFaceAuthentication(faceAuthenticationInitialization: faceAuthenticationInitialization)
             let idenfyVC = idenfyController.instantiateNavigationController()
 
             UIApplication.shared.keyWindow?.rootViewController?.present(idenfyVC, animated: true, completion: nil)
             
-            idenfyController.handleIdenfyCallbacksForFaceReauthentication(faceReauthenticationResult: { faceReauthenticationResult in
+            idenfyController.handleIdenfyCallbacksForFaceAuthentication(faceAuthenticationResult: { faceAuthenticationResult in
                 do {
                     let jsonEncoder = JSONEncoder()
-                    let jsonData = try jsonEncoder.encode(faceReauthenticationResult)
+                    let jsonData = try jsonEncoder.encode(faceAuthenticationResult)
                     let string = String(data: jsonData, encoding: String.Encoding.utf8)
                     result(string)
                 } catch {

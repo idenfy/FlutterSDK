@@ -5,19 +5,19 @@ import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'package:idenfy_sdk_flutter/idenfy_sdk_flutter.dart';
 import 'constants.dart' as Constants;
-import 'package:idenfy_sdk_flutter/models/FaceReauthenticationResult.dart';
+import 'package:idenfy_sdk_flutter/models/FaceAuthenticationResult.dart';
 
 import 'main.dart';
 
-class FaceReathenticationStartScreen extends StatefulWidget {
+class FaceAuthenticationStartScreen extends StatefulWidget {
   @override
-  State<FaceReathenticationStartScreen> createState() =>
-      _FaceReathenticationStartScreenState();
+  State<FaceAuthenticationStartScreen> createState() =>
+      _FaceAuthenticationStartScreenState();
 }
 
-class _FaceReathenticationStartScreenState
-    extends State<FaceReathenticationStartScreen> {
-  FaceReauthenticationResult? _faceReauthenticationResult;
+class _FaceAuthenticationStartScreenState
+    extends State<FaceAuthenticationStartScreen> {
+  FaceAuthenticationResult? _faceAuthenticationResult;
   Exception? exception;
 
   TextEditingController _textFieldController = TextEditingController();
@@ -28,7 +28,27 @@ class _FaceReathenticationStartScreenState
     _textFieldController.dispose();
   }
 
-  Future<String> getFaceReauthTokenRequest(String scanref) async {
+  Future<String> getFaceAuthTokenType(String scanref) async {
+    final response = await http.get(
+      Uri.https(Constants.BASE_URL,
+          '/identification/facial-auth/$scanref/check-status/'),
+      headers: <String, String>{
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Basic ' +
+            base64Encode(
+                utf8.encode('${Constants.apiKey}:${Constants.apiSecret}')),
+      },
+    );
+    if (response.statusCode == 200) {
+      return jsonDecode(response.body)["type"];
+    } else {
+      throw Exception('Failed to fetch token type');
+    }
+  }
+
+  Future<String> getFaceAuthTokenRequest(
+      String scanref, String tokenType) async {
     final response = await http.post(
       Uri.https(Constants.BASE_URL, '/partner/authentication-info'),
       headers: <String, String>{
@@ -38,9 +58,7 @@ class _FaceReathenticationStartScreenState
             base64Encode(
                 utf8.encode('${Constants.apiKey}:${Constants.apiSecret}')),
       },
-      body: jsonEncode(<String, String>{
-        "scanRef": scanref,
-      }),
+      body: jsonEncode(<String, String>{"scanRef": scanref, "type": tokenType}),
     );
     if (response.statusCode == 200) {
       return jsonDecode(response.body)["token"];
@@ -49,19 +67,33 @@ class _FaceReathenticationStartScreenState
     }
   }
 
-  Future<void> initIdenfyFaceReauth(String scanref) async {
-    FaceReauthenticationResult? faceReauthenticationResult;
+  Future<void> initIdenfyFaceAuth(String scanref) async {
+    FaceAuthenticationResult? faceAuthenticationResult;
     Exception? localException;
     try {
-      String token = await getFaceReauthTokenRequest(scanref);
-      faceReauthenticationResult =
-          await IdenfySdkFlutter.startFaceReauth(token, false);
+      String faceAuthTokenType = await getFaceAuthTokenType(scanref);
+      String token = "";
+      switch (faceAuthTokenType) {
+        case 'AUTHENTICATION':
+          //The user can authenticate by face
+          token = await getFaceAuthTokenRequest(scanref, faceAuthTokenType);
+          break;
+        case 'ENROLLMENT':
+          //The user must perform an enrollment, since the identification was performed with an older face tec version
+          token = await getFaceAuthTokenRequest(scanref, faceAuthTokenType);
+          break;
+        default:
+          //The user must perform an identification
+          break;
+      }
+      faceAuthenticationResult =
+          await IdenfySdkFlutter.startFaceAuth(token, false);
     } on Exception catch (e) {
       localException = e;
     }
 
     setState(() {
-      _faceReauthenticationResult = faceReauthenticationResult;
+      _faceAuthenticationResult = faceAuthenticationResult;
       exception = localException;
       _textFieldController.clear();
     });
@@ -97,8 +129,8 @@ class _FaceReathenticationStartScreenState
                     Spacer(),
                     centerInput(),
                     Spacer(),
-                    _faceReauthenticationResult != null
-                        ? faceReauthResult()
+                    _faceAuthenticationResult != null
+                        ? faceAuthResult()
                         : (exception != null ? exceptionTitle() : Container()),
                     Spacer(),
                     beginIdentificationButton()
@@ -131,8 +163,8 @@ class _FaceReathenticationStartScreenState
                 onChanged: (String code) => {setState(() => {})})));
   }
 
-  Widget faceReauthResult() {
-    return _faceReauthenticationResult == null
+  Widget faceAuthResult() {
+    return _faceAuthenticationResult == null
         ? Container()
         : Container(
             child: RichText(
@@ -144,7 +176,7 @@ class _FaceReathenticationStartScreenState
               ),
               children: <TextSpan>[
                 TextSpan(
-                    text: "FaceReauthenticationStatus:  \n",
+                    text: "FaceAuthenticationStatus:  \n",
                     style: TextStyle(
                         height: 4,
                         color: Color.fromRGBO(83, 109, 254, 1),
@@ -152,7 +184,7 @@ class _FaceReathenticationStartScreenState
                         fontSize: 18)),
                 TextSpan(
                     text:
-                        "${_faceReauthenticationResult!.faceReauthenticationStatus}",
+                        "${_faceAuthenticationResult!.faceAuthenticationStatus}",
                     style: TextStyle(
                         fontFamily: "HKGrotesk_regular", fontSize: 14)),
               ],
@@ -207,10 +239,10 @@ class _FaceReathenticationStartScreenState
           onTap: _textFieldController.text.isEmpty
               ? null
               : () {
-                  initIdenfyFaceReauth(_textFieldController.text);
+                  initIdenfyFaceAuth(_textFieldController.text);
                 },
           child: Center(
-            child: Text("BEGIN REAUTHENTICATION",
+            child: Text("BEGIN AUTHENTICATION",
                 style: TextStyle(
                     fontFamily: "HKGrotesk_bold", color: Colors.white)),
           ),
@@ -232,7 +264,7 @@ class _FaceReathenticationStartScreenState
         Padding(
           padding: const EdgeInsets.only(top: 16, left: 16, right: 16),
           child: Text(
-              "Enter an identification scanRef and begin the reauthentication process!",
+              "Enter an identification scanRef and begin the authentication process!",
               textAlign: TextAlign.center,
               style: TextStyle(fontFamily: "HKGrotesk_regular", fontSize: 14)),
         ),

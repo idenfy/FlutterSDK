@@ -6,7 +6,7 @@ import 'package:idenfy_sdk_flutter/idenfy_sdk_flutter.dart';
 import 'package:idenfy_sdk_flutter/models/IdenfyIdentificationResult.dart';
 import 'package:http/http.dart' as http;
 import 'constants.dart' as Constants;
-import 'face_reauthentication_start_screen.dart';
+import 'face_authentication_start_screen.dart';
 
 void main() {
   runApp(MaterialApp(debugShowCheckedModeBanner: false, home: MyApp()));
@@ -134,7 +134,7 @@ class _MyAppState extends State<MyApp> {
                                 padding:
                                     const EdgeInsets.only(top: 12, right: 8),
                                 child: Text(
-                                  "FACE REAUTHENTICATION",
+                                  "FACE AUTHENTICATION",
                                   textAlign: TextAlign.center,
                                   style: TextStyle(color: Colors.grey),
                                 ),
@@ -146,7 +146,7 @@ class _MyAppState extends State<MyApp> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
-                                        FaceReathenticationStartScreen()));
+                                        FaceAuthenticationStartScreen()));
                           }))
                 ],
               ),
