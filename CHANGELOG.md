@@ -1,3 +1,8 @@
+## 1.8.1
+
+* Android SDK updated to 7.5.1
+* Fixed a bug with uploading photos from device storage
+
 ## 1.8.0
 
 * IOS, Android SDK's updated to 7.5.0

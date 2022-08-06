@@ -4,7 +4,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'idenfy_sdk_flutter'
-  s.version          = '1.8.0'
+  s.version          = '1.8.1'
   s.summary          = 'iDenfy SDK for Flutter'
   s.description      = <<-DESC
 iDenfy SDK for Flutter
