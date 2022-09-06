@@ -1,3 +1,18 @@
+## 1.9.0
+
+* Android and IOS SDK's updated to 7.6.0
+* Added new document auto capture feature (Please contact support@idenfy.com for more information)
+* New NFC reading animations and icons. [Details](https://documentation.idenfy.com/mobile/Android/android-sdk#nfc-support)
+* Device language is now used as a fallback [locale](https://documentation.idenfy.com/mobile/Android/android-sdk#localization)
+* Updated document camera on boarding instructions video
+* Updated Dutch translations
+* iDenfy splash screen slogan shown only in English
+* Android camera onboarding screen was rebuild due to performance issues
+* The minimum version of IOS SDK is increased to IOS 11
+* IOS SDK bitcode is now disabled. Because of Apple [deprecation](https://developer.apple.com/documentation/xcode-release-notes/xcode-14-release-notes)
+* Updated 3D liveness version
+* Bug fixes
+
 ## 1.8.1
 
 * Android SDK updated to 7.5.1

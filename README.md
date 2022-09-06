@@ -25,9 +25,31 @@ The SDK requires token for starting initialization. [Token generation guide](htt
 
 ### 2. Availability information & new project setup
 
+**Since Apple is [deprecating Bitcode](https://developer.apple.com/documentation/xcode-release-notes/xcode-14-release-notes), iDenfy IOS SDK now has bitcode disabled as well. If you run into compile errors due to disabled bitcode, please make sure:**
+1. Your application has bitcode disabled in the project setttings
+2. Your Podfile contains the following code:
+```shell
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    if target.name == "ZIPFoundation" || target.name == "lottie-ios"
+      target.build_configurations.each do |config|
+        config.build_settings['BUILD_LIBRARY_FOR_DISTRIBUTION'] = 'YES'
+      end
+    end
+    if target.name == "idenfy_sdk_flutter"
+      target.build_configurations.each do |config|
+        config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '11.0'
+        config.build_settings['ENABLE_BITCODE'] = 'NO'
+      end
+    end
+    flutter_additional_ios_build_settings(target)
+  end
+end
+```
+
 Minimum required versions by the platform:
 
-**IOS - 11.0 (Can be configured for 10.0, but will require Xcode 12.5.1)**
+**IOS - 11.0**
 
 **Android - API 21**
 
@@ -39,7 +61,7 @@ Once the setup is completed successfully, you can add iDenfy SDK dependencies.
 To add iDenfy SDK plugin, open your project's `pubspec.yaml` file and append it with the latest iDenfy SDK flutter plugin:
 ```yaml
 dependencies:
-  idenfy_sdk_flutter: ^1.8.1
+  idenfy_sdk_flutter: ^1.9.0
 ```
 
 #### 3.1 Configuring Android project
@@ -113,6 +135,7 @@ post_install do |installer|
     if target.name == "idenfy_sdk_flutter"
       target.build_configurations.each do |config|
         config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '11.0'
+        config.build_settings['ENABLE_BITCODE'] = 'NO'
       end
     end
     flutter_additional_ios_build_settings(target)
@@ -474,18 +497,359 @@ Currently, @idenfy/idenfysdk_flutter_plugin does not provide customization optio
 We suggest creating a fork of this repository. After editing the code, you can include the plugin in the following way:
 ```yaml
 dependencies:
-  idenfy_sdk_flutter: ^1.8.1
+  idenfy_sdk_flutter: ^1.9.0
     git: https://github.com/your_repo/FlutterSDK.git
 ```
 
 **Android customization:**
-Follow [Android native SDK](https://documentation.idenfy.com/UI/AndroidUICustomization) guide and edit **IdenfysdkFlutterPlugin.kt**.
+
+Most common Android customization is changing SDK colors or editing our views. Everything can be achieved by overrding our color names, layouts:
+
+To change the **colors**:
+1. Open your Android application values folder (yourapplication/app/src/main/res/values)
+2. Create either a new idenfy_colors.xml or add our defined colors to your existing colors.xml file like so:
+```xml
+<resources>
+    <color name="idenfyMainColorV2">#7CFC00</color>
+    <color name="idenfyMainDarkerColorV2">#7CFC00</color>
+    <color name="idenfySecondColorV2">#000000</color>
+    <color name="idenfyBackgroundColorV2">#FFFFFF</color>
+</resources>
+```
+Our common color names can be found in [this repository](https://github.com/idenfy/Documentation/blob/master/resources/sdk/android/colors/colors_v2.xml) along with [specific screen colors](https://github.com/idenfy/Documentation/blob/master/resources/sdk/android/colors/colors.zip)
+
+To edit the **Toolbar** or change styles (Text sizes, colors) for specific views:
+1. Open your Android application values folder (yourapplication/app/src/main/res/values)  
+   <img src="docs/images/idenfy_img_example_styles.png" width="300"/>
+2. Create either a new idenfy_styles.xml or add our defined styles to your existing styles.xml file like so:
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="idenfyAppBarLayoutBackButtonStyle">
+        <item name="android:tint">
+            @color/idenfyMainColorV2
+        </item>
+    </style>
+
+    <style name="idenfyAppBarLayoutIdenfyLogoStyle">
+        <item name="android:tint">
+            @color/idenfyMainColorV2
+        </item>
+    </style>
+
+    <style name="idenfyAppBarLayoutLanguageSelectionButtonStyle">
+        <item name="android:tint">
+            @color/idenfyMainColorV2
+        </item>
+    </style>
+
+    <style name="idenfyAppBarLayoutCloseButtonStyle">
+        <item name="android:tint">
+            @color/idenfyMainColorV2
+        </item>
+    </style>
+
+    <style name="idenfyDocumentSelectionViewDescriptionStyle" parent="android:Widget.TextView">
+        <item name="android:textColor">@color/idenfyDocumentSelectionViewDescriptionTextColor</item>
+        <item name="android:textSize">13sp</item>
+    </style>
+
+    <style name="idenfyDocumentSelectionViewDocumentRecyclerViewItemTitleStyle" parent="android:Widget.TextView">
+        <item name="android:textColor">
+            @color/idenfyDocumentSelectionViewRecyclerViewItemTitleTextColor
+        </item>
+        <item name="android:textSize">13sp</item>
+    </style>
+
+    <style name="idenfyDocumentSelectionViewButtonStyle" parent="android:Widget.Button">
+        <item name="android:textColor">
+            @color/idenfyDocumentSelectionViewContinueButtonDisabledTextColor
+        </item>
+        <item name="android:textSize">12sp</item>
+    </style>
+</resources>
+```
+
+All our styles can be found in [here](https://github.com/idenfy/Documentation/blob/master/resources/sdk/android/styles/styles.zip).
+
+To edit our **layouts**:
+1. Open or create your Android application layout folder (yourapplication/app/src/main/res/layout) and copy our layout xml files here  
+   <img src="docs/images/idenfy_img_example_layout.png" width="300"/>
+2. Change the fonts, views however you want. Just make sure you **Do not remove ids of the components** and **keep same layout names**, otherwise this will cause runtime crashes or the layouts won't be overridden.
+
+Our layouts can be found [here](https://github.com/idenfy/Documentation/blob/master/resources/sdk/android/layouts/layouts.zip)
+
+To edit common **IdenfySettings** use the **IdenfysdkFlutterPlugin.kt** file like so:
+
+```kotlin
+class IdenfySdkFlutterPlugin: FlutterPlugin, MethodCallHandler, ActivityAware, PluginRegistry.ActivityResultListener {
+  /// The MethodChannel that will the communication between Flutter and native Android
+  ///
+  /// This local reference serves to register the plugin with the Flutter Engine and unregister it
+  /// when the Flutter Engine is detached from the Activity
+  private lateinit var channel : MethodChannel
+  private lateinit var activity: Activity
+  //Is nullable after proccess death.
+  private var mResult: Result?=null
+
+  override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
+    channel = MethodChannel(flutterPluginBinding.binaryMessenger, "idenfy_sdk_flutter")
+    channel.setMethodCallHandler(this)
+  }
+
+  override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
+    if (call.method == "getPlatformVersion") {
+      result.success("Android " + android.os.Build.VERSION.RELEASE);
+    } else if (call.method == "start") {
+      mResult = result
+
+      //Liveness UI Settings
+      val idenfyLivenessUISettingsV2 = IdenfyLivenessUISettings()
+      idenfyLivenessUISettingsV2.livenessCancelButtonImage = R.drawable.buttonImage
+      idenfyLivenessUISettingsV2.livenessReadyScreenButtonBorderColor = R.color.idenfyBlack
+      idenfyLivenessUISettingsV2.livenessFrameWidth = 1
+
+      //Idenfy UI Settings
+      val idenfyUISettingsV2 =
+        IdenfyUISettingsV2.IdenfyUIBuilderV2()
+          .withInstructions(IdenfyInstructionsType.DIALOG)
+          .withLivenessUISettings(idenfyLivenessUISettingsV2)
+          .withConfirmationView(IdenfyOnBoardingViewTypeEnum.MULTIPLE_STATIC)
+          .build()
+
+      //Idenfy Settings
+      val idenfySettingsV2 = IdenfySettingsV2.IdenfyBuilderV2()
+        .withAuthToken(call.argument<String>("authToken")!!)
+        .withIdenfyUISettingsV2(idenfyUISettingsV2)
+        .withLogging(IdenfySDKLoggingSettings.IdenfySDKLoggingEnum.FULL)
+        .build()
+
+      IdenfyController.getInstance().initializeIdenfySDKV2WithManual(this.activity, IdenfyController.IDENFY_REQUEST_CODE, idenfySettingsV2)
+    } else if (call.method == "startFaceAuth") {
+      mResult = result
+      val faceAuthenticationInitialization = FaceAuthenticationInitialization(call.argument<String>("token")!!, call.argument<Boolean>("withImmediateRedirect")!!)
+      IdenfyController.getInstance().initializeFaceAuthenticationSDKV2(this.activity, IdenfyController.IDENFY_REQUEST_CODE, faceAuthenticationInitialization)
+    } else {
+      //result.notImplemented()
+    }
+  }
+
+  override fun onDetachedFromEngine(@NonNull binding: FlutterPlugin.FlutterPluginBinding) {
+    channel.setMethodCallHandler(null)
+  }
+
+  override fun onAttachedToActivity(binding: ActivityPluginBinding) {
+    this.activity = binding.activity
+    binding.addActivityResultListener(this)
+  }
+
+  override fun onDetachedFromActivityForConfigChanges() {
+  }
+
+  override fun onReattachedToActivityForConfigChanges(binding: ActivityPluginBinding) {
+  }
+
+  override fun onDetachedFromActivity() {
+  }
+
+  override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?): Boolean {
+    if (requestCode == IdenfyController.IDENFY_REQUEST_CODE) {
+      when (resultCode) {
+        IdenfyController.IDENFY_IDENTIFICATION_RESULT_CODE -> {
+          val idenfyIdentificationResult: IdenfyIdentificationResult = data!!.getParcelableExtra(IdenfyController.IDENFY_IDENTIFICATION_RESULT)!!
+          val jsonString = Gson().toJson(idenfyIdentificationResult)
+          mResult?.success(jsonString)
+        }
+        IdenfyController.IDENFY_FACE_AUTHENTICATION_RESULT_CODE -> {
+          val faceAuthenticationResult: FaceAuthenticationResult = data!!.getParcelableExtra(IdenfyController.IDENFY_FACE_AUTHENTICATION_RESULT)!!
+          val jsonString = Gson().toJson(faceAuthenticationResult)
+          mResult?.success(jsonString)
+        }
+      }
+    } else {
+      //mResult?.notImplemented()
+    }
+    return true
+  }
+}
+```
+
+
+Fore more extensive customization, please caerfully follow our [Android native SDK](https://documentation.idenfy.com/UI/AndroidUICustomization) guide and edit **IdenfysdkFlutterPlugin.kt** even further.
 
 **IOS customization:**
-Follow [IOS native SDK guide](https://documentation.idenfy.com/UI/IOSUICustomization) and edit **SwiftIdenfysdkFlutterPlugin.swift**.
+
+Most common IOS customization is changing SDK colors, fonts or providing custom views. For that, here is an example of the **SwiftIdenfySdkFlutterPlugin.swift** class:
+
+```swift
+public class SwiftIdenfySdkFlutterPlugin: NSObject, FlutterPlugin {
+  public static func register(with registrar: FlutterPluginRegistrar) {
+    let channel = FlutterMethodChannel(name: "idenfy_sdk_flutter", binaryMessenger: registrar.messenger())
+    let instance = SwiftIdenfySdkFlutterPlugin()
+    registrar.addMethodCallDelegate(instance, channel: channel)
+  }
+
+    public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
+        if call.method == "getPlatformVersion" {
+          result("iOS " + UIDevice.current.systemVersion)
+        } else if call.method == "start" {
+            if let arguments = call.arguments as? [String: Any],
+               let authToken = arguments["authToken"] as? String {
+
+                //Changing common iDenfy colors
+                IdenfyCommonColors.idenfyMainColorV2 = UIColor.green
+                IdenfyCommonColors.idenfyMainDarkerColorV2 = UIColor.green
+                IdenfyCommonColors.idenfySecondColorV2 = UIColor.black
+                IdenfyCommonColors.idenfyBackgroundColorV2 = UIColor.white
+                
+                //Customizing Tooblar
+                IdenfyToolbarUISettingsV2.idenfyDefaultToolbarLogoIconTintColor = UIColor.blue
+                IdenfyToolbarUISettingsV2.idenfyDefaultToolbarBackIconTintColor = UIColor.blue
+                IdenfyToolbarUISettingsV2.idenfyLanguageSelectionToolbarLanguageSelectionIconTintColor = UIColor.yellow
+                IdenfyToolbarUISettingsV2.idenfyLanguageSelectionToolbarCloseIconTintColor = UIColor.blue
+                IdenfyToolbarUISettingsV2.idenfyCameraPreviewSessionToolbarBackIconTintColor = UIColor.white
+                
+                //Changing specific screen colors (Every screen has its own UI Settings class)
+                IdenfyDocumentSelectionViewUISettingsV2.idenfyDocumentSelectionViewBackgroundColor = UIColor.white
+                IdenfyDocumentSelectionViewUISettingsV2.idenfyDocumentSelectionViewTitleTextColor = UIColor.black
+                IdenfyDocumentSelectionViewUISettingsV2.idenfyDocumentSelectionViewDocumentTableViewCellBorderColor = UIColor.brown
+                
+                //Changeing specific screen fonts (Every screen has its own UI Settings class)
+                IdenfyDocumentSelectionViewUISettingsV2.idenfyDocumentSelectionViewTitleFont = UIFont.systemFont(ofSize: 20)
+                IdenfyDocumentSelectionViewUISettingsV2.idenfyDocumentSelectionViewDocumentTypeFont = UIFont.systemFont(ofSize: 14)
+                IdenfyDocumentSelectionViewUISettingsV2.idenfyDocumentSelectionViewDocumentTypeHighlightedFont = UIFont.boldSystemFont(ofSize: 14)
+                
+                //Changing face liveness UI colors
+                let livenessSettings = IdenfyLivenessUISettings()
+                livenessSettings.livenessFrameColor = UIColor.red
+                livenessSettings.livenessIdentificationOvalProgressColor1 = UIColor.white
+                livenessSettings.livenessIdentificationOvalProgressColor2 = UIColor.white
+                livenessSettings.livenessFeedbackBackgroundColor = UIColor.green
+                livenessSettings.livenessFrameBackgroundColor = UIColor.yellow
+                livenessSettings.livenessReadyScreenForegroundColor = UIColor.gray
+                livenessSettings.livenessReadyScreenBackgroundColors = [UIColor.blue]
+                livenessSettings.livenessReadyScreenTextBackgroundColor = UIColor.systemPink
+                livenessSettings.livenessReadyScreenButtonBorderColor = UIColor.red
+                livenessSettings.livenessReadyScreenButtonBackgroundNormalColor = UIColor.orange
+                livenessSettings.livenessReadyScreenButtonBackgroundHighlightedColor = UIColor.blue
+                livenessSettings.livenessReadyScreenButtonBackgroundDisabledColor = UIColor.black
+                livenessSettings.livenessResultScreenForegroundColor = UIColor.red
+                livenessSettings.livenessResultScreenIndicatorColor = UIColor.yellow
+                livenessSettings.livenessResultScreenUploadProgressFillColor = UIColor.green
+                livenessSettings.livenessResultScreenUploadProgressTrackColor = UIColor.black
+                livenessSettings.livenessIdentificationProgressStrokeColor = UIColor.blue
+
+                //Configuring IdenfyUISettings
+                let idenfyUISettingsV2 = IdenfyUIBuilderV2()
+                    .withInstructions(IdenfyInstructionsEnum.dialog)
+                    .withLivenessUISettings(livenessSettings)
+                    .withOnBoadringViewType(IdenfyOnBoardingViewTypeEnum.multipleStatic)
+                    .withIdenfyDocumentSelectionType(IdenfyDocumentSelectionTypeEnum.navigateOnContinueButton)
+                    .withImmediateRedirect(ImmediateRedirectEnum.none)
+                    .build()
+
+                //Configuring IdenfySettings
+                let idenfySettingsV2 = IdenfyBuilderV2()
+                    .withAuthToken(authToken)
+                    .withUISettingsV2(idenfyUISettingsV2)
+                    .build()
+
+                //Passsing custom views to the SDK (Every screen has a Viewable, a protocol your custom view must adopt)
+                let idenfyViewsV2: IdenfyViewsV2 = IdenfyViewsBuilderV2()
+                    .withSplashScreenV2View(SplashScreenV2View())
+                    .withProviderSelectionView(ProviderSelectionViewV2())
+                    .withProviderCellView(ProviderCell.self)
+                    .withProviderLoginView(ProviderLoginViewV2())
+                    .withMFAMethodSelectionView(MFAMethodSelectionViewV2())
+                    .withMFAGeneralView(MFAGeneralViewV2())
+                    .withMFACaptchaView(MFACaptchaViewV2())
+                    .withNFCRequiredView(NFCRequiredViewV2())
+                    .withIssuedCountryView(IssuedCountryViewV2())
+                    .withCountrySelectionView(CountrySelectionViewV2())
+                    .withCountryCellView(CountryCell.self)
+                    .withLanguageSelectionView(LanguageSelectionViewV2())
+                    .withLanguageCellView(LanguageCell.self)
+                    .withDocumentSelectionView(DocumentSelectionViewV2())
+                    .withDocumentCellView(DocumentCell.self)
+                    .withConfirmationView(ConfirmationViewV2())
+                    .withDynamicCameraOnBoardingView(DynamicCameraOnBoardingViewV2())
+                    .withStaticCameraOnBoardingView(StaticCameraOnBoardingViewV2())
+                    .withCameraOnBoardingInstructionDescriptionsCellView(InstructionDescriptionsCellV2.self)
+                    .withConfirmationViewDocumentStepCellView(DocumentStepCell.self)
+                    .withCameraPermissionView(CameraPermissionViewV2())
+                    .withDrawerContentView(DrawerContentViewV2())
+                    .withUploadPhotoView(UploadPhotoViewV2())
+                    .withDocumentCameraView(DocumentCameraViewV2())
+                    .withCameraWithRectangleResultViewV2(DocumentCameraResultViewV2())
+                    .withPdfResultView(PdfResultViewV2())
+                    .withFaceCameraView(FaceCameraViewV2())
+                    .withCameraWithoutRectangleResultViewV2(FaceCameraResultViewV2())
+                    .withNFCReadingView(NFCReadingViewV2())
+                    .withNFCReadingTimeOutView(NFCReadingTimeOutViewV2())
+                    .withIdentificationResultsView(IdentificationResultsViewV2())
+                    .withIdentificationResultsStepCellView(ResultsStepCell.self)
+                    .withIdentificationSuccessResultsView(IdentificationSuccessResultsViewV2())
+                    .withIdentificationSuspectedResultsView(IdentificationSuspectedResultsViewV2())
+                    .withManualReviewingStatusWaitingView(ManualReviewingStatusWaitingViewV2())
+                    .withManualReviewingStatusFailedView(ManualReviewingStatusFailedViewV2())
+                    .withManualReviewingStatusApprovedView(ManualReviewingStatusApprovedViewV2())
+                    .withAdditionalSupportView(AdditionalSupportViewV2())
+                    .withFaceAuthenticationSplashScreenV2View(FaceAuthenticationSplashScreenV2View())
+                    .withFaceAuthenticationResultsViewV2(FaceAuthenticationResultsViewV2())
+                    .build()
+
+                let idenfyController = IdenfyController.shared
+                idenfyController.initializeIdenfySDKV2WithManual(idenfySettingsV2: idenfySettingsV2, idenfyViewsV2: idenfyViewsV2)
+                let idenfyVC = idenfyController.instantiateNavigationController()
+
+                UIApplication.shared.keyWindow?.rootViewController?.present(idenfyVC, animated: true, completion: nil)
+
+                idenfyController.handleIdenfyCallbacksWithManualResults(idenfyIdentificationResult: {
+                    idenfyIdentificationResult
+                    in
+                    do {
+                        let jsonEncoder = JSONEncoder()
+                        let jsonData = try jsonEncoder.encode(idenfyIdentificationResult)
+                        let string = String(data: jsonData, encoding: String.Encoding.utf8)
+                        result(string)
+                    } catch {
+                    }
+                })
+            }
+        } else if call.method == "startFaceAuth" {
+            if let arguments = call.arguments as? [String: Any],
+               let withImmediateRedirect = arguments["withImmediateRedirect"] as? Bool,
+               let authenticationToken = arguments["token"] as? String {
+            let idenfyController = IdenfyController.shared
+            let faceAuthenticationInitialization = FaceAuthenticationInitialization(authenticationToken: authenticationToken, withImmediateRedirect: withImmediateRedirect)
+            idenfyController.initializeFaceAuthentication(faceAuthenticationInitialization: faceAuthenticationInitialization)
+            let idenfyVC = idenfyController.instantiateNavigationController()
+
+            UIApplication.shared.keyWindow?.rootViewController?.present(idenfyVC, animated: true, completion: nil)
+            
+            idenfyController.handleIdenfyCallbacksForFaceAuthentication(faceAuthenticationResult: { faceAuthenticationResult in
+                do {
+                    let jsonEncoder = JSONEncoder()
+                    let jsonData = try jsonEncoder.encode(faceAuthenticationResult)
+                    let string = String(data: jsonData, encoding: String.Encoding.utf8)
+                    result(string)
+                } catch {
+                }
+            })
+            }
+        }
+    }
+}
+
+```
+
+UISettings classes for the rest of the screens can be found in our [repository](https://github.com/idenfy/Documentation/tree/master/resources/sdk/ios/uicustomization).
+
+Fore more extensive customization, please caerfully follow our [IOS native SDK guide](https://documentation.idenfy.com/UI/IOSUICustomization) and edit **SwiftIdenfysdkFlutterPlugin.swift** even further.
 
 ## SDK Integration tutorials
-For more information visit [SDK integration tutorials](https://github.com/idenfy/Documentation/blob/master/pages/tutorials/mobile-sdk-tutorials.md).
+For more information visit: [IOS SDK integration tutorial](https://documentation.idenfy.com/tutorials/mobile-sdk/IosSampleProjectTutorial) and [Android SDK integration tutorial](https://documentation.idenfy.com/tutorials/mobile-sdk/AndroidSampleProjectTutorial)
 
 
 
