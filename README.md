@@ -520,7 +520,7 @@ Our common color names can be found in [this repository](https://github.com/iden
 
 To edit the **Toolbar** or change styles (Text sizes, colors) for specific views:
 1. Open your Android application values folder (yourapplication/app/src/main/res/values)  
-   <img src="docs/images/idenfy_img_example_styles.png" width="300"/>
+   <img src="doc/images/idenfy_img_example_styles.png" width="300"/>
 2. Create either a new idenfy_styles.xml or add our defined styles to your existing styles.xml file like so:
 
 ```xml
@@ -575,7 +575,7 @@ All our styles can be found in [here](https://github.com/idenfy/Documentation/bl
 
 To edit our **layouts**:
 1. Open or create your Android application layout folder (yourapplication/app/src/main/res/layout) and copy our layout xml files here  
-   <img src="docs/images/idenfy_img_example_layout.png" width="300"/>
+   <img src="doc/images/idenfy_img_example_layout.png" width="300"/>
 2. Change the fonts, views however you want. Just make sure you **Do not remove ids of the components** and **keep same layout names**, otherwise this will cause runtime crashes or the layouts won't be overridden.
 
 Our layouts can be found [here](https://github.com/idenfy/Documentation/blob/master/resources/sdk/android/layouts/layouts.zip)
