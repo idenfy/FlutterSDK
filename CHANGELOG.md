@@ -1,3 +1,9 @@
+## 1.9.1
+
+* IOS SDK updated to 7.6.2
+* CoreNFC framework set to optional, due to compile errors on IOS lower than 13
+* Fixed a memory leak
+
 ## 1.9.0
 
 * Android and IOS SDK's updated to 7.6.0
