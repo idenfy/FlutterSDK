@@ -1,3 +1,8 @@
+## 1.9.2
+
+* Android SDK updated to 7.6.1
+* Fixed an IMPORTANT cameraX bug for document step
+
 ## 1.9.1
 
 * IOS SDK updated to 7.6.2
