@@ -73,14 +73,14 @@ packages:
       name: http_parser
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.0.1"
+    version: "4.0.2"
   idenfy_sdk_flutter:
     dependency: "direct main"
     description:
       path: ".."
       relative: true
     source: path
-    version: "1.9.2"
+    version: "1.9.3"
   matcher:
     dependency: transitive
     description:

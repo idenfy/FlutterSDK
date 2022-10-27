@@ -1,3 +1,10 @@
+## 1.9.3
+
+* IOS SDK updated to 7.6.3
+* Static version of the SDK is build with xCode 14
+* Removed old code for <iOS 11 versions
+* SDK uses the latest version of lottie-ios
+
 ## 1.9.2
 
 * Android SDK updated to 7.6.1
