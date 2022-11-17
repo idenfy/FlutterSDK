@@ -1,3 +1,11 @@
+## 1.9.4
+
+* IOS SDK updated to 7.6.4
+* Language selection fix on face authentication screen
+* Android SDK updated to 7.6.3
+* Photo result detail cards are now optional (No need to override them in the XML)
+* Face authentication views set as optional for easier customisation
+
 ## 1.9.3
 
 * IOS SDK updated to 7.6.3
