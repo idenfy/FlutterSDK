@@ -61,7 +61,7 @@ Once the setup is completed successfully, you can add iDenfy SDK dependencies.
 To add iDenfy SDK plugin, open your project's `pubspec.yaml` file and append it with the latest iDenfy SDK flutter plugin:
 ```yaml
 dependencies:
-  idenfy_sdk_flutter: ^1.9.4
+  idenfy_sdk_flutter: ^2.0.0
 ```
 
 #### 3.1 Configuring Android project
@@ -181,10 +181,18 @@ post_install do |installer|
     end
 end
 ```
-#### 3. Use different Subspec.
-If the first solution does not help, then use the Subspec, which uses "Fat" legacy frameworks instead of the **xcframeworks**.
 
-To include it, change pod 'iDenfySDK/iDenfyLiveness' to **pod 'iDenfySDK/iDenfyLiveness-Legacy'**
+If your application has bitcode disabled and your build faces a compile error, due to enabled bitcode on any of our pods. You should try this step:
+#### 1. Change post_install script to the following:
+```ruby
+post_install do |installer|
+    installer.pods_project.targets.each do |target|
+        target.build_configurations.each do |config|
+            config.build_settings['ENABLE_BITCODE'] = 'NO'
+        end
+    end
+end
+```
 
 #### Android
 If you run into this issue:
@@ -497,7 +505,7 @@ Currently, @idenfy/idenfysdk_flutter_plugin does not provide customization optio
 We suggest creating a fork of this repository. After editing the code, you can include the plugin in the following way:
 ```yaml
 dependencies:
-  idenfy_sdk_flutter: ^1.9.4
+  idenfy_sdk_flutter: ^2.0.0
     git: https://github.com/your_repo/FlutterSDK.git
 ```
 

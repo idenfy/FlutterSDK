@@ -1,3 +1,15 @@
+## 2.0.0
+
+* IOS SDK updated to 7.7.1
+* Android SDK updated to 7.7.0
+* Added custom KYC questionnaire feature. [More](https://documentation.idenfy.com/mobile/iOS/ios-sdk#custom-kyc-questionnaire)
+* Added custom privacy policy feature. [More](https://documentation.idenfy.com/mobile/iOS/ios-sdk#custom-privacy-policy)
+* Added Ukrainian, Portuguese, Vietnamese [locales](https://documentation.idenfy.com/mobile/iOS/ios-sdk#localization)
+* Updated document issuing country list
+* Updated Kotlin (1.6.21), Compose (1.2.0-rc02) versions in Android
+* CompileSdkVersion raised to API 33 in Android
+* Bug fixes
+
 ## 1.9.4
 
 * IOS SDK updated to 7.6.4
