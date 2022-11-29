@@ -1,3 +1,9 @@
+## 2.0.1
+
+* Android SDK updated to 7.7.1
+* Added Slovak [locale](https://documentation.idenfy.com/mobile/Android/android-sdk#localization)
+* [Document recognition](https://documentation.idenfy.com/mobile/Android/android-sdk#document-recognition) feature files moved to a separate module, to decrease main SDK size.
+
 ## 2.0.0
 
 * IOS SDK updated to 7.7.1
