@@ -1,3 +1,9 @@
+## 2.0.2
+* Android, iOS SDK's updated to 7.7.2
+* Added Thai, Indonesian, Hindi, Hungarian [locales](https://documentation.idenfy.com/mobile/Android/android-sdk#localization)
+* Fixed ID Card translations in Czech [locale](https://documentation.idenfy.com/mobile/Android/android-sdk#localization)
+* iOS UIWebView migrated to WKWebView in privacy policy [feature](https://documentation.idenfy.com/mobile/iOS/ios-sdk#custom-privacy-policy)
+
 ## 2.0.1
 
 * Android SDK updated to 7.7.1
