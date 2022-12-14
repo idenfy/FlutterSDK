@@ -1,3 +1,8 @@
+## 2.0.3
+* iOS SDK updated to 7.7.3
+* Using a stable version (3.5.0) of lottie-ios since the new one is crashing
+* Changed default WKWebView zoom in privacy policy [feature](https://documentation.idenfy.com/mobile/iOS/ios-sdk#custom-privacy-policy)
+
 ## 2.0.2
 * Android, iOS SDK's updated to 7.7.2
 * Added Thai, Indonesian, Hindi, Hungarian [locales](https://documentation.idenfy.com/mobile/Android/android-sdk#localization)
