@@ -1,3 +1,10 @@
+## 2.0.4
+* Android SDK updated to 7.7.3
+* iOS SDK updated to 7.7.4
+* Added Address Card document type
+* Updated Android CameraX library
+* Updated Document Recognition [feature](https://documentation.idenfy.com/mobile/Android/android-sdk#document-recognition)
+
 ## 2.0.3
 * iOS SDK updated to 7.7.3
 * Using a stable version (3.5.0) of lottie-ios since the new one is crashing
