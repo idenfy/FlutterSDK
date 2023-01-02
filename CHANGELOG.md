@@ -1,3 +1,9 @@
+## 2.0.5
+* Android, iOS SDK's updated to 7.7.5
+* Updated National passport translations
+* Opacity changed for document selection continue button disabled state
+* Android NFC Reading feature moved to a separate module. [Details](https://documentation.idenfy.com/mobile/Android/android-sdk#nfc-support)
+
 ## 2.0.4
 * Android SDK updated to 7.7.3
 * iOS SDK updated to 7.7.4
