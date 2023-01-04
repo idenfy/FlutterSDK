@@ -1,3 +1,8 @@
+## 2.0.6
+* Android SDK updated to 7.7.7
+* iOS SDK updated to 7.7.6
+* Face Authentication EXIT status will always be returned, even if SDK was not closed properly
+
 ## 2.0.5
 * Android, iOS SDK's updated to 7.7.5
 * Updated National passport translations
