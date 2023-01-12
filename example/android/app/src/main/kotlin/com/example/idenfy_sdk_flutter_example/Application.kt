@@ -17,6 +17,6 @@ class Application: FlutterApplication() {
             .withIdentificationSuspectedResultsComposable { data -> IdentificationSuspectedResultsTestComposable.compose(data) }
             .withManualReviewingIdentificationResultsStatusWaitingComposable { data -> ManualReviewingIdentificationResultsWaitingTestComposable.composeManualView(data) }
             .build()
-        IdenfyController.getInstance().idenfyComposableViews = idenfyComposeViews
+        //IdenfyController.getInstance().idenfyComposableViews = idenfyComposeViews
     }
 }

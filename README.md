@@ -61,7 +61,7 @@ Once the setup is completed successfully, you can add iDenfy SDK dependencies.
 To add iDenfy SDK plugin, open your project's `pubspec.yaml` file and append it with the latest iDenfy SDK flutter plugin:
 ```yaml
 dependencies:
-  idenfy_sdk_flutter: ^2.0.6
+  idenfy_sdk_flutter: ^2.0.7
 ```
 
 #### 3.1 Configuring Android project
@@ -195,23 +195,6 @@ end
 ```
 
 #### Android
-If you run into this issue:
-
-The minCompileSdk (31) specified in a dependency's AAR metadata (META-INF/com/android/build/gradle/aar-metadata.properties) is greater than this module's compileSdkVersion (android-30).Dependency: androidx.core:core:1.7.0.
-
-Add the following lines to your `app/build.gradle` file:
-```gradle
-android {
-
-    ....
-    
-  configurations.all {
-    resolutionStrategy { force 'androidx.core:core-ktx:1.3.2' }
-    resolutionStrategy { force 'androidx.core:core:1.6.0' }
-  }
-}
-```
-
 If this error occurs:
 
 Failed to transform bcprov-jdk15on-1.69.jar (org.bouncycastle:bcprov-jdk15on:1.69) to match attributes {artifactType=android-java-res, org.gradle.category=library, org.gradle.libraryelements=jar, org.gradle.status=release, org.gradle.usage=java-runtime}.
@@ -505,7 +488,7 @@ Currently, @idenfy/idenfysdk_flutter_plugin does not provide customization optio
 We suggest creating a fork of this repository. After editing the code, you can include the plugin in the following way:
 ```yaml
 dependencies:
-  idenfy_sdk_flutter: ^2.0.6
+  idenfy_sdk_flutter: ^2.0.7
     git: https://github.com/your_repo/FlutterSDK.git
 ```
 

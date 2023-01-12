@@ -1,3 +1,9 @@
+## 2.0.7
+* Android SDK updated to 7.7.8
+* iOS SDK updated to 7.7.7
+* Updated Border Crossing, Asylum Residence Permit, Provisional Drivers License translations
+* Logging updates
+
 ## 2.0.6
 * Android SDK updated to 7.7.7
 * iOS SDK updated to 7.7.6
