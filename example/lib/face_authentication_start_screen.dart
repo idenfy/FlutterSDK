@@ -18,7 +18,7 @@ class FaceAuthenticationStartScreen extends StatefulWidget {
 class _FaceAuthenticationStartScreenState
     extends State<FaceAuthenticationStartScreen> {
   FaceAuthenticationResult? _faceAuthenticationResult;
-  Exception? exception;
+  Exception? _exception;
 
   TextEditingController _textFieldController = TextEditingController();
 
@@ -35,9 +35,8 @@ class _FaceAuthenticationStartScreenState
       headers: <String, String>{
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'Authorization': 'Basic ' +
-            base64Encode(
-                utf8.encode('${Constants.apiKey}:${Constants.apiSecret}')),
+        'Authorization':
+            'Basic ${base64Encode(utf8.encode('${Constants.apiKey}:${Constants.apiSecret}'))}',
       },
     );
     if (response.statusCode == 200) {
@@ -94,7 +93,7 @@ class _FaceAuthenticationStartScreenState
 
     setState(() {
       _faceAuthenticationResult = faceAuthenticationResult;
-      exception = localException;
+      _exception = localException;
       _textFieldController.clear();
     });
   }
@@ -102,65 +101,78 @@ class _FaceAuthenticationStartScreenState
   @override
   Widget build(BuildContext context) {
     return Material(
-        child: Scaffold(
-            appBar: AppBar(
-              leading: IconButton(
-                  onPressed: () {
-                    Navigator.pushReplacement(context,
-                        MaterialPageRoute(builder: (context) => MyApp()));
-                  },
-                  icon: Icon(Icons.arrow_back,
-                      color: Color.fromRGBO(83, 109, 254, 1))),
-              title: Image.asset('assets/ic_idenfy_logo_vector_v2.png',
-                  width: 70, fit: BoxFit.cover),
-              centerTitle: true,
-              backgroundColor: Colors.white,
-              systemOverlayStyle:
-                  SystemUiOverlayStyle(statusBarBrightness: Brightness.light),
-            ),
-            body: GestureDetector(
-                behavior: HitTestBehavior.opaque,
-                onTap: () {
-                  FocusManager.instance.primaryFocus?.unfocus();
-                },
-                child: Column(
-                  children: [
-                    topTitle(),
-                    Spacer(),
-                    centerInput(),
-                    Spacer(),
-                    _faceAuthenticationResult != null
-                        ? faceAuthResult()
-                        : (exception != null ? exceptionTitle() : Container()),
-                    Spacer(),
-                    beginIdentificationButton()
-                  ],
-                ))));
+      child: Scaffold(
+        appBar: AppBar(
+          leading: IconButton(
+              onPressed: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => MyApp(),
+                  ),
+                );
+              },
+              icon: Icon(Icons.arrow_back,
+                  color: Color.fromRGBO(83, 109, 254, 1))),
+          title: Image.asset('assets/ic_idenfy_logo_vector_v2.png',
+              width: 70, fit: BoxFit.cover),
+          centerTitle: true,
+          backgroundColor: Colors.white,
+          systemOverlayStyle:
+              SystemUiOverlayStyle(statusBarBrightness: Brightness.light),
+        ),
+        body: GestureDetector(
+          behavior: HitTestBehavior.opaque,
+          onTap: () {
+            FocusManager.instance.primaryFocus?.unfocus();
+          },
+          child: Column(
+            children: [
+              topTitle(),
+              Spacer(),
+              centerInput(),
+              Spacer(),
+              _faceAuthenticationResult != null
+                  ? faceAuthResult()
+                  : (_exception != null ? exceptionTitle() : Container()),
+              Spacer(),
+              beginIdentificationButton()
+            ],
+          ),
+        ),
+      ),
+    );
   }
 
   Widget centerInput() {
     return Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: SizedBox(
-            width: 300,
-            child: TextField(
-                controller: _textFieldController,
-                decoration: InputDecoration(
-                    labelText: "ScanRef",
-                    enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.grey)),
-                    focusedBorder: const OutlineInputBorder(
-                        borderSide:
-                            BorderSide(color: Color.fromRGBO(83, 109, 254, 1))),
-                    hintText: "ScanRef",
-                    counterText: '',
-                    hintStyle: const TextStyle(
-                        color: Colors.grey, fontWeight: FontWeight.normal),
-                    labelStyle: const TextStyle(
-                        color: Colors.grey, fontWeight: FontWeight.normal)),
-                maxLength: 50,
-                textAlign: TextAlign.start,
-                onChanged: (String code) => {setState(() => {})})));
+      padding: const EdgeInsets.all(16.0),
+      child: SizedBox(
+        width: 300,
+        child: TextField(
+            controller: _textFieldController,
+            decoration: InputDecoration(
+              labelText: "ScanRef",
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.grey),
+              ),
+              focusedBorder: const OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: Color.fromRGBO(83, 109, 254, 1),
+                ),
+              ),
+              hintText: "ScanRef",
+              counterText: '',
+              hintStyle: const TextStyle(
+                  color: Colors.grey, fontWeight: FontWeight.normal),
+              labelStyle: const TextStyle(
+                  color: Colors.grey, fontWeight: FontWeight.normal),
+            ),
+            maxLength: 50,
+            textAlign: TextAlign.start,
+            onChanged: (String code) => {setState(() => {})}),
+      ),
+    );
   }
 
   Widget faceAuthResult() {
@@ -168,50 +180,54 @@ class _FaceAuthenticationStartScreenState
         ? Container()
         : Container(
             child: RichText(
-            textAlign: TextAlign.center,
-            text: TextSpan(
-              style: TextStyle(
-                fontSize: 14.0,
-                color: Colors.black,
-              ),
-              children: <TextSpan>[
-                TextSpan(
-                    text: "FaceAuthenticationStatus:  \n",
-                    style: TextStyle(
-                        height: 4,
-                        color: Color.fromRGBO(83, 109, 254, 1),
-                        fontFamily: "HKGrotesk_bold",
-                        fontSize: 18)),
-                TextSpan(
+              textAlign: TextAlign.center,
+              text: TextSpan(
+                style: TextStyle(
+                  fontSize: 14.0,
+                  color: Colors.black,
+                ),
+                children: <TextSpan>[
+                  TextSpan(
+                      text: "FaceAuthenticationStatus:  \n",
+                      style: TextStyle(
+                          height: 4,
+                          color: Color.fromRGBO(83, 109, 254, 1),
+                          fontFamily: "HKGrotesk_bold",
+                          fontSize: 18)),
+                  TextSpan(
                     text:
                         "${_faceAuthenticationResult!.faceAuthenticationStatus}",
                     style: TextStyle(
-                        fontFamily: "HKGrotesk_regular", fontSize: 14)),
-              ],
+                        fontFamily: "HKGrotesk_regular", fontSize: 14),
+                  ),
+                ],
+              ),
             ),
-          ));
+          );
   }
 
   Widget exceptionTitle() {
     return Container(
-        child: RichText(
-      textAlign: TextAlign.center,
-      text: TextSpan(
-        style: TextStyle(
-          fontSize: 14.0,
-          color: Colors.black,
-        ),
-        children: <TextSpan>[
-          TextSpan(
-              text: exception.toString(),
+      child: RichText(
+        textAlign: TextAlign.center,
+        text: TextSpan(
+          style: TextStyle(
+            fontSize: 14.0,
+            color: Colors.black,
+          ),
+          children: <TextSpan>[
+            TextSpan(
+              text: _exception.toString(),
               style: TextStyle(
                   height: 4,
                   color: Colors.red,
                   fontFamily: "HKGrotesk_bold",
-                  fontSize: 18)),
-        ],
+                  fontSize: 18),
+            ),
+          ],
+        ),
       ),
-    ));
+    );
   }
 
   Widget beginIdentificationButton() {
@@ -221,30 +237,33 @@ class _FaceAuthenticationStartScreenState
         height: 42,
         width: double.infinity,
         decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                if (_textFieldController.text.isEmpty) ...[
-                  Colors.grey.withOpacity(0.6),
-                  Colors.grey.withOpacity(0.6)
-                ] else ...[
-                  Color.fromRGBO(83, 109, 254, 1),
-                  Color.fromRGBO(141, 108, 251, 1)
-                ]
-              ],
-              begin: Alignment.centerLeft,
-              end: Alignment.centerRight,
-            ),
-            borderRadius: BorderRadius.all(Radius.circular(4))),
+          gradient: LinearGradient(
+            colors: [
+              if (_textFieldController.text.isEmpty) ...[
+                Colors.grey.withOpacity(0.6),
+                Colors.grey.withOpacity(0.6)
+              ] else ...[
+                Color.fromRGBO(83, 109, 254, 1),
+                Color.fromRGBO(141, 108, 251, 1)
+              ]
+            ],
+            begin: Alignment.centerLeft,
+            end: Alignment.centerRight,
+          ),
+          borderRadius: BorderRadius.all(
+            Radius.circular(4),
+          ),
+        ),
         child: InkWell(
           onTap: _textFieldController.text.isEmpty
               ? null
-              : () {
-                  initIdenfyFaceAuth(_textFieldController.text);
-                },
+              : () => initIdenfyFaceAuth(_textFieldController.text),
           child: Center(
-            child: Text("BEGIN AUTHENTICATION",
-                style: TextStyle(
-                    fontFamily: "HKGrotesk_bold", color: Colors.white)),
+            child: Text(
+              "BEGIN AUTHENTICATION",
+              style:
+                  TextStyle(fontFamily: "HKGrotesk_bold", color: Colors.white),
+            ),
           ),
         ),
       ),
@@ -253,22 +272,26 @@ class _FaceAuthenticationStartScreenState
 
   Widget topTitle() {
     return Container(
-        child: Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(top: 24),
-          child: Text("Sample iDenfy App",
-              style: TextStyle(fontFamily: "HKGrotesk_bold", fontSize: 22)),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(top: 16, left: 16, right: 16),
-          child: Text(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(top: 24),
+            child: Text(
+              "Sample iDenfy App",
+              style: TextStyle(fontFamily: "HKGrotesk_bold", fontSize: 22),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 16, left: 16, right: 16),
+            child: Text(
               "Enter an identification scanRef and begin the authentication process!",
               textAlign: TextAlign.center,
-              style: TextStyle(fontFamily: "HKGrotesk_regular", fontSize: 14)),
-        ),
-      ],
-    ));
+              style: TextStyle(fontFamily: "HKGrotesk_regular", fontSize: 14),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }

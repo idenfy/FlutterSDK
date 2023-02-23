@@ -61,7 +61,7 @@ Once the setup is completed successfully, you can add iDenfy SDK dependencies.
 To add iDenfy SDK plugin, open your project's `pubspec.yaml` file and append it with the latest iDenfy SDK flutter plugin:
 ```yaml
 dependencies:
-  idenfy_sdk_flutter: ^2.0.8
+  idenfy_sdk_flutter: ^2.0.9
 ```
 
 #### 3.1 Configuring Android project
@@ -206,6 +206,10 @@ android.jetifier.ignorelist=bcprov
 //otherwise
 android.jetifier.blacklist=bcprov
 ```
+
+##### Proguard rules
+
+If you use code obfuscation for Android with a proguard-rules.pro file. You should update it with [ours](https://github.com/idenfy/Documentation/blob/master/resources/sdk/android/Proguard/proguard-rules.pro), otherwise some unexpected behaviour might occur.
 
 ## Usage
 
@@ -488,7 +492,7 @@ Currently, @idenfy/idenfysdk_flutter_plugin does not provide customization optio
 We suggest creating a fork of this repository. After editing the code, you can include the plugin in the following way:
 ```yaml
 dependencies:
-  idenfy_sdk_flutter: ^2.0.8
+  idenfy_sdk_flutter: ^2.0.9
     git: https://github.com/your_repo/FlutterSDK.git
 ```
 

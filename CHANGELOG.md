@@ -1,3 +1,10 @@
+## 2.0.9
+* Android, iOS SDK's updated to 7.8.0
+* Updated CameraX library
+* IdenfyInstructionsType.DRAWER option is now deprecated. [More](https://documentation.idenfy.com/UI/AndroidUICustomization#adding-instructions-in-camera-session)
+* Czech translation fixes
+* Added image upload from device size limit
+
 ## 2.0.8
 * Android SDK updated to 7.7.9
 * Updated Lottie dependency, removed usages of a deleted **lottie_scale** function

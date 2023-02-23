@@ -19,7 +19,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   IdenfyIdentificationResult? _idenfySDKresult;
-  Exception? exception;
+  Exception? _exception;
 
   @override
   void initState() {
@@ -32,9 +32,8 @@ class _MyAppState extends State<MyApp> {
       headers: <String, String>{
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'Authorization': 'Basic ' +
-            base64Encode(
-                utf8.encode('${Constants.apiKey}:${Constants.apiSecret}')),
+        'Authorization':
+            'Basic ${base64Encode(utf8.encode('${Constants.apiKey}:${Constants.apiSecret}'))}',
       },
       body: jsonEncode(<String, String>{
         "clientId": Constants.clientId,
@@ -59,7 +58,7 @@ class _MyAppState extends State<MyApp> {
 
     setState(() {
       _idenfySDKresult = idenfySDKresult;
-      exception = localException;
+      _exception = localException;
     });
   }
 
@@ -88,8 +87,8 @@ class _MyAppState extends State<MyApp> {
                       child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
                               splashFactory: NoSplash.splashFactory,
-                              primary: Colors.transparent,
-                              onSurface: Colors.transparent,
+                              backgroundColor: Colors.transparent,
+                              disabledBackgroundColor: Colors.transparent,
                               shadowColor: Colors.transparent),
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
@@ -117,8 +116,8 @@ class _MyAppState extends State<MyApp> {
                       child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
                               splashFactory: NoSplash.splashFactory,
-                              primary: Colors.transparent,
-                              onSurface: Colors.transparent,
+                              backgroundColor: Colors.transparent,
+                              disabledBackgroundColor: Colors.transparent,
                               shadowColor: Colors.transparent),
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
@@ -143,10 +142,12 @@ class _MyAppState extends State<MyApp> {
                           ),
                           onPressed: () {
                             Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        FaceAuthenticationStartScreen()));
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    FaceAuthenticationStartScreen(),
+                              ),
+                            );
                           }))
                 ],
               ),
@@ -154,7 +155,7 @@ class _MyAppState extends State<MyApp> {
             Spacer(),
             _idenfySDKresult != null
                 ? idenfyResult()
-                : (exception != null ? exceptionTitle() : Container()),
+                : (_exception != null ? exceptionTitle() : Container()),
             Spacer(),
           ],
         ),
@@ -173,12 +174,13 @@ class _MyAppState extends State<MyApp> {
         ),
         children: <TextSpan>[
           TextSpan(
-              text: exception.toString(),
-              style: TextStyle(
-                  height: 4,
-                  color: Colors.red,
-                  fontFamily: "HKGrotesk_bold",
-                  fontSize: 18)),
+            text: _exception.toString(),
+            style: TextStyle(
+                height: 4,
+                color: Colors.red,
+                fontFamily: "HKGrotesk_bold",
+                fontSize: 18),
+          ),
         ],
       ),
     ));
@@ -189,46 +191,54 @@ class _MyAppState extends State<MyApp> {
         ? Container()
         : Container(
             child: RichText(
-            textAlign: TextAlign.center,
-            text: TextSpan(
-              style: TextStyle(
-                fontSize: 14.0,
-                color: Colors.black,
-              ),
-              children: <TextSpan>[
-                TextSpan(
+              textAlign: TextAlign.center,
+              text: TextSpan(
+                style: TextStyle(
+                  fontSize: 14.0,
+                  color: Colors.black,
+                ),
+                children: <TextSpan>[
+                  TextSpan(
                     text: "IdenfyIdentificationStatus:  \n",
                     style: TextStyle(
                         height: 4,
                         color: Color.fromRGBO(83, 109, 254, 1),
                         fontFamily: "HKGrotesk_bold",
-                        fontSize: 18)),
-                TextSpan(
+                        fontSize: 18),
+                  ),
+                  TextSpan(
                     text:
                         "${_idenfySDKresult!.autoIdentificationStatus} \n ${_idenfySDKresult!.manualIdentificationStatus} \n autoSuspected: ${_idenfySDKresult!.suspectedIdentificationStatus.autoSuspected} \n manualSuspected: ${_idenfySDKresult!.suspectedIdentificationStatus.manualSuspected}",
                     style: TextStyle(
-                        fontFamily: "HKGrotesk_regular", fontSize: 14)),
-              ],
+                        fontFamily: "HKGrotesk_regular", fontSize: 14),
+                  ),
+                ],
+              ),
             ),
-          ));
+          );
   }
 
   Widget topTitle() {
     return Container(
-        child: Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(top: 24),
-          child: Text("Sample iDenfy App",
-              style: TextStyle(fontFamily: "HKGrotesk_bold", fontSize: 22)),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(top: 16),
-          child: Text("Press button to your desired flow!",
-              style: TextStyle(fontFamily: "HKGrotesk_regular", fontSize: 14)),
-        ),
-      ],
-    ));
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(top: 24),
+            child: Text(
+              "Sample iDenfy App",
+              style: TextStyle(fontFamily: "HKGrotesk_bold", fontSize: 22),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 16),
+            child: Text(
+              "Press button to your desired flow!",
+              style: TextStyle(fontFamily: "HKGrotesk_regular", fontSize: 14),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
