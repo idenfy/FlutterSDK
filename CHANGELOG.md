@@ -1,3 +1,8 @@
+## 2.1.0
+* Android, iOS SDK's updated to 7.8.1
+* Removed Android Fotoaparat library (our fallback camera) since it is no longer compatible with AGP 7.4+
+* Added document camera rectangle visibility setting. [More](https://documentation.idenfy.com/UI/AndroidUICustomization#document-camera-rectangle-visibility)
+
 ## 2.0.9
 * Android, iOS SDK's updated to 7.8.0
 * Updated CameraX library

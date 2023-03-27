@@ -1,9 +1,9 @@
 PODS:
   - Flutter (1.0.0)
-  - idenfy_sdk_flutter (2.0.9):
+  - idenfy_sdk_flutter (2.1.0):
     - Flutter
-    - iDenfySDK/iDenfyLiveness (= 7.8.0)
-  - iDenfySDK/iDenfyLiveness (7.8.0):
+    - iDenfySDK/iDenfyLiveness (= 7.8.1)
+  - iDenfySDK/iDenfyLiveness (7.8.1):
     - lottie-ios (= 3.5.0)
     - Sentry (= 7.31.5)
     - ZIPFoundation (= 0.9.11)
@@ -32,8 +32,8 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
-  idenfy_sdk_flutter: a47f9940b234be393babb32c2fb2e40b2d589d43
-  iDenfySDK: 42ec512ee5eb7fea9096e6af8479e7f0d75fa481
+  idenfy_sdk_flutter: 55e0f04af1a8929c479a076b9e1e0b930d7666de
+  iDenfySDK: 44b5e1bcb54c99e0d385f9d627931b2d154695a8
   lottie-ios: c55158d67d0629a260625cc2ded2052b829e3c3e
   Sentry: 4c9babff9034785067c896fd580b1f7de44da020
   ZIPFoundation: b1f0de4eed33e74a676f76e12559ab6b75990197
