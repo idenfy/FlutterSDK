@@ -1,3 +1,15 @@
+## 2.2.0
+* Android, iOS SDK's updated to 7.9.0
+* Face Liveness detection version updated
+* Android CameraX version updated
+* SK translations fixed
+* Removed Android external storage permission
+* Screen now stays awake in manual review
+* Various cases with process death handled in Android
+* Swedish Social Security card document type added
+* iOS Lottie version updated
+* Various UI bugs fixed
+
 ## 2.1.0
 * Android, iOS SDK's updated to 7.8.1
 * Removed Android Fotoaparat library (our fallback camera) since it is no longer compatible with AGP 7.4+
