@@ -31,7 +31,7 @@ The SDK requires token for starting initialization. [Token generation guide](htt
 ```shell
 post_install do |installer|
   installer.pods_project.targets.each do |target|
-    if target.name == "ZIPFoundation" || target.name == "lottie-ios"
+    if target.name == "lottie-ios"
       target.build_configurations.each do |config|
         config.build_settings['BUILD_LIBRARY_FOR_DISTRIBUTION'] = 'YES'
       end
@@ -61,7 +61,7 @@ Once the setup is completed successfully, you can add iDenfy SDK dependencies.
 To add iDenfy SDK plugin, open your project's `pubspec.yaml` file and append it with the latest iDenfy SDK flutter plugin:
 ```yaml
 dependencies:
-  idenfy_sdk_flutter: ^2.2.0
+  idenfy_sdk_flutter: ^2.2.1
 ```
 
 #### 3.1 Configuring Android project
@@ -127,7 +127,7 @@ Navigate to the ios/Podfile file and edit the post_install script.
 ```shell
 post_install do |installer|
   installer.pods_project.targets.each do |target|
-    if target.name == "ZIPFoundation" || target.name == "lottie-ios"
+    if target.name == "lottie-ios"
       target.build_configurations.each do |config|
         config.build_settings['BUILD_LIBRARY_FOR_DISTRIBUTION'] = 'YES'
       end
@@ -142,7 +142,7 @@ post_install do |installer|
   end
 end
 ```
-This script ensures that both "ZIPFoundation" and  "lottie-ios" have module stability as well as IOS 11.0 support, which is required for the NFC feature.
+This script ensures that "lottie-ios" have module stability as well as IOS 11.0 support, which is required for the NFC feature.
 #### 3. Running pod install
 After that, install the pods:
 ```shell
@@ -173,7 +173,7 @@ To solve this error, you should try these steps:
 ```ruby
 post_install do |installer|
     installer.pods_project.targets.each do |target|
-        if target.name == "ZIPFoundation" || target.name == "lottie-ios"
+        if target.name == "lottie-ios"
           target.build_configurations.each do |config|
             config.build_settings['BUILD_LIBRARY_FOR_DISTRIBUTION'] = 'YES'
         end
@@ -492,7 +492,7 @@ Currently, @idenfy/idenfysdk_flutter_plugin does not provide customization optio
 We suggest creating a fork of this repository. After editing the code, you can include the plugin in the following way:
 ```yaml
 dependencies:
-  idenfy_sdk_flutter: ^2.2.0
+  idenfy_sdk_flutter: ^2.2.1
     git: https://github.com/your_repo/FlutterSDK.git
 ```
 

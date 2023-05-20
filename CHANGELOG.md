@@ -1,3 +1,7 @@
+## 2.2.1
+* iOS SDK updated to 7.9.1
+* Fixed an issue with document video frames being mixed up
+
 ## 2.2.0
 * Android, iOS SDK's updated to 7.9.0
 * Face Liveness detection version updated
