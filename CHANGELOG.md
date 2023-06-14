@@ -1,3 +1,8 @@
+## 2.3.0
+* iOS SDK updated to 8.0.0
+* Android SDK updated to 8.0.1
+* Added Face authentication using face matching & passive liveness. [More](https://documentation.idenfy.com/other-fraud/FaceAuthentication)
+
 ## 2.2.1
 * iOS SDK updated to 7.9.1
 * Fixed an issue with document video frames being mixed up

@@ -7,6 +7,7 @@ import 'package:idenfy_sdk_flutter/idenfy_sdk_flutter.dart';
 import 'constants.dart' as Constants;
 import 'package:idenfy_sdk_flutter/models/FaceAuthenticationResult.dart';
 
+import 'face_authentication_method.dart';
 import 'main.dart';
 
 class FaceAuthenticationStartScreen extends StatefulWidget {
@@ -28,10 +29,16 @@ class _FaceAuthenticationStartScreenState
     _textFieldController.dispose();
   }
 
-  Future<String> getFaceAuthTokenType(String scanref) async {
+  Future<String> getFaceAuthTokenType(
+      String scanref, FaceAuthenticationMethod authenticationMethod) async {
+    final queryParameters = {
+      'method': authenticationMethod.name,
+    };
     final response = await http.get(
-      Uri.https(Constants.BASE_URL,
-          '/identification/facial-auth/$scanref/check-status/'),
+      Uri.https(
+          Constants.BASE_URL,
+          '/identification/facial-auth/$scanref/check-status/',
+          queryParameters),
       headers: <String, String>{
         'Accept': 'application/json',
         'Content-Type': 'application/json',
@@ -46,8 +53,8 @@ class _FaceAuthenticationStartScreenState
     }
   }
 
-  Future<String> getFaceAuthTokenRequest(
-      String scanref, String tokenType) async {
+  Future<String> getFaceAuthTokenRequest(String scanref, String tokenType,
+      FaceAuthenticationMethod authenticationMethod) async {
     final response = await http.post(
       Uri.https(Constants.BASE_URL, '/partner/authentication-info'),
       headers: <String, String>{
@@ -57,7 +64,11 @@ class _FaceAuthenticationStartScreenState
             base64Encode(
                 utf8.encode('${Constants.apiKey}:${Constants.apiSecret}')),
       },
-      body: jsonEncode(<String, String>{"scanRef": scanref, "type": tokenType}),
+      body: jsonEncode(<String, String>{
+        "scanRef": scanref,
+        "type": tokenType,
+        "method": authenticationMethod.name
+      }),
     );
     if (response.statusCode == 200) {
       return jsonDecode(response.body)["token"];
@@ -67,19 +78,25 @@ class _FaceAuthenticationStartScreenState
   }
 
   Future<void> initIdenfyFaceAuth(String scanref) async {
+    FaceAuthenticationMethod authenticationMethod =
+        Constants.faceAuthenticationMethod;
+
     FaceAuthenticationResult? faceAuthenticationResult;
     Exception? localException;
     try {
-      String faceAuthTokenType = await getFaceAuthTokenType(scanref);
+      String faceAuthTokenType =
+          await getFaceAuthTokenType(scanref, authenticationMethod);
       String token = "";
       switch (faceAuthTokenType) {
         case 'AUTHENTICATION':
           //The user can authenticate by face
-          token = await getFaceAuthTokenRequest(scanref, faceAuthTokenType);
+          token = await getFaceAuthTokenRequest(
+              scanref, faceAuthTokenType, authenticationMethod);
           break;
         case 'ENROLLMENT':
           //The user must perform an enrollment, since the identification was performed with an older face tec version
-          token = await getFaceAuthTokenRequest(scanref, faceAuthTokenType);
+          token = await getFaceAuthTokenRequest(
+              scanref, faceAuthTokenType, authenticationMethod);
           break;
         default:
           //The user must perform an identification
