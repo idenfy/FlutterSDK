@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:idenfy_sdk_flutter/models/FaceAuthenticationResult.dart';
 
+import 'models/IdenfyFaceAuthUISettings.dart';
 import 'models/IdenfyIdentificationResult.dart';
 
 class IdenfySdkFlutter {
@@ -21,11 +22,13 @@ class IdenfySdkFlutter {
   }
 
   static Future<FaceAuthenticationResult> startFaceAuth(
-      String token, bool withImmediateRedirect) async {
-    final dynamic result = await _channel.invokeMethod(
-        'startFaceAuth', <String, dynamic>{
+      String token, bool withImmediateRedirect,
+      {IdenfyFaceAuthUISettings? idenfyFaceAuthUISettings}) async {
+    final dynamic result =
+        await _channel.invokeMethod('startFaceAuth', <String, dynamic>{
       'token': token,
-      'withImmediateRedirect': withImmediateRedirect
+      'withImmediateRedirect': withImmediateRedirect,
+      'idenfyFaceAuthUISettings': idenfyFaceAuthUISettings?.toJson()
     });
     FaceAuthenticationResult faceAuthenticationResult =
         FaceAuthenticationResult.fromJson(jsonDecode(result));

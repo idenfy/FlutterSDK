@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'package:idenfy_sdk_flutter/idenfy_sdk_flutter.dart';
+import 'package:idenfy_sdk_flutter/models/IdenfyFaceAuthUISettings.dart';
 import 'constants.dart' as Constants;
 import 'package:idenfy_sdk_flutter/models/FaceAuthenticationResult.dart';
 
@@ -102,8 +103,15 @@ class _FaceAuthenticationStartScreenState
           //The user must perform an identification
           break;
       }
-      faceAuthenticationResult =
-          await IdenfySdkFlutter.startFaceAuth(token, false);
+      
+      IdenfyFaceAuthUISettings settings = IdenfyFaceAuthUIBuilder()
+          .withLanguageSelection(true)
+          .withOnBoardingView(true)
+          .build();
+
+      faceAuthenticationResult = await IdenfySdkFlutter.startFaceAuth(
+          token, false,
+          idenfyFaceAuthUISettings: settings);
     } on Exception catch (e) {
       localException = e;
     }

@@ -43,23 +43,38 @@ public class SwiftIdenfySdkFlutterPlugin: NSObject, FlutterPlugin {
             if let arguments = call.arguments as? [String: Any],
                let withImmediateRedirect = arguments["withImmediateRedirect"] as? Bool,
                let authenticationToken = arguments["token"] as? String {
-            let idenfyController = IdenfyController.shared
-            let faceAuthenticationInitialization = FaceAuthenticationInitialization(authenticationToken: authenticationToken, withImmediateRedirect: withImmediateRedirect)
-            idenfyController.initializeFaceAuthentication(faceAuthenticationInitialization: faceAuthenticationInitialization)
-            let idenfyVC = idenfyController.instantiateNavigationController()
-
-            UIApplication.shared.keyWindow?.rootViewController?.present(idenfyVC, animated: true, completion: nil)
-            
-            idenfyController.handleIdenfyCallbacksForFaceAuthentication(faceAuthenticationResult: { faceAuthenticationResult in
-                do {
-                    let jsonEncoder = JSONEncoder()
-                    let jsonData = try jsonEncoder.encode(faceAuthenticationResult)
-                    let string = String(data: jsonData, encoding: String.Encoding.utf8)
-                    result(string)
-                } catch {
-                }
-            })
+                let idenfyFaceAuthUISettings = IdenfySettingsDecoder.decodeFaceAuthUISettings(arguments["idenfyFaceAuthUISettings"] as? [String : AnyObject?])
+                let idenfyController = IdenfyController.shared
+                let faceAuthenticationInitialization = FaceAuthenticationInitialization(authenticationToken: authenticationToken, withImmediateRedirect: withImmediateRedirect, idenfyFaceAuthUISettings: idenfyFaceAuthUISettings)
+                idenfyController.initializeFaceAuthentication(faceAuthenticationInitialization: faceAuthenticationInitialization)
+                let idenfyVC = idenfyController.instantiateNavigationController()
+                
+                UIApplication.shared.keyWindow?.rootViewController?.present(idenfyVC, animated: true, completion: nil)
+                
+                idenfyController.handleIdenfyCallbacksForFaceAuthentication(faceAuthenticationResult: { faceAuthenticationResult in
+                    do {
+                        let jsonEncoder = JSONEncoder()
+                        let jsonData = try jsonEncoder.encode(faceAuthenticationResult)
+                        let string = String(data: jsonData, encoding: String.Encoding.utf8)
+                        result(string)
+                    } catch {
+                    }
+                })
             }
         }
+    }
+}
+
+class IdenfySettingsDecoder {
+    
+    static func decodeFaceAuthUISettings(_ json: [String: AnyObject?]?) -> IdenfyFaceAuthUISettings {
+        let faceAuthUISettings = IdenfyFaceAuthUISettings()
+        if let unwrappedLanguageSelectionNeeded = json?["isLanguageSelectionNeeded"] as? Bool {
+            faceAuthUISettings.isLanguageSelectionNeeded = unwrappedLanguageSelectionNeeded
+        }
+        if let unwrappedSkipOnBoardingView = json?["skipOnBoardingView"] as? Bool {
+            faceAuthUISettings.skipOnBoardingView = unwrappedSkipOnBoardingView
+        }
+        return faceAuthUISettings
     }
 }

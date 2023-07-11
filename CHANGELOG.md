@@ -1,3 +1,7 @@
+## 2.3.1
+* iOS, Android SDK's updated to 8.1.0
+* Added an option to skip Camera On Boarding View on Face authentication. [More](https://documentation.idenfy.com/other-fraud/FaceAuthentication)
+
 ## 2.3.0
 * iOS SDK updated to 8.0.0
 * Android SDK updated to 8.0.1

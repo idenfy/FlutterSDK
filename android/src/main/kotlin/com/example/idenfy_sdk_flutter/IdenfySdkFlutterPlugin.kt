@@ -9,6 +9,7 @@ import com.idenfy.idenfySdk.api.initialization.IdenfySettingsV2
 import com.idenfy.idenfySdk.api.response.FaceAuthenticationResult
 import com.idenfy.idenfySdk.api.response.IdenfyIdentificationResult
 import com.idenfy.idenfySdk.faceauthentication.api.FaceAuthenticationInitialization
+import com.idenfy.idenfySdk.api.ui.IdenfyFaceAuthUISettings
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
@@ -46,7 +47,7 @@ class IdenfySdkFlutterPlugin: FlutterPlugin, MethodCallHandler, ActivityAware, P
       IdenfyController.getInstance().initializeIdenfySDKV2WithManual(this.activity, IdenfyController.IDENFY_REQUEST_CODE, idenfySettingsV2)
     } else if (call.method == "startFaceAuth") {
       mResult = result
-      val faceAuthenticationInitialization = FaceAuthenticationInitialization(call.argument<String>("token")!!, call.argument<Boolean>("withImmediateRedirect")!!)
+      val faceAuthenticationInitialization = FaceAuthenticationInitialization(call.argument<String>("token")!!, call.argument<Boolean>("withImmediateRedirect")!!, IdenfySettingsDecoder.decodeFaceAuthUISettings(call.argument<Map<String, Any?>?>("idenfyFaceAuthUISettings")))
       IdenfyController.getInstance().initializeFaceAuthenticationSDKV2(this.activity, IdenfyController.IDENFY_REQUEST_CODE, faceAuthenticationInitialization)
     } else {
       //result.notImplemented()
@@ -89,5 +90,19 @@ class IdenfySdkFlutterPlugin: FlutterPlugin, MethodCallHandler, ActivityAware, P
       //mResult?.notImplemented()
     }
     return true
+  }
+}
+
+object IdenfySettingsDecoder {
+
+  fun decodeFaceAuthUISettings(json: Map<String, Any?>?): IdenfyFaceAuthUISettings {
+    val faceAuthUISettings = IdenfyFaceAuthUISettings()
+    if (json?.get("isLanguageSelectionNeeded") as? Boolean != null) {
+      faceAuthUISettings.isLanguageSelectionNeeded = json["isLanguageSelectionNeeded"] as Boolean
+    }
+    if (json?.get("skipOnBoardingView") as? Boolean != null) {
+      faceAuthUISettings.skipOnBoardingView = json["skipOnBoardingView"] as Boolean
+    }
+    return faceAuthUISettings
   }
 }

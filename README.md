@@ -61,7 +61,7 @@ Once the setup is completed successfully, you can add iDenfy SDK dependencies.
 To add iDenfy SDK plugin, open your project's `pubspec.yaml` file and append it with the latest iDenfy SDK flutter plugin:
 ```yaml
 dependencies:
-  idenfy_sdk_flutter: ^2.3.0
+  idenfy_sdk_flutter: ^2.3.1
 ```
 
 #### 3.1 Configuring Android project
@@ -404,6 +404,19 @@ This sets whether the results from iDenfy SDK should be received immediately wit
 IdenfySdkFlutter.startFaceAuth(token, true);
 ```
 
+Face authentication UI settings class can be passed to modify the face authentication flow:
+
+```javascript
+      IdenfyFaceAuthUISettings settings = IdenfyFaceAuthUIBuilder()
+          .withLanguageSelection(true)
+          .withOnBoardingView(true)
+          .build();
+
+      faceAuthenticationResult = await IdenfySdkFlutter.startFaceAuth(
+          token, false,
+          idenfyFaceAuthUISettings: settings);
+```
+
 Please make sure to provide your cliendId, apikey and apisecret constants, they can be found in `constants.dart` file:
 ```javascript
 const String BASE_URL = 'ivs.idenfy.com';
@@ -500,7 +513,7 @@ Currently, @idenfy/idenfysdk_flutter_plugin does not provide customization optio
 We suggest creating a fork of this repository. After editing the code, you can include the plugin in the following way:
 ```yaml
 dependencies:
-  idenfy_sdk_flutter: ^2.3.0
+  idenfy_sdk_flutter: ^2.3.1
     git: https://github.com/your_repo/FlutterSDK.git
 ```
 
