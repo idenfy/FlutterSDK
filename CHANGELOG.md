@@ -1,3 +1,11 @@
+## 2.3.2
+* Android SDK updated to 8.1.6
+* iOS SDK updated to 8.1.7
+* Face Detection now validates small faces. [More](https://documentation.idenfy.com/mobile/Android/android-sdk#face-detection)
+* Fixed face detection error handling on Android
+* Fixed a crash on iOS Face authentication when camera permissions are denied
+* Fixed issued country view titles on iOS
+
 ## 2.3.1
 * iOS, Android SDK's updated to 8.1.0
 * Added an option to skip Camera On Boarding View on Face authentication. [More](https://documentation.idenfy.com/other-fraud/FaceAuthentication)
