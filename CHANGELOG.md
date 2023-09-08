@@ -1,3 +1,9 @@
+## 2.3.3
+* Android SDK updated to 8.1.7
+* iOS SDK updated to 8.1.8
+* Fixed back button states in country & document selections
+* Fixed camera permission view descriptions
+
 ## 2.3.2
 * Android SDK updated to 8.1.6
 * iOS SDK updated to 8.1.7
