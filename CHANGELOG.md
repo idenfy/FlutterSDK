@@ -1,3 +1,8 @@
+## 2.3.4
+* Android SDK updated to 8.1.7.1
+* iOS SDK updated to 8.1.9
+* Fixed HU translations
+
 ## 2.3.3
 * Android SDK updated to 8.1.7
 * iOS SDK updated to 8.1.8
