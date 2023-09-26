@@ -1,3 +1,9 @@
+## 2.3.6
+* Android SDK updated to 8.2.1
+* minSdkVersion decreased to API 21
+* Face authentication virtual camera detection will work from API 26
+* HU translations fix
+
 ## 2.3.5
 * Android SDK updated to 8.2.0
 * iOS SDK updated to 8.2.1
