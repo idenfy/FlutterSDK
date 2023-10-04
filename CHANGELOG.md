@@ -1,3 +1,8 @@
+## 2.3.7
+* iOS SDK updated to 8.2.2
+* Deployment target raised to iOS 12
+* Minor HU translation fixes
+
 ## 2.3.6
 * Android SDK updated to 8.2.1
 * minSdkVersion decreased to API 21

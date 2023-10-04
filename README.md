@@ -38,7 +38,7 @@ post_install do |installer|
     end
     if target.name == "idenfy_sdk_flutter"
       target.build_configurations.each do |config|
-        config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '11.0'
+        config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '12.0'
         config.build_settings['ENABLE_BITCODE'] = 'NO'
       end
     end
@@ -49,7 +49,7 @@ end
 
 Minimum required versions by the platform:
 
-**IOS - 11.0**
+**IOS - 12.0**
 
 **Android - API 21**
 
@@ -61,7 +61,7 @@ Once the setup is completed successfully, you can add iDenfy SDK dependencies.
 To add iDenfy SDK plugin, open your project's `pubspec.yaml` file and append it with the latest iDenfy SDK flutter plugin:
 ```yaml
 dependencies:
-  idenfy_sdk_flutter: ^2.3.6
+  idenfy_sdk_flutter: ^2.3.7
 ```
 
 #### 3.1 Configuring Android project
@@ -134,7 +134,7 @@ post_install do |installer|
     end
     if target.name == "idenfy_sdk_flutter"
       target.build_configurations.each do |config|
-        config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '11.0'
+        config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '12.0'
         config.build_settings['ENABLE_BITCODE'] = 'NO'
       end
     end
@@ -142,7 +142,7 @@ post_install do |installer|
   end
 end
 ```
-This script ensures that "lottie-ios" have module stability as well as IOS 11.0 support, which is required for the NFC feature.
+This script ensures that "lottie-ios" have module stability as well as IOS 12.0 support, which is required for the NFC feature.
 #### 3. Running pod install
 After that, install the pods:
 ```shell
@@ -513,7 +513,7 @@ Currently, @idenfy/idenfysdk_flutter_plugin does not provide customization optio
 We suggest creating a fork of this repository. After editing the code, you can include the plugin in the following way:
 ```yaml
 dependencies:
-  idenfy_sdk_flutter: ^2.3.6
+  idenfy_sdk_flutter: ^2.3.7
     git: https://github.com/your_repo/FlutterSDK.git
 ```
 
