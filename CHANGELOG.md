@@ -1,3 +1,9 @@
+## 2.3.8
+* Android SDK updated to 8.2.6
+* Face authentication virtual camera detection improvements (Better detection rate)
+* Fixed a face detection crash, when GMS are missing.
+* minSdkVersion increased to API 24
+
 ## 2.3.7
 * iOS SDK updated to 8.2.2
 * Deployment target raised to iOS 12
