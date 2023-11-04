@@ -26,7 +26,7 @@ apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
-    compileSdkVersion 33
+    compileSdk 33
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
@@ -36,8 +36,8 @@ android {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId "com.example.idenfy_sdk_flutter_example"
         multiDexEnabled true
-        minSdkVersion 24
-        targetSdkVersion 33
+        minSdk 24
+        targetSdk 33
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }
@@ -55,7 +55,6 @@ android {
     }
     composeOptions {
         kotlinCompilerExtensionVersion compose_version
-        kotlinCompilerVersion '1.7.21'
     }
 }
 
