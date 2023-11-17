@@ -1,3 +1,8 @@
+## 2.4.1
+* iOS SDK updated to 8.2.4
+* Android SDK updated to 8.2.8
+* Face authentication session, virtual camera detection improvements
+
 ## 2.4.0
 * iOS SDK updated to 8.2.3
 * Added camera initialization error alert

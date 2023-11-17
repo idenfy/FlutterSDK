@@ -1,9 +1,9 @@
 PODS:
   - Flutter (1.0.0)
-  - idenfy_sdk_flutter (2.4.0):
+  - idenfy_sdk_flutter (2.4.1):
     - Flutter
-    - iDenfySDK/iDenfyLiveness (= 8.2.3)
-  - iDenfySDK/iDenfyLiveness (8.2.3):
+    - iDenfySDK/iDenfyLiveness (= 8.2.4)
+  - iDenfySDK/iDenfyLiveness (8.2.4):
     - lottie-ios (= 4.2.0)
   - lottie-ios (4.2.0)
 
@@ -24,8 +24,8 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
-  idenfy_sdk_flutter: 588bc79d679e06ccf73723fa4d5e1c0272dc076b
-  iDenfySDK: 34d167ba8eda462971cc065e5152b6ff4d979b36
+  idenfy_sdk_flutter: 49ed741b6ba238e8b55a971acdeeec16dc30730d
+  iDenfySDK: 6483790a82b8b1f99a5262f0050db5ece748e17f
   lottie-ios: 809ecf2d460ed650a6aed7aa88b2ec45fab4779c
 
 PODFILE CHECKSUM: 3418c1d41aff12351e6db644690290841cb9cf14
