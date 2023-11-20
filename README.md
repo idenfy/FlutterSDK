@@ -289,7 +289,7 @@ Calling IdenfySdkFlutter.start with provided authToken:
 
 ### Face authentication flow
 
-More on this flow, read [here](https://documentation.idenfy.com/other-fraud/FaceAuthentication).
+More on this flow, read [here](https://documentation.idenfy.com/face-auth/mobile-sdk/Android/FaceAuthenticationAndroid).
 
 Firstly, import idenfysdkflutter.dart file:
 ```javascript
