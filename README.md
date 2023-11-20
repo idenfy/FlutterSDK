@@ -476,7 +476,7 @@ Information about the IdenfyIdentificationResult **suspectedIdentificationStatus
 
 *Note
 The manualIdentificationStatus status always returns INACTIVE status, unless your system implements manual identification callback, but does not create **a separate waiting screen** for indicating about the ongoing manual identity verification process.
-For better customization we suggest using the [immediate redirect feature ](#customizing-results-callbacks-v2-optional). As a result, the user will not see an automatic identification status, provided by iDenfy service. The SDK will be closed while showing loading indicators.
+For better customization we suggest using the immediate redirect feature. As a result, the user will not see an automatic identification status, provided by iDenfy service. The SDK will be closed while showing loading indicators.
 
 ### Face authentication flow
 Callback from the SDK can be retrieved from IdenfySdkFlutter.startFaceAuth future:
