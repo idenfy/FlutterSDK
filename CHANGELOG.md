@@ -1,3 +1,6 @@
+## 2.4.2
+* Updated README with new links
+
 ## 2.4.1
 * iOS SDK updated to 8.2.4
 * Android SDK updated to 8.2.8
