@@ -21,7 +21,7 @@ The @idenfy/idenfy_sdk_flutter is an official Flutter plugin, which provides an 
 
 ### 1. Obtaining an authentication token
 
-The SDK requires token for starting initialization. [Token generation guide](https://github.com/idenfy/Documentation/blob/master/pages/GeneratingIdentificationToken.md)
+The SDK requires token for starting initialization. [Token generation guide](https://documentation.idenfy.com/API/GeneratingIdentificationToken)
 
 ### 2. Availability information & new project setup
 
@@ -209,7 +209,7 @@ android.jetifier.blacklist=bcprov
 
 ##### Proguard rules
 
-If you use code obfuscation for Android with a proguard-rules.pro file. You should update it with [ours](https://github.com/idenfy/Documentation/blob/master/resources/sdk/android/Proguard/proguard-rules.pro), otherwise some unexpected behaviour might occur.
+If you use code obfuscation for Android with a proguard-rules.pro file. You should update it with [ours](https://github.com/idenfy/iDenfyResources/blob/main/sdk/android/Proguard/proguard-rules.pro), otherwise some unexpected behaviour might occur.
 
 ## Usage
 
@@ -532,7 +532,7 @@ To change the **colors**:
     <color name="idenfyBackgroundColorV2">#FFFFFF</color>
 </resources>
 ```
-Our common color names can be found in [this repository](https://github.com/idenfy/Documentation/blob/master/resources/sdk/android/colors/colors_v2.xml) along with [specific screen colors](https://github.com/idenfy/Documentation/blob/master/resources/sdk/android/colors/colors.zip)
+Our common color names can be found in [this repository](https://github.com/idenfy/iDenfyResources/tree/main/sdk/android/colors/colors_v2.xml) along with [specific screen colors](https://github.com/idenfy/iDenfyResources/tree/main/sdk/android/colors/colors.zip)
 
 To edit the **Toolbar** or change styles (Text sizes, colors) for specific views:
 1. Open your Android application values folder (yourapplication/app/src/main/res/values)  
@@ -587,14 +587,14 @@ To edit the **Toolbar** or change styles (Text sizes, colors) for specific views
 </resources>
 ```
 
-All our styles can be found in [here](https://github.com/idenfy/Documentation/blob/master/resources/sdk/android/styles/styles.zip).
+All our styles can be found in [here](https://github.com/idenfy/iDenfyResources/tree/main/sdk/android/styles/styles.zip).
 
 To edit our **layouts**:
 1. Open or create your Android application layout folder (yourapplication/app/src/main/res/layout) and copy our layout xml files here  
    <img src="doc/images/idenfy_img_example_layout.png" width="300"/>
 2. Change the fonts, views however you want. Just make sure you **Do not remove ids of the components** and **keep same layout names**, otherwise this will cause runtime crashes or the layouts won't be overridden.
 
-Our layouts can be found [here](https://github.com/idenfy/Documentation/blob/master/resources/sdk/android/layouts/layouts.zip)
+Our layouts can be found [here](https://github.com/idenfy/iDenfyResources/tree/main/sdk/android/layouts/layouts.zip)
 
 To edit common **IdenfySettings** use the **IdenfysdkFlutterPlugin.kt** file like so:
 
@@ -860,7 +860,7 @@ public class SwiftIdenfySdkFlutterPlugin: NSObject, FlutterPlugin {
 
 ```
 
-UISettings classes for the rest of the screens can be found in our [repository](https://github.com/idenfy/Documentation/tree/master/resources/sdk/ios/uicustomization).
+UISettings classes for the rest of the screens can be found in our [repository](https://github.com/idenfy/iDenfyResources/tree/main/sdk/ios/uicustomization).
 
 Fore more extensive customization, please caerfully follow our [IOS native SDK guide](https://documentation.idenfy.com/UI/IOSUICustomization) and edit **SwiftIdenfysdkFlutterPlugin.swift** even further.
 
