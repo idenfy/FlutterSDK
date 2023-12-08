@@ -354,7 +354,7 @@ Everything can be done with following code, found in the example app:
   }
 
   Future<void> initIdenfyFaceAuth(String scanref) async {
-    String authenticationMethod = "FACE_MATCHING;
+    String authenticationMethod = "FACE_MATCHING";
   
     FaceAuthenticationResult? faceAuthenticationResult;
     Exception? localException;
