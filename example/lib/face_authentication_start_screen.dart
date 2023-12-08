@@ -7,8 +7,6 @@ import 'package:idenfy_sdk_flutter/idenfy_sdk_flutter.dart';
 import 'package:idenfy_sdk_flutter/models/IdenfyFaceAuthUISettings.dart';
 import 'constants.dart' as Constants;
 import 'package:idenfy_sdk_flutter/models/FaceAuthenticationResult.dart';
-
-import 'face_authentication_method.dart';
 import 'main.dart';
 
 class FaceAuthenticationStartScreen extends StatefulWidget {
@@ -31,9 +29,9 @@ class _FaceAuthenticationStartScreenState
   }
 
   Future<String> getFaceAuthTokenType(
-      String scanref, FaceAuthenticationMethod authenticationMethod) async {
+      String scanref, String authenticationMethod) async {
     final queryParameters = {
-      'method': authenticationMethod.name,
+      'method': authenticationMethod,
     };
     final response = await http.get(
       Uri.https(
@@ -55,7 +53,7 @@ class _FaceAuthenticationStartScreenState
   }
 
   Future<String> getFaceAuthTokenRequest(String scanref, String tokenType,
-      FaceAuthenticationMethod authenticationMethod) async {
+      String authenticationMethod) async {
     final response = await http.post(
       Uri.https(Constants.BASE_URL, '/partner/authentication-info'),
       headers: <String, String>{
@@ -68,7 +66,7 @@ class _FaceAuthenticationStartScreenState
       body: jsonEncode(<String, String>{
         "scanRef": scanref,
         "type": tokenType,
-        "method": authenticationMethod.name
+        "method": authenticationMethod
       }),
     );
     if (response.statusCode == 200) {
@@ -79,8 +77,7 @@ class _FaceAuthenticationStartScreenState
   }
 
   Future<void> initIdenfyFaceAuth(String scanref) async {
-    FaceAuthenticationMethod authenticationMethod =
-        Constants.faceAuthenticationMethod;
+    String authenticationMethod = "FACE_MATCHING";
 
     FaceAuthenticationResult? faceAuthenticationResult;
     Exception? localException;
@@ -91,11 +88,6 @@ class _FaceAuthenticationStartScreenState
       switch (faceAuthTokenType) {
         case 'AUTHENTICATION':
           //The user can authenticate by face
-          token = await getFaceAuthTokenRequest(
-              scanref, faceAuthTokenType, authenticationMethod);
-          break;
-        case 'ENROLLMENT':
-          //The user must perform an enrollment, since the identification was performed with an older face tec version
           token = await getFaceAuthTokenRequest(
               scanref, faceAuthTokenType, authenticationMethod);
           break;

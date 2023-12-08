@@ -267,7 +267,6 @@ const String BASE_URL = 'ivs.idenfy.com';
 const String clientId = 'idenfySampleClientID';
 const String apiKey = 'PUT_YOUR_IDENFY_API_KEY_HERE';
 const String apiSecret = 'PUT_YOUR_IDENFY_API_SECRET_HERE';
-const FaceAuthenticationMethod faceAuthenticationMethod = FaceAuthenticationMethod.ACTIVE_LIVENESS;
 ```
 
 Calling IdenfySdkFlutter.start with provided authToken:
@@ -300,27 +299,19 @@ After successful integration you should be able to call IdenfySdkFlutter.startFa
 
 If the project is not successfully compiled or runtime issues occur, make sure you have followed the steps. For better understanding you may check the sample app in this repository.
 
-Firsty, you should check for the authentication status, whether the face authentication can be performed. Having checked that, you will receive a token status:
+Firstly, you should check for the authentication status, whether the face authentication can be performed. Having checked that, you will receive a token status:
 
 | Name             | Description                                                                                                                                      |
 |------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
-| `ENROLLMENT`     | The user must perform an enrollment, since the identification was performed with an older face tec version (Before face authentication update)   |
 | `AUTHENTICATION` | The user can authenticate by face                                                                                                                |
-| `IDENTIFICATION` | The user must perform an identification
-
-ENROLLMENT only applies to ACTIVE_LIVENESS authentication method and from a user perspective is identical to AUTHENTICATION, although ENROLLMENT is basically registration for authentication - whichever face client used for enrollment, that face will then work for subsequent authentications.
-
-Enrollment is recommended to be used for these cases:
-1. Client was on-boarded using an old version of the SDK and therefore not registered for authentication.
-2. Client failed an automated liveliness check during on-boarding and therefore was not registered for authentication.
-3. Client is registered for authentication, but for whatever reason wishes to change the face used for authentication.
+| `IDENTIFICATION` | The user must perform an identification                                                                                                          |
 
 Everything can be done with following code, found in the example app:
 
 ```javascript
-  Future<String> getFaceAuthTokenType(String scanref, FaceAuthenticationMethod authenticationMethod) async {
+  Future<String> getFaceAuthTokenType(String scanref, String authenticationMethod) async {
     final queryParameters = {
-      'method': authenticationMethod.name,
+      'method': authenticationMethod,
     };
     final response = await http.get(
       Uri.https(Constants.BASE_URL,
@@ -339,7 +330,7 @@ Everything can be done with following code, found in the example app:
     }
   }
 
-  Future<String> getFaceAuthTokenRequest(String scanref, String tokenType, FaceAuthenticationMethod authenticationMethod) async {
+  Future<String> getFaceAuthTokenRequest(String scanref, String tokenType, String authenticationMethod) async {
     final response = await http.post(
       Uri.https(Constants.BASE_URL, '/partner/authentication-info'),
       headers: <String, String>{
@@ -352,7 +343,7 @@ Everything can be done with following code, found in the example app:
       body: jsonEncode(<String, String>{
         "scanRef": scanref,
         "type": tokenType,
-        "method": authenticationMethod.name
+        "method": authenticationMethod
       }),
     );
     if (response.statusCode == 200) {
@@ -363,7 +354,7 @@ Everything can be done with following code, found in the example app:
   }
 
   Future<void> initIdenfyFaceAuth(String scanref) async {
-    FaceAuthenticationMethod authenticationMethod = Constants.faceAuthenticationMethod;
+    String authenticationMethod = "FACE_MATCHING;
   
     FaceAuthenticationResult? faceAuthenticationResult;
     Exception? localException;
@@ -373,10 +364,6 @@ Everything can be done with following code, found in the example app:
       switch (faceAuthTokenType) {
         case 'AUTHENTICATION':
           //The user can authenticate by face
-          token = await getFaceAuthTokenRequest(scanref, faceAuthTokenType, authenticationMethod);
-          break;
-        case 'ENROLLMENT':
-          //The user must perform an enrollment, since the identification was performed with an older face tec version
           token = await getFaceAuthTokenRequest(scanref, faceAuthTokenType, authenticationMethod);
           break;
         default:
@@ -423,7 +410,6 @@ const String BASE_URL = 'ivs.idenfy.com';
 const String clientId = 'idenfySampleClientID';
 const String apiKey = 'PUT_YOUR_IDENFY_API_KEY_HERE';
 const String apiSecret = 'PUT_YOUR_IDENFY_API_SECRET_HERE';
-const FaceAuthenticationMethod faceAuthenticationMethod = FaceAuthenticationMethod.ACTIVE_LIVENESS;
 ```
 
 ## Callbacks
