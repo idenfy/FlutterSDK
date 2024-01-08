@@ -9,7 +9,7 @@ import 'constants.dart' as Constants;
 import 'face_authentication_start_screen.dart';
 
 void main() {
-  runApp(MaterialApp(debugShowCheckedModeBanner: false, home: MyApp()));
+  runApp(MaterialApp(theme: ThemeData.light(useMaterial3: false), debugShowCheckedModeBanner: false, home: MyApp()));
 }
 
 class MyApp extends StatefulWidget {
