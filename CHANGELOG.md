@@ -1,3 +1,6 @@
+## 2.4.4
+* Added network error logs
+
 ## 2.4.3
 * Added new face detection descriptions 
 * Added support for additional step ordering
