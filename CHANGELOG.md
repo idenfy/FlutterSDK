@@ -1,3 +1,7 @@
+## 2.4.5
+* Increased network request timeout intervals
+* Improved network request retry logic
+
 ## 2.4.4
 * Added network error logs
 
