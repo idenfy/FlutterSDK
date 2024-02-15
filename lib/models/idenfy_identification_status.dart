@@ -1,9 +1,10 @@
 import 'package:flutter/foundation.dart';
+import 'package:idenfy_sdk_flutter/models/suspected_identification_status.dart';
 
-import 'AutoIdentificationStatus.dart';
-import 'ManualIdentificationStatus.dart';
-import 'SuspectedIdentificationStatus.dart';
+import 'auto_identification_status.dart';
+import 'manual_identification_status.dart';
 
+/// Identification session result, that contains identification auto, manual and suspected statuses
 class IdenfyIdentificationResult {
   final AutoIdentificationStatus autoIdentificationStatus;
   final ManualIdentificationStatus manualIdentificationStatus;

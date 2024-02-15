@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'package:idenfy_sdk_flutter/idenfy_sdk_flutter.dart';
-import 'package:idenfy_sdk_flutter/models/IdenfyFaceAuthUISettings.dart';
+import 'package:idenfy_sdk_flutter/models/face_authentication_result.dart';
+import 'package:idenfy_sdk_flutter/models/idenfy_face_auth_ui_settings.dart';
 import 'constants.dart' as Constants;
-import 'package:idenfy_sdk_flutter/models/FaceAuthenticationResult.dart';
 import 'main.dart';
 
 class FaceAuthenticationStartScreen extends StatefulWidget {
@@ -52,8 +52,8 @@ class _FaceAuthenticationStartScreenState
     }
   }
 
-  Future<String> getFaceAuthTokenRequest(String scanref, String tokenType,
-      String authenticationMethod) async {
+  Future<String> getFaceAuthTokenRequest(
+      String scanref, String tokenType, String authenticationMethod) async {
     final response = await http.post(
       Uri.https(Constants.BASE_URL, '/partner/authentication-info'),
       headers: <String, String>{
@@ -95,7 +95,7 @@ class _FaceAuthenticationStartScreenState
           //The user must perform an identification
           break;
       }
-      
+
       IdenfyFaceAuthUISettings settings = IdenfyFaceAuthUIBuilder()
           .withLanguageSelection(true)
           .withOnBoardingView(true)

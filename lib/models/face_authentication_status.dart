@@ -1,3 +1,4 @@
+/// Face authentication status, provided by an automated platform
 enum FaceAuthenticationStatus {
   ///The user completed face authentication flow and the authentication status, provided by an automated platform, is SUCCESS.
   SUCCESS,

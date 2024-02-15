@@ -1,3 +1,4 @@
+/// Face authentication settings class
 class IdenfyFaceAuthUISettings {
   final bool isLanguageSelectionNeeded;
   final bool skipOnBoardingView;
@@ -11,6 +12,7 @@ class IdenfyFaceAuthUISettings {
       };
 }
 
+/// Face authentication setting builder class
 class IdenfyFaceAuthUIBuilder {
   bool isLanguageSelectionNeeded = true;
   bool skipOnBoardingView = false;

@@ -3,13 +3,16 @@ import 'package:flutter/services.dart';
 import 'dart:async';
 import 'dart:convert';
 import 'package:idenfy_sdk_flutter/idenfy_sdk_flutter.dart';
-import 'package:idenfy_sdk_flutter/models/IdenfyIdentificationResult.dart';
 import 'package:http/http.dart' as http;
+import 'package:idenfy_sdk_flutter/models/idenfy_identification_status.dart';
 import 'constants.dart' as Constants;
 import 'face_authentication_start_screen.dart';
 
 void main() {
-  runApp(MaterialApp(theme: ThemeData.light(useMaterial3: false), debugShowCheckedModeBanner: false, home: MyApp()));
+  runApp(MaterialApp(
+      theme: ThemeData.light(useMaterial3: false),
+      debugShowCheckedModeBanner: false,
+      home: MyApp()));
 }
 
 class MyApp extends StatefulWidget {
