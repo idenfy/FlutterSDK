@@ -1,3 +1,7 @@
+## 2.4.6
+* Added documentation for public API
+* Refactored public enum files
+
 ## 2.4.5
 * Increased network request timeout intervals
 * Improved network request retry logic
