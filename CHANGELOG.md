@@ -1,3 +1,21 @@
+## 2.5.0
+* iOS SDK updated to 8.4.0
+* Android SDK updated to 8.4.1
+* Added photo validation after each step by default
+* Added passive liveness validation feature
+* Added rooted device, emulator detection
+* Added work permit document type
+* Updated 3D Face liveness version
+* Android targetSdk increased to API 34
+* Updated Android Gradle version to 8.1.2, Kotlin version to 1.9.20
+* Changed Android loading spinner animation
+* Android CameraX updated
+* 3D Face liveness error handling, retry logic improvements
+* Dynamic OnBoarding screen removed
+* Privacy policy submission fix
+* Other bug fixes 
+* If you have customized iOS or Android native code, please check out the api changes, that might affect you in the [iOS](https://documentation.idenfy.com/mobile/iOS/migration-guide/ios-migrations) and [Android](https://documentation.idenfy.com/mobile/Android/migration-guide/android-migrations) migration guides.
+
 ## 2.4.6
 * Added documentation for public API
 * Refactored public enum files

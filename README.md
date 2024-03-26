@@ -61,7 +61,7 @@ Once the setup is completed successfully, you can add iDenfy SDK dependencies.
 To add iDenfy SDK plugin, open your project's `pubspec.yaml` file and append it with the latest iDenfy SDK flutter plugin:
 ```yaml
 dependencies:
-  idenfy_sdk_flutter: ^2.4.6
+  idenfy_sdk_flutter: ^2.5.0
 ```
 
 #### 3.1 Configuring Android project
@@ -78,10 +78,6 @@ Configure your application's `gradle.properties` file:
 ```gradle
 android.useAndroidX=true
 android.enableJetifier=true
-//For gradle 7+
-android.jetifier.ignorelist=bcprov
-//otherwise
-android.jetifier.blacklist=bcprov
 ```
 
 Make sure you are using Kotlin >= 1.5.31 version (Since 1.5 version of iDenfy package)
@@ -201,10 +197,7 @@ Failed to transform bcprov-jdk15on-1.69.jar (org.bouncycastle:bcprov-jdk15on:1.6
 
 Be sure to add the following lines to your application's `gradle.properties` file:
 ```gradle
-//For gradle 7+
 android.jetifier.ignorelist=bcprov
-//otherwise
-android.jetifier.blacklist=bcprov
 ```
 
 ##### Proguard rules
@@ -499,7 +492,7 @@ Currently, @idenfy/idenfysdk_flutter_plugin does not provide customization optio
 We suggest creating a fork of this repository. After editing the code, you can include the plugin in the following way:
 ```yaml
 dependencies:
-  idenfy_sdk_flutter: ^2.4.6
+  idenfy_sdk_flutter: ^2.5.0
     git: https://github.com/your_repo/FlutterSDK.git
 ```
 
