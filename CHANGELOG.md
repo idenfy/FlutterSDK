@@ -1,3 +1,8 @@
+## 2.5.1
+* iOS SDK updated to 8.4.1
+* Updated 3D Face liveness version
+* Updated lottie-ios to 4.4.1
+
 ## 2.5.0
 * iOS SDK updated to 8.4.0
 * Android SDK updated to 8.4.1
