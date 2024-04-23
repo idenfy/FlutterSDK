@@ -1,3 +1,9 @@
+## 2.5.2
+* iOS SDK updated to 8.4.2
+* Updated lottie-ios to 4.4.3
+* Increased minimum deployment target to iOS 13
+* Please update to this version to avoid Apple Review team [privacy manifest file](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files) warning
+
 ## 2.5.1
 * iOS SDK updated to 8.4.1
 * Updated 3D Face liveness version
