@@ -191,14 +191,6 @@ end
 ```
 
 #### Android
-If this error occurs:
-
-Failed to transform bcprov-jdk15on-1.69.jar (org.bouncycastle:bcprov-jdk15on:1.69) to match attributes {artifactType=android-java-res, org.gradle.category=library, org.gradle.libraryelements=jar, org.gradle.status=release, org.gradle.usage=java-runtime}.
-
-Be sure to add the following lines to your application's `gradle.properties` file:
-```gradle
-android.jetifier.ignorelist=bcprov
-```
 
 ##### Proguard rules
 
