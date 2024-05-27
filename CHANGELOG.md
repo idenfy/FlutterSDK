@@ -1,3 +1,14 @@
+## 2.5.3
+* iOS SDK updated to 8.4.5
+* Android SDK updated to 8.4.2
+* Added Danish, Greek, Croatian, Norwegian, Serbian, Finnish, Turkish languages
+* Added Image upload attempt validation
+* Added virtual camera detection for Android IDV [feature](https://documentation.idenfy.com/mobile/Android/android-sdk#virtual-camera-detection) (Will result in a failed identification)
+* Updated Document Recognition [feature](https://documentation.idenfy.com/mobile/Android/android-sdk#document-recognition)
+* Improved phone number validation for KYC questionnaire
+* Updated 3D Face liveness version for iOS
+* Bug fixes
+
 ## 2.5.2
 * iOS SDK updated to 8.4.2
 * Updated lottie-ios to 4.4.3
