@@ -1,6 +1,6 @@
 ## 2.5.4
 * Android, iOS SDK's updated to 8.5.0
-* Face authentication auto capture [feature](/face-auth/mobile-sdk/Android/FaceAuthenticationAndroid#auto-capture)
+* Face authentication auto capture [feature](https://documentation.idenfy.com/face-auth/mobile-sdk/Android/FaceAuthenticationAndroid#auto-capture)
 * Updated 3D Face liveness version
 * Improved document blur, glare detection
 * Bug fixes
