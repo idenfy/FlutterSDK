@@ -1,3 +1,10 @@
+## 2.5.5
+* iOS SDK updated to 8.5.2
+* Android SDK updated to 8.5.1
+* Added Chinese simplified language support
+* Added 3D Face liveness upload attempt validation
+* Added missing Face authentication auto capture [feature](https://documentation.idenfy.com/face-auth/mobile-sdk/Android/FaceAuthenticationAndroid#auto-capture) translations
+
 ## 2.5.4
 * Android, iOS SDK's updated to 8.5.0
 * Face authentication auto capture [feature](https://documentation.idenfy.com/face-auth/mobile-sdk/Android/FaceAuthenticationAndroid#auto-capture)
