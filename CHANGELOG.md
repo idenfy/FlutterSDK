@@ -1,3 +1,9 @@
+## 2.5.6
+* iOS SDK updated to 8.5.3
+* Updated 3D Face liveness version
+* NFC document reading improvements
+* Bug fixes
+
 ## 2.5.5
 * iOS SDK updated to 8.5.2
 * Android SDK updated to 8.5.1
