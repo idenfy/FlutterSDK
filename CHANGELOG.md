@@ -1,3 +1,11 @@
+## 2.5.7
+* iOS SDK updated to 8.5.7
+* Android SDK updated to 8.5.2
+* Updated 3D Face liveness version
+* iOS migrated to Swift 6.0. SDK is compatible with xCode 16
+* KYC Questionnaire FILE and IMAGE questions merged
+* Bug fixes
+
 ## 2.5.6
 * iOS SDK updated to 8.5.3
 * Updated 3D Face liveness version

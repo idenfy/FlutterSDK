@@ -3,14 +3,14 @@ import UIKit
 import iDenfySDK
 import idenfycore
 
-public class SwiftIdenfySdkFlutterPlugin: NSObject, FlutterPlugin {
+public class SwiftIdenfySdkFlutterPlugin: NSObject, @preconcurrency FlutterPlugin {
   public static func register(with registrar: FlutterPluginRegistrar) {
     let channel = FlutterMethodChannel(name: "idenfy_sdk_flutter", binaryMessenger: registrar.messenger())
     let instance = SwiftIdenfySdkFlutterPlugin()
     registrar.addMethodCallDelegate(instance, channel: channel)
   }
 
-    public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
+    @MainActor public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         if call.method == "getPlatformVersion" {
           result("iOS " + UIDevice.current.systemVersion)
         } else if call.method == "start" {
