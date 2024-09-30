@@ -1,3 +1,5 @@
+## This is an official Flutter plugin, which provides an easier integration of iDenfy KYC services. This plugin offers [identity verification](#identity-verification-flow-usage) and [face authentication](#face-authentication-flow-usage) flows
+
 ## Table of contents
 - [Getting started](#getting-started)
     - [1. Obtaining an authentication token](#1-obtaining-an-authentication-token)
@@ -10,14 +12,16 @@
             - [4.2 Configuring IOS project](#42-configuring-ios-project)
     - [5. Troubleshooting compile errors](#5-troubleshooting-compile-errors)
 *   [Usage](#usage)
+    - [Identity verification usage](#identity-verification-flow-usage)
+    - [Face authentication usage](#face-authentication-flow-usage)
 *   [Callbacks](#callbacks)
+    - [Identity verification callbacks](#identity-verification-flow-callbacks)
+    - [Face authentication callbakcs](#face-authentication-flow-callbacks)
 *   [Additional customization](#additional-customization)
 *   [SDK Integration tutorials](#sdk-integration-tutorials)
 
 
 ## Getting started
-
-The @idenfy/idenfy_sdk_flutter is an official Flutter plugin, which provides an easier integration of iDenfy KYC services.
 
 ### 1. Obtaining an authentication token
 
@@ -80,7 +84,15 @@ android.useAndroidX=true
 android.enableJetifier=true
 ```
 
-Make sure you are using Kotlin >= 1.5.31 version (Since 1.5 version of iDenfy package)
+##### Proguard rules
+
+If you use code obfuscation for Android with a proguard-rules.pro file. You should update it with [ours](https://github.com/idenfy/iDenfyResources/blob/main/sdk/android/Proguard/proguard-rules.pro), otherwise some unexpected behaviour might occur.
+
+Also, since AGP 8.0 enables R8 full mode by default, make sure you have disabled R8 full mode in the **gradle.properties** file:
+
+```gradle
+android.enableR8.fullMode=false
+```
 
 #### 3.2 Configuring IOS project
 `NSCameraUsageDescription` must be provided in the application's `Info.plist` file:
@@ -178,33 +190,9 @@ post_install do |installer|
 end
 ```
 
-If your application has bitcode disabled and your build faces a compile error, due to enabled bitcode on any of our pods. You should try this step:
-#### 1. Change post_install script to the following:
-```ruby
-post_install do |installer|
-    installer.pods_project.targets.each do |target|
-        target.build_configurations.each do |config|
-            config.build_settings['ENABLE_BITCODE'] = 'NO'
-        end
-    end
-end
-```
-
-#### Android
-
-##### Proguard rules
-
-If you use code obfuscation for Android with a proguard-rules.pro file. You should update it with [ours](https://github.com/idenfy/iDenfyResources/blob/main/sdk/android/Proguard/proguard-rules.pro), otherwise some unexpected behaviour might occur.
-
-Also, since AGP 8.0 enables R8 full mode by default, make sure you have disabled R8 full mode in the **gradle.properties** file:
-
-```gradle
-android.enableR8.fullMode=false
-```
-
 ## Usage
 
-### Identity verification flow
+### Identity verification flow usage
 Firstly, import idenfysdkflutter.dart file:
 ```javascript
 import 'package:idenfy_sdk_flutter/idenfy_sdk_flutter.dart';
@@ -277,7 +265,7 @@ Calling IdenfySdkFlutter.start with provided authToken:
     });
 ```
 
-### Face authentication flow
+### Face authentication flow usage
 
 More on this flow, read [here](https://documentation.idenfy.com/face-auth/mobile-sdk/Android/FaceAuthenticationAndroid).
 
@@ -405,7 +393,7 @@ const String apiSecret = 'PUT_YOUR_IDENFY_API_SECRET_HERE';
 
 ## Callbacks
 
-### Identity verification flow
+### Identity verification flow callbacks
 Callback from the SDK can be retrieved from IdenfySdkFlutter.start future:
 ````javascript
 try {
@@ -455,7 +443,7 @@ Information about the IdenfyIdentificationResult **suspectedIdentificationStatus
 The manualIdentificationStatus status always returns INACTIVE status, unless your system implements manual identification callback, but does not create **a separate waiting screen** for indicating about the ongoing manual identity verification process.
 For better customization we suggest using the immediate redirect feature. As a result, the user will not see an automatic identification status, provided by iDenfy service. The SDK will be closed while showing loading indicators.
 
-### Face authentication flow
+### Face authentication flow callbacks
 Callback from the SDK can be retrieved from IdenfySdkFlutter.startFaceAuth future:
 ````javascript
     FaceAuthenticationResult? faceAuthenticationResult;
