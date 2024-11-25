@@ -1,3 +1,7 @@
+## 2.5.8
+* Android SDK updated to 8.5.3
+* Fixed document recognition transitioning bug between front and back steps
+
 ## 2.5.7
 * iOS SDK updated to 8.5.7
 * Android SDK updated to 8.5.2
