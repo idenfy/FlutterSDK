@@ -2,8 +2,8 @@
 * Android, iOS SDK's updated to 8.6.0
 * Added internet connection stability alert
 * Added immediate redirect option from idenfy settings
-* Added realtime blur glare detection in document capture [feature](/mobile/Android/android-sdk#realtime-document-blur-glare-detection)
-* Added face auto capture [feature](/mobile/Android/android-sdk#face-auto-capture)
+* Added realtime blur glare detection in document capture [feature](https://documentation.idenfy.com/mobile/Android/android-sdk#realtime-document-blur-glare-detection)
+* Added face auto capture [feature](https://documentation.idenfy.com/mobile/Android/android-sdk#face-auto-capture)
 * Process death improvements for Android
 * Video recording frame rate increased
 * Updated 3D Face liveness version
