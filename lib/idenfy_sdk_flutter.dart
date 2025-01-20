@@ -14,10 +14,12 @@ class IdenfySdkFlutter {
 
   /// Function to start identity verification session
   /// @param token Generated identity verification token
-  static Future<IdenfyIdentificationResult> start(String token, { IdenfySettings? idenfySettings }) async {
-    final dynamic result =
-        await _channel.invokeMethod('start', <String, dynamic>{
-      'authToken': token, 'idenfySettings': idenfySettings?.toJson()
+  static Future<IdenfyIdentificationResult> start(String token,
+      {IdenfySettings? idenfySettings}) async {
+    final dynamic result = await _channel.invokeMethod(
+        'start', <String, dynamic>{
+      'authToken': token,
+      'idenfySettings': idenfySettings?.toJson()
     });
     IdenfyIdentificationResult idenfyIdentificationResult =
         IdenfyIdentificationResult.fromJson(jsonDecode(result));

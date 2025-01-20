@@ -12,25 +12,35 @@ class IdenfyUISettings {
   final IdenfyDocumentSelectionType? idenfyDocumentSelectionType;
   final bool? isLanguageSelectionNeeded;
   final IdenfyInstructionsEnum? idenfyInstructionsEnum;
-  final IdenfyIdentificationResultsUISettingsV2? idenfyIdentificationResultsUISettingsV2;
+  final IdenfyIdentificationResultsUISettingsV2?
+      idenfyIdentificationResultsUISettingsV2;
   final ImmediateRedirectEnum? immediateRedirectEnum;
   final bool? skipInternalPrivacyPolicyView;
   final DocumentCameraFrameVisibility? documentCameraFrameVisibility;
 
   IdenfyUISettings(
-      {this.isAdditionalSupportEnabled, this.idenfyOnBoardingViewType, this.idenfyDocumentSelectionType, this.isLanguageSelectionNeeded, this.idenfyInstructionsEnum, this.idenfyIdentificationResultsUISettingsV2, this.immediateRedirectEnum, this.skipInternalPrivacyPolicyView, this.documentCameraFrameVisibility});
+      {this.isAdditionalSupportEnabled,
+      this.idenfyOnBoardingViewType,
+      this.idenfyDocumentSelectionType,
+      this.isLanguageSelectionNeeded,
+      this.idenfyInstructionsEnum,
+      this.idenfyIdentificationResultsUISettingsV2,
+      this.immediateRedirectEnum,
+      this.skipInternalPrivacyPolicyView,
+      this.documentCameraFrameVisibility});
 
   Map<String, dynamic> toJson() => {
-    'isAdditionalSupportEnabled': isAdditionalSupportEnabled,
-    'idenfyOnBoardingViewType': idenfyOnBoardingViewType?.name,
-    'idenfyDocumentSelectionType': idenfyDocumentSelectionType?.name,
-    'isLanguageSelectionNeeded': isLanguageSelectionNeeded,
-    'idenfyInstructionsEnum': idenfyInstructionsEnum?.name,
-    'idenfyIdentificationResultsUISettingsV2': idenfyIdentificationResultsUISettingsV2?.toJson(),
-    'immediateRedirectEnum': immediateRedirectEnum?.name,
-    'skipInternalPrivacyPolicyView': skipInternalPrivacyPolicyView,
-    'documentCameraFrameVisibility': documentCameraFrameVisibility?.toJson()
-  };
+        'isAdditionalSupportEnabled': isAdditionalSupportEnabled,
+        'idenfyOnBoardingViewType': idenfyOnBoardingViewType?.name,
+        'idenfyDocumentSelectionType': idenfyDocumentSelectionType?.name,
+        'isLanguageSelectionNeeded': isLanguageSelectionNeeded,
+        'idenfyInstructionsEnum': idenfyInstructionsEnum?.name,
+        'idenfyIdentificationResultsUISettingsV2':
+            idenfyIdentificationResultsUISettingsV2?.toJson(),
+        'immediateRedirectEnum': immediateRedirectEnum?.name,
+        'skipInternalPrivacyPolicyView': skipInternalPrivacyPolicyView,
+        'documentCameraFrameVisibility': documentCameraFrameVisibility?.toJson()
+      };
 }
 
 /// Idenfy UI setting builder class
@@ -40,23 +50,25 @@ class IdenfyUIBuilder {
   IdenfyDocumentSelectionType? idenfyDocumentSelectionType;
   bool? isLanguageSelectionNeeded;
   IdenfyInstructionsEnum? idenfyInstructionsEnum;
-  IdenfyIdentificationResultsUISettingsV2? idenfyIdentificationResultsUISettingsV2;
+  IdenfyIdentificationResultsUISettingsV2?
+      idenfyIdentificationResultsUISettingsV2;
   ImmediateRedirectEnum? immediateRedirectEnum;
   bool? skipInternalPrivacyPolicyView;
   DocumentCameraFrameVisibility? documentCameraFrameVisibility;
 
-  IdenfyUIBuilder withAdditionalSupportView(
-      bool isAdditionalSupportEnabled) {
+  IdenfyUIBuilder withAdditionalSupportView(bool isAdditionalSupportEnabled) {
     this.isAdditionalSupportEnabled = isAdditionalSupportEnabled;
     return this;
   }
 
-  IdenfyUIBuilder withOnBoardingViewType(IdenfyOnBoardingViewType idenfyOnBoardingViewType) {
+  IdenfyUIBuilder withOnBoardingViewType(
+      IdenfyOnBoardingViewType idenfyOnBoardingViewType) {
     this.idenfyOnBoardingViewType = idenfyOnBoardingViewType;
     return this;
   }
 
-  IdenfyUIBuilder withIdenfyDocumentSelectionType(IdenfyDocumentSelectionType idenfyDocumentSelectionType) {
+  IdenfyUIBuilder withIdenfyDocumentSelectionType(
+      IdenfyDocumentSelectionType idenfyDocumentSelectionType) {
     this.idenfyDocumentSelectionType = idenfyDocumentSelectionType;
     return this;
   }
@@ -66,40 +78,47 @@ class IdenfyUIBuilder {
     return this;
   }
 
-  IdenfyUIBuilder withInstructions(IdenfyInstructionsEnum idenfyInstructionsEnum) {
+  IdenfyUIBuilder withInstructions(
+      IdenfyInstructionsEnum idenfyInstructionsEnum) {
     this.idenfyInstructionsEnum = idenfyInstructionsEnum;
     return this;
   }
 
-  IdenfyUIBuilder withIdenfyIdentificationResultsUISettingsV2(IdenfyIdentificationResultsUISettingsV2 idenfyIdentificationResultsUISettingsV2) {
-    this.idenfyIdentificationResultsUISettingsV2 = idenfyIdentificationResultsUISettingsV2;
+  IdenfyUIBuilder withIdenfyIdentificationResultsUISettingsV2(
+      IdenfyIdentificationResultsUISettingsV2
+          idenfyIdentificationResultsUISettingsV2) {
+    this.idenfyIdentificationResultsUISettingsV2 =
+        idenfyIdentificationResultsUISettingsV2;
     return this;
   }
 
-  IdenfyUIBuilder withImmediateRedirect(ImmediateRedirectEnum immediateRedirectEnum) {
+  IdenfyUIBuilder withImmediateRedirect(
+      ImmediateRedirectEnum immediateRedirectEnum) {
     this.immediateRedirectEnum = immediateRedirectEnum;
     return this;
   }
 
-  IdenfyUIBuilder withSkipInternalPrivacyPolicy(bool skipInternalPrivacyPolicyView) {
+  IdenfyUIBuilder withSkipInternalPrivacyPolicy(
+      bool skipInternalPrivacyPolicyView) {
     this.skipInternalPrivacyPolicyView = skipInternalPrivacyPolicyView;
     return this;
   }
 
-  IdenfyUIBuilder withDocumentCameraFrameVisibility(DocumentCameraFrameVisibility documentCameraFrameVisibility) {
+  IdenfyUIBuilder withDocumentCameraFrameVisibility(
+      DocumentCameraFrameVisibility documentCameraFrameVisibility) {
     this.documentCameraFrameVisibility = documentCameraFrameVisibility;
     return this;
   }
 
   IdenfyUISettings build() {
-    IdenfyUISettings idenfyUISettings =
-    IdenfyUISettings(
+    IdenfyUISettings idenfyUISettings = IdenfyUISettings(
         isAdditionalSupportEnabled: isAdditionalSupportEnabled,
         idenfyOnBoardingViewType: idenfyOnBoardingViewType,
         idenfyDocumentSelectionType: idenfyDocumentSelectionType,
         isLanguageSelectionNeeded: isLanguageSelectionNeeded,
         idenfyInstructionsEnum: idenfyInstructionsEnum,
-        idenfyIdentificationResultsUISettingsV2: idenfyIdentificationResultsUISettingsV2,
+        idenfyIdentificationResultsUISettingsV2:
+            idenfyIdentificationResultsUISettingsV2,
         immediateRedirectEnum: immediateRedirectEnum,
         skipInternalPrivacyPolicyView: skipInternalPrivacyPolicyView,
         documentCameraFrameVisibility: documentCameraFrameVisibility);

@@ -1,3 +1,4 @@
+/// Idenfy locale enum of supported locales
 enum IdenfyLocaleEnum {
   EN,
   LT,

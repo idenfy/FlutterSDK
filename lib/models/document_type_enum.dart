@@ -1,3 +1,4 @@
+/// Document type enum of supported documents
 enum DocumentTypeEnum {
   ID_CARD,
   PASSPORT,

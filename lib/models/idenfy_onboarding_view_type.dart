@@ -1,4 +1,4 @@
-
+/// Idenfy camera onboarding type enum
 enum IdenfyOnBoardingViewType {
   /**
    * Shows a single onBoarding view before verification process with all upcoming steps

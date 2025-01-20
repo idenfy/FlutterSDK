@@ -1,3 +1,4 @@
+/// Identification results ui settings class
 class IdenfyIdentificationResultsUISettingsV2 {
   bool isShowSuccessSpinnerImmediateRedirect = false;
   bool isShowErrorSpinnerImmediateRedirect = false;
@@ -9,8 +10,11 @@ class IdenfyIdentificationResultsUISettingsV2 {
       this.isAdditionalUploadingInformationVisible);
 
   Map<String, dynamic> toJson() => {
-    'isShowSuccessSpinnerImmediateRedirect': isShowSuccessSpinnerImmediateRedirect,
-    'isShowErrorSpinnerImmediateRedirect': isShowErrorSpinnerImmediateRedirect,
-    'isAdditionalUploadingInformationVisible': isAdditionalUploadingInformationVisible,
-  };
+        'isShowSuccessSpinnerImmediateRedirect':
+            isShowSuccessSpinnerImmediateRedirect,
+        'isShowErrorSpinnerImmediateRedirect':
+            isShowErrorSpinnerImmediateRedirect,
+        'isAdditionalUploadingInformationVisible':
+            isAdditionalUploadingInformationVisible,
+      };
 }

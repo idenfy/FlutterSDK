@@ -1,3 +1,4 @@
+/// Idenfy immediate redirect enum
 enum ImmediateRedirectEnum {
   /**
    *  Immediate redirect won't happen in any case.

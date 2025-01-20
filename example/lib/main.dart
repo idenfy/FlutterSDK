@@ -63,7 +63,6 @@ class _MyAppState extends State<MyApp> {
     IdenfyIdentificationResult? idenfySDKresult;
     Exception? localException;
     try {
-
       IdenfyUISettings idenfyUISettings = IdenfyUIBuilder()
           .withAdditionalSupportView(true)
           .withIdenfyDocumentSelectionType(
@@ -89,7 +88,8 @@ class _MyAppState extends State<MyApp> {
 
       String authToken = await getAuthTokenRequest();
       // With IdenfySetting enabled
-      idenfySDKresult = await IdenfySdkFlutter.start(authToken, idenfySettings: idenfySettings);
+      idenfySDKresult = await IdenfySdkFlutter.start(authToken,
+          idenfySettings: idenfySettings);
       // Without IdenfySetting enabled
       //idenfySDKresult = await IdenfySdkFlutter.start(authToken);
     } on Exception catch (e) {

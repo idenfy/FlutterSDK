@@ -7,14 +7,13 @@ class IdenfySettings {
   final IdenfyLocaleEnum? selectedLocale;
   final IdenfyUISettings? idenfyUISettings;
 
-  IdenfySettings(
-      {this.sslPinning, this.selectedLocale, this.idenfyUISettings});
+  IdenfySettings({this.sslPinning, this.selectedLocale, this.idenfyUISettings});
 
   Map<String, dynamic> toJson() => {
-    'sslPinning': sslPinning,
-    'selectedLocale': selectedLocale?.name,
-    'idenfyUISettings': idenfyUISettings?.toJson(),
-  };
+        'sslPinning': sslPinning,
+        'selectedLocale': selectedLocale?.name,
+        'idenfyUISettings': idenfyUISettings?.toJson(),
+      };
 }
 
 /// Idenfy setting builder class
@@ -23,8 +22,7 @@ class IdenfyBuilder {
   IdenfyLocaleEnum? selectedLocale;
   IdenfyUISettings? idenfyUISettings;
 
-  IdenfyBuilder withSSLPinning(
-      bool sslPinning) {
+  IdenfyBuilder withSSLPinning(bool sslPinning) {
     this.sslPinning = sslPinning;
     return this;
   }
@@ -40,8 +38,7 @@ class IdenfyBuilder {
   }
 
   IdenfySettings build() {
-    IdenfySettings idenfySettings =
-    IdenfySettings(
+    IdenfySettings idenfySettings = IdenfySettings(
         sslPinning: sslPinning,
         selectedLocale: selectedLocale,
         idenfyUISettings: idenfyUISettings);

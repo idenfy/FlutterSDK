@@ -1,3 +1,4 @@
+/// Document type selected possible options
 enum IdenfyDocumentSelectionType {
   /**
    * Navigation from document selection will begin when a document type is selected and an additional continue button is pressed
