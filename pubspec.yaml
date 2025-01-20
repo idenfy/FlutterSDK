@@ -1,11 +1,11 @@
 name: idenfy_sdk_flutter
 description: iDenfy SDK for Flutter. iDenfy - all-in-one identity verification and fraud prevention platform helping in remote users on-boarding, mitigation of risk, and KYC/AML compliance.
-version: 2.5.9
+version: 2.6.0
 homepage: https://github.com/idenfy/FlutterSDK
 license: LICENSE.md
 
 environment:
-  sdk: '>=2.12.0 <3.0.0'
+  sdk: '>=2.15.0 <3.0.0'
   flutter: ">=1.20.0"
 
 dependencies:

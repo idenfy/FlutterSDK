@@ -4,7 +4,17 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:idenfy_sdk_flutter/idenfy_sdk_flutter.dart';
 import 'package:http/http.dart' as http;
+import 'package:idenfy_sdk_flutter/models/document_camera_frame_visibility.dart';
+import 'package:idenfy_sdk_flutter/models/document_type_enum.dart';
+import 'package:idenfy_sdk_flutter/models/idenfy_document_selection_type.dart';
+import 'package:idenfy_sdk_flutter/models/idenfy_identification_results_ui_settings.dart';
 import 'package:idenfy_sdk_flutter/models/idenfy_identification_status.dart';
+import 'package:idenfy_sdk_flutter/models/idenfy_instructions_enum.dart';
+import 'package:idenfy_sdk_flutter/models/idenfy_locale_enum.dart';
+import 'package:idenfy_sdk_flutter/models/idenfy_onboarding_view_type.dart';
+import 'package:idenfy_sdk_flutter/models/idenfy_settings.dart';
+import 'package:idenfy_sdk_flutter/models/idenfy_ui_settings.dart';
+import 'package:idenfy_sdk_flutter/models/immediate_redirect_enum.dart';
 import 'constants.dart' as Constants;
 import 'face_authentication_start_screen.dart';
 
@@ -53,8 +63,35 @@ class _MyAppState extends State<MyApp> {
     IdenfyIdentificationResult? idenfySDKresult;
     Exception? localException;
     try {
+
+      IdenfyUISettings idenfyUISettings = IdenfyUIBuilder()
+          .withAdditionalSupportView(true)
+          .withIdenfyDocumentSelectionType(
+              IdenfyDocumentSelectionType.navigateOnContinueButton)
+          .withOnBoardingViewType(IdenfyOnBoardingViewType.multipleStatic)
+          .withInstructions(IdenfyInstructionsEnum.none)
+          .withImmediateRedirect(ImmediateRedirectEnum.full)
+          .withLanguageSelection(false)
+          .withIdenfyIdentificationResultsUISettingsV2(
+              IdenfyIdentificationResultsUISettingsV2(true, true, true))
+          .withDocumentCameraFrameVisibility(
+              HiddenForSpecificCountriesAndDocumentTypes({
+            'US': [DocumentTypeEnum.PASSPORT.name]
+          }))
+          .withSkipInternalPrivacyPolicy(true)
+          .build();
+
+      IdenfySettings idenfySettings = IdenfyBuilder()
+          .withSelectedLocale(IdenfyLocaleEnum.EN)
+          .withUISettings(idenfyUISettings)
+          .withSSLPinning(true)
+          .build();
+
       String authToken = await getAuthTokenRequest();
-      idenfySDKresult = await IdenfySdkFlutter.start(authToken);
+      // With IdenfySetting enabled
+      idenfySDKresult = await IdenfySdkFlutter.start(authToken, idenfySettings: idenfySettings);
+      // Without IdenfySetting enabled
+      //idenfySDKresult = await IdenfySdkFlutter.start(authToken);
     } on Exception catch (e) {
       localException = e;
     }

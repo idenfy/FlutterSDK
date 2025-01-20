@@ -4,29 +4,27 @@ import iDenfySDK
 import idenfycore
 
 public class SwiftIdenfySdkFlutterPlugin: NSObject, @preconcurrency FlutterPlugin {
-  public static func register(with registrar: FlutterPluginRegistrar) {
-    let channel = FlutterMethodChannel(name: "idenfy_sdk_flutter", binaryMessenger: registrar.messenger())
-    let instance = SwiftIdenfySdkFlutterPlugin()
-    registrar.addMethodCallDelegate(instance, channel: channel)
-  }
-
+    public static func register(with registrar: FlutterPluginRegistrar) {
+        let channel = FlutterMethodChannel(name: "idenfy_sdk_flutter", binaryMessenger: registrar.messenger())
+        let instance = SwiftIdenfySdkFlutterPlugin()
+        registrar.addMethodCallDelegate(instance, channel: channel)
+    }
+    
     @MainActor public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         if call.method == "getPlatformVersion" {
-          result("iOS " + UIDevice.current.systemVersion)
+            result("iOS " + UIDevice.current.systemVersion)
         } else if call.method == "start" {
             if let arguments = call.arguments as? [String: Any],
                let authToken = arguments["authToken"] as? String {
-
-                let idenfySettingsV2 = IdenfyBuilderV2()
-                    .withAuthToken(authToken)
-                    .build()
-
+                
+                let idenfySettingsV2: IdenfySettingsV2 = IdenfySettingsDecoder.decodeIdenfySettings(arguments["idenfySettings"] as? [String : AnyObject?], authToken)
+                
                 let idenfyController = IdenfyController.shared
                 idenfyController.initializeIdenfySDKV2WithManual(idenfySettingsV2: idenfySettingsV2)
                 let idenfyVC = idenfyController.instantiateNavigationController()
-
+                
                 UIApplication.shared.keyWindow?.rootViewController?.present(idenfyVC, animated: true, completion: nil)
-
+                
                 idenfyController.handleIdenfyCallbacksWithManualResults(idenfyIdentificationResult: {
                     idenfyIdentificationResult
                     in
@@ -62,19 +60,5 @@ public class SwiftIdenfySdkFlutterPlugin: NSObject, @preconcurrency FlutterPlugi
                 })
             }
         }
-    }
-}
-
-class IdenfySettingsDecoder {
-    
-    static func decodeFaceAuthUISettings(_ json: [String: AnyObject?]?) -> IdenfyFaceAuthUISettings {
-        let faceAuthUISettings = IdenfyFaceAuthUISettings()
-        if let unwrappedLanguageSelectionNeeded = json?["isLanguageSelectionNeeded"] as? Bool {
-            faceAuthUISettings.isLanguageSelectionNeeded = unwrappedLanguageSelectionNeeded
-        }
-        if let unwrappedSkipOnBoardingView = json?["skipOnBoardingView"] as? Bool {
-            faceAuthUISettings.skipOnBoardingView = unwrappedSkipOnBoardingView
-        }
-        return faceAuthUISettings
     }
 }

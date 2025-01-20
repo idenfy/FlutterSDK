@@ -1,3 +1,6 @@
+## 2.6.0
+* Added IdenfySettings and IdenfyUISettings classes to the Flutter SDK
+
 ## 2.5.9
 * Android, iOS SDK's updated to 8.6.0
 * Added internet connection stability alert

@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/services.dart';
+import 'package:idenfy_sdk_flutter/models/idenfy_settings.dart';
 
 import 'models/face_authentication_result.dart';
 import 'models/idenfy_face_auth_ui_settings.dart';
@@ -13,10 +14,10 @@ class IdenfySdkFlutter {
 
   /// Function to start identity verification session
   /// @param token Generated identity verification token
-  static Future<IdenfyIdentificationResult> start(String token) async {
+  static Future<IdenfyIdentificationResult> start(String token, { IdenfySettings? idenfySettings }) async {
     final dynamic result =
-        await _channel.invokeMethod('start', <String, String>{
-      'authToken': token,
+        await _channel.invokeMethod('start', <String, dynamic>{
+      'authToken': token, 'idenfySettings': idenfySettings?.toJson()
     });
     IdenfyIdentificationResult idenfyIdentificationResult =
         IdenfyIdentificationResult.fromJson(jsonDecode(result));

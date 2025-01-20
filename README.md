@@ -65,7 +65,7 @@ Once the setup is completed successfully, you can add iDenfy SDK dependencies.
 To add iDenfy SDK plugin, open your project's `pubspec.yaml` file and append it with the latest iDenfy SDK flutter plugin:
 ```yaml
 dependencies:
-  idenfy_sdk_flutter: ^2.5.9
+  idenfy_sdk_flutter: ^2.6.0
 ```
 
 #### 3.1 Configuring Android project
@@ -225,20 +225,47 @@ Once you have an authentication token, which can be retrieved with following cod
     }
 
   Future<void> initIdenfySdk() async {
-      IdenfyIdentificationResult idenfySDKresult;
-      Exception localException;
-      try {
-      String authToken = await getAuthTokenRequest();
-        idenfySDKresult = await IdenfySdkFlutter.start(authToken);
-      } on Exception catch(e) {
-        localException = e;
-      }
+    IdenfyIdentificationResult? idenfySDKresult;
+    Exception? localException;
+    try {
 
-      setState(() {
-        _idenfySDKresult = idenfySDKresult;
-        exception = localException;
-      });
+      IdenfyUISettings idenfyUISettings = IdenfyUIBuilder()
+          .withAdditionalSupportView(true)
+          .withIdenfyDocumentSelectionType(
+              IdenfyDocumentSelectionType.navigateOnContinueButton)
+          .withOnBoardingViewType(IdenfyOnBoardingViewType.multipleStatic)
+          .withInstructions(IdenfyInstructionsEnum.none)
+          .withImmediateRedirect(ImmediateRedirectEnum.full)
+          .withLanguageSelection(false)
+          .withIdenfyIdentificationResultsUISettingsV2(
+              IdenfyIdentificationResultsUISettingsV2(true, true, true))
+          .withDocumentCameraFrameVisibility(
+              HiddenForSpecificCountriesAndDocumentTypes({
+            'US': [DocumentTypeEnum.PASSPORT.name]
+          }))
+          .withSkipInternalPrivacyPolicy(true)
+          .build();
+
+      IdenfySettings idenfySettings = IdenfyBuilder()
+          .withSelectedLocale(IdenfyLocaleEnum.EN)
+          .withUISettings(idenfyUISettings)
+          .withSSLPinning(true)
+          .build();
+
+      String authToken = await getAuthTokenRequest();
+      // With IdenfySetting enabled
+      idenfySDKresult = await IdenfySdkFlutter.start(authToken, idenfySettings: idenfySettings);
+      // Without IdenfySetting enabled
+      //idenfySDKresult = await IdenfySdkFlutter.start(authToken);
+    } on Exception catch (e) {
+      localException = e;
     }
+
+    setState(() {
+      _idenfySDKresult = idenfySDKresult;
+      _exception = localException;
+    });
+  }
 ```
 Please make sure to provide your cliendId, apikey and apisecret constants, they can be found in `constants.dart` file:
 ```javascript
@@ -473,12 +500,43 @@ Information about the FaceAuthenticationResult **faceAuthenticationStatus** stat
 |`EXIT`   |The user did not complete face authentication flow and the authentication status, provided by an automated platform, is EXIT.
 
 ## Additional customization
-Currently, @idenfy/idenfysdk_flutter_plugin does not provide customization options via Dart code directly. For any additional SDK customization, you need to use the sample in this repository and edit native code inside of the plugin.
+Currently, @idenfy/idenfysdk_flutter_plugin only provides IdenfySettings and IdenfyUISettings options via Dart code directly:
+
+```javascript
+      IdenfyUISettings idenfyUISettings = IdenfyUIBuilder()
+          .withAdditionalSupportView(true)
+          .withIdenfyDocumentSelectionType(
+              IdenfyDocumentSelectionType.navigateOnContinueButton)
+          .withOnBoardingViewType(IdenfyOnBoardingViewType.multipleStatic)
+          .withInstructions(IdenfyInstructionsEnum.none)
+          .withImmediateRedirect(ImmediateRedirectEnum.full)
+          .withLanguageSelection(false)
+          .withIdenfyIdentificationResultsUISettingsV2(
+              IdenfyIdentificationResultsUISettingsV2(true, true, true))
+          .withDocumentCameraFrameVisibility(
+              HiddenForSpecificCountriesAndDocumentTypes({
+            'LT': [DocumentTypeEnum.PASSPORT.name],
+            'LV': [DocumentTypeEnum.ID_CARD.name]
+          }))
+          .withSkipInternalPrivacyPolicy(true)
+          .build();
+
+      IdenfySettings idenfySettings = IdenfyBuilder()
+          .withSelectedLocale(IdenfyLocaleEnum.LT)
+          .withUISettings(idenfyUISettings)
+          .withSSLPinning(true)
+          .build();
+          
+      String authToken = await getAuthTokenRequest();
+      idenfySDKresult = await IdenfySdkFlutter.start(authToken, idenfySettings: idenfySettings);
+```
+
+For any additional SDK customization, you need to use the sample in this repository and edit native code inside of the plugin.
 
 We suggest creating a fork of this repository. After editing the code, you can include the plugin in the following way:
 ```yaml
 dependencies:
-  idenfy_sdk_flutter: ^2.5.9
+  idenfy_sdk_flutter: ^2.6.0
     git: https://github.com/your_repo/FlutterSDK.git
 ```
 

@@ -1,0 +1,5 @@
+
+enum IdenfyInstructionsEnum {
+  dialog,
+  none
+}
