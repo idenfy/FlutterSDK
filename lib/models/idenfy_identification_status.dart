@@ -18,16 +18,10 @@ class IdenfyIdentificationResult {
         json['suspectedIdentificationStatus']['autoSuspected'],
         json['suspectedIdentificationStatus']['manualSuspected']);
     return IdenfyIdentificationResult(
-        EnumTransform.valueOf(
-            AutoIdentificationStatus.values, json['autoIdentificationStatus']),
-        EnumTransform.valueOf(ManualIdentificationStatus.values,
-            json['manualIdentificationStatus']),
+        AutoIdentificationStatus.values
+            .byName(json['autoIdentificationStatus']),
+        ManualIdentificationStatus.values
+            .byName(json['manualIdentificationStatus']),
         suspectedStatus);
-  }
-}
-
-extension EnumTransform on List {
-  static T valueOf<T>(Iterable<T> values, String value) {
-    return values.where((e) => describeEnum(e!) == value).first;
   }
 }

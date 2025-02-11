@@ -8,7 +8,7 @@ class FaceAuthenticationResult {
   FaceAuthenticationResult(this.faceAuthenticationStatus);
 
   factory FaceAuthenticationResult.fromJson(dynamic json) {
-    return FaceAuthenticationResult(EnumTransform.valueOf(
-        FaceAuthenticationStatus.values, json['faceAuthenticationStatus']));
+    return FaceAuthenticationResult(FaceAuthenticationStatus.values
+        .byName(json['faceAuthenticationStatus']));
   }
 }
