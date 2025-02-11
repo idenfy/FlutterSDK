@@ -1,5 +1,4 @@
 import 'face_authentication_status.dart';
-import 'idenfy_identification_status.dart';
 
 /// Face authentication session result, that contains authentication status
 class FaceAuthenticationResult {
