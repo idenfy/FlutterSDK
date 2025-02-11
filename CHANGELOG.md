@@ -1,3 +1,11 @@
+## 2.6.1
+* Android, iOS SDK's updated to 8.6.1
+* Added questionnaire multi file upload question type
+* Added url detection for questionnaire descriptions
+* Added deny reasons alert dialog for identification results
+* Added support to relaunch SDK with same token after closing during manual review
+* Bug fixes
+
 ## 2.6.0
 * Added IdenfySettings and IdenfyUISettings classes to the Flutter SDK
 
