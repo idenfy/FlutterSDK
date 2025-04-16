@@ -1,3 +1,17 @@
+## 2.6.2
+* Android, iOS SDK's updated to 8.6.3
+* Added locale support with token generation for Face Authentication
+* Added bank verification [feature](https://documentation.idenfy.com/mobile/Android/android-sdk#bank-verification-feature)
+* Added country multi selection question type for questionnaire
+* Fix for for edge-to-edge overlap
+* minSdk version increased to API 24
+* Updated Face capture oval design
+* Updated passive liveness detection version
+* Manual reviewing state restoration having relaunched SDK
+* Updated 3D Face liveness version
+* Face authentication status bug, when the immediate redirect is disabled, fixed
+* Bug fixes
+
 ## 2.6.1
 * Android, iOS SDK's updated to 8.6.1
 * Added questionnaire multi file upload question type

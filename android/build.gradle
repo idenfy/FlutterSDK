@@ -32,7 +32,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
-    compileSdk 34
+    compileSdk 35
 
     namespace 'com.example.idenfy_sdk_flutter'
     sourceSets {
@@ -52,7 +52,7 @@ android {
 }
 
 dependencies {
-    api 'com.github.idenfy:sdk-api:8.6.1'
+    api 'com.github.idenfy:sdk-api:8.6.3'
     implementation 'com.github.idenfy:sdk-blurglaredetection:8.6.1'
     implementation 'com.google.code.gson:gson:2.8.6'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
