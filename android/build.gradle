@@ -9,12 +9,11 @@ buildscript {
     repositories {
         google()
         mavenCentral()
-        maven { url 'https://developer.huawei.com/repo/' }
         maven { url 'https://jitpack.io' }
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:8.1.2'
+        classpath 'com.android.tools.build:gradle:8.5.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
@@ -23,7 +22,6 @@ rootProject.allprojects {
     repositories {
         google()
         mavenCentral()
-        maven { url 'https://developer.huawei.com/repo/' }
         maven { url 'https://jitpack.io' }
     }
 }
@@ -52,8 +50,8 @@ android {
 }
 
 dependencies {
-    api 'com.github.idenfy:sdk-api:8.6.3'
-    implementation 'com.github.idenfy:sdk-blurglaredetection:8.6.1'
+    api 'com.github.idenfy:sdk-api:8.6.5'
+    implementation 'com.github.idenfy:sdk-blurglaredetection:8.6.5'
     implementation 'com.google.code.gson:gson:2.8.6'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'com.android.support:support-annotations:28.0.0'

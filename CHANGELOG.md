@@ -1,7 +1,13 @@
+## 2.6.3
+* Android updated to 8.6.5
+* Added a setting to disable mismatch tags alert dialog
+* Added Android 16 KB page size support
+* Removed hms dependencies
+
 ## 2.6.2
 * Android, iOS SDK's updated to 8.6.3
 * Added locale support with token generation for Face Authentication
-* Added bank verification [feature](https://documentation.idenfy.com/mobile/Android/android-sdk#bank-verification-feature)
+* Added bank verification [feature](https://documentation.idenfy.com/mobile/Android/android-additional-features#bank-verification-feature)
 * Added country multi selection question type for questionnaire
 * Fix for for edge-to-edge overlap
 * minSdk version increased to API 24
@@ -27,8 +33,8 @@
 * Android, iOS SDK's updated to 8.6.0
 * Added internet connection stability alert
 * Added immediate redirect option from idenfy settings
-* Added realtime blur glare detection in document capture [feature](https://documentation.idenfy.com/mobile/Android/android-sdk#realtime-document-blur-glare-detection)
-* Added face auto capture [feature](https://documentation.idenfy.com/mobile/Android/android-sdk#face-auto-capture)
+* Added realtime blur glare detection in document capture [feature](https://documentation.idenfy.com/mobile/Android/android-additional-features#realtime-document-blur-glare-detection)
+* Added face auto capture [feature](https://documentation.idenfy.com/mobile/Android/android-additional-features#face-auto-capture)
 * Process death improvements for Android
 * Video recording frame rate increased
 * Updated 3D Face liveness version
@@ -70,8 +76,8 @@
 * Android SDK updated to 8.4.2
 * Added Danish, Greek, Croatian, Norwegian, Serbian, Finnish, Turkish languages
 * Added Image upload attempt validation
-* Added virtual camera detection for Android IDV [feature](https://documentation.idenfy.com/mobile/Android/android-sdk#virtual-camera-detection) (Will result in a failed identification)
-* Updated Document Recognition [feature](https://documentation.idenfy.com/mobile/Android/android-sdk#document-recognition)
+* Added virtual camera detection for Android IDV [feature](https://documentation.idenfy.com/mobile/Android/android-additional-features#virtual-camera-detection) (Will result in a failed identification)
+* Updated Document Recognition [feature](https://documentation.idenfy.com/mobile/Android/android-additional-features#document-recognition)
 * Improved phone number validation for KYC questionnaire
 * Updated 3D Face liveness version for iOS
 * Bug fixes
@@ -172,8 +178,8 @@
 * Added Android virtual camera checks in Face Authentication (Will result in a failed authentication)
 * Increased Android minSdkVersion raised to API 26
 * Added KYC questionnaire Color question
-* Added KYC questionnaire conditions. [More](/mobile/Android/android-sdk#custom-kyc-questionnaire)
-* Added NFC optional feature. [More](/mobile/Android/android-sdk#nfc-optional)
+* Added KYC questionnaire conditions. [More](https://documentation.idenfy.com/mobile/Android/android-additional-features#custom-kyc-questionnaire)
+* Added NFC optional feature. [More](https://documentation.idenfy.com/mobile/Android/android-additional-features#nfc-optional)
 * Increased photo resolution
 * Improved pdf files validation
 * Fixed minor UI fixes
@@ -192,19 +198,19 @@
 ## 2.3.2
 * Android SDK updated to 8.1.6
 * iOS SDK updated to 8.1.7
-* Face Detection now validates small faces. [More](https://documentation.idenfy.com/mobile/Android/android-sdk#face-detection)
+* Face Detection now validates small faces. [More](https://documentation.idenfy.com/mobile/Android/android-additional-features#face-detection)
 * Fixed face detection error handling on Android
 * Fixed a crash on iOS Face authentication when camera permissions are denied
 * Fixed issued country view titles on iOS
 
 ## 2.3.1
 * iOS, Android SDK's updated to 8.1.0
-* Added an option to skip Camera On Boarding View on Face authentication. [More](https://documentation.idenfy.com/other-fraud/FaceAuthentication)
+* Added an option to skip Camera On Boarding View on Face authentication. [More](https://documentation.idenfy.com/face-auth/mobile-sdk/Android/FaceAuthenticationAndroid)
 
 ## 2.3.0
 * iOS SDK updated to 8.0.0
 * Android SDK updated to 8.0.1
-* Added Face authentication using face matching & passive liveness. [More](https://documentation.idenfy.com/other-fraud/FaceAuthentication)
+* Added Face authentication using face matching & passive liveness. [More](https://documentation.idenfy.com/face-auth/mobile-sdk/Android/FaceAuthenticationAndroid)
 
 ## 2.2.1
 * iOS SDK updated to 7.9.1
@@ -225,12 +231,12 @@
 ## 2.1.0
 * Android, iOS SDK's updated to 7.8.1
 * Removed Android Fotoaparat library (our fallback camera) since it is no longer compatible with AGP 7.4+
-* Added document camera rectangle visibility setting. [More](https://documentation.idenfy.com/UI/AndroidUICustomization#document-camera-rectangle-visibility)
+* Added document camera rectangle visibility setting. [More](https://documentation.idenfy.com/mobile/Android/android-ui-customization#document-camera-rectangle-visibility)
 
 ## 2.0.9
 * Android, iOS SDK's updated to 7.8.0
 * Updated CameraX library
-* IdenfyInstructionsType.DRAWER option is now deprecated. [More](https://documentation.idenfy.com/UI/AndroidUICustomization#adding-instructions-in-camera-session)
+* IdenfyInstructionsType.DRAWER option is now deprecated. [More](https://documentation.idenfy.com/mobile/Android/android-ui-customization#adding-instructions-in-camera-session)
 * Czech translation fixes
 * Added image upload from device size limit
 
@@ -253,39 +259,39 @@
 * Android, iOS SDK's updated to 7.7.5
 * Updated National passport translations
 * Opacity changed for document selection continue button disabled state
-* Android NFC Reading feature moved to a separate module. [Details](https://documentation.idenfy.com/mobile/Android/android-sdk#nfc-support)
+* Android NFC Reading feature moved to a separate module. [Details](https://documentation.idenfy.com/mobile/Android/android-additional-features#nfc-support)
 
 ## 2.0.4
 * Android SDK updated to 7.7.3
 * iOS SDK updated to 7.7.4
 * Added Address Card document type
 * Updated Android CameraX library
-* Updated Document Recognition [feature](https://documentation.idenfy.com/mobile/Android/android-sdk#document-recognition)
+* Updated Document Recognition [feature](https://documentation.idenfy.com/mobile/Android/android-additional-features#document-recognition)
 
 ## 2.0.3
 * iOS SDK updated to 7.7.3
 * Using a stable version (3.5.0) of lottie-ios since the new one is crashing
-* Changed default WKWebView zoom in privacy policy [feature](https://documentation.idenfy.com/mobile/iOS/ios-sdk#custom-privacy-policy)
+* Changed default WKWebView zoom in privacy policy [feature](https://documentation.idenfy.com/mobile/iOS/ios-additional-features#custom-privacy-policy)
 
 ## 2.0.2
 * Android, iOS SDK's updated to 7.7.2
-* Added Thai, Indonesian, Hindi, Hungarian [locales](https://documentation.idenfy.com/mobile/Android/android-sdk#localization)
-* Fixed ID Card translations in Czech [locale](https://documentation.idenfy.com/mobile/Android/android-sdk#localization)
-* iOS UIWebView migrated to WKWebView in privacy policy [feature](https://documentation.idenfy.com/mobile/iOS/ios-sdk#custom-privacy-policy)
+* Added Thai, Indonesian, Hindi, Hungarian [locales](https://documentation.idenfy.com/mobile/Android/android-customizing-flow#localization)
+* Fixed ID Card translations in Czech [locale](https://documentation.idenfy.com/mobile/Android/android-customizing-flow#localization)
+* iOS UIWebView migrated to WKWebView in privacy policy [feature](https://documentation.idenfy.com/mobile/iOS/ios-additional-features#custom-privacy-policy)
 
 ## 2.0.1
 
 * Android SDK updated to 7.7.1
-* Added Slovak [locale](https://documentation.idenfy.com/mobile/Android/android-sdk#localization)
-* [Document recognition](https://documentation.idenfy.com/mobile/Android/android-sdk#document-recognition) feature files moved to a separate module, to decrease main SDK size.
+* Added Slovak [locale](https://documentation.idenfy.com/mobile/Android/android-customizing-flow#localization)
+* [Document recognition](https://documentation.idenfy.com/mobile/Android/android-additional-features#document-recognition) feature files moved to a separate module, to decrease main SDK size.
 
 ## 2.0.0
 
 * IOS SDK updated to 7.7.1
 * Android SDK updated to 7.7.0
-* Added custom KYC questionnaire feature. [More](https://documentation.idenfy.com/mobile/iOS/ios-sdk#custom-kyc-questionnaire)
-* Added custom privacy policy feature. [More](https://documentation.idenfy.com/mobile/iOS/ios-sdk#custom-privacy-policy)
-* Added Ukrainian, Portuguese, Vietnamese [locales](https://documentation.idenfy.com/mobile/iOS/ios-sdk#localization)
+* Added custom KYC questionnaire feature. [More](https://documentation.idenfy.com/mobile/iOS/ios-additional-features#custom-kyc-questionnaire)
+* Added custom privacy policy feature. [More](https://documentation.idenfy.com/mobile/iOS/ios-additional-features#custom-privacy-policy)
+* Added Ukrainian, Portuguese, Vietnamese [locales](https://documentation.idenfy.com/mobile/iOS/ios-customizing-flow#localization)
 * Updated document issuing country list
 * Updated Kotlin (1.6.21), Compose (1.2.0-rc02) versions in Android
 * CompileSdkVersion raised to API 33 in Android
@@ -321,8 +327,8 @@
 
 * Android and IOS SDK's updated to 7.6.0
 * Added new document auto capture feature (Please contact support@idenfy.com for more information)
-* New NFC reading animations and icons. [Details](https://documentation.idenfy.com/mobile/Android/android-sdk#nfc-support)
-* Device language is now used as a fallback [locale](https://documentation.idenfy.com/mobile/Android/android-sdk#localization)
+* New NFC reading animations and icons. [Details](https://documentation.idenfy.com/mobile/Android/android-additional-features#nfc-support)
+* Device language is now used as a fallback [locale](https://documentation.idenfy.com/mobile/Android/android-customizing-flow#localization)
 * Updated document camera on boarding instructions video
 * Updated Dutch translations
 * iDenfy splash screen slogan shown only in English
@@ -381,7 +387,7 @@
 
 * Android and IOS SDK's updated to 7.1.0
 * New suspected screen and callbacks handling, if needed. Read [here](https://documentation.idenfy.com/callbacks/ResultCallback#verification-status-table)
-* New internet disconnect feature and handling. More about this can be found here: [Android](https://documentation.idenfy.com/mobile/Android/android-sdk#internet-disconnect), [IOS](https://documentation.idenfy.com/mobile/IOS/ios-sdk#internet-disconnect)
+* New internet disconnect feature and handling. More about this can be found here: [Android](https://documentation.idenfy.com/mobile/Android/android-additional-information#internet-disconnect), [IOS](https://documentation.idenfy.com/mobile/IOS/ios-sdk#internet-disconnect)
 * Major change to the onboarding screen. A new onboarding screen appears before every step to provide maximum guidance.
   Manual results waiting screen UI/UX update. The screen is more informative and easier to understand the verification progress.
   A new cancel window change. The user can contact our support team if he wants assistance.

@@ -65,7 +65,7 @@ Once the setup is completed successfully, you can add iDenfy SDK dependencies.
 To add iDenfy SDK plugin, open your project's `pubspec.yaml` file and append it with the latest iDenfy SDK flutter plugin:
 ```yaml
 dependencies:
-  idenfy_sdk_flutter: ^2.6.2
+  idenfy_sdk_flutter: ^2.6.3
 ```
 
 #### 3.1 Configuring Android project
@@ -536,7 +536,7 @@ For any additional SDK customization, you need to use the sample in this reposit
 We suggest creating a fork of this repository. After editing the code, you can include the plugin in the following way:
 ```yaml
 dependencies:
-  idenfy_sdk_flutter: ^2.6.2
+  idenfy_sdk_flutter: ^2.6.3
     git: https://github.com/your_repo/FlutterSDK.git
 ```
 
@@ -715,7 +715,7 @@ class IdenfySdkFlutterPlugin: FlutterPlugin, MethodCallHandler, ActivityAware, P
 ```
 
 
-Fore more extensive customization, please caerfully follow our [Android native SDK](https://documentation.idenfy.com/UI/AndroidUICustomization) guide and edit **IdenfysdkFlutterPlugin.kt** even further.
+Fore more extensive customization, please caerfully follow our [Android native SDK](https://documentation.idenfy.com/mobile/Android/android-ui-customization) guide and edit **IdenfysdkFlutterPlugin.kt** even further.
 
 **IOS customization:**
 
@@ -885,7 +885,7 @@ public class SwiftIdenfySdkFlutterPlugin: NSObject, FlutterPlugin {
 
 UISettings classes for the rest of the screens can be found in our [repository](https://github.com/idenfy/iDenfyResources/tree/main/sdk/ios/uicustomization).
 
-Fore more extensive customization, please caerfully follow our [IOS native SDK guide](https://documentation.idenfy.com/UI/IOSUICustomization) and edit **SwiftIdenfysdkFlutterPlugin.swift** even further.
+Fore more extensive customization, please caerfully follow our [IOS native SDK guide](https://documentation.idenfy.com/mobile/iOS/ios-ui-customization) and edit **SwiftIdenfysdkFlutterPlugin.swift** even further.
 
 ## SDK Integration tutorials
 For more information visit: [IOS SDK integration tutorial](https://documentation.idenfy.com/tutorials/mobile-sdk/IosSampleProjectTutorial) and [Android SDK integration tutorial](https://documentation.idenfy.com/tutorials/mobile-sdk/AndroidSampleProjectTutorial)
