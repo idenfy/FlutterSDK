@@ -1,3 +1,16 @@
+## 2.6.4
+* Android, iOS SDK's updated to 8.6.7
+* Added EID document support (Bank ID, Smart-ID, CLEAR, OneID, Finnish Trust Network, MitID, Verimi, SPID)
+* Added Email verification [feature](https://documentation.idenfy.com/mobile/Android/android-additional-features#email-verification)
+* Added Phone Number verification [feature](https://documentation.idenfy.com/mobile/Android/android-additional-features#phone-number-verification)
+* Addeed Slovenian locale support
+* 3D Face Liveness version updated
+* Updated Android CameraX version
+* Updated Android Document recognition [feature](/mobile/Android/android-additional-features#document-recognition) version
+* Android SDK size reduced
+* Updated iOS Lottie version to 4.5.0
+* Bug fixes
+
 ## 2.6.3
 * Android updated to 8.6.5
 * Added a setting to disable mismatch tags alert dialog
