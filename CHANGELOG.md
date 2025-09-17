@@ -1,3 +1,9 @@
+## 2.6.5
+* Android, iOS SDK's updated to 8.6.8
+* Updated 3D Face Liveness version
+* iOS SDK built with XCode 26
+* Bug fixes
+
 ## 2.6.4
 * Android, iOS SDK's updated to 8.6.7
 * Added EID document support (Bank ID, Smart-ID, CLEAR, OneID, Finnish Trust Network, MitID, Verimi, SPID)
