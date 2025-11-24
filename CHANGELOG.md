@@ -1,3 +1,17 @@
+## 2.6.6
+* Android SDK updated to 8.7.0
+* iOS SDK updated to 8.7.6
+* iDenfy support email removed from the contact info
+* Increased image compression quality & video resolution
+* Increased image upload speed
+* Updated Sentry SDK not to interfere with the client app **If you get any iOS crashes from iDenfyInternalLogger, please update to this version**
+* Updated Spanish translations
+* Updated 3D Face Liveness version
+* Updated iOS country selection UISearchBar to support iOS 26. **Please check out the api changes, that might affect you in the [migration guide](/mobile/iOS/migration-guide/ios-migrations)**
+* Bug fixes
+* **Android targeting API 36, updated to AGP 8.9.2**
+* **iOS SDK is built using XCode 16.4**
+
 ## 2.6.5
 * Android, iOS SDK's updated to 8.6.8
 * Updated 3D Face Liveness version
