@@ -1,3 +1,14 @@
+## 2.6.7
+* Android SDK updated to 8.7.1
+* iOS SDK updated to 8.7.7
+* Updated Android virtual camera detection [feature](/mobile/Android/android-additional-features#virtual-camera-detection) version
+* Polish translations updated
+* Android Face detection improvements & bug fixes
+* iOS NFC reading improved
+* iOS OpenSSL version updated
+* Bug fixes
+* **SDK is built using XCode 16.4**
+
 ## 2.6.6
 * Android SDK updated to 8.7.0
 * iOS SDK updated to 8.7.6

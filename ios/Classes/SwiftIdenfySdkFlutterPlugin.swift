@@ -18,7 +18,7 @@ public class SwiftIdenfySdkFlutterPlugin: NSObject, @preconcurrency FlutterPlugi
                let authToken = arguments["authToken"] as? String {
                 
                 let idenfySettingsV2: IdenfySettingsV2 = IdenfySettingsDecoder.decodeIdenfySettings(arguments["idenfySettings"] as? [String : AnyObject?], authToken)
-                
+                SdkVersionManager.platformWrapper = "flutter"
                 let idenfyController = IdenfyController.shared
                 idenfyController.initializeIdenfySDKV2WithManual(idenfySettingsV2: idenfySettingsV2)
                 let idenfyVC = idenfyController.instantiateNavigationController()
@@ -42,6 +42,7 @@ public class SwiftIdenfySdkFlutterPlugin: NSObject, @preconcurrency FlutterPlugi
                let withImmediateRedirect = arguments["withImmediateRedirect"] as? Bool,
                let authenticationToken = arguments["token"] as? String {
                 let idenfyFaceAuthUISettings = IdenfySettingsDecoder.decodeFaceAuthUISettings(arguments["idenfyFaceAuthUISettings"] as? [String : AnyObject?])
+                SdkVersionManager.platformWrapper = "flutter"
                 let idenfyController = IdenfyController.shared
                 let faceAuthenticationInitialization = FaceAuthenticationInitialization(authenticationToken: authenticationToken, withImmediateRedirect: withImmediateRedirect, idenfyFaceAuthUISettings: idenfyFaceAuthUISettings)
                 idenfyController.initializeFaceAuthentication(faceAuthenticationInitialization: faceAuthenticationInitialization)
