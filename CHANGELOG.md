@@ -1,3 +1,10 @@
+## 2.6.8
+* Android SDK updated to 8.7.3
+* iOS SDK updated to 8.7.8
+* Updated 3D Face Liveness version. **Please update to this version if previous builds fail to pull**
+* Added tints for lottie animations
+* Bug fixes
+
 ## 2.6.7
 * Android SDK updated to 8.7.1
 * iOS SDK updated to 8.7.7
@@ -152,7 +159,7 @@
 * 3D Face liveness error handling, retry logic improvements
 * Dynamic OnBoarding screen removed
 * Privacy policy submission fix
-* Other bug fixes
+* Other bug fixes 
 * If you have customized iOS or Android native code, please check out the api changes, that might affect you in the [iOS](https://documentation.idenfy.com/mobile/iOS/migration-guide/ios-migrations) and [Android](https://documentation.idenfy.com/mobile/Android/migration-guide/android-migrations) migration guides.
 
 ## 2.4.6
@@ -167,7 +174,7 @@
 * Added network error logs
 
 ## 2.4.3
-* Added new face detection descriptions
+* Added new face detection descriptions 
 * Added support for additional step ordering
 * Removed instructions drawer option from camera view
 * Face authentication session improvements
@@ -443,9 +450,9 @@
 
 ## 1.4.0
 
-* IOS SDK 6.7.0 version, which brings arm64 architecture to the simulator. From now on the plugin works for all devices.
+* IOS SDK 6.7.0 version, which brings arm64 architecture to the simulator. From now on the plugin works for all devices. 
   Also the next version will have minimum IOS deployment target raised to 10.
-
+  
 ## 1.3.0
 
 * Android SDK updated to 5.3.2 and IOS SDK updated to 6.6.3, fixed IOS compile issue for Example Application
