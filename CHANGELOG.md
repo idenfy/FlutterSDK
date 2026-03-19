@@ -1,3 +1,17 @@
+## 2.6.9
+* Android SDK updated to 8.7.6
+* iOS SDK updated to 8.8.1
+* Added japanese locale support
+* Android SDK size reduced
+* Increased AGP version to 8.9.1
+* Fixed Android camera button disabled state alpha
+* Fixed Android custom dialogs background color change
+* Android default alert dialogs replaced with new XML layout
+* Fixed iOS continue button title color change
+* Fixed custom font passing issues
+* Lottie specific version unpinned from iOS SDK
+* Bug fixes
+
 ## 2.6.8
 * Android SDK updated to 8.7.3
 * iOS SDK updated to 8.7.8
