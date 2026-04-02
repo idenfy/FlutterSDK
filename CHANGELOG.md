@@ -1,3 +1,8 @@
+## 2.7.1
+* Android SDK updated to 8.7.8
+* iOS SDK updated to 8.8.3
+* Added Chinese Traditional support for privacy policy
+
 ## 2.7.0
 * Android SDK updated to 8.7.7
 * iOS SDK updated to 8.8.2
