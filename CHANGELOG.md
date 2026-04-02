@@ -1,3 +1,8 @@
+## 2.7.0
+* Android SDK updated to 8.7.7
+* iOS SDK updated to 8.8.2
+* Added Chinese Traditional and Korean locale support
+
 ## 2.6.9
 * Android SDK updated to 8.7.6
 * iOS SDK updated to 8.8.1
