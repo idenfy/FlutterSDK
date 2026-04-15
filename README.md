@@ -714,7 +714,7 @@ class IdenfySdkFlutterPlugin: FlutterPlugin, MethodCallHandler, ActivityAware, P
 ```
 
 
-Fore more extensive customization, please caerfully follow our [Android native SDK](https://documentation.idenfy.com/mobile/Android/android-ui-customization) guide and edit **IdenfysdkFlutterPlugin.kt** even further.
+Fore more extensive customization, please caerfully follow our [Android native SDK](https://documentation.idenfy.com/sdks/android/ui-customization) guide and edit **IdenfysdkFlutterPlugin.kt** even further.
 
 **IOS customization:**
 
@@ -884,7 +884,7 @@ public class SwiftIdenfySdkFlutterPlugin: NSObject, FlutterPlugin {
 
 UISettings classes for the rest of the screens can be found in our [repository](https://github.com/idenfy/iDenfyResources/tree/main/sdk/ios/uicustomization).
 
-Fore more extensive customization, please caerfully follow our [IOS native SDK guide](https://documentation.idenfy.com/mobile/iOS/ios-ui-customization) and edit **SwiftIdenfysdkFlutterPlugin.swift** even further.
+Fore more extensive customization, please caerfully follow our [IOS native SDK guide](https://documentation.idenfy.com/sdks/ios/ui-customization) and edit **SwiftIdenfysdkFlutterPlugin.swift** even further.
 
 ## SDK Integration tutorials
 For more information visit: [IOS SDK integration tutorial](https://documentation.idenfy.com/tutorials/mobile-sdk/IosSampleProjectTutorial) and [Android SDK integration tutorial](https://documentation.idenfy.com/tutorials/mobile-sdk/AndroidSampleProjectTutorial)
