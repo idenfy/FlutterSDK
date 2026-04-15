@@ -517,7 +517,8 @@ Currently, @idenfy/idenfysdk_flutter_plugin only provides IdenfySettings and Ide
             'LT': [DocumentTypeEnum.PASSPORT.name],
             'LV': [DocumentTypeEnum.ID_CARD.name]
           }))
-          .withSkipInternalPrivacyPolicy(true)
+          .withMismatchTagsAlert(true)
+          .withCountryAndDocumentSelectionJoined(true)
           .build();
 
       IdenfySettings idenfySettings = IdenfyBuilder()
