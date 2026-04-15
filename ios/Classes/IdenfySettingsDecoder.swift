@@ -78,8 +78,12 @@ class IdenfySettingsDecoder {
                 }
             }
 
-            if let skipInternalPrivacyPolicyView = uiSettingsMap["skipInternalPrivacyPolicyView"] as? Bool {
-                idenfyUISettingsV2.skipInternalPrivacyPolicyView = skipInternalPrivacyPolicyView
+            if let mismatchTagsAlert = uiSettingsMap["mismatchTagsAlert"] as? Bool {
+                idenfyUISettingsV2.mismatchTagsAlert = mismatchTagsAlert
+            }
+
+            if let withCountryAndDocumentSelectionJoined = uiSettingsMap["withCountryAndDocumentSelectionJoined"] as? Bool {
+                idenfyUISettingsV2.withCountryAndDocumentSelectionJoined = withCountryAndDocumentSelectionJoined
             }
 
             if let documentFrameVisibility = uiSettingsMap["documentCameraFrameVisibility"] as? [String: Any],

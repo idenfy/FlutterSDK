@@ -15,8 +15,9 @@ class IdenfyUISettings {
   final IdenfyIdentificationResultsUISettingsV2?
       idenfyIdentificationResultsUISettingsV2;
   final ImmediateRedirectEnum? immediateRedirectEnum;
-  final bool? skipInternalPrivacyPolicyView;
+  final bool? mismatchTagsAlert;
   final DocumentCameraFrameVisibility? documentCameraFrameVisibility;
+  final bool? withCountryAndDocumentSelectionJoined;
 
   IdenfyUISettings(
       {this.isAdditionalSupportEnabled,
@@ -26,8 +27,9 @@ class IdenfyUISettings {
       this.idenfyInstructionsEnum,
       this.idenfyIdentificationResultsUISettingsV2,
       this.immediateRedirectEnum,
-      this.skipInternalPrivacyPolicyView,
-      this.documentCameraFrameVisibility});
+      this.mismatchTagsAlert,
+      this.documentCameraFrameVisibility,
+      this.withCountryAndDocumentSelectionJoined});
 
   Map<String, dynamic> toJson() => {
         'isAdditionalSupportEnabled': isAdditionalSupportEnabled,
@@ -38,8 +40,9 @@ class IdenfyUISettings {
         'idenfyIdentificationResultsUISettingsV2':
             idenfyIdentificationResultsUISettingsV2?.toJson(),
         'immediateRedirectEnum': immediateRedirectEnum?.name,
-        'skipInternalPrivacyPolicyView': skipInternalPrivacyPolicyView,
-        'documentCameraFrameVisibility': documentCameraFrameVisibility?.toJson()
+        'mismatchTagsAlert': mismatchTagsAlert,
+        'documentCameraFrameVisibility': documentCameraFrameVisibility?.toJson(),
+        'withCountryAndDocumentSelectionJoined': withCountryAndDocumentSelectionJoined
       };
 }
 
@@ -53,8 +56,9 @@ class IdenfyUIBuilder {
   IdenfyIdentificationResultsUISettingsV2?
       idenfyIdentificationResultsUISettingsV2;
   ImmediateRedirectEnum? immediateRedirectEnum;
-  bool? skipInternalPrivacyPolicyView;
+  bool? mismatchTagsAlert;
   DocumentCameraFrameVisibility? documentCameraFrameVisibility;
+  bool? countryAndDocumentSelectionJoined;
 
   IdenfyUIBuilder withAdditionalSupportView(bool isAdditionalSupportEnabled) {
     this.isAdditionalSupportEnabled = isAdditionalSupportEnabled;
@@ -98,15 +102,21 @@ class IdenfyUIBuilder {
     return this;
   }
 
-  IdenfyUIBuilder withSkipInternalPrivacyPolicy(
-      bool skipInternalPrivacyPolicyView) {
-    this.skipInternalPrivacyPolicyView = skipInternalPrivacyPolicyView;
+  IdenfyUIBuilder withMismatchTagsAlert(
+      bool mismatchTagsAlert) {
+    this.mismatchTagsAlert = mismatchTagsAlert;
     return this;
   }
 
   IdenfyUIBuilder withDocumentCameraFrameVisibility(
       DocumentCameraFrameVisibility documentCameraFrameVisibility) {
     this.documentCameraFrameVisibility = documentCameraFrameVisibility;
+    return this;
+  }
+
+  IdenfyUIBuilder withCountryAndDocumentSelectionJoined(
+      bool countryAndDocumentSelectionJoined) {
+    this.countryAndDocumentSelectionJoined = countryAndDocumentSelectionJoined;
     return this;
   }
 
@@ -120,8 +130,9 @@ class IdenfyUIBuilder {
         idenfyIdentificationResultsUISettingsV2:
             idenfyIdentificationResultsUISettingsV2,
         immediateRedirectEnum: immediateRedirectEnum,
-        skipInternalPrivacyPolicyView: skipInternalPrivacyPolicyView,
-        documentCameraFrameVisibility: documentCameraFrameVisibility);
+        mismatchTagsAlert: mismatchTagsAlert,
+        documentCameraFrameVisibility: documentCameraFrameVisibility,
+        withCountryAndDocumentSelectionJoined: countryAndDocumentSelectionJoined);
     return idenfyUISettings;
   }
 }

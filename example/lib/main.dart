@@ -77,7 +77,8 @@ class _MyAppState extends State<MyApp> {
               HiddenForSpecificCountriesAndDocumentTypes({
             'US': [DocumentTypeEnum.PASSPORT.name]
           }))
-          .withSkipInternalPrivacyPolicy(true)
+          .withMismatchTagsAlert(true)
+          .withCountryAndDocumentSelectionJoined(true)
           .build();
 
       IdenfySettings idenfySettings = IdenfyBuilder()
