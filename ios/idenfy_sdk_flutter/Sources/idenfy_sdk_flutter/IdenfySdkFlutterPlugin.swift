@@ -1,0 +1,84 @@
+import Flutter
+import UIKit
+import iDenfySDK
+import idenfycore
+
+@objc public class IdenfySdkFlutterPlugin: NSObject, @preconcurrency FlutterPlugin {
+    public static func register(with registrar: FlutterPluginRegistrar) {
+        let channel = FlutterMethodChannel(name: "idenfy_sdk_flutter", binaryMessenger: registrar.messenger())
+        let instance = IdenfySdkFlutterPlugin()
+        registrar.addMethodCallDelegate(instance, channel: channel)
+    }
+
+    @MainActor public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
+        if call.method == "getPlatformVersion" {
+            result("iOS " + UIDevice.current.systemVersion)
+        } else if call.method == "start" {
+            if let arguments = call.arguments as? [String: Any],
+               let authToken = arguments["authToken"] as? String {
+
+                let idenfySettingsV2: IdenfySettingsV2 = IdenfySettingsDecoder.decodeIdenfySettings(arguments["idenfySettings"] as? [String : AnyObject?], authToken)
+                SdkVersionManager.platformWrapper = "flutter"
+                let idenfyController = IdenfyController.shared
+                idenfyController.initializeIdenfySDKV2WithManual(idenfySettingsV2: idenfySettingsV2)
+                let idenfyVC = idenfyController.instantiateNavigationController()
+
+                UIApplication.shared.keyWindow?.rootViewController?.present(idenfyVC, animated: true, completion: nil)
+
+                idenfyController.handleIdenfyCallbacksWithManualResults(idenfyIdentificationResult: {
+                    idenfyIdentificationResult
+                    in
+                    do {
+                        let jsonEncoder = JSONEncoder()
+                        let jsonData = try jsonEncoder.encode(idenfyIdentificationResult)
+                        let string = String(data: jsonData, encoding: String.Encoding.utf8)
+                        result(string)
+                    } catch {
+                    }
+                })
+            }
+        } else if call.method == "startFaceAuth" {
+            if let arguments = call.arguments as? [String: Any],
+               let withImmediateRedirect = arguments["withImmediateRedirect"] as? Bool,
+               let authenticationToken = arguments["token"] as? String {
+                let idenfyFaceAuthUISettings = IdenfySettingsDecoder.decodeFaceAuthUISettings(arguments["idenfyFaceAuthUISettings"] as? [String : AnyObject?])
+                SdkVersionManager.platformWrapper = "flutter"
+                let idenfyController = IdenfyController.shared
+                let faceAuthenticationInitialization = FaceAuthenticationInitialization(authenticationToken: authenticationToken, withImmediateRedirect: withImmediateRedirect, idenfyFaceAuthUISettings: idenfyFaceAuthUISettings)
+                idenfyController.initializeFaceAuthentication(faceAuthenticationInitialization: faceAuthenticationInitialization)
+                let idenfyVC = idenfyController.instantiateNavigationController()
+
+                UIApplication.shared.keyWindow?.rootViewController?.present(idenfyVC, animated: true, completion: nil)
+
+                idenfyController.handleIdenfyCallbacksForFaceAuthentication(faceAuthenticationResult: { faceAuthenticationResult in
+                    do {
+                        let jsonEncoder = JSONEncoder()
+                        let jsonData = try jsonEncoder.encode(faceAuthenticationResult)
+                        let string = String(data: jsonData, encoding: String.Encoding.utf8)
+                        result(string)
+                    } catch {
+                    }
+                })
+            }
+        } else if call.method == "startRequestUpdate" {
+            if let arguments = call.arguments as? [String: Any],
+               let authToken = arguments["authToken"] as? String {
+
+                let idenfySettingsV2: IdenfySettingsV2 = IdenfySettingsDecoder.decodeIdenfySettings(arguments["idenfySettings"] as? [String : AnyObject?], authToken)
+                SdkVersionManager.platformWrapper = "flutter"
+                let idenfyController = IdenfyController.shared
+                idenfyController.initializeIdenfySDKV2WithManual(idenfySettingsV2: idenfySettingsV2)
+                let idenfyVC = idenfyController.instantiateNavigationController()
+
+                UIApplication.shared.keyWindow?.rootViewController?.present(idenfyVC, animated: true, completion: nil)
+
+                idenfyController.handleIdenfyCallbacksForRequestUpdate(requestUpdateResult: {
+                    informationUpdateStatus
+                    in
+                    let jsonString = "{\"informationUpdateStatus\":\"\(informationUpdateStatus.rawValue)\"}"
+                    result(jsonString)
+                })
+            }
+        }
+    }
+}

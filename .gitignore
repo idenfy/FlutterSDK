@@ -5,6 +5,7 @@
 .pub/
 
 build/
+.build/
 
 node_modules/
 dist/

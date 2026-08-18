@@ -1,3 +1,15 @@
+## 2.7.4
+* Android, iOS SDK updated to 9.1.1
+* Added CNH digital ID support
+* Added SPM support for iOS
+* Updated Android virtual camera detection feature version 
+* Android R8 and ProGuard optimization improvements to reduce SDK size 
+* Camera error logging improvements 
+* Android Smart-ID crash fix 
+* Fixed iOS face auto capture bug 
+* Fixed iOS document recognition crash
+* Bug fixes
+
 ## 2.7.3
 * Android, iOS SDK updated to 9.1.0
 * Addded Mobile ID eID, Philippines eID, IDIN document support

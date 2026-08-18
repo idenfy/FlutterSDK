@@ -4,7 +4,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'idenfy_sdk_flutter'
-  s.version          = '2.7.3'
+  s.version          = '2.7.4'
   s.summary          = 'iDenfy SDK for Flutter'
   s.description      = <<-DESC
 iDenfy SDK for Flutter
@@ -13,9 +13,9 @@ iDenfy SDK for Flutter
   s.license          = { :file => '../LICENSE' }
   s.author           = { 'iDenfy' => 'techsupport@idenfy.com' }
   s.source           = { :path => '.' }
-  s.source_files = 'Classes/**/*'
+  s.source_files = 'idenfy_sdk_flutter/Sources/idenfy_sdk_flutter/**/*'
   s.dependency 'Flutter'
-  s.dependency 'iDenfySDK/iDenfyLiveness', '9.1.0'
+  s.dependency 'iDenfySDK/iDenfyLiveness', '9.1.1'
   s.platform = :ios, '13.0'
 
   # Flutter.framework does not contain a i386 slice.
