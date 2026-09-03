@@ -1,3 +1,7 @@
+## 2.7.5
+* Android SDK updated to 9.1.2
+* Fixed a crash that occurred when exiting SDK in the KYC questionnaire
+
 ## 2.7.4
 * Android, iOS SDK updated to 9.1.1
 * Added CNH digital ID support
