@@ -1,3 +1,7 @@
+## 2.7.6
+* Android SDK updated to 9.1.3
+* Fixed a crash regarding KYC questionnaire conditions
+
 ## 2.7.5
 * Android SDK updated to 9.1.2
 * Fixed a crash that occurred when exiting SDK in the KYC questionnaire
