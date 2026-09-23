@@ -364,5 +364,9 @@ IdenfyColorScheme createSampleColorScheme() {
     idenfyCountryAndDocumentSelectionViewItemSelectionHighlightedBorderColor: secondaryColor,
     idenfyCountryAndDocumentSelectionViewItemSelectionHighlightedBackgroundColor: mainColor,
     idenfyCountryAndDocumentSelectionViewItemSelectionHighlightedTextColor: secondaryColor,
+
+    // Manual reviewing
+    idenfyManualReviewingStatusWaitingCommonReviewBoxFinishedTitleColor: secondaryColor,
+    idenfyManualReviewingStatusWaitingBackToAccountButtonTextColor: secondaryColor,
   );
 }
