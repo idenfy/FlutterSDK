@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/idenfy/iDenfyLiveness-spm.git",
       "state" : {
-        "revision" : "1873be9f9af9177cda46a2a6dbdfe45edee17eeb",
-        "version" : "9.1.1"
+        "revision" : "1b855987ed0bf78cf768e5c0a82dcbcad719b0d3",
+        "version" : "9.2.3"
       }
     },
     {

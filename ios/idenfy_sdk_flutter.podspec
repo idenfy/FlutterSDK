@@ -4,7 +4,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'idenfy_sdk_flutter'
-  s.version          = '2.7.6'
+  s.version          = '2.8.0'
   s.summary          = 'iDenfy SDK for Flutter'
   s.description      = <<-DESC
 iDenfy SDK for Flutter
@@ -15,8 +15,8 @@ iDenfy SDK for Flutter
   s.source           = { :path => '.' }
   s.source_files = 'idenfy_sdk_flutter/Sources/idenfy_sdk_flutter/**/*'
   s.dependency 'Flutter'
-  s.dependency 'iDenfySDK/iDenfyLiveness', '9.1.1'
-  s.platform = :ios, '13.0'
+  s.dependency 'iDenfySDK/iDenfyLiveness', '9.2.3'
+  s.platform = :ios, '15.0'
 
   # Flutter.framework does not contain a i386 slice.
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES', 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386' }

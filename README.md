@@ -44,7 +44,7 @@ post_install do |installer|
     end
     if target.name == "idenfy_sdk_flutter"
       target.build_configurations.each do |config|
-        config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.0'
+        config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '15.0'
         config.build_settings['ENABLE_BITCODE'] = 'NO'
       end
     end
@@ -55,9 +55,9 @@ end
 
 Minimum required versions by the platform:
 
-**IOS - 13.0**
+**IOS - 15.0**
 
-**iOS SDK is built using xCode 26.4.1**
+**iOS SDK is built using xCode 26.6**
 
 **Android - API 24**
 
@@ -69,7 +69,7 @@ Once the setup is completed successfully, you can add iDenfy SDK dependencies.
 To add iDenfy SDK plugin, open your project's `pubspec.yaml` file and append it with the latest iDenfy SDK flutter plugin:
 ```yaml
 dependencies:
-  idenfy_sdk_flutter: ^2.7.6
+  idenfy_sdk_flutter: ^2.8.0
 ```
 
 #### 3.1 Configuring Android project
@@ -145,7 +145,7 @@ post_install do |installer|
     end
     if target.name == "idenfy_sdk_flutter"
       target.build_configurations.each do |config|
-        config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.0'
+        config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '15.0'
         config.build_settings['ENABLE_BITCODE'] = 'NO'
       end
     end
@@ -634,33 +634,73 @@ Currently, @idenfy/idenfysdk_flutter_plugin only provides IdenfySettings and Ide
       idenfySDKresult = await IdenfySdkFlutter.start(authToken, idenfySettings: idenfySettings);
 ```
 
+### Changing SDK colors from Dart
+
+You can customize SDK colors directly from Dart using `IdenfyColorScheme`, without editing native Android XML or iOS code. Create an `IdenfyColorScheme` instance, set the desired color properties, and pass it to `IdenfyUIBuilder` via `.withColorScheme()`:
+
+```dart
+import 'dart:ui';
+import 'package:idenfy_sdk_flutter/models/idenfy_color_scheme.dart';
+
+IdenfyColorScheme colorScheme = IdenfyColorScheme(
+    // Base colors
+    idenfyMainColorV2: Color(0xFF6AA82F),
+    idenfyMainDarkerColorV2: Color(0xFF6AA82F),
+    idenfySecondColorV2: Color(0xFF000000),
+    idenfyBackgroundColorV2: Color(0xFFFFFFFF),
+
+    // Gradient button
+    idenfyGradientButtonColorStart: Color(0xFF6AA82F),
+    idenfyGradientButtonColorEnd: Color(0xFF6AA82F),
+
+    // Toolbar
+    idenfyDefaultAppBarIconTintColor: Color(0xFF000000),
+    idenfyLanguageSelectionToolbarLanguageSelectionIconTintColor: Color(0xFF000000),
+    idenfyLanguageSelectionToolbarCloseIconTintColor: Color(0xFF000000),
+
+    // Continue button text & spinner
+    idenfyContinueButtonTextColor: Color(0xFF000000),
+    idenfyContinueButtonSpinnerColor: Color(0xFF000000),
+    idenfyRetakeButtonTextColor: Color(0xFF000000),
+
+    // Camera buttons
+    idenfyDocumentCameraPreviewSessionTakePhotoButtonUnFocusedTintColor: Color(0xFF6AA82F),
+    idenfyFaceCameraPreviewSessionTakePhotoButtonUnFocusedTintColor: Color(0xFF6AA82F),
+    idenfyFaceCameraPreviewSessionFaceOvalColor: Color(0xFFFFFFFF),
+
+    // Photo result
+    idenfyPhotoResultCardTitleColor: Color(0xFF000000),
+    idenfyRetakeButtonBackgroundColor: Color(0xFFFFFFFF),
+    idenfyRetakeButtonBorderColor: Color(0xFFFFFFFF),
+
+    idenfyCountryAndDocumentSelectionViewItemSelectionHighlightedTextColor: Color(0xFF000000),
+);
+
+IdenfyUISettings idenfyUISettings = IdenfyUIBuilder()
+    .withColorScheme(colorScheme)
+    .build();
+
+IdenfySettings idenfySettings = IdenfyBuilder()
+    .withUISettings(idenfyUISettings)
+    .build();
+```
+
+All `IdenfyColorScheme` properties are optional — only set the ones you want to override.
+
 For any additional SDK customization, you need to use the sample in this repository and edit native code inside of the plugin.
 
 We suggest creating a fork of this repository. After editing the code, you can include the plugin in the following way:
 ```yaml
 dependencies:
-  idenfy_sdk_flutter: ^2.7.6
+  idenfy_sdk_flutter: ^2.8.0
     git: https://github.com/your_repo/FlutterSDK.git
 ```
 
 **Android customization:**
 
-Most common Android customization is changing SDK colors or editing our views. Everything can be achieved by overrding our color names, layouts:
+Most common Android customization is editing our views. Everything can be achieved by overrding our style names, layouts:
 
-To change the **colors**:
-1. Open your Android application values folder (yourapplication/app/src/main/res/values)
-2. Create either a new idenfy_colors.xml or add our defined colors to your existing colors.xml file like so:
-```xml
-<resources>
-    <color name="idenfyMainColorV2">#7CFC00</color>
-    <color name="idenfyMainDarkerColorV2">#7CFC00</color>
-    <color name="idenfySecondColorV2">#000000</color>
-    <color name="idenfyBackgroundColorV2">#FFFFFF</color>
-</resources>
-```
-Our common color names can be found in [this repository](https://github.com/idenfy/iDenfyResources/tree/main/sdk/android/colors/colors_v2.xml) along with [specific screen colors](https://github.com/idenfy/iDenfyResources/tree/main/sdk/android/colors/colors.zip)
-
-To edit the **Toolbar** or change styles (Text sizes, colors) for specific views:
+To edit the **Toolbar** or change styles (Text sizes) for specific views:
 1. Open your Android application values folder (yourapplication/app/src/main/res/values)  
    <img src="doc/images/idenfy_img_example_styles.png" width="300"/>
 2. Create either a new idenfy_styles.xml or add our defined styles to your existing styles.xml file like so:
@@ -822,7 +862,7 @@ Fore more extensive customization, please caerfully follow our [Android native S
 
 **IOS customization:**
 
-Most common IOS customization is changing SDK colors, fonts or providing custom views. For that, here is an example of the **SwiftIdenfySdkFlutterPlugin.swift** class:
+Most common IOS customization is changing SDK fonts or providing custom views. For that, here is an example of the **SwiftIdenfySdkFlutterPlugin.swift** class:
 
 ```swift
 public class SwiftIdenfySdkFlutterPlugin: NSObject, FlutterPlugin {
@@ -839,25 +879,7 @@ public class SwiftIdenfySdkFlutterPlugin: NSObject, FlutterPlugin {
             if let arguments = call.arguments as? [String: Any],
                let authToken = arguments["authToken"] as? String {
 
-                //Changing common iDenfy colors
-                IdenfyCommonColors.idenfyMainColorV2 = UIColor.green
-                IdenfyCommonColors.idenfyMainDarkerColorV2 = UIColor.green
-                IdenfyCommonColors.idenfySecondColorV2 = UIColor.black
-                IdenfyCommonColors.idenfyBackgroundColorV2 = UIColor.white
-                
-                //Customizing Tooblar
-                IdenfyToolbarUISettingsV2.idenfyDefaultToolbarLogoIconTintColor = UIColor.blue
-                IdenfyToolbarUISettingsV2.idenfyDefaultToolbarBackIconTintColor = UIColor.blue
-                IdenfyToolbarUISettingsV2.idenfyLanguageSelectionToolbarLanguageSelectionIconTintColor = UIColor.yellow
-                IdenfyToolbarUISettingsV2.idenfyLanguageSelectionToolbarCloseIconTintColor = UIColor.blue
-                IdenfyToolbarUISettingsV2.idenfyCameraPreviewSessionToolbarBackIconTintColor = UIColor.white
-                
-                //Changing specific screen colors (Every screen has its own UI Settings class)
-                IdenfyDocumentSelectionViewUISettingsV2.idenfyDocumentSelectionViewBackgroundColor = UIColor.white
-                IdenfyDocumentSelectionViewUISettingsV2.idenfyDocumentSelectionViewTitleTextColor = UIColor.black
-                IdenfyDocumentSelectionViewUISettingsV2.idenfyDocumentSelectionViewDocumentTableViewCellBorderColor = UIColor.brown
-                
-                //Changeing specific screen fonts (Every screen has its own UI Settings class)
+                //Changing specific screen fonts (Every screen has its own UI Settings class)
                 IdenfyDocumentSelectionViewUISettingsV2.idenfyDocumentSelectionViewTitleFont = UIFont.systemFont(ofSize: 20)
                 IdenfyDocumentSelectionViewUISettingsV2.idenfyDocumentSelectionViewDocumentTypeFont = UIFont.systemFont(ofSize: 14)
                 IdenfyDocumentSelectionViewUISettingsV2.idenfyDocumentSelectionViewDocumentTypeHighlightedFont = UIFont.boldSystemFont(ofSize: 14)

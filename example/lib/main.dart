@@ -14,6 +14,7 @@ import 'package:idenfy_sdk_flutter/models/idenfy_locale_enum.dart';
 import 'package:idenfy_sdk_flutter/models/idenfy_onboarding_view_type.dart';
 import 'package:idenfy_sdk_flutter/models/idenfy_settings.dart';
 import 'package:idenfy_sdk_flutter/models/idenfy_ui_settings.dart';
+import 'package:idenfy_sdk_flutter/models/idenfy_color_scheme.dart';
 import 'package:idenfy_sdk_flutter/models/immediate_redirect_enum.dart';
 import 'constants.dart' as Constants;
 import 'face_authentication_start_screen.dart';
@@ -50,7 +51,7 @@ class _MyAppState extends State<MyApp> {
             'Basic ${base64Encode(utf8.encode('${Constants.apiKey}:${Constants.apiSecret}'))}',
       },
       body: jsonEncode(<String, String>{
-        "clientId": Constants.clientId,
+        "clientId": Constants.clientId
       }),
     );
     if (response.statusCode == 201) {
@@ -64,14 +65,14 @@ class _MyAppState extends State<MyApp> {
     IdenfyIdentificationResult? idenfySDKresult;
     Exception? localException;
     try {
-      IdenfyUISettings idenfyUISettings = IdenfyUIBuilder()
+      var uiBuilder = IdenfyUIBuilder()
           .withAdditionalSupportView(true)
           .withIdenfyDocumentSelectionType(
               IdenfyDocumentSelectionType.navigateOnContinueButton)
           .withOnBoardingViewType(IdenfyOnBoardingViewType.multipleStatic)
-          .withInstructions(IdenfyInstructionsEnum.none)
+          .withInstructions(IdenfyInstructionsEnum.dialog)
           .withImmediateRedirect(ImmediateRedirectEnum.full)
-          .withLanguageSelection(false)
+          .withLanguageSelection(true)
           .withIdenfyIdentificationResultsUISettingsV2(
               IdenfyIdentificationResultsUISettingsV2(true, true, true))
           .withDocumentCameraFrameVisibility(
@@ -80,8 +81,13 @@ class _MyAppState extends State<MyApp> {
           }))
           .withMismatchTagsAlert(true)
           .withCountryAndDocumentSelectionJoined(true)
-          .withBottomSheetDialogs(true)
-          .build();
+          .withBottomSheetDialogs(true);
+
+      if (Constants.selectedFlow == Constants.SdkFlow.withImplementedColors) {
+        uiBuilder = uiBuilder.withColorScheme(createSampleColorScheme());
+      }
+
+      IdenfyUISettings idenfyUISettings = uiBuilder.build();
 
       IdenfySettings idenfySettings = IdenfyBuilder()
           .withSelectedLocale(IdenfyLocaleEnum.EN)
@@ -315,4 +321,48 @@ class _MyAppState extends State<MyApp> {
       ),
     );
   }
+}
+
+IdenfyColorScheme createSampleColorScheme() {
+  const mainColor = Color(0xFF6AA82F);
+  const secondaryColor = Color(0xFF000000);
+  const backgroundColor = Color(0xFFFFFFFF);
+  const white = Color(0xFFFFFFFF);
+
+  return IdenfyColorScheme(
+    // Base colors
+    idenfyMainColorV2: mainColor,
+    idenfyMainDarkerColorV2: mainColor,
+    idenfySecondColorV2: secondaryColor,
+    idenfyBackgroundColorV2: backgroundColor,
+
+    // Gradient button
+    idenfyGradientButtonColorStart: mainColor,
+    idenfyGradientButtonColorEnd: mainColor,
+
+    // Toolbar
+    idenfyDefaultAppBarIconTintColor: secondaryColor,
+    idenfyLanguageSelectionToolbarLanguageSelectionIconTintColor: secondaryColor,
+    idenfyLanguageSelectionToolbarCloseIconTintColor: secondaryColor,
+
+    // Continue button text & spinner color (all screens)
+    idenfyContinueButtonTextColor: secondaryColor,
+    idenfyContinueButtonSpinnerColor: secondaryColor,
+    idenfyRetakeButtonTextColor: secondaryColor,
+
+    // Camera buttons
+    idenfyDocumentCameraPreviewSessionTakePhotoButtonUnFocusedTintColor: mainColor,
+    idenfyFaceCameraPreviewSessionTakePhotoButtonUnFocusedTintColor: mainColor,
+    idenfyFaceCameraPreviewSessionFaceOvalColor: white,
+
+    // Photo result
+    idenfyPhotoResultCardTitleColor: secondaryColor,
+    idenfyRetakeButtonBackgroundColor: white,
+    idenfyRetakeButtonBorderColor: secondaryColor,
+
+    // Country/doc selection highlighted cell
+    idenfyCountryAndDocumentSelectionViewItemSelectionHighlightedBorderColor: secondaryColor,
+    idenfyCountryAndDocumentSelectionViewItemSelectionHighlightedBackgroundColor: mainColor,
+    idenfyCountryAndDocumentSelectionViewItemSelectionHighlightedTextColor: secondaryColor,
+  );
 }

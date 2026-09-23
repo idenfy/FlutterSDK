@@ -7,7 +7,7 @@ import 'package:idenfy_sdk_flutter/idenfy_sdk_flutter.dart';
 import 'package:idenfy_sdk_flutter/models/face_authentication_result.dart';
 import 'package:idenfy_sdk_flutter/models/idenfy_face_auth_ui_settings.dart';
 import 'constants.dart' as Constants;
-import 'main.dart';
+import 'main.dart' show MyApp, createSampleColorScheme;
 
 class FaceAuthenticationStartScreen extends StatefulWidget {
   @override
@@ -96,10 +96,15 @@ class _FaceAuthenticationStartScreenState
           break;
       }
 
-      IdenfyFaceAuthUISettings settings = IdenfyFaceAuthUIBuilder()
+      var faceAuthBuilder = IdenfyFaceAuthUIBuilder()
           .withLanguageSelection(true)
-          .withOnBoardingView(true)
-          .build();
+          .withOnBoardingView(true);
+
+      if (Constants.selectedFlow == Constants.SdkFlow.withImplementedColors) {
+        faceAuthBuilder = faceAuthBuilder.withColorScheme(createSampleColorScheme());
+      }
+
+      IdenfyFaceAuthUISettings settings = faceAuthBuilder.build();
 
       faceAuthenticationResult = await IdenfySdkFlutter.startFaceAuth(
           token, false,

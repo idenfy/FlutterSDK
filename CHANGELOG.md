@@ -1,3 +1,24 @@
+## 2.8.0
+* Android SDK updated to 9.2.1
+* iOS SDK updated to 9.2.3
+* Added [color scheme customization](#changing-sdk-colors-from-dart)
+* Added Smart-ID refresh state
+* Added Android Landscape mode support
+* Added Recommended document badge
+* Fixed Blur and glare detection support for older devices
+* Fixed iOS auto document capture crash
+* iOS Logo now uses its original color instead of a tint
+* iOS Fixes for iOS 27 support
+* iOS questionnaire condition improvements
+* Increased minimum deployment target to iOS 15
+* Smart-ID stability improvements
+* Updated Android 3D liveness
+* Fixed iOS country and document selection language button visibility
+* Fixed Android file picker crash on process death
+* Fixed Android Smart-ID bug
+* Fixed Android auto country detection crash
+* Hungarian translation fixes
+
 ## 2.7.6
 * Android SDK updated to 9.1.3
 * Fixed a crash regarding KYC questionnaire conditions

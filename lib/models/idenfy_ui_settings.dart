@@ -1,4 +1,5 @@
 import 'document_camera_frame_visibility.dart';
+import 'idenfy_color_scheme.dart';
 import 'idenfy_document_selection_type.dart';
 import 'idenfy_identification_results_ui_settings.dart';
 import 'idenfy_instructions_enum.dart';
@@ -19,6 +20,7 @@ class IdenfyUISettings {
   final DocumentCameraFrameVisibility? documentCameraFrameVisibility;
   final bool? withCountryAndDocumentSelectionJoined;
   final bool? useBottomSheetDialogs;
+  final IdenfyColorScheme? idenfyColorScheme;
 
   IdenfyUISettings(
       {this.isAdditionalSupportEnabled,
@@ -31,7 +33,8 @@ class IdenfyUISettings {
       this.mismatchTagsAlert,
       this.documentCameraFrameVisibility,
       this.withCountryAndDocumentSelectionJoined,
-      this.useBottomSheetDialogs});
+      this.useBottomSheetDialogs,
+      this.idenfyColorScheme});
 
   Map<String, dynamic> toJson() => {
         'isAdditionalSupportEnabled': isAdditionalSupportEnabled,
@@ -45,7 +48,8 @@ class IdenfyUISettings {
         'mismatchTagsAlert': mismatchTagsAlert,
         'documentCameraFrameVisibility': documentCameraFrameVisibility?.toJson(),
         'withCountryAndDocumentSelectionJoined': withCountryAndDocumentSelectionJoined,
-        'useBottomSheetDialogs': useBottomSheetDialogs
+        'useBottomSheetDialogs': useBottomSheetDialogs,
+        'idenfyColorScheme': idenfyColorScheme?.toJson(),
       };
 }
 
@@ -63,6 +67,7 @@ class IdenfyUIBuilder {
   DocumentCameraFrameVisibility? documentCameraFrameVisibility;
   bool? countryAndDocumentSelectionJoined;
   bool? useBottomSheetDialogs;
+  IdenfyColorScheme? idenfyColorScheme;
 
   IdenfyUIBuilder withAdditionalSupportView(bool isAdditionalSupportEnabled) {
     this.isAdditionalSupportEnabled = isAdditionalSupportEnabled;
@@ -129,6 +134,11 @@ class IdenfyUIBuilder {
     return this;
   }
 
+  IdenfyUIBuilder withColorScheme(IdenfyColorScheme idenfyColorScheme) {
+    this.idenfyColorScheme = idenfyColorScheme;
+    return this;
+  }
+
   IdenfyUISettings build() {
     IdenfyUISettings idenfyUISettings = IdenfyUISettings(
         isAdditionalSupportEnabled: isAdditionalSupportEnabled,
@@ -142,7 +152,8 @@ class IdenfyUIBuilder {
         mismatchTagsAlert: mismatchTagsAlert,
         documentCameraFrameVisibility: documentCameraFrameVisibility,
         withCountryAndDocumentSelectionJoined: countryAndDocumentSelectionJoined,
-        useBottomSheetDialogs: useBottomSheetDialogs);
+        useBottomSheetDialogs: useBottomSheetDialogs,
+        idenfyColorScheme: idenfyColorScheme);
     return idenfyUISettings;
   }
 }
