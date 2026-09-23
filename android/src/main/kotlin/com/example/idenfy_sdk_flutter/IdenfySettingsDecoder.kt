@@ -204,6 +204,7 @@ object IdenfySettingsDecoder {
         (map["idenfyFaceAuthenticationCameraPreviewSessionAppBarCameraLanguageSelectionTintColor"] as? Number)?.let { scheme.idenfyFaceAuthenticationCameraPreviewSessionAppBarCameraLanguageSelectionTintColor = it.toInt() }
         (map["idenfyNoBackButtonAppBarBackgroundColor"] as? Number)?.let { scheme.idenfyNoBackButtonAppBarBackgroundColor = it.toInt() }
         (map["idenfyPhotoResultAppBarBackgroundColor"] as? Number)?.let { scheme.idenfyPhotoResultAppBarBackgroundColor = it.toInt() }
+        (map["idenfyPhotoResultAppBarBackButtonTextColor"] as? Number)?.let { scheme.idenfyPhotoResultAppBarBackButtonTextColor = it.toInt() }
         (map["idenfyIdentificationResultsViewInstructionsAlertBackgroundColorV2"] as? Number)?.let { scheme.idenfyIdentificationResultsViewInstructionsAlertBackgroundColorV2 = it.toInt() }
         (map["idenfyIdentificationResultsViewInstructionsAlertLoadingSpinnerColor"] as? Number)?.let { scheme.idenfyIdentificationResultsViewInstructionsAlertLoadingSpinnerColor = it.toInt() }
         (map["idenfyIdentificationResultsViewInstructionsAlertTitleTextColorV2"] as? Number)?.let { scheme.idenfyIdentificationResultsViewInstructionsAlertTitleTextColorV2 = it.toInt() }
