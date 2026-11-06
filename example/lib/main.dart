@@ -17,6 +17,7 @@ import 'package:idenfy_sdk_flutter/models/idenfy_ui_settings.dart';
 import 'package:idenfy_sdk_flutter/models/idenfy_color_scheme.dart';
 import 'package:idenfy_sdk_flutter/models/immediate_redirect_enum.dart';
 import 'constants.dart' as Constants;
+import 'bank_card_verification_start_screen.dart';
 import 'face_authentication_start_screen.dart';
 import 'request_update_start_screen.dart';
 
@@ -228,6 +229,42 @@ class _MyAppState extends State<MyApp> {
                             ),
                           );
                         }),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 80, vertical: 20),
+                      child: Divider(color: Colors.black, thickness: 1.2),
+                    ),
+                    ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            splashFactory: NoSplash.splashFactory,
+                            backgroundColor: Colors.transparent,
+                            disabledBackgroundColor: Colors.transparent,
+                            shadowColor: Colors.transparent),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Image.asset(
+                                'assets/idenfy_ic_documents_type_selection_bank_card_v2.png',
+                                width: 90,
+                                fit: BoxFit.fitWidth),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 8.0),
+                              child: Text(
+                                "BANK CARD VERIFICATION",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(color: Colors.grey),
+                              ),
+                            )
+                          ],
+                        ),
+                        onPressed: () {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  BankCardVerificationStartScreen(),
+                            ),
+                          );
+                        }),
                   ],
                 ),
                 SizedBox(height: 40),
@@ -325,6 +362,7 @@ class _MyAppState extends State<MyApp> {
 
 IdenfyColorScheme createSampleColorScheme() {
   const mainColor = Color(0xFF6AA82F);
+  const mainColorLight = Color(0xFFE8F5D9);
   const secondaryColor = Color(0xFF000000);
   const backgroundColor = Color(0xFFFFFFFF);
   const white = Color(0xFFFFFFFF);
@@ -360,10 +398,10 @@ IdenfyColorScheme createSampleColorScheme() {
     idenfyRetakeButtonBackgroundColor: white,
     idenfyRetakeButtonBorderColor: secondaryColor,
 
-    // Country/doc selection highlighted cell
-    idenfyCountryAndDocumentSelectionViewItemSelectionHighlightedBorderColor: secondaryColor,
-    idenfyCountryAndDocumentSelectionViewItemSelectionHighlightedBackgroundColor: mainColor,
-    idenfyCountryAndDocumentSelectionViewItemSelectionHighlightedTextColor: secondaryColor,
+    // Highlighted/selected item colors (all screens)
+    idenfyHighlightedItemBackgroundColor: mainColorLight,
+    idenfyHighlightedItemTextColor: secondaryColor,
+    idenfyHighlightedItemBorderColor: secondaryColor,
 
     // Manual reviewing
     idenfyManualReviewingStatusWaitingCommonReviewBoxFinishedTitleColor: secondaryColor,

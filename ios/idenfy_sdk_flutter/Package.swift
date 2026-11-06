@@ -11,7 +11,7 @@ let package = Package(
     ],
     dependencies: [
         .package(name: "FlutterFramework", path: "../FlutterFramework"),
-        .package(url: "https://github.com/idenfy/iDenfyLiveness-spm.git", exact: "9.2.8"),
+        .package(url: "https://github.com/idenfy/iDenfyLiveness-spm.git", exact: "9.2.9"),
     ],
     targets: [
         .target(

@@ -60,6 +60,36 @@ import idenfycore
                     }
                 })
             }
+        } else if call.method == "startBankCardVerification" {
+            if let arguments = call.arguments as? [String: Any],
+               let authToken = arguments["authToken"] as? String {
+
+                let withImmediateRedirect = arguments["withImmediateRedirect"] as? Bool ?? false
+
+                if let bcvUISettings = arguments["idenfyBankCardVerificationUISettings"] as? [String: Any] {
+                    if let colorSchemeMap = bcvUISettings["idenfyColorScheme"] as? [String: Any] {
+                        IdenfySettingsDecoder.decodeColorScheme(colorSchemeMap)
+                    }
+                }
+
+                SdkVersionManager.platformWrapper = "flutter"
+                let idenfyController = IdenfyController.shared
+                let bankCardVerificationInitialization = BankCardVerificationInitialization(bankCardVerificationToken: authToken, withImmediateRedirect: withImmediateRedirect)
+                idenfyController.initializeBankCardVerification(bankCardVerificationInitialization: bankCardVerificationInitialization)
+                let idenfyVC = idenfyController.instantiateNavigationController()
+
+                UIApplication.shared.keyWindow?.rootViewController?.present(idenfyVC, animated: true, completion: nil)
+
+                idenfyController.handleIdenfyCallbacksForBankCardVerification(bankCardVerificationResult: { bankCardVerificationResult in
+                    do {
+                        let jsonEncoder = JSONEncoder()
+                        let jsonData = try jsonEncoder.encode(bankCardVerificationResult)
+                        let string = String(data: jsonData, encoding: String.Encoding.utf8)
+                        result(string)
+                    } catch {
+                    }
+                })
+            }
         } else if call.method == "startRequestUpdate" {
             if let arguments = call.arguments as? [String: Any],
                let authToken = arguments["authToken"] as? String {

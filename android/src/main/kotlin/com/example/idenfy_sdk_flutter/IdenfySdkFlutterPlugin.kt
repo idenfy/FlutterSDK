@@ -10,7 +10,10 @@ import com.idenfy.idenfySdk.api.initialization.IdenfySettingsV2
 import com.idenfy.idenfySdk.api.models.DocumentCameraFrameVisibility
 import com.idenfy.idenfySdk.api.models.IdenfyOnBoardingViewTypeEnum
 import com.idenfy.idenfySdk.api.models.ImmediateRedirectEnum
+import com.idenfy.idenfySdk.api.initialization.BankCardVerificationInitialization
+import com.idenfy.idenfySdk.api.response.BankCardVerificationResult
 import com.idenfy.idenfySdk.api.response.FaceAuthenticationResult
+import com.idenfy.idenfySdk.api.ui.IdenfyBankCardVerificationUISettings
 import com.idenfy.idenfySdk.api.response.IdenfyIdentificationResult
 import com.idenfy.idenfySdk.api.response.InformationUpdateStatus
 import com.idenfy.idenfySdk.api.ui.IdenfyFaceAuthUISettings
@@ -84,6 +87,32 @@ class IdenfySdkFlutterPlugin : FlutterPlugin, MethodCallHandler, ActivityAware,
                 IdenfyController.IDENFY_REQUEST_CODE,
                 idenfySettingsV2
             )
+        } else if (call.method == "startBankCardVerification") {
+            mResult = result
+
+            val authToken = call.argument<String>("authToken")!!
+            val withImmediateRedirect = call.argument<Boolean>("withImmediateRedirect") ?: false
+
+            val idenfyBankCardVerificationUISettings = IdenfyBankCardVerificationUISettings()
+            val bcvUISettingsMap = call.argument<Map<String, Any?>?>("idenfyBankCardVerificationUISettings")
+            if (bcvUISettingsMap != null) {
+                val colorSchemeMap = bcvUISettingsMap["idenfyColorScheme"] as? Map<String, Any?>?
+                if (colorSchemeMap != null) {
+                    idenfyBankCardVerificationUISettings.idenfyColorScheme = IdenfySettingsDecoder.decodeColorScheme(colorSchemeMap)
+                }
+            }
+
+            val bankCardVerificationInitialization = BankCardVerificationInitialization(
+                authToken,
+                withImmediateRedirect,
+                idenfyBankCardVerificationUISettings
+            )
+
+            IdenfyController.getInstance().initializeBankCardVerificationSDK(
+                this.activity,
+                IdenfyController.IDENFY_REQUEST_CODE,
+                bankCardVerificationInitialization
+            )
         } else {
             //result.notImplemented()
         }
@@ -128,6 +157,13 @@ class IdenfySdkFlutterPlugin : FlutterPlugin, MethodCallHandler, ActivityAware,
                     val informationUpdateStatus: InformationUpdateStatus =
                         data!!.getParcelableExtra(IdenfyController.IDENFY_REQUEST_UPDATE_RESULT)!!
                     val jsonString = Gson().toJson(mapOf("informationUpdateStatus" to informationUpdateStatus.name))
+                    mResult?.success(jsonString)
+                }
+
+                IdenfyController.IDENFY_BANK_CARD_VERIFICATION_RESULT_CODE -> {
+                    val bankCardVerificationResult: BankCardVerificationResult? =
+                        data?.getParcelableExtra(IdenfyController.IDENFY_BANK_CARD_VERIFICATION_RESULT)
+                    val jsonString = Gson().toJson(bankCardVerificationResult)
                     mResult?.success(jsonString)
                 }
             }

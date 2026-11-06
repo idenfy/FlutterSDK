@@ -4,7 +4,9 @@ import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:idenfy_sdk_flutter/models/idenfy_settings.dart';
 
+import 'models/bank_card_verification_result.dart';
 import 'models/face_authentication_result.dart';
+import 'models/idenfy_bank_card_verification_ui_settings.dart';
 import 'models/idenfy_face_auth_ui_settings.dart';
 import 'models/idenfy_identification_status.dart';
 import 'models/information_update_result.dart';
@@ -57,6 +59,26 @@ class IdenfySdkFlutter {
     InformationUpdateResult informationUpdateResult =
         InformationUpdateResult.fromJson(jsonDecode(result));
     return informationUpdateResult;
+  }
+
+  /// Function to start bank card verification session
+  /// @param token Generated bank card verification token
+  /// @param withImmediateRedirect Whether immediate redirect feature should be enabled
+  /// @param idenfyBankCardVerificationUISettings Additional bank card verification session settings
+  static Future<BankCardVerificationResult> startBankCardVerification(
+      String token, bool withImmediateRedirect,
+      {IdenfyBankCardVerificationUISettings?
+          idenfyBankCardVerificationUISettings}) async {
+    final dynamic result = await _channel
+        .invokeMethod('startBankCardVerification', <String, dynamic>{
+      'authToken': token,
+      'withImmediateRedirect': withImmediateRedirect,
+      'idenfyBankCardVerificationUISettings':
+          idenfyBankCardVerificationUISettings?.toJson()
+    });
+    BankCardVerificationResult bankCardVerificationResult =
+        BankCardVerificationResult.fromJson(jsonDecode(result));
+    return bankCardVerificationResult;
   }
 
   static Future<String> get platformVersion async {

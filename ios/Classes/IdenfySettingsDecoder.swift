@@ -286,6 +286,22 @@ class IdenfySettingsDecoder {
         if let value = map["idenfyDocumentPhotoResultViewNextButtonTextColor"] as? Int {
             IdenfyPhotoResultViewUISettingsV2.idenfyPhotoResultViewContinueButtonTextColor = UIColor(argb: value)
         }
+        // Shared highlighted/selected item colors
+        if let value = map["idenfyHighlightedItemBackgroundColor"] as? Int {
+            let color = UIColor(argb: value)
+            IdenfyCountryAndDocumentSelectionViewUISettingsV2.idenfyCountryAndDocumentSelectionViewItemSelectionHighlightedBackgroundColor = color
+            IdenfyBankCardOnboardingViewUISettingsV2.idenfyBankCardOnboardingViewCardSelectedBackgroundColor = color
+        }
+        if let value = map["idenfyHighlightedItemTextColor"] as? Int {
+            let color = UIColor(argb: value)
+            IdenfyCountryAndDocumentSelectionViewUISettingsV2.idenfyCountryAndDocumentSelectionViewItemSelectionHighlightedTextColor = color
+            IdenfyBankCardOnboardingViewUISettingsV2.idenfyBankCardOnboardingViewCardSelectedTextColor = color
+        }
+        if let value = map["idenfyHighlightedItemBorderColor"] as? Int {
+            let color = UIColor(argb: value)
+            IdenfyCountryAndDocumentSelectionViewUISettingsV2.idenfyCountryAndDocumentSelectionViewItemSelectionHighlightedBorderColor = color
+            IdenfyBankCardOnboardingViewUISettingsV2.idenfyBankCardOnboardingViewCardSelectedBorderColor = color
+        }
         // Shared continue button text color
         if let value = map["idenfyContinueButtonTextColor"] as? Int {
             let color = UIColor(argb: value)
@@ -314,7 +330,7 @@ class IdenfySettingsDecoder {
             IdenfyMFACaptchaViewUISettingsV2.idenfyMFACaptchaViewContinueButtonTextColor = color
             IdenfyMFAMethodSelectionViewUISettingsV2.idenfyMFAMethodSelectionViewContinueButtonTextColor = color
             IdenfyInstructionAlertUISettigsV2.idenfyInstructionAlertContinueButtonTextColor = color
-            IdenfyDocNotFoundAlertUISettigsV2.idenfyDocNotFoundAlertContinueButtonTextColor = color
+            IdenfyCountryMismatchAlertUISettings.idenfyCountryMismatchAlertContinueButtonTextColor = color
             IdenfyMrzNotFoundAlertUISettigsV2.idenfyMrzNotFoundAlertContinueButtonTextColor = color
             IdenfyMismatchFoundAlertUISettigsV2.idenfyMismatchFoundAlertContinueButtonTextColor = color
             IdenfyBankVerificationViewUISettingsV2.idenfyBankVerificationViewContinueButtonEnabledTextColor = color
@@ -333,6 +349,15 @@ class IdenfySettingsDecoder {
             EIDSessionCNHUploadViewUISettingsV2.idenfyEIDSessionCNHUploadViewContinueButtonEnabledTextColor = color
             EIDSessionCNHUploadViewUISettingsV2.idenfyEIDSessionCNHUploadViewContinueButtonDisabledTextColor = color
             IdenfyUploadPhotoViewUISettingsV2.idenfyUploadPhotoViewContinuePhotoButtonTextColor = color
+            IdenfyBankCardOnboardingViewUISettingsV2.idenfyBankCardOnboardingViewContinueButtonEnabledTextColor = color
+            IdenfyBankCardOnboardingViewUISettingsV2.idenfyBankCardOnboardingViewContinueButtonDisabledTextColor = color
+            IdenfyBankCardSelectionViewUISettingsV2.idenfyBankCardSelectionViewButtonEnabledTextColor = color
+            IdenfyBankCardSelectionViewUISettingsV2.idenfyBankCardSelectionViewButtonDisabledTextColor = color
+            IdenfyBankCardUploadViewUISettingsV2.idenfyBankCardUploadViewButtonEnabledTextColor = color
+            IdenfyBankCardUploadViewUISettingsV2.idenfyBankCardUploadViewButtonDisabledTextColor = color
+            IdenfyBankCardUploadReviewViewUISettingsV2.idenfyBankCardUploadReviewViewNextButtonTextColor = color
+            IdenfyBankCardVerificationPrivacyPolicyViewUISettingsV2.idenfyBankCardVerificationPrivacyPolicyAgreeButtonTextColor = color
+            IdenfyBankCardVerificationResultsViewUISettingsV2.idenfyBankCardVerificationResultsViewButtonTextColor = color
         }
 
         // Shared retake button text color
@@ -341,6 +366,7 @@ class IdenfySettingsDecoder {
             IdenfyPhotoResultViewUISettingsV2.idenfyPhotoResultViewRetakePhotoButtonTextColor = color
             IdenfyUploadPhotoViewUISettingsV2.idenfyUploadPhotoViewChooseAnotherPhotoButtonTextColor = color
             IdenfyMrzNotFoundAlertUISettigsV2.idenfyMrzNotFoundAlertRetakePhotoButtonTextColor = color
+            IdenfyBankCardUploadReviewViewUISettingsV2.idenfyBankCardUploadReviewViewRetakeButtonTextColor = color
         }
 
         // Shared continue button spinner color
@@ -362,16 +388,31 @@ class IdenfySettingsDecoder {
             EIDSessionCNHUploadViewUISettingsV2.idenfyEIDSessionCNHUploadViewContinueButtonLoadingSpinnerTintColor = color
             IdenfyCountryAndDocumentSelectionViewUISettingsV2.idenfyCountryAndDocumentSelectionViewCountryLoadingSpinnerTintColor = color
             IdenfyCountrySelectionViewUISettingsV2.idenfyCountrySelectionViewCountryLoadingSpinnerTintColor = color
+            IdenfyBankCardOnboardingViewUISettingsV2.idenfyBankCardOnboardingViewContinueButtonLoadingSpinnerTintColor = color
+            IdenfyBankCardSelectionViewUISettingsV2.idenfyBankCardSelectionViewLoadingSpinnerTintColor = color
+            IdenfyBankCardVerificationPrivacyPolicyViewUISettingsV2.idenfyBankCardVerificationPrivacyPolicyAgreeButtonLoadingSpinnerTintColor = color
+            IdenfyBankCardUploadReviewViewUISettingsV2.idenfyBankCardUploadReviewViewConfirmButtonLoadingSpinnerTintColor = color
         }
 
         if let value = map["idenfyPhotoResultCardTitleColor"] as? Int {
             let color = UIColor(argb: value)
             IdenfyPhotoResultViewUISettingsV2.idenfyPhotoResultViewDetailsCardTitleColor = color
             IdenfyInstructionAlertUISettigsV2.idenfyInstructionAlertDetailsCardTitleColor = color
+            IdenfyBankCardUploadReviewViewUISettingsV2.idenfyBankCardUploadReviewViewQuestionCardTitleColor = color
+            IdenfyBankCardUploadReviewViewUISettingsV2.idenfyBankCardUploadReviewViewQuestionCardIconColor = color
         }
         if let value = map["idenfyRetakeButtonBorderColor"] as? Int {
             IdenfyPhotoResultViewUISettingsV2.idenfyPhotoResultViewRetakePhotoButtonBorderColor = UIColor(argb: value)
             IdenfyUploadPhotoViewUISettingsV2.idenfyUploadPhotoViewChooseAnotherPhotoButtonBorderColor = UIColor(argb: value)
+            IdenfyCustomAlertDialogUISettings.idenfyCustomAlertDialogRetakePhotoButtonBorderColor = UIColor(argb: value)
+            IdenfyBankCardUploadReviewViewUISettingsV2.idenfyBankCardUploadReviewViewRetakeButtonBorderColor = UIColor(argb: value)
+        }
+        if let value = map["idenfyRetakeButtonBackgroundColor"] as? Int {
+            let color = UIColor(argb: value)
+            IdenfyPhotoResultViewUISettingsV2.idenfyPhotoResultViewRetakePhotoButtonBackgroundColor = color
+            IdenfyUploadPhotoViewUISettingsV2.idenfyUploadPhotoViewChooseAnotherPhotoButtonBackgroundColor = color
+            IdenfyCustomAlertDialogUISettings.idenfyCustomAlertDialogRetakePhotoButtonBackgroundColor = color
+            IdenfyBankCardUploadReviewViewUISettingsV2.idenfyBankCardUploadReviewViewRetakeButtonBackgroundColor = color
         }
 
         // Email/SMS Verification hint card
@@ -443,6 +484,23 @@ class IdenfySettingsDecoder {
             IdenfyIdentificationResultsViewUISettingsV2.idenfyIdentificationResultsViewDocumentStepLoadingSpinnerAccentColor = UIColor(argb: value)
         }
 
+        // Country Mismatch Alert -> IdenfyCountryMismatchAlertUISettings
+        if let value = map["idenfyIdentificationResultsViewCountryMismatchAlertBackgroundColorV2"] as? Int {
+            IdenfyCountryMismatchAlertUISettings.idenfyCountryMismatchAlertViewBackgroundColor = UIColor(argb: value)
+        }
+        if let value = map["idenfyIdentificationResultsViewCountryMismatchAlertTitleTextColorV2"] as? Int {
+            IdenfyCountryMismatchAlertUISettings.idenfyCountryMismatchAlertTitleTextColor = UIColor(argb: value)
+        }
+        if let value = map["idenfyIdentificationResultsViewCountryMismatchAlertDescriptionTextColorV2"] as? Int {
+            IdenfyCountryMismatchAlertUISettings.idenfyCountryMismatchAlertDescriptionTextColor = UIColor(argb: value)
+        }
+        if let value = map["idenfyIdentificationResultsViewCountryMismatchAlertContinueButtonTextColorV2"] as? Int {
+            IdenfyCountryMismatchAlertUISettings.idenfyCountryMismatchAlertContinueButtonTextColor = UIColor(argb: value)
+        }
+        if let value = map["idenfyIdentificationResultsViewCountryMismatchAlertBackButtonTextColorV2"] as? Int {
+            IdenfyCountryMismatchAlertUISettings.idenfyCountryMismatchAlertBackButtonTextColor = UIColor(argb: value)
+        }
+
         // Splash Screen -> IdenfySplashScreenViewUISettingsV2
         if let value = map["idenfySplashScreenViewTitleTextColor"] as? Int {
             IdenfySplashScreenViewUISettingsV2.idenfySplashScreenViewTitleTextColor = UIColor(argb: value)
@@ -452,6 +510,151 @@ class IdenfySettingsDecoder {
         }
         if let value = map["idenfySplashScreenViewLoadingSpinnerTintColor"] as? Int {
             IdenfySplashScreenViewUISettingsV2.idenfySplashScreenViewSpinnerTintColor = UIColor(argb: value)
+        }
+
+        // Bank Card Camera View -> IdenfyBankCardCameraViewUISettingsV2
+        if let value = map["idenfyBankCardCameraViewLoadingSpinnerColor"] as? Int {
+            IdenfyBankCardCameraViewUISettingsV2.idenfyBankCardCameraViewLoadingSpinnerColor = UIColor(argb: value)
+        }
+        // Bank Card Onboarding View -> IdenfyBankCardOnboardingViewUISettingsV2
+        if let value = map["idenfyBankCardOnBoardingViewBackgroundColor"] as? Int {
+            IdenfyBankCardOnboardingViewUISettingsV2.idenfyBankCardOnboardingViewBackgroundColor = UIColor(argb: value)
+        }
+        if let value = map["idenfyBankCardOnBoardingViewTitleTextColor"] as? Int {
+            IdenfyBankCardOnboardingViewUISettingsV2.idenfyBankCardOnboardingViewTitleTextColor = UIColor(argb: value)
+        }
+        if let value = map["idenfyBankCardOnBoardingViewDescriptionTextColor"] as? Int {
+            IdenfyBankCardOnboardingViewUISettingsV2.idenfyBankCardOnboardingViewDescriptionTextColor = UIColor(argb: value)
+        }
+        if let value = map["idenfyBankCardOnBoardingViewCardIconTintColor"] as? Int {
+            IdenfyBankCardOnboardingViewUISettingsV2.idenfyBankCardOnboardingViewCardIconTintColor = UIColor(argb: value)
+        }
+        if let value = map["idenfyBankCardOnBoardingViewCardBorderColor"] as? Int {
+            IdenfyBankCardOnboardingViewUISettingsV2.idenfyBankCardOnboardingViewCardBorderColor = UIColor(argb: value)
+        }
+        if let value = map["idenfyBankCardOnBoardingViewCardBackgroundColor"] as? Int {
+            IdenfyBankCardOnboardingViewUISettingsV2.idenfyBankCardOnboardingViewCardBackgroundColor = UIColor(argb: value)
+        }
+        if let value = map["idenfyBankCardOnBoardingViewCardSelectedBorderColor"] as? Int {
+            IdenfyBankCardOnboardingViewUISettingsV2.idenfyBankCardOnboardingViewCardSelectedBorderColor = UIColor(argb: value)
+        }
+        if let value = map["idenfyBankCardOnBoardingViewCardSelectedBackgroundColor"] as? Int {
+            IdenfyBankCardOnboardingViewUISettingsV2.idenfyBankCardOnboardingViewCardSelectedBackgroundColor = UIColor(argb: value)
+        }
+        if let value = map["idenfyBankCardOnBoardingViewCardSelectedTextColor"] as? Int {
+            IdenfyBankCardOnboardingViewUISettingsV2.idenfyBankCardOnboardingViewCardSelectedTextColor = UIColor(argb: value)
+        }
+        if let value = map["idenfyBankCardOnBoardingViewContinueButtonDisabledBackgroundColor"] as? Int {
+            IdenfyBankCardOnboardingViewUISettingsV2.idenfyBankCardOnboardingViewContinueButtonDisabledBackgroundColor = UIColor(argb: value)
+        }
+        if let value = map["idenfyBankCardOnBoardingViewContinueButtonDisabledTextColor"] as? Int {
+            IdenfyBankCardOnboardingViewUISettingsV2.idenfyBankCardOnboardingViewContinueButtonDisabledTextColor = UIColor(argb: value)
+        }
+        if let value = map["idenfyBankCardOnBoardingViewContinueButtonEnabledTextColor"] as? Int {
+            IdenfyBankCardOnboardingViewUISettingsV2.idenfyBankCardOnboardingViewContinueButtonEnabledTextColor = UIColor(argb: value)
+        }
+        // Bank Card Selection View -> IdenfyBankCardSelectionViewUISettingsV2
+        if let value = map["idenfyBankCardSelectionViewBackgroundColor"] as? Int {
+            IdenfyBankCardSelectionViewUISettingsV2.idenfyBankCardSelectionViewBackgroundColor = UIColor(argb: value)
+        }
+        if let value = map["idenfyBankCardSelectionViewButtonDisabledBackgroundColor"] as? Int {
+            IdenfyBankCardSelectionViewUISettingsV2.idenfyBankCardSelectionViewButtonDisabledBackgroundColor = UIColor(argb: value)
+        }
+        if let value = map["idenfyBankCardSelectionViewButtonDisabledTextColor"] as? Int {
+            IdenfyBankCardSelectionViewUISettingsV2.idenfyBankCardSelectionViewButtonDisabledTextColor = UIColor(argb: value)
+        }
+        if let value = map["idenfyBankCardSelectionViewButtonEnabledTextColor"] as? Int {
+            IdenfyBankCardSelectionViewUISettingsV2.idenfyBankCardSelectionViewButtonEnabledTextColor = UIColor(argb: value)
+        }
+        if let value = map["idenfyBankCardSelectionViewButtonTextColor"] as? Int {
+            IdenfyBankCardSelectionViewUISettingsV2.idenfyBankCardSelectionViewSpinnerTextColor = UIColor(argb: value)
+        }
+        // Bank Card Upload View -> IdenfyBankCardUploadViewUISettingsV2
+        if let value = map["idenfyBankCardUploadViewBackgroundColor"] as? Int {
+            IdenfyBankCardUploadViewUISettingsV2.idenfyBankCardUploadViewBackgroundColor = UIColor(argb: value)
+        }
+        if let value = map["idenfyBankCardUploadViewDescriptionTextColor"] as? Int {
+            IdenfyBankCardUploadViewUISettingsV2.idenfyBankCardUploadViewDescriptionTextColor = UIColor(argb: value)
+        }
+        if let value = map["idenfyBankCardUploadViewClickToUploadTextColor"] as? Int {
+            IdenfyBankCardUploadViewUISettingsV2.idenfyBankCardUploadViewClickToUploadTextColor = UIColor(argb: value)
+        }
+        if let value = map["idenfyBankCardUploadViewUploadIconTintColor"] as? Int {
+            IdenfyBankCardUploadViewUISettingsV2.idenfyBankCardUploadViewUploadIconTintColor = UIColor(argb: value)
+        }
+        if let value = map["idenfyBankCardUploadViewButtonDisabledBackgroundColor"] as? Int {
+            IdenfyBankCardUploadViewUISettingsV2.idenfyBankCardUploadViewButtonDisabledBackgroundColor = UIColor(argb: value)
+        }
+        if let value = map["idenfyBankCardUploadViewButtonDisabledTextColor"] as? Int {
+            IdenfyBankCardUploadViewUISettingsV2.idenfyBankCardUploadViewButtonDisabledTextColor = UIColor(argb: value)
+        }
+        if let value = map["idenfyBankCardUploadViewButtonEnabledTextColor"] as? Int {
+            IdenfyBankCardUploadViewUISettingsV2.idenfyBankCardUploadViewButtonEnabledTextColor = UIColor(argb: value)
+        }
+        // Bank Card Upload Review View -> IdenfyBankCardUploadReviewViewUISettingsV2
+        if let value = map["idenfyBankCardUploadReviewViewBackgroundColor"] as? Int {
+            IdenfyBankCardUploadReviewViewUISettingsV2.idenfyBankCardUploadReviewViewBackgroundColor = UIColor(argb: value)
+        }
+        if let value = map["idenfyBankCardUploadReviewViewDescriptionTextColor"] as? Int {
+            IdenfyBankCardUploadReviewViewUISettingsV2.idenfyBankCardUploadReviewViewDescriptionTextColor = UIColor(argb: value)
+        }
+        if let value = map["idenfyBankCardUploadReviewViewQuestionCardBackgroundColor"] as? Int {
+            IdenfyBankCardUploadReviewViewUISettingsV2.idenfyBankCardUploadReviewViewQuestionCardBackgroundColor = UIColor(argb: value)
+        }
+        if let value = map["idenfyBankCardUploadReviewViewQuestionCardIconColor"] as? Int {
+            IdenfyBankCardUploadReviewViewUISettingsV2.idenfyBankCardUploadReviewViewQuestionCardIconColor = UIColor(argb: value)
+        }
+        if let value = map["idenfyBankCardUploadReviewViewQuestionCardTitleColor"] as? Int {
+            IdenfyBankCardUploadReviewViewUISettingsV2.idenfyBankCardUploadReviewViewQuestionCardTitleColor = UIColor(argb: value)
+        }
+        if let value = map["idenfyBankCardUploadReviewViewNextButtonTextColor"] as? Int {
+            IdenfyBankCardUploadReviewViewUISettingsV2.idenfyBankCardUploadReviewViewNextButtonTextColor = UIColor(argb: value)
+        }
+        if let value = map["idenfyBankCardUploadReviewViewRetakeButtonTextColor"] as? Int {
+            IdenfyBankCardUploadReviewViewUISettingsV2.idenfyBankCardUploadReviewViewRetakeButtonTextColor = UIColor(argb: value)
+        }
+        if let value = map["idenfyBankCardUploadReviewViewButtonTextColor"] as? Int {
+            IdenfyBankCardUploadReviewViewUISettingsV2.idenfyBankCardUploadReviewViewTitleTextColor = UIColor(argb: value)
+        }
+        // Bank Card Verification Privacy Policy View -> IdenfyBankCardVerificationPrivacyPolicyViewUISettingsV2
+        if let value = map["idenfyBankCardVerificationPrivacyPolicyViewBackgroundColor"] as? Int {
+            IdenfyBankCardVerificationPrivacyPolicyViewUISettingsV2.idenfyBankCardVerificationPrivacyPolicyViewBackgroundColor = UIColor(argb: value)
+        }
+        if let value = map["idenfyBankCardVerificationPrivacyPolicyCommonInformationTitleTextColor"] as? Int {
+            IdenfyBankCardVerificationPrivacyPolicyViewUISettingsV2.idenfyBankCardVerificationPrivacyPolicyCommonInformationTitleTextColor = UIColor(argb: value)
+        }
+        if let value = map["idenfyBankCardVerificationPrivacyPolicyCommonInformationDescriptionTextColor"] as? Int {
+            IdenfyBankCardVerificationPrivacyPolicyViewUISettingsV2.idenfyBankCardVerificationPrivacyPolicyCommonInformationDescriptionTextColor = UIColor(argb: value)
+        }
+        if let value = map["idenfyBankCardVerificationPrivacyPolicyCardViewTextColor"] as? Int {
+            IdenfyBankCardVerificationPrivacyPolicyViewUISettingsV2.idenfyBankCardVerificationPrivacyPolicyCardItemTextColor = UIColor(argb: value)
+        }
+        if let value = map["idenfyBankCardVerificationPrivacyPolicyCardViewBackgroundColor"] as? Int {
+            IdenfyBankCardVerificationPrivacyPolicyViewUISettingsV2.idenfyBankCardVerificationPrivacyPolicyCardBackgroundColor = UIColor(argb: value)
+        }
+        if let value = map["idenfyBankCardVerificationPrivacyPolicyCardViewIconTintColor"] as? Int {
+            IdenfyBankCardVerificationPrivacyPolicyViewUISettingsV2.idenfyBankCardVerificationPrivacyPolicyCardItemIconColor = UIColor(argb: value)
+        }
+        if let value = map["idenfyBankCardVerificationPrivacyPolicyContinueButtonTextColor"] as? Int {
+            IdenfyBankCardVerificationPrivacyPolicyViewUISettingsV2.idenfyBankCardVerificationPrivacyPolicyAgreeButtonTextColor = UIColor(argb: value)
+        }
+        // Bank Card Verification Results View -> IdenfyBankCardVerificationResultsViewUISettingsV2
+        if let value = map["idenfyBankCardVerificationResultsViewBackgroundColor"] as? Int {
+            IdenfyBankCardVerificationResultsViewUISettingsV2.idenfyBankCardVerificationResultsViewBackgroundColor = UIColor(argb: value)
+        }
+        if let value = map["idenfyBankCardVerificationResultsCommonInformationTitleTextColor"] as? Int {
+            IdenfyBankCardVerificationResultsViewUISettingsV2.idenfyBankCardVerificationResultsViewTitleTextColor = UIColor(argb: value)
+        }
+        if let value = map["idenfyBankCardVerificationResultsCommonInformationDescriptionTextColor"] as? Int {
+            IdenfyBankCardVerificationResultsViewUISettingsV2.idenfyBankCardVerificationResultsViewDescriptionTextColor = UIColor(argb: value)
+        }
+        if let value = map["idenfyBankCardVerificationResultsContinueButtonTextColor"] as? Int {
+            IdenfyBankCardVerificationResultsViewUISettingsV2.idenfyBankCardVerificationResultsViewButtonTextColor = UIColor(argb: value)
+        }
+
+        // Custom Alert Dialog -> IdenfyCustomAlertDialogUISettings
+        if let value = map["idenfyCustomAlertDialogBackgroundColor"] as? Int {
+            IdenfyCustomAlertDialogUISettings.idenfyCustomAlertDialogBackgroundColor = UIColor(argb: value)
         }
 
         // Bottom Sheet -> IdenfyBottomSheetUISettingsV2

@@ -1,3 +1,19 @@
+## 2.8.2
+* Android SDK updated to 9.2.4
+* iOS SDK updated to 9.2.9
+* Added [Bank Card Verification standalone flow](https://documentation.idenfy.com/sdks/android/bank-card-verification)
+* Added Brazil CPF check support for eID sessions
+* Added new country mismatch dialog
+* Added Heard Island and McDonald Islands, French Southern Territories and Norfolk Island support
+* iOS Added better iPhone Duo device support
+* Added Bank Card Verification color scheme customization
+* Android Updated 3D liveness version
+* Refactored error dialogs with updated UI
+* Updated Latvian personal code validation to accept both formats for Smart-ID
+* Android Fixed KYC Questionnaire date picker scroll issues
+* iOS Fixed country and document selection state reset
+* iOS Fixed camera focus for document capture
+
 ## 2.8.1
 * iOS SDK updated to 9.2.8
 * Fixed Bank ID Sweden redirect issues

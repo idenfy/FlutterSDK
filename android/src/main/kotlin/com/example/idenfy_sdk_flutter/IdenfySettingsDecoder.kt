@@ -223,7 +223,6 @@ object IdenfySettingsDecoder {
         (map["idenfyDocumentSelectionViewContinueButtonDisabledBackgroundColor"] as? Number)?.let { scheme.idenfyDocumentSelectionViewContinueButtonDisabledBackgroundColor = it.toInt() }
         (map["idenfyDocumentSelectionViewContinueButtonDisabledTextColor"] as? Number)?.let { scheme.idenfyDocumentSelectionViewContinueButtonDisabledTextColor = it.toInt() }
         (map["idenfyDocumentSelectionViewContinueButtonEnabledTextColor"] as? Number)?.let { scheme.idenfyDocumentSelectionViewContinueButtonEnabledTextColor = it.toInt() }
-        (map["idenfyDocumentSelectionViewLoadingSpinnerTintColor"] as? Number)?.let { scheme.idenfyDocumentSelectionViewLoadingSpinnerTintColor = it.toInt() }
         (map["idenfyFaceAuthenticationResultsViewBackgroundColor"] as? Number)?.let { scheme.idenfyFaceAuthenticationResultsViewBackgroundColor = it.toInt() }
         (map["idenfyFaceAuthenticationResultsCommonInformationTitleTextColor"] as? Number)?.let { scheme.idenfyFaceAuthenticationResultsCommonInformationTitleTextColor = it.toInt() }
         (map["idenfyFaceAuthenticationResultsCommonInformationDescriptionTextColor"] as? Number)?.let { scheme.idenfyFaceAuthenticationResultsCommonInformationDescriptionTextColor = it.toInt() }
@@ -259,11 +258,11 @@ object IdenfySettingsDecoder {
         (map["idenfyIdentificationResultsViewContentMaskForegroundColor"] as? Number)?.let { scheme.idenfyIdentificationResultsViewContentMaskForegroundColor = it.toInt() }
         (map["idenfyIdentificationResultsViewSuccessStepTextColor"] as? Number)?.let { scheme.idenfyIdentificationResultsViewSuccessStepTextColor = it.toInt() }
         (map["idenfyIdentificationResultsViewErrorStepTextColorV2"] as? Number)?.let { scheme.idenfyIdentificationResultsViewErrorStepTextColorV2 = it.toInt() }
-        (map["idenfyIdentificationResultsViewDocNotFoundAlertBackgroundColorV2"] as? Number)?.let { scheme.idenfyIdentificationResultsViewDocNotFoundAlertBackgroundColorV2 = it.toInt() }
-        (map["idenfyIdentificationResultsViewDocNotFoundAlertTitleTextColorV2"] as? Number)?.let { scheme.idenfyIdentificationResultsViewDocNotFoundAlertTitleTextColorV2 = it.toInt() }
-        (map["idenfyIdentificationResultsViewDocNotFoundAlertDescriptionTextColorV2"] as? Number)?.let { scheme.idenfyIdentificationResultsViewDocNotFoundAlertDescriptionTextColorV2 = it.toInt() }
-        (map["idenfyIdentificationResultsViewDocNotFoundAlertDescriptionDocumentHighlightColorV2"] as? Number)?.let { scheme.idenfyIdentificationResultsViewDocNotFoundAlertDescriptionDocumentHighlightColorV2 = it.toInt() }
-        (map["idenfyIdentificationResultsViewDocNotFoundAlertContinueButtonTextColorV2"] as? Number)?.let { scheme.idenfyIdentificationResultsViewDocNotFoundAlertContinueButtonTextColorV2 = it.toInt() }
+        (map["idenfyIdentificationResultsViewCountryMismatchAlertBackgroundColorV2"] as? Number)?.let { scheme.idenfyIdentificationResultsViewCountryMismatchAlertBackgroundColorV2 = it.toInt() }
+        (map["idenfyIdentificationResultsViewCountryMismatchAlertTitleTextColorV2"] as? Number)?.let { scheme.idenfyIdentificationResultsViewCountryMismatchAlertTitleTextColorV2 = it.toInt() }
+        (map["idenfyIdentificationResultsViewCountryMismatchAlertDescriptionTextColorV2"] as? Number)?.let { scheme.idenfyIdentificationResultsViewCountryMismatchAlertDescriptionTextColorV2 = it.toInt() }
+        (map["idenfyIdentificationResultsViewCountryMismatchAlertContinueButtonTextColorV2"] as? Number)?.let { scheme.idenfyIdentificationResultsViewCountryMismatchAlertContinueButtonTextColorV2 = it.toInt() }
+        (map["idenfyIdentificationResultsViewCountryMismatchAlertBackButtonTextColorV2"] as? Number)?.let { scheme.idenfyIdentificationResultsViewCountryMismatchAlertBackButtonTextColorV2 = it.toInt() }
         (map["idenfyIdentificationResultsViewMrzNotFoundAlertBackgroundColorV2"] as? Number)?.let { scheme.idenfyIdentificationResultsViewMrzNotFoundAlertBackgroundColorV2 = it.toInt() }
         (map["idenfyIdentificationResultsViewMrzNotFoundAlertTitleTextColorV2"] as? Number)?.let { scheme.idenfyIdentificationResultsViewMrzNotFoundAlertTitleTextColorV2 = it.toInt() }
         (map["idenfyIdentificationResultsViewMrzNotFoundAlertDescriptionTextColorV2"] as? Number)?.let { scheme.idenfyIdentificationResultsViewMrzNotFoundAlertDescriptionTextColorV2 = it.toInt() }
@@ -291,8 +290,6 @@ object IdenfySettingsDecoder {
         (map["idenfyLanguageSelectionViewLanguageRecyclerViewItemBackgroundColor"] as? Number)?.let { scheme.idenfyLanguageSelectionViewLanguageRecyclerViewItemBackgroundColor = it.toInt() }
         (map["idenfyLanguageSelectionViewLanguageRecyclerViewItemBorderColor"] as? Number)?.let { scheme.idenfyLanguageSelectionViewLanguageRecyclerViewItemBorderColor = it.toInt() }
         (map["idenfyLanguageSelectionViewLanguageRecyclerViewItemTextColor"] as? Number)?.let { scheme.idenfyLanguageSelectionViewLanguageRecyclerViewItemTextColor = it.toInt() }
-        (map["idenfyLanguageSelectionViewLanguageRecyclerViewItemHighlightedTextColor"] as? Number)?.let { scheme.idenfyLanguageSelectionViewLanguageRecyclerViewItemHighlightedTextColor = it.toInt() }
-        (map["idenfyLanguageSelectionViewLanguageRecyclerViewItemHighlightedBackgroundColor"] as? Number)?.let { scheme.idenfyLanguageSelectionViewLanguageRecyclerViewItemHighlightedBackgroundColor = it.toInt() }
         (map["idenfyManualReviewingStatusApprovedViewBackgroundColor"] as? Number)?.let { scheme.idenfyManualReviewingStatusApprovedViewBackgroundColor = it.toInt() }
         (map["idenfyManualReviewingStatusApprovedCommonInformationTitleTextColor"] as? Number)?.let { scheme.idenfyManualReviewingStatusApprovedCommonInformationTitleTextColor = it.toInt() }
         (map["idenfyManualReviewingStatusApprovedCommonInformationDescriptionTextColor"] as? Number)?.let { scheme.idenfyManualReviewingStatusApprovedCommonInformationDescriptionTextColor = it.toInt() }
@@ -393,7 +390,50 @@ object IdenfySettingsDecoder {
         (map["idenfyBankVerificationViewBanksRecyclerViewItemBackgroundColor"] as? Number)?.let { scheme.idenfyBankVerificationViewBanksRecyclerViewItemBackgroundColor = it.toInt() }
         (map["idenfyBankVerificationViewBankRecyclerViewItemTextColor"] as? Number)?.let { scheme.idenfyBankVerificationViewBankRecyclerViewItemTextColor = it.toInt() }
         (map["idenfyBankVerificationViewLoadingSpinnerTintColor"] as? Number)?.let { scheme.idenfyBankVerificationViewLoadingSpinnerTintColor = it.toInt() }
-        (map["idenfyBankVerificationViewContinueButtonLoadingSpinnerTintColor"] as? Number)?.let { scheme.idenfyBankVerificationViewContinueButtonLoadingSpinnerTintColor = it.toInt() }
+        (map["idenfyBankCardCameraViewLoadingSpinnerColor"] as? Number)?.let { scheme.idenfyBankCardCameraViewLoadingSpinnerColor = it.toInt() }
+        (map["idenfyBankCardOnBoardingViewBackgroundColor"] as? Number)?.let { scheme.idenfyBankCardOnBoardingViewBackgroundColor = it.toInt() }
+        (map["idenfyBankCardOnBoardingViewTitleTextColor"] as? Number)?.let { scheme.idenfyBankCardOnBoardingViewTitleTextColor = it.toInt() }
+        (map["idenfyBankCardOnBoardingViewDescriptionTextColor"] as? Number)?.let { scheme.idenfyBankCardOnBoardingViewDescriptionTextColor = it.toInt() }
+        (map["idenfyBankCardOnBoardingViewCardIconTintColor"] as? Number)?.let { scheme.idenfyBankCardOnBoardingViewCardIconTintColor = it.toInt() }
+        (map["idenfyBankCardOnBoardingViewCardBorderColor"] as? Number)?.let { scheme.idenfyBankCardOnBoardingViewCardBorderColor = it.toInt() }
+        (map["idenfyBankCardOnBoardingViewCardBackgroundColor"] as? Number)?.let { scheme.idenfyBankCardOnBoardingViewCardBackgroundColor = it.toInt() }
+        (map["idenfyBankCardOnBoardingViewCardSelectedBorderColor"] as? Number)?.let { scheme.idenfyBankCardOnBoardingViewCardSelectedBorderColor = it.toInt() }
+        (map["idenfyBankCardOnBoardingViewCardSelectedBackgroundColor"] as? Number)?.let { scheme.idenfyBankCardOnBoardingViewCardSelectedBackgroundColor = it.toInt() }
+        (map["idenfyBankCardOnBoardingViewCardSelectedTextColor"] as? Number)?.let { scheme.idenfyBankCardOnBoardingViewCardSelectedTextColor = it.toInt() }
+        (map["idenfyBankCardOnBoardingViewContinueButtonDisabledBackgroundColor"] as? Number)?.let { scheme.idenfyBankCardOnBoardingViewContinueButtonDisabledBackgroundColor = it.toInt() }
+        (map["idenfyBankCardOnBoardingViewContinueButtonDisabledTextColor"] as? Number)?.let { scheme.idenfyBankCardOnBoardingViewContinueButtonDisabledTextColor = it.toInt() }
+        (map["idenfyBankCardOnBoardingViewContinueButtonEnabledTextColor"] as? Number)?.let { scheme.idenfyBankCardOnBoardingViewContinueButtonEnabledTextColor = it.toInt() }
+        (map["idenfyBankCardSelectionViewBackgroundColor"] as? Number)?.let { scheme.idenfyBankCardSelectionViewBackgroundColor = it.toInt() }
+        (map["idenfyBankCardSelectionViewButtonDisabledBackgroundColor"] as? Number)?.let { scheme.idenfyBankCardSelectionViewButtonDisabledBackgroundColor = it.toInt() }
+        (map["idenfyBankCardSelectionViewButtonDisabledTextColor"] as? Number)?.let { scheme.idenfyBankCardSelectionViewButtonDisabledTextColor = it.toInt() }
+        (map["idenfyBankCardSelectionViewButtonEnabledTextColor"] as? Number)?.let { scheme.idenfyBankCardSelectionViewButtonEnabledTextColor = it.toInt() }
+        (map["idenfyBankCardSelectionViewButtonTextColor"] as? Number)?.let { scheme.idenfyBankCardSelectionViewButtonTextColor = it.toInt() }
+        (map["idenfyBankCardUploadViewBackgroundColor"] as? Number)?.let { scheme.idenfyBankCardUploadViewBackgroundColor = it.toInt() }
+        (map["idenfyBankCardUploadViewDescriptionTextColor"] as? Number)?.let { scheme.idenfyBankCardUploadViewDescriptionTextColor = it.toInt() }
+        (map["idenfyBankCardUploadViewClickToUploadTextColor"] as? Number)?.let { scheme.idenfyBankCardUploadViewClickToUploadTextColor = it.toInt() }
+        (map["idenfyBankCardUploadViewUploadIconTintColor"] as? Number)?.let { scheme.idenfyBankCardUploadViewUploadIconTintColor = it.toInt() }
+        (map["idenfyBankCardUploadViewButtonDisabledBackgroundColor"] as? Number)?.let { scheme.idenfyBankCardUploadViewButtonDisabledBackgroundColor = it.toInt() }
+        (map["idenfyBankCardUploadViewButtonDisabledTextColor"] as? Number)?.let { scheme.idenfyBankCardUploadViewButtonDisabledTextColor = it.toInt() }
+        (map["idenfyBankCardUploadViewButtonEnabledTextColor"] as? Number)?.let { scheme.idenfyBankCardUploadViewButtonEnabledTextColor = it.toInt() }
+        (map["idenfyBankCardUploadReviewViewBackgroundColor"] as? Number)?.let { scheme.idenfyBankCardUploadReviewViewBackgroundColor = it.toInt() }
+        (map["idenfyBankCardUploadReviewViewDescriptionTextColor"] as? Number)?.let { scheme.idenfyBankCardUploadReviewViewDescriptionTextColor = it.toInt() }
+        (map["idenfyBankCardUploadReviewViewQuestionCardBackgroundColor"] as? Number)?.let { scheme.idenfyBankCardUploadReviewViewQuestionCardBackgroundColor = it.toInt() }
+        (map["idenfyBankCardUploadReviewViewQuestionCardIconColor"] as? Number)?.let { scheme.idenfyBankCardUploadReviewViewQuestionCardIconColor = it.toInt() }
+        (map["idenfyBankCardUploadReviewViewQuestionCardTitleColor"] as? Number)?.let { scheme.idenfyBankCardUploadReviewViewQuestionCardTitleColor = it.toInt() }
+        (map["idenfyBankCardUploadReviewViewNextButtonTextColor"] as? Number)?.let { scheme.idenfyBankCardUploadReviewViewNextButtonTextColor = it.toInt() }
+        (map["idenfyBankCardUploadReviewViewRetakeButtonTextColor"] as? Number)?.let { scheme.idenfyBankCardUploadReviewViewRetakeButtonTextColor = it.toInt() }
+        (map["idenfyBankCardUploadReviewViewButtonTextColor"] as? Number)?.let { scheme.idenfyBankCardUploadReviewViewButtonTextColor = it.toInt() }
+        (map["idenfyBankCardVerificationPrivacyPolicyViewBackgroundColor"] as? Number)?.let { scheme.idenfyBankCardVerificationPrivacyPolicyViewBackgroundColor = it.toInt() }
+        (map["idenfyBankCardVerificationPrivacyPolicyCommonInformationTitleTextColor"] as? Number)?.let { scheme.idenfyBankCardVerificationPrivacyPolicyCommonInformationTitleTextColor = it.toInt() }
+        (map["idenfyBankCardVerificationPrivacyPolicyCommonInformationDescriptionTextColor"] as? Number)?.let { scheme.idenfyBankCardVerificationPrivacyPolicyCommonInformationDescriptionTextColor = it.toInt() }
+        (map["idenfyBankCardVerificationPrivacyPolicyCardViewTextColor"] as? Number)?.let { scheme.idenfyBankCardVerificationPrivacyPolicyCardViewTextColor = it.toInt() }
+        (map["idenfyBankCardVerificationPrivacyPolicyCardViewBackgroundColor"] as? Number)?.let { scheme.idenfyBankCardVerificationPrivacyPolicyCardViewBackgroundColor = it.toInt() }
+        (map["idenfyBankCardVerificationPrivacyPolicyCardViewIconTintColor"] as? Number)?.let { scheme.idenfyBankCardVerificationPrivacyPolicyCardViewIconTintColor = it.toInt() }
+        (map["idenfyBankCardVerificationPrivacyPolicyContinueButtonTextColor"] as? Number)?.let { scheme.idenfyBankCardVerificationPrivacyPolicyContinueButtonTextColor = it.toInt() }
+        (map["idenfyBankCardVerificationResultsViewBackgroundColor"] as? Number)?.let { scheme.idenfyBankCardVerificationResultsViewBackgroundColor = it.toInt() }
+        (map["idenfyBankCardVerificationResultsCommonInformationTitleTextColor"] as? Number)?.let { scheme.idenfyBankCardVerificationResultsCommonInformationTitleTextColor = it.toInt() }
+        (map["idenfyBankCardVerificationResultsCommonInformationDescriptionTextColor"] as? Number)?.let { scheme.idenfyBankCardVerificationResultsCommonInformationDescriptionTextColor = it.toInt() }
+        (map["idenfyBankCardVerificationResultsContinueButtonTextColor"] as? Number)?.let { scheme.idenfyBankCardVerificationResultsContinueButtonTextColor = it.toInt() }
         (map["idenfyCameraPermissionViewBackgroundColor"] as? Number)?.let { scheme.idenfyCameraPermissionViewBackgroundColor = it.toInt() }
         (map["idenfyCameraPermissionViewTitleTextColor"] as? Number)?.let { scheme.idenfyCameraPermissionViewTitleTextColor = it.toInt() }
         (map["idenfyCameraPermissionViewDescriptionTextColor"] as? Number)?.let { scheme.idenfyCameraPermissionViewDescriptionTextColor = it.toInt() }
@@ -425,7 +465,6 @@ object IdenfySettingsDecoder {
         (map["idenfyCountrySelectionViewCountryRecyclerViewItemTextColor"] as? Number)?.let { scheme.idenfyCountrySelectionViewCountryRecyclerViewItemTextColor = it.toInt() }
         (map["idenfyCountrySelectionViewCountryRecyclerViewItemHighlightedTextColor"] as? Number)?.let { scheme.idenfyCountrySelectionViewCountryRecyclerViewItemHighlightedTextColor = it.toInt() }
         (map["idenfyCountrySelectionViewCountryRecyclerViewItemHighlightedBackgroundColor"] as? Number)?.let { scheme.idenfyCountrySelectionViewCountryRecyclerViewItemHighlightedBackgroundColor = it.toInt() }
-        (map["idenfyCountrySelectionViewCountryRecyclerViewItemLoadingSpinnerTintColor"] as? Number)?.let { scheme.idenfyCountrySelectionViewCountryRecyclerViewItemLoadingSpinnerTintColor = it.toInt() }
         (map["idenfyCountryViewSelectionCountrySearchBarBorderColor"] as? Number)?.let { scheme.idenfyCountryViewSelectionCountrySearchBarBorderColor = it.toInt() }
         (map["idenfyCountrySelectionViewPredefinedCountryContinueButtonTextColor"] as? Number)?.let { scheme.idenfyCountrySelectionViewPredefinedCountryContinueButtonTextColor = it.toInt() }
         (map["idenfyDocumentPhotoResultViewBackgroundColor"] as? Number)?.let { scheme.idenfyDocumentPhotoResultViewBackgroundColor = it.toInt() }
@@ -471,7 +510,6 @@ object IdenfySettingsDecoder {
         (map["idenfyEmailSMSVerificationContinueButtonDisabledTextColor"] as? Number)?.let { scheme.idenfyEmailSMSVerificationContinueButtonDisabledTextColor = it.toInt() }
         (map["idenfyEmailSMSVerificationViewContinueButtonDisabledBackgroundColor"] as? Number)?.let { scheme.idenfyEmailSMSVerificationViewContinueButtonDisabledBackgroundColor = it.toInt() }
         (map["idenfyEmailSMSVerificationContinueButtonEnabledTextColor"] as? Number)?.let { scheme.idenfyEmailSMSVerificationContinueButtonEnabledTextColor = it.toInt() }
-        (map["idenfyEmailSMSVerificationContinueButtonLoadingSpinnerTintColor"] as? Number)?.let { scheme.idenfyEmailSMSVerificationContinueButtonLoadingSpinnerTintColor = it.toInt() }
         (map["idenfyFacePhotoResultViewBackgroundColor"] as? Number)?.let { scheme.idenfyFacePhotoResultViewBackgroundColor = it.toInt() }
         (map["idenfyFacePhotoResultViewTitleTextColor"] as? Number)?.let { scheme.idenfyFacePhotoResultViewTitleTextColor = it.toInt() }
         (map["idenfyFacePhotoResultViewDescriptionTextColor"] as? Number)?.let { scheme.idenfyFacePhotoResultViewDescriptionTextColor = it.toInt() }
@@ -482,6 +520,20 @@ object IdenfySettingsDecoder {
         (map["idenfyPhotoResultCardTitleColor"] as? Number)?.toInt()?.let { color ->
             scheme.idenfyDocumentPhotoResultViewCardTitleColor = color
             scheme.idenfyFacePhotoResultViewCardTitleColor = color
+            scheme.idenfyBankCardUploadReviewViewQuestionCardTitleColor = color
+            scheme.idenfyBankCardUploadReviewViewQuestionCardIconColor = color
+        }
+        (map["idenfyHighlightedItemBackgroundColor"] as? Number)?.toInt()?.let { color ->
+            scheme.idenfyCountryAndDocumentSelectionViewItemSelectionHighlightedBackgroundColor = color
+            scheme.idenfyBankCardOnBoardingViewCardSelectedBackgroundColor = color
+        }
+        (map["idenfyHighlightedItemTextColor"] as? Number)?.toInt()?.let { color ->
+            scheme.idenfyCountryAndDocumentSelectionViewItemSelectionHighlightedTextColor = color
+            scheme.idenfyBankCardOnBoardingViewCardSelectedTextColor = color
+        }
+        (map["idenfyHighlightedItemBorderColor"] as? Number)?.toInt()?.let { color ->
+            scheme.idenfyCountryAndDocumentSelectionViewItemSelectionHighlightedBorderColor = color
+            scheme.idenfyBankCardOnBoardingViewCardSelectedBorderColor = color
         }
         (map["idenfyContinueButtonTextColor"] as? Number)?.toInt()?.let { color ->
             scheme.idenfyDocumentSelectionViewContinueButtonEnabledTextColor = color
@@ -494,7 +546,7 @@ object IdenfySettingsDecoder {
             scheme.idenfyPrivacyPolicyContinueButtonTextColor = color
             scheme.idenfyIdentificationResultsViewRetakeButtonTextColor = color
             scheme.idenfyIdentificationResultsViewInstructionsAlertContinueButtonTextColorV2 = color
-            scheme.idenfyIdentificationResultsViewDocNotFoundAlertContinueButtonTextColorV2 = color
+            scheme.idenfyIdentificationResultsViewCountryMismatchAlertContinueButtonTextColorV2 = color
             scheme.idenfyIdentificationResultsViewMrzNotFoundAlertContinueButtonTextColorV2 = color
             scheme.idenfyIdentificationResultsViewMismatchTagsFoundAlertContinueButtonEnabledTextColorV2 = color
             scheme.idenfyIdentificationResultsViewMismatchTagsFoundAlertContinueButtonDisabledTextColorV2 = color
@@ -522,12 +574,22 @@ object IdenfySettingsDecoder {
             scheme.idenfyDocumentPhotoResultViewNextButtonTextColor = color
             scheme.idenfyFacePhotoResultViewNextButtonTextColor = color
             scheme.idenfyUploadPhotoViewContinuePhotoButtonTextColor = color
+            scheme.idenfyBankCardOnBoardingViewContinueButtonEnabledTextColor = color
+            scheme.idenfyBankCardOnBoardingViewContinueButtonDisabledTextColor = color
+            scheme.idenfyBankCardSelectionViewButtonEnabledTextColor = color
+            scheme.idenfyBankCardSelectionViewButtonDisabledTextColor = color
+            scheme.idenfyBankCardUploadViewButtonEnabledTextColor = color
+            scheme.idenfyBankCardUploadViewButtonDisabledTextColor = color
+            scheme.idenfyBankCardUploadReviewViewNextButtonTextColor = color
+            scheme.idenfyBankCardVerificationPrivacyPolicyContinueButtonTextColor = color
+            scheme.idenfyBankCardVerificationResultsContinueButtonTextColor = color
         }
         (map["idenfyRetakeButtonTextColor"] as? Number)?.toInt()?.let { color ->
             scheme.idenfyDocumentPhotoResultViewRetakePhotoButtonTextColor = color
             scheme.idenfyFacePhotoResultViewRetakePhotoButtonTextColor = color
             scheme.idenfyUploadPhotoViewChooseAnotherPhotoButtonTextColor = color
             scheme.idenfyIdentificationResultsViewMrzNotFoundAlertBackButtonTextColorV2 = color
+            scheme.idenfyBankCardUploadReviewViewRetakeButtonTextColor = color
         }
         (map["idenfyContinueButtonSpinnerColor"] as? Number)?.toInt()?.let { color ->
             scheme.idenfyPrivacyPolicyContinueButtonLoadingSpinnerTintColor = color
@@ -539,6 +601,15 @@ object IdenfySettingsDecoder {
             scheme.idenfyMFAMethodSelectionViewContinueButtonLoadingSpinnerTintColor = color
             scheme.idenfyProviderLoginViewContinueButtonLoadingSpinnerTintColor = color
             scheme.idenfyEIDSessionViewButtonLoadingSpinnerTintColor = color
+            scheme.idenfyBankCardOnBoardingViewContinueButtonLoadingSpinnerTintColor = color
+            scheme.idenfyBankCardSelectionViewButtonLoadingSpinnerTintColor = color
+            scheme.idenfyBankCardVerificationPrivacyPolicyContinueButtonLoadingSpinnerTintColor = color
+            scheme.idenfyBankCardUploadReviewViewNextButtonLoadingSpinnerTintColor = color
+            scheme.idenfyQuestionnaireViewFileQuestionUploadLoadingSpinnerTintColor = color
+            scheme.idenfyQuestionnaireViewImageQuestionUploadLoadingSpinnerTintColor = color
+            scheme.idenfyCountrySelectionViewCountryRecyclerViewItemLoadingSpinnerTintColor = color
+            scheme.idenfyProviderSelectionViewProviderRecyclerViewItemLoadingSpinnerTintColor = color
+            scheme.idenfyDocumentSelectionViewLoadingSpinnerTintColor = color
         }
         (map["idenfyMFACaptchaMethodViewBackgroundColor"] as? Number)?.let { scheme.idenfyMFACaptchaMethodViewBackgroundColor = it.toInt() }
         (map["idenfyMFACaptchaMethodViewTitleTextColor"] as? Number)?.let { scheme.idenfyMFACaptchaMethodViewTitleTextColor = it.toInt() }
@@ -550,7 +621,6 @@ object IdenfySettingsDecoder {
         (map["idenfyMFACaptchaMethodViewCaptchaEditTextHintTitleColor"] as? Number)?.let { scheme.idenfyMFACaptchaMethodViewCaptchaEditTextHintTitleColor = it.toInt() }
         (map["idenfyMFACaptchaMethodViewCaptchaEditTextTopHintTitleColor"] as? Number)?.let { scheme.idenfyMFACaptchaMethodViewCaptchaEditTextTopHintTitleColor = it.toInt() }
         (map["idenfyMFACaptchaMethodViewContinueButtonTextColor"] as? Number)?.let { scheme.idenfyMFACaptchaMethodViewContinueButtonTextColor = it.toInt() }
-        (map["idenfyMFACaptchaMethodViewContinueButtonLoadingSpinnerColor"] as? Number)?.let { scheme.idenfyMFACaptchaMethodViewContinueButtonLoadingSpinnerColor = it.toInt() }
         (map["idenfyMFAGeneralViewBackgroundColor"] as? Number)?.let { scheme.idenfyMFAGeneralViewBackgroundColor = it.toInt() }
         (map["idenfyMFAGeneralViewTitleTextColor"] as? Number)?.let { scheme.idenfyMFAGeneralViewTitleTextColor = it.toInt() }
         (map["idenfyMFAGeneralViewDescriptionTextColor"] as? Number)?.let { scheme.idenfyMFAGeneralViewDescriptionTextColor = it.toInt() }
@@ -561,13 +631,11 @@ object IdenfySettingsDecoder {
         (map["idenfyMFAGeneralViewEditTextHintTitleColor"] as? Number)?.let { scheme.idenfyMFAGeneralViewEditTextHintTitleColor = it.toInt() }
         (map["idenfyMFAGeneralViewEditTextTopHintTitleColor"] as? Number)?.let { scheme.idenfyMFAGeneralViewEditTextTopHintTitleColor = it.toInt() }
         (map["idenfyMFAGeneralViewContinueButtonTextColor"] as? Number)?.let { scheme.idenfyMFAGeneralViewContinueButtonTextColor = it.toInt() }
-        (map["idenfyMFAGeneralViewContinueButtonLoadingSpinnerTintColor"] as? Number)?.let { scheme.idenfyMFAGeneralViewContinueButtonLoadingSpinnerTintColor = it.toInt() }
         (map["idenfyMFAMethodSelectionViewBackgroundColor"] as? Number)?.let { scheme.idenfyMFAMethodSelectionViewBackgroundColor = it.toInt() }
         (map["idenfyMFAMethodSelectionViewTitleTextColor"] as? Number)?.let { scheme.idenfyMFAMethodSelectionViewTitleTextColor = it.toInt() }
         (map["idenfyMFAMethodSelectionViewDescriptionTextColor"] as? Number)?.let { scheme.idenfyMFAMethodSelectionViewDescriptionTextColor = it.toInt() }
         (map["idenfyMFAMethodSelectionViewTopHintTitleColor"] as? Number)?.let { scheme.idenfyMFAMethodSelectionViewTopHintTitleColor = it.toInt() }
         (map["idenfyMFAMethodSelectionViewContinueButtonTextColor"] as? Number)?.let { scheme.idenfyMFAMethodSelectionViewContinueButtonTextColor = it.toInt() }
-        (map["idenfyMFAMethodSelectionViewContinueButtonLoadingSpinnerTintColor"] as? Number)?.let { scheme.idenfyMFAMethodSelectionViewContinueButtonLoadingSpinnerTintColor = it.toInt() }
         (map["idenfyProviderLoginViewBackgroundColor"] as? Number)?.let { scheme.idenfyProviderLoginViewBackgroundColor = it.toInt() }
         (map["idenfyProviderLoginViewTitleTextColor"] as? Number)?.let { scheme.idenfyProviderLoginViewTitleTextColor = it.toInt() }
         (map["idenfyProviderLoginViewDescriptionTextColor"] as? Number)?.let { scheme.idenfyProviderLoginViewDescriptionTextColor = it.toInt() }
@@ -578,7 +646,6 @@ object IdenfySettingsDecoder {
         (map["idenfyProviderLoginViewUsernameAndPasswordEditTextHintTitleColor"] as? Number)?.let { scheme.idenfyProviderLoginViewUsernameAndPasswordEditTextHintTitleColor = it.toInt() }
         (map["idenfyProviderLoginViewUsernameAndPasswordEditTextTopHintTitleColor"] as? Number)?.let { scheme.idenfyProviderLoginViewUsernameAndPasswordEditTextTopHintTitleColor = it.toInt() }
         (map["idenfyProviderLoginViewContinueButtonTextColor"] as? Number)?.let { scheme.idenfyProviderLoginViewContinueButtonTextColor = it.toInt() }
-        (map["idenfyProviderLoginViewContinueButtonLoadingSpinnerTintColor"] as? Number)?.let { scheme.idenfyProviderLoginViewContinueButtonLoadingSpinnerTintColor = it.toInt() }
         (map["idenfyProviderSelectionViewBackgroundColor"] as? Number)?.let { scheme.idenfyProviderSelectionViewBackgroundColor = it.toInt() }
         (map["idenfyProviderSelectionViewTitleTextColor"] as? Number)?.let { scheme.idenfyProviderSelectionViewTitleTextColor = it.toInt() }
         (map["idenfyProviderSelectionViewDescriptionTextColor"] as? Number)?.let { scheme.idenfyProviderSelectionViewDescriptionTextColor = it.toInt() }
@@ -593,7 +660,6 @@ object IdenfySettingsDecoder {
         (map["idenfyProviderSelectionViewProviderRecyclerViewItemHighlightedTextColor"] as? Number)?.let { scheme.idenfyProviderSelectionViewProviderRecyclerViewItemHighlightedTextColor = it.toInt() }
         (map["idenfyProviderSelectionViewProviderRecyclerViewItemHighlightedBackgroundColor"] as? Number)?.let { scheme.idenfyProviderSelectionViewProviderRecyclerViewItemHighlightedBackgroundColor = it.toInt() }
         (map["idenfyProviderViewSelectionProviderSearchBarBorderColor"] as? Number)?.let { scheme.idenfyProviderViewSelectionProviderSearchBarBorderColor = it.toInt() }
-        (map["idenfyProviderSelectionViewProviderRecyclerViewItemLoadingSpinnerTintColor"] as? Number)?.let { scheme.idenfyProviderSelectionViewProviderRecyclerViewItemLoadingSpinnerTintColor = it.toInt() }
         (map["idenfyAdditionalSupportViewBackgroundColor"] as? Number)?.let { scheme.idenfyAdditionalSupportViewBackgroundColor = it.toInt() }
         (map["idenfyAdditionalSupportCommonInformationTitleTextColor"] as? Number)?.let { scheme.idenfyAdditionalSupportCommonInformationTitleTextColor = it.toInt() }
         (map["idenfyAdditionalSupportCommonInformationDescriptionTextColor"] as? Number)?.let { scheme.idenfyAdditionalSupportCommonInformationDescriptionTextColor = it.toInt() }
@@ -611,7 +677,6 @@ object IdenfySettingsDecoder {
         (map["idenfyCountryAndDocumentSelectionViewContinueButtonDisabledBackgroundColor"] as? Number)?.let { scheme.idenfyCountryAndDocumentSelectionViewContinueButtonDisabledBackgroundColor = it.toInt() }
         (map["idenfyCountryAndDocumentSelectionViewContinueButtonDisabledTextColor"] as? Number)?.let { scheme.idenfyCountryAndDocumentSelectionViewContinueButtonDisabledTextColor = it.toInt() }
         (map["idenfyCountryAndDocumentSelectionViewContinueButtonEnabledTextColor"] as? Number)?.let { scheme.idenfyCountryAndDocumentSelectionViewContinueButtonEnabledTextColor = it.toInt() }
-        (map["idenfyCountryAndDocumentSelectionViewContinueButtonLoadingSpinnerTintColor"] as? Number)?.let { scheme.idenfyCountryAndDocumentSelectionViewContinueButtonLoadingSpinnerTintColor = it.toInt() }
         (map["idenfyCountryAndDocumentSelectionViewPhysicalDocumentTitleDividerColor"] as? Number)?.let { scheme.idenfyCountryAndDocumentSelectionViewPhysicalDocumentTitleDividerColor = it.toInt() }
         (map["idenfyDocumentCameraPreviewSessionBackgroundColor"] as? Number)?.let { scheme.idenfyDocumentCameraPreviewSessionBackgroundColor = it.toInt() }
         (map["idenfyDocumentCameraPreviewSessionBottomActionButtonsViewBackgroundColor"] as? Number)?.let { scheme.idenfyDocumentCameraPreviewSessionBottomActionButtonsViewBackgroundColor = it.toInt() }
@@ -630,7 +695,6 @@ object IdenfySettingsDecoder {
         (map["idenfyPrivacyPolicyCardViewArrowIconTintColor"] as? Number)?.let { scheme.idenfyPrivacyPolicyCardViewArrowIconTintColor = it.toInt() }
         (map["idenfyPrivacyPolicyCardViewIconTintColor"] as? Number)?.let { scheme.idenfyPrivacyPolicyCardViewIconTintColor = it.toInt() }
         (map["idenfyPrivacyPolicyContinueButtonTextColor"] as? Number)?.let { scheme.idenfyPrivacyPolicyContinueButtonTextColor = it.toInt() }
-        (map["idenfyPrivacyPolicyContinueButtonLoadingSpinnerTintColor"] as? Number)?.let { scheme.idenfyPrivacyPolicyContinueButtonLoadingSpinnerTintColor = it.toInt() }
         (map["idenfyPartnerPrivacyPolicyDialogViewBackgroundColor"] as? Number)?.let { scheme.idenfyPartnerPrivacyPolicyDialogViewBackgroundColor = it.toInt() }
         (map["idenfySplashScreenViewTitleTextColor"] as? Number)?.let { scheme.idenfySplashScreenViewTitleTextColor = it.toInt() }
         (map["idenfySplashScreenViewDescriptionTextColor"] as? Number)?.let { scheme.idenfySplashScreenViewDescriptionTextColor = it.toInt() }
@@ -653,7 +717,6 @@ object IdenfySettingsDecoder {
         (map["idenfyEIDSessionViewTitleTextColor"] as? Number)?.let { scheme.idenfyEIDSessionViewTitleTextColor = it.toInt() }
         (map["idenfyEIDSessionViewDescriptionTextColor"] as? Number)?.let { scheme.idenfyEIDSessionViewDescriptionTextColor = it.toInt() }
         (map["idenfyEIDSessionViewButtonTextColor"] as? Number)?.let { scheme.idenfyEIDSessionViewButtonTextColor = it.toInt() }
-        (map["idenfyEIDSessionViewButtonLoadingSpinnerTintColor"] as? Number)?.let { scheme.idenfyEIDSessionViewButtonLoadingSpinnerTintColor = it.toInt() }
         (map["idenfyEIDSessionViewCodeInputEditTextTitleColor"] as? Number)?.let { scheme.idenfyEIDSessionViewCodeInputEditTextTitleColor = it.toInt() }
         (map["idenfyEIDSessionViewCodeInputEditTextHintColor"] as? Number)?.let { scheme.idenfyEIDSessionViewCodeInputEditTextHintColor = it.toInt() }
         (map["idenfyEIDSessionViewCodeInputFieldErrorMessageTextColor"] as? Number)?.let { scheme.idenfyEIDSessionViewCodeInputFieldErrorMessageTextColor = it.toInt() }

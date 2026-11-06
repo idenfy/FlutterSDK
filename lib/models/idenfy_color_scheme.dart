@@ -82,7 +82,6 @@ class IdenfyColorScheme {
   Color? idenfyDocumentSelectionViewContinueButtonDisabledBackgroundColor;
   Color? idenfyDocumentSelectionViewContinueButtonDisabledTextColor;
   Color? idenfyDocumentSelectionViewContinueButtonEnabledTextColor;
-  Color? idenfyDocumentSelectionViewLoadingSpinnerTintColor;
 
   // Face Authentication Results View colors
   Color? idenfyFaceAuthenticationResultsViewBackgroundColor;
@@ -111,6 +110,11 @@ class IdenfyColorScheme {
   Color? idenfyContinueButtonSpinnerColor;
   Color? idenfyRetakeButtonTextColor;
 
+  // Shared highlighted/selected item colors (sets all highlighted/selected card states across screens)
+  Color? idenfyHighlightedItemBackgroundColor;
+  Color? idenfyHighlightedItemTextColor;
+  Color? idenfyHighlightedItemBorderColor;
+
   // Photo Result shared colors (maps to both document and face photo result on Android, single property on iOS)
   Color? idenfyPhotoResultCardTitleColor;
 
@@ -134,11 +138,11 @@ class IdenfyColorScheme {
   Color? idenfyIdentificationResultsViewContentMaskForegroundColor;
   Color? idenfyIdentificationResultsViewSuccessStepTextColor;
   Color? idenfyIdentificationResultsViewErrorStepTextColorV2;
-  Color? idenfyIdentificationResultsViewDocNotFoundAlertBackgroundColorV2;
-  Color? idenfyIdentificationResultsViewDocNotFoundAlertTitleTextColorV2;
-  Color? idenfyIdentificationResultsViewDocNotFoundAlertDescriptionTextColorV2;
-  Color? idenfyIdentificationResultsViewDocNotFoundAlertDescriptionDocumentHighlightColorV2;
-  Color? idenfyIdentificationResultsViewDocNotFoundAlertContinueButtonTextColorV2;
+  Color? idenfyIdentificationResultsViewCountryMismatchAlertBackgroundColorV2;
+  Color? idenfyIdentificationResultsViewCountryMismatchAlertTitleTextColorV2;
+  Color? idenfyIdentificationResultsViewCountryMismatchAlertDescriptionTextColorV2;
+  Color? idenfyIdentificationResultsViewCountryMismatchAlertContinueButtonTextColorV2;
+  Color? idenfyIdentificationResultsViewCountryMismatchAlertBackButtonTextColorV2;
   Color? idenfyIdentificationResultsViewMrzNotFoundAlertBackgroundColorV2;
   Color? idenfyIdentificationResultsViewMrzNotFoundAlertTitleTextColorV2;
   Color? idenfyIdentificationResultsViewMrzNotFoundAlertDescriptionTextColorV2;
@@ -172,8 +176,6 @@ class IdenfyColorScheme {
   Color? idenfyLanguageSelectionViewLanguageRecyclerViewItemBackgroundColor;
   Color? idenfyLanguageSelectionViewLanguageRecyclerViewItemBorderColor;
   Color? idenfyLanguageSelectionViewLanguageRecyclerViewItemTextColor;
-  Color? idenfyLanguageSelectionViewLanguageRecyclerViewItemHighlightedTextColor;
-  Color? idenfyLanguageSelectionViewLanguageRecyclerViewItemHighlightedBackgroundColor;
 
   // Manual Reviewing Status Approved View colors
   Color? idenfyManualReviewingStatusApprovedViewBackgroundColor;
@@ -292,7 +294,64 @@ class IdenfyColorScheme {
   Color? idenfyBankVerificationViewBanksRecyclerViewItemBackgroundColor;
   Color? idenfyBankVerificationViewBankRecyclerViewItemTextColor;
   Color? idenfyBankVerificationViewLoadingSpinnerTintColor;
-  Color? idenfyBankVerificationViewContinueButtonLoadingSpinnerTintColor;
+
+  // Bank Card Camera View colors
+  Color? idenfyBankCardCameraViewLoadingSpinnerColor;
+
+  // Bank Card Onboarding View colors
+  Color? idenfyBankCardOnBoardingViewBackgroundColor;
+  Color? idenfyBankCardOnBoardingViewTitleTextColor;
+  Color? idenfyBankCardOnBoardingViewDescriptionTextColor;
+  Color? idenfyBankCardOnBoardingViewCardIconTintColor;
+  Color? idenfyBankCardOnBoardingViewCardBorderColor;
+  Color? idenfyBankCardOnBoardingViewCardBackgroundColor;
+  Color? idenfyBankCardOnBoardingViewCardSelectedBorderColor;
+  Color? idenfyBankCardOnBoardingViewCardSelectedBackgroundColor;
+  Color? idenfyBankCardOnBoardingViewCardSelectedTextColor;
+  Color? idenfyBankCardOnBoardingViewContinueButtonDisabledBackgroundColor;
+  Color? idenfyBankCardOnBoardingViewContinueButtonDisabledTextColor;
+  Color? idenfyBankCardOnBoardingViewContinueButtonEnabledTextColor;
+
+  // Bank Card Selection View colors
+  Color? idenfyBankCardSelectionViewBackgroundColor;
+  Color? idenfyBankCardSelectionViewButtonDisabledBackgroundColor;
+  Color? idenfyBankCardSelectionViewButtonDisabledTextColor;
+  Color? idenfyBankCardSelectionViewButtonEnabledTextColor;
+  Color? idenfyBankCardSelectionViewButtonTextColor;
+
+  // Bank Card Upload View colors
+  Color? idenfyBankCardUploadViewBackgroundColor;
+  Color? idenfyBankCardUploadViewDescriptionTextColor;
+  Color? idenfyBankCardUploadViewClickToUploadTextColor;
+  Color? idenfyBankCardUploadViewUploadIconTintColor;
+  Color? idenfyBankCardUploadViewButtonDisabledBackgroundColor;
+  Color? idenfyBankCardUploadViewButtonDisabledTextColor;
+  Color? idenfyBankCardUploadViewButtonEnabledTextColor;
+
+  // Bank Card Upload Review View colors
+  Color? idenfyBankCardUploadReviewViewBackgroundColor;
+  Color? idenfyBankCardUploadReviewViewDescriptionTextColor;
+  Color? idenfyBankCardUploadReviewViewQuestionCardBackgroundColor;
+  Color? idenfyBankCardUploadReviewViewQuestionCardIconColor;
+  Color? idenfyBankCardUploadReviewViewQuestionCardTitleColor;
+  Color? idenfyBankCardUploadReviewViewNextButtonTextColor;
+  Color? idenfyBankCardUploadReviewViewRetakeButtonTextColor;
+  Color? idenfyBankCardUploadReviewViewButtonTextColor;
+
+  // Bank Card Verification Privacy Policy View colors
+  Color? idenfyBankCardVerificationPrivacyPolicyViewBackgroundColor;
+  Color? idenfyBankCardVerificationPrivacyPolicyCommonInformationTitleTextColor;
+  Color? idenfyBankCardVerificationPrivacyPolicyCommonInformationDescriptionTextColor;
+  Color? idenfyBankCardVerificationPrivacyPolicyCardViewTextColor;
+  Color? idenfyBankCardVerificationPrivacyPolicyCardViewBackgroundColor;
+  Color? idenfyBankCardVerificationPrivacyPolicyCardViewIconTintColor;
+  Color? idenfyBankCardVerificationPrivacyPolicyContinueButtonTextColor;
+
+  // Bank Card Verification Results View colors
+  Color? idenfyBankCardVerificationResultsViewBackgroundColor;
+  Color? idenfyBankCardVerificationResultsCommonInformationTitleTextColor;
+  Color? idenfyBankCardVerificationResultsCommonInformationDescriptionTextColor;
+  Color? idenfyBankCardVerificationResultsContinueButtonTextColor;
 
   // Camera Permission View colors
   Color? idenfyCameraPermissionViewBackgroundColor;
@@ -330,7 +389,6 @@ class IdenfyColorScheme {
   Color? idenfyCountrySelectionViewCountryRecyclerViewItemTextColor;
   Color? idenfyCountrySelectionViewCountryRecyclerViewItemHighlightedTextColor;
   Color? idenfyCountrySelectionViewCountryRecyclerViewItemHighlightedBackgroundColor;
-  Color? idenfyCountrySelectionViewCountryRecyclerViewItemLoadingSpinnerTintColor;
   Color? idenfyCountryViewSelectionCountrySearchBarBorderColor;
   Color? idenfyCountrySelectionViewPredefinedCountryContinueButtonTextColor;
 
@@ -380,7 +438,6 @@ class IdenfyColorScheme {
   Color? idenfyEmailSMSVerificationContinueButtonDisabledTextColor;
   Color? idenfyEmailSMSVerificationViewContinueButtonDisabledBackgroundColor;
   Color? idenfyEmailSMSVerificationContinueButtonEnabledTextColor;
-  Color? idenfyEmailSMSVerificationContinueButtonLoadingSpinnerTintColor;
 
   // Face Photo Result View colors
   Color? idenfyFacePhotoResultViewBackgroundColor;
@@ -402,7 +459,6 @@ class IdenfyColorScheme {
   Color? idenfyMFACaptchaMethodViewCaptchaEditTextHintTitleColor;
   Color? idenfyMFACaptchaMethodViewCaptchaEditTextTopHintTitleColor;
   Color? idenfyMFACaptchaMethodViewContinueButtonTextColor;
-  Color? idenfyMFACaptchaMethodViewContinueButtonLoadingSpinnerColor;
 
   // MFA General View colors
   Color? idenfyMFAGeneralViewBackgroundColor;
@@ -415,7 +471,6 @@ class IdenfyColorScheme {
   Color? idenfyMFAGeneralViewEditTextHintTitleColor;
   Color? idenfyMFAGeneralViewEditTextTopHintTitleColor;
   Color? idenfyMFAGeneralViewContinueButtonTextColor;
-  Color? idenfyMFAGeneralViewContinueButtonLoadingSpinnerTintColor;
 
   // MFA Method Selection View colors
   Color? idenfyMFAMethodSelectionViewBackgroundColor;
@@ -423,7 +478,6 @@ class IdenfyColorScheme {
   Color? idenfyMFAMethodSelectionViewDescriptionTextColor;
   Color? idenfyMFAMethodSelectionViewTopHintTitleColor;
   Color? idenfyMFAMethodSelectionViewContinueButtonTextColor;
-  Color? idenfyMFAMethodSelectionViewContinueButtonLoadingSpinnerTintColor;
 
   // Provider Login View colors
   Color? idenfyProviderLoginViewBackgroundColor;
@@ -436,7 +490,6 @@ class IdenfyColorScheme {
   Color? idenfyProviderLoginViewUsernameAndPasswordEditTextHintTitleColor;
   Color? idenfyProviderLoginViewUsernameAndPasswordEditTextTopHintTitleColor;
   Color? idenfyProviderLoginViewContinueButtonTextColor;
-  Color? idenfyProviderLoginViewContinueButtonLoadingSpinnerTintColor;
 
   // Provider Selection View colors
   Color? idenfyProviderSelectionViewBackgroundColor;
@@ -453,7 +506,6 @@ class IdenfyColorScheme {
   Color? idenfyProviderSelectionViewProviderRecyclerViewItemHighlightedTextColor;
   Color? idenfyProviderSelectionViewProviderRecyclerViewItemHighlightedBackgroundColor;
   Color? idenfyProviderViewSelectionProviderSearchBarBorderColor;
-  Color? idenfyProviderSelectionViewProviderRecyclerViewItemLoadingSpinnerTintColor;
 
   // Additional Support View colors
   Color? idenfyAdditionalSupportViewBackgroundColor;
@@ -475,7 +527,6 @@ class IdenfyColorScheme {
   Color? idenfyCountryAndDocumentSelectionViewContinueButtonDisabledBackgroundColor;
   Color? idenfyCountryAndDocumentSelectionViewContinueButtonDisabledTextColor;
   Color? idenfyCountryAndDocumentSelectionViewContinueButtonEnabledTextColor;
-  Color? idenfyCountryAndDocumentSelectionViewContinueButtonLoadingSpinnerTintColor;
   Color? idenfyCountryAndDocumentSelectionViewPhysicalDocumentTitleDividerColor;
 
   // Document Camera Preview Session colors
@@ -498,7 +549,6 @@ class IdenfyColorScheme {
   Color? idenfyPrivacyPolicyCardViewArrowIconTintColor;
   Color? idenfyPrivacyPolicyCardViewIconTintColor;
   Color? idenfyPrivacyPolicyContinueButtonTextColor;
-  Color? idenfyPrivacyPolicyContinueButtonLoadingSpinnerTintColor;
   Color? idenfyPartnerPrivacyPolicyDialogViewBackgroundColor;
 
   // Splash Screen View colors
@@ -531,7 +581,6 @@ class IdenfyColorScheme {
   Color? idenfyEIDSessionViewTitleTextColor;
   Color? idenfyEIDSessionViewDescriptionTextColor;
   Color? idenfyEIDSessionViewButtonTextColor;
-  Color? idenfyEIDSessionViewButtonLoadingSpinnerTintColor;
   Color? idenfyEIDSessionViewCodeInputEditTextTitleColor;
   Color? idenfyEIDSessionViewCodeInputEditTextHintColor;
   Color? idenfyEIDSessionViewCodeInputFieldErrorMessageTextColor;
@@ -620,7 +669,6 @@ class IdenfyColorScheme {
     this.idenfyDocumentSelectionViewContinueButtonDisabledBackgroundColor,
     this.idenfyDocumentSelectionViewContinueButtonDisabledTextColor,
     this.idenfyDocumentSelectionViewContinueButtonEnabledTextColor,
-    this.idenfyDocumentSelectionViewLoadingSpinnerTintColor,
     this.idenfyFaceAuthenticationResultsViewBackgroundColor,
     this.idenfyFaceAuthenticationResultsCommonInformationTitleTextColor,
     this.idenfyFaceAuthenticationResultsCommonInformationDescriptionTextColor,
@@ -642,6 +690,9 @@ class IdenfyColorScheme {
     this.idenfyContinueButtonTextColor,
     this.idenfyContinueButtonSpinnerColor,
     this.idenfyRetakeButtonTextColor,
+    this.idenfyHighlightedItemBackgroundColor,
+    this.idenfyHighlightedItemTextColor,
+    this.idenfyHighlightedItemBorderColor,
     this.idenfyPhotoResultCardTitleColor,
     this.idenfyGradientButtonColorStart,
     this.idenfyGradientButtonColorEnd,
@@ -660,11 +711,11 @@ class IdenfyColorScheme {
     this.idenfyIdentificationResultsViewContentMaskForegroundColor,
     this.idenfyIdentificationResultsViewSuccessStepTextColor,
     this.idenfyIdentificationResultsViewErrorStepTextColorV2,
-    this.idenfyIdentificationResultsViewDocNotFoundAlertBackgroundColorV2,
-    this.idenfyIdentificationResultsViewDocNotFoundAlertTitleTextColorV2,
-    this.idenfyIdentificationResultsViewDocNotFoundAlertDescriptionTextColorV2,
-    this.idenfyIdentificationResultsViewDocNotFoundAlertDescriptionDocumentHighlightColorV2,
-    this.idenfyIdentificationResultsViewDocNotFoundAlertContinueButtonTextColorV2,
+    this.idenfyIdentificationResultsViewCountryMismatchAlertBackgroundColorV2,
+    this.idenfyIdentificationResultsViewCountryMismatchAlertTitleTextColorV2,
+    this.idenfyIdentificationResultsViewCountryMismatchAlertDescriptionTextColorV2,
+    this.idenfyIdentificationResultsViewCountryMismatchAlertContinueButtonTextColorV2,
+    this.idenfyIdentificationResultsViewCountryMismatchAlertBackButtonTextColorV2,
     this.idenfyIdentificationResultsViewMrzNotFoundAlertBackgroundColorV2,
     this.idenfyIdentificationResultsViewMrzNotFoundAlertTitleTextColorV2,
     this.idenfyIdentificationResultsViewMrzNotFoundAlertDescriptionTextColorV2,
@@ -692,8 +743,6 @@ class IdenfyColorScheme {
     this.idenfyLanguageSelectionViewLanguageRecyclerViewItemBackgroundColor,
     this.idenfyLanguageSelectionViewLanguageRecyclerViewItemBorderColor,
     this.idenfyLanguageSelectionViewLanguageRecyclerViewItemTextColor,
-    this.idenfyLanguageSelectionViewLanguageRecyclerViewItemHighlightedTextColor,
-    this.idenfyLanguageSelectionViewLanguageRecyclerViewItemHighlightedBackgroundColor,
     this.idenfyManualReviewingStatusApprovedViewBackgroundColor,
     this.idenfyManualReviewingStatusApprovedCommonInformationTitleTextColor,
     this.idenfyManualReviewingStatusApprovedCommonInformationDescriptionTextColor,
@@ -794,7 +843,50 @@ class IdenfyColorScheme {
     this.idenfyBankVerificationViewBanksRecyclerViewItemBackgroundColor,
     this.idenfyBankVerificationViewBankRecyclerViewItemTextColor,
     this.idenfyBankVerificationViewLoadingSpinnerTintColor,
-    this.idenfyBankVerificationViewContinueButtonLoadingSpinnerTintColor,
+    this.idenfyBankCardCameraViewLoadingSpinnerColor,
+    this.idenfyBankCardOnBoardingViewBackgroundColor,
+    this.idenfyBankCardOnBoardingViewTitleTextColor,
+    this.idenfyBankCardOnBoardingViewDescriptionTextColor,
+    this.idenfyBankCardOnBoardingViewCardIconTintColor,
+    this.idenfyBankCardOnBoardingViewCardBorderColor,
+    this.idenfyBankCardOnBoardingViewCardBackgroundColor,
+    this.idenfyBankCardOnBoardingViewCardSelectedBorderColor,
+    this.idenfyBankCardOnBoardingViewCardSelectedBackgroundColor,
+    this.idenfyBankCardOnBoardingViewCardSelectedTextColor,
+    this.idenfyBankCardOnBoardingViewContinueButtonDisabledBackgroundColor,
+    this.idenfyBankCardOnBoardingViewContinueButtonDisabledTextColor,
+    this.idenfyBankCardOnBoardingViewContinueButtonEnabledTextColor,
+    this.idenfyBankCardSelectionViewBackgroundColor,
+    this.idenfyBankCardSelectionViewButtonDisabledBackgroundColor,
+    this.idenfyBankCardSelectionViewButtonDisabledTextColor,
+    this.idenfyBankCardSelectionViewButtonEnabledTextColor,
+    this.idenfyBankCardSelectionViewButtonTextColor,
+    this.idenfyBankCardUploadViewBackgroundColor,
+    this.idenfyBankCardUploadViewDescriptionTextColor,
+    this.idenfyBankCardUploadViewClickToUploadTextColor,
+    this.idenfyBankCardUploadViewUploadIconTintColor,
+    this.idenfyBankCardUploadViewButtonDisabledBackgroundColor,
+    this.idenfyBankCardUploadViewButtonDisabledTextColor,
+    this.idenfyBankCardUploadViewButtonEnabledTextColor,
+    this.idenfyBankCardUploadReviewViewBackgroundColor,
+    this.idenfyBankCardUploadReviewViewDescriptionTextColor,
+    this.idenfyBankCardUploadReviewViewQuestionCardBackgroundColor,
+    this.idenfyBankCardUploadReviewViewQuestionCardIconColor,
+    this.idenfyBankCardUploadReviewViewQuestionCardTitleColor,
+    this.idenfyBankCardUploadReviewViewNextButtonTextColor,
+    this.idenfyBankCardUploadReviewViewRetakeButtonTextColor,
+    this.idenfyBankCardUploadReviewViewButtonTextColor,
+    this.idenfyBankCardVerificationPrivacyPolicyViewBackgroundColor,
+    this.idenfyBankCardVerificationPrivacyPolicyCommonInformationTitleTextColor,
+    this.idenfyBankCardVerificationPrivacyPolicyCommonInformationDescriptionTextColor,
+    this.idenfyBankCardVerificationPrivacyPolicyCardViewTextColor,
+    this.idenfyBankCardVerificationPrivacyPolicyCardViewBackgroundColor,
+    this.idenfyBankCardVerificationPrivacyPolicyCardViewIconTintColor,
+    this.idenfyBankCardVerificationPrivacyPolicyContinueButtonTextColor,
+    this.idenfyBankCardVerificationResultsViewBackgroundColor,
+    this.idenfyBankCardVerificationResultsCommonInformationTitleTextColor,
+    this.idenfyBankCardVerificationResultsCommonInformationDescriptionTextColor,
+    this.idenfyBankCardVerificationResultsContinueButtonTextColor,
     this.idenfyCameraPermissionViewBackgroundColor,
     this.idenfyCameraPermissionViewTitleTextColor,
     this.idenfyCameraPermissionViewDescriptionTextColor,
@@ -826,7 +918,6 @@ class IdenfyColorScheme {
     this.idenfyCountrySelectionViewCountryRecyclerViewItemTextColor,
     this.idenfyCountrySelectionViewCountryRecyclerViewItemHighlightedTextColor,
     this.idenfyCountrySelectionViewCountryRecyclerViewItemHighlightedBackgroundColor,
-    this.idenfyCountrySelectionViewCountryRecyclerViewItemLoadingSpinnerTintColor,
     this.idenfyCountryViewSelectionCountrySearchBarBorderColor,
     this.idenfyCountrySelectionViewPredefinedCountryContinueButtonTextColor,
     this.idenfyDocumentPhotoResultViewBackgroundColor,
@@ -872,7 +963,6 @@ class IdenfyColorScheme {
     this.idenfyEmailSMSVerificationContinueButtonDisabledTextColor,
     this.idenfyEmailSMSVerificationViewContinueButtonDisabledBackgroundColor,
     this.idenfyEmailSMSVerificationContinueButtonEnabledTextColor,
-    this.idenfyEmailSMSVerificationContinueButtonLoadingSpinnerTintColor,
     this.idenfyFacePhotoResultViewBackgroundColor,
     this.idenfyFacePhotoResultViewTitleTextColor,
     this.idenfyFacePhotoResultViewDescriptionTextColor,
@@ -890,7 +980,6 @@ class IdenfyColorScheme {
     this.idenfyMFACaptchaMethodViewCaptchaEditTextHintTitleColor,
     this.idenfyMFACaptchaMethodViewCaptchaEditTextTopHintTitleColor,
     this.idenfyMFACaptchaMethodViewContinueButtonTextColor,
-    this.idenfyMFACaptchaMethodViewContinueButtonLoadingSpinnerColor,
     this.idenfyMFAGeneralViewBackgroundColor,
     this.idenfyMFAGeneralViewTitleTextColor,
     this.idenfyMFAGeneralViewDescriptionTextColor,
@@ -901,13 +990,11 @@ class IdenfyColorScheme {
     this.idenfyMFAGeneralViewEditTextHintTitleColor,
     this.idenfyMFAGeneralViewEditTextTopHintTitleColor,
     this.idenfyMFAGeneralViewContinueButtonTextColor,
-    this.idenfyMFAGeneralViewContinueButtonLoadingSpinnerTintColor,
     this.idenfyMFAMethodSelectionViewBackgroundColor,
     this.idenfyMFAMethodSelectionViewTitleTextColor,
     this.idenfyMFAMethodSelectionViewDescriptionTextColor,
     this.idenfyMFAMethodSelectionViewTopHintTitleColor,
     this.idenfyMFAMethodSelectionViewContinueButtonTextColor,
-    this.idenfyMFAMethodSelectionViewContinueButtonLoadingSpinnerTintColor,
     this.idenfyProviderLoginViewBackgroundColor,
     this.idenfyProviderLoginViewTitleTextColor,
     this.idenfyProviderLoginViewDescriptionTextColor,
@@ -918,7 +1005,6 @@ class IdenfyColorScheme {
     this.idenfyProviderLoginViewUsernameAndPasswordEditTextHintTitleColor,
     this.idenfyProviderLoginViewUsernameAndPasswordEditTextTopHintTitleColor,
     this.idenfyProviderLoginViewContinueButtonTextColor,
-    this.idenfyProviderLoginViewContinueButtonLoadingSpinnerTintColor,
     this.idenfyProviderSelectionViewBackgroundColor,
     this.idenfyProviderSelectionViewTitleTextColor,
     this.idenfyProviderSelectionViewDescriptionTextColor,
@@ -933,7 +1019,6 @@ class IdenfyColorScheme {
     this.idenfyProviderSelectionViewProviderRecyclerViewItemHighlightedTextColor,
     this.idenfyProviderSelectionViewProviderRecyclerViewItemHighlightedBackgroundColor,
     this.idenfyProviderViewSelectionProviderSearchBarBorderColor,
-    this.idenfyProviderSelectionViewProviderRecyclerViewItemLoadingSpinnerTintColor,
     this.idenfyAdditionalSupportViewBackgroundColor,
     this.idenfyAdditionalSupportCommonInformationTitleTextColor,
     this.idenfyAdditionalSupportCommonInformationDescriptionTextColor,
@@ -951,7 +1036,6 @@ class IdenfyColorScheme {
     this.idenfyCountryAndDocumentSelectionViewContinueButtonDisabledBackgroundColor,
     this.idenfyCountryAndDocumentSelectionViewContinueButtonDisabledTextColor,
     this.idenfyCountryAndDocumentSelectionViewContinueButtonEnabledTextColor,
-    this.idenfyCountryAndDocumentSelectionViewContinueButtonLoadingSpinnerTintColor,
     this.idenfyCountryAndDocumentSelectionViewPhysicalDocumentTitleDividerColor,
     this.idenfyDocumentCameraPreviewSessionBackgroundColor,
     this.idenfyDocumentCameraPreviewSessionBottomActionButtonsViewBackgroundColor,
@@ -970,7 +1054,6 @@ class IdenfyColorScheme {
     this.idenfyPrivacyPolicyCardViewArrowIconTintColor,
     this.idenfyPrivacyPolicyCardViewIconTintColor,
     this.idenfyPrivacyPolicyContinueButtonTextColor,
-    this.idenfyPrivacyPolicyContinueButtonLoadingSpinnerTintColor,
     this.idenfyPartnerPrivacyPolicyDialogViewBackgroundColor,
     this.idenfySplashScreenViewTitleTextColor,
     this.idenfySplashScreenViewDescriptionTextColor,
@@ -993,7 +1076,6 @@ class IdenfyColorScheme {
     this.idenfyEIDSessionViewTitleTextColor,
     this.idenfyEIDSessionViewDescriptionTextColor,
     this.idenfyEIDSessionViewButtonTextColor,
-    this.idenfyEIDSessionViewButtonLoadingSpinnerTintColor,
     this.idenfyEIDSessionViewCodeInputEditTextTitleColor,
     this.idenfyEIDSessionViewCodeInputEditTextHintColor,
     this.idenfyEIDSessionViewCodeInputFieldErrorMessageTextColor,
@@ -1084,7 +1166,6 @@ class IdenfyColorScheme {
     if (idenfyDocumentSelectionViewContinueButtonDisabledBackgroundColor != null) map['idenfyDocumentSelectionViewContinueButtonDisabledBackgroundColor'] = idenfyDocumentSelectionViewContinueButtonDisabledBackgroundColor!.value;
     if (idenfyDocumentSelectionViewContinueButtonDisabledTextColor != null) map['idenfyDocumentSelectionViewContinueButtonDisabledTextColor'] = idenfyDocumentSelectionViewContinueButtonDisabledTextColor!.value;
     if (idenfyDocumentSelectionViewContinueButtonEnabledTextColor != null) map['idenfyDocumentSelectionViewContinueButtonEnabledTextColor'] = idenfyDocumentSelectionViewContinueButtonEnabledTextColor!.value;
-    if (idenfyDocumentSelectionViewLoadingSpinnerTintColor != null) map['idenfyDocumentSelectionViewLoadingSpinnerTintColor'] = idenfyDocumentSelectionViewLoadingSpinnerTintColor!.value;
     if (idenfyFaceAuthenticationResultsViewBackgroundColor != null) map['idenfyFaceAuthenticationResultsViewBackgroundColor'] = idenfyFaceAuthenticationResultsViewBackgroundColor!.value;
     if (idenfyFaceAuthenticationResultsCommonInformationTitleTextColor != null) map['idenfyFaceAuthenticationResultsCommonInformationTitleTextColor'] = idenfyFaceAuthenticationResultsCommonInformationTitleTextColor!.value;
     if (idenfyFaceAuthenticationResultsCommonInformationDescriptionTextColor != null) map['idenfyFaceAuthenticationResultsCommonInformationDescriptionTextColor'] = idenfyFaceAuthenticationResultsCommonInformationDescriptionTextColor!.value;
@@ -1106,6 +1187,9 @@ class IdenfyColorScheme {
     if (idenfyContinueButtonTextColor != null) map['idenfyContinueButtonTextColor'] = idenfyContinueButtonTextColor!.value;
     if (idenfyContinueButtonSpinnerColor != null) map['idenfyContinueButtonSpinnerColor'] = idenfyContinueButtonSpinnerColor!.value;
     if (idenfyRetakeButtonTextColor != null) map['idenfyRetakeButtonTextColor'] = idenfyRetakeButtonTextColor!.value;
+    if (idenfyHighlightedItemBackgroundColor != null) map['idenfyHighlightedItemBackgroundColor'] = idenfyHighlightedItemBackgroundColor!.value;
+    if (idenfyHighlightedItemTextColor != null) map['idenfyHighlightedItemTextColor'] = idenfyHighlightedItemTextColor!.value;
+    if (idenfyHighlightedItemBorderColor != null) map['idenfyHighlightedItemBorderColor'] = idenfyHighlightedItemBorderColor!.value;
     if (idenfyPhotoResultCardTitleColor != null) map['idenfyPhotoResultCardTitleColor'] = idenfyPhotoResultCardTitleColor!.value;
     if (idenfyGradientButtonColorStart != null) map['idenfyGradientButtonColorStart'] = idenfyGradientButtonColorStart!.value;
     if (idenfyGradientButtonColorEnd != null) map['idenfyGradientButtonColorEnd'] = idenfyGradientButtonColorEnd!.value;
@@ -1124,11 +1208,11 @@ class IdenfyColorScheme {
     if (idenfyIdentificationResultsViewContentMaskForegroundColor != null) map['idenfyIdentificationResultsViewContentMaskForegroundColor'] = idenfyIdentificationResultsViewContentMaskForegroundColor!.value;
     if (idenfyIdentificationResultsViewSuccessStepTextColor != null) map['idenfyIdentificationResultsViewSuccessStepTextColor'] = idenfyIdentificationResultsViewSuccessStepTextColor!.value;
     if (idenfyIdentificationResultsViewErrorStepTextColorV2 != null) map['idenfyIdentificationResultsViewErrorStepTextColorV2'] = idenfyIdentificationResultsViewErrorStepTextColorV2!.value;
-    if (idenfyIdentificationResultsViewDocNotFoundAlertBackgroundColorV2 != null) map['idenfyIdentificationResultsViewDocNotFoundAlertBackgroundColorV2'] = idenfyIdentificationResultsViewDocNotFoundAlertBackgroundColorV2!.value;
-    if (idenfyIdentificationResultsViewDocNotFoundAlertTitleTextColorV2 != null) map['idenfyIdentificationResultsViewDocNotFoundAlertTitleTextColorV2'] = idenfyIdentificationResultsViewDocNotFoundAlertTitleTextColorV2!.value;
-    if (idenfyIdentificationResultsViewDocNotFoundAlertDescriptionTextColorV2 != null) map['idenfyIdentificationResultsViewDocNotFoundAlertDescriptionTextColorV2'] = idenfyIdentificationResultsViewDocNotFoundAlertDescriptionTextColorV2!.value;
-    if (idenfyIdentificationResultsViewDocNotFoundAlertDescriptionDocumentHighlightColorV2 != null) map['idenfyIdentificationResultsViewDocNotFoundAlertDescriptionDocumentHighlightColorV2'] = idenfyIdentificationResultsViewDocNotFoundAlertDescriptionDocumentHighlightColorV2!.value;
-    if (idenfyIdentificationResultsViewDocNotFoundAlertContinueButtonTextColorV2 != null) map['idenfyIdentificationResultsViewDocNotFoundAlertContinueButtonTextColorV2'] = idenfyIdentificationResultsViewDocNotFoundAlertContinueButtonTextColorV2!.value;
+    if (idenfyIdentificationResultsViewCountryMismatchAlertBackgroundColorV2 != null) map['idenfyIdentificationResultsViewCountryMismatchAlertBackgroundColorV2'] = idenfyIdentificationResultsViewCountryMismatchAlertBackgroundColorV2!.value;
+    if (idenfyIdentificationResultsViewCountryMismatchAlertTitleTextColorV2 != null) map['idenfyIdentificationResultsViewCountryMismatchAlertTitleTextColorV2'] = idenfyIdentificationResultsViewCountryMismatchAlertTitleTextColorV2!.value;
+    if (idenfyIdentificationResultsViewCountryMismatchAlertDescriptionTextColorV2 != null) map['idenfyIdentificationResultsViewCountryMismatchAlertDescriptionTextColorV2'] = idenfyIdentificationResultsViewCountryMismatchAlertDescriptionTextColorV2!.value;
+    if (idenfyIdentificationResultsViewCountryMismatchAlertContinueButtonTextColorV2 != null) map['idenfyIdentificationResultsViewCountryMismatchAlertContinueButtonTextColorV2'] = idenfyIdentificationResultsViewCountryMismatchAlertContinueButtonTextColorV2!.value;
+    if (idenfyIdentificationResultsViewCountryMismatchAlertBackButtonTextColorV2 != null) map['idenfyIdentificationResultsViewCountryMismatchAlertBackButtonTextColorV2'] = idenfyIdentificationResultsViewCountryMismatchAlertBackButtonTextColorV2!.value;
     if (idenfyIdentificationResultsViewMrzNotFoundAlertBackgroundColorV2 != null) map['idenfyIdentificationResultsViewMrzNotFoundAlertBackgroundColorV2'] = idenfyIdentificationResultsViewMrzNotFoundAlertBackgroundColorV2!.value;
     if (idenfyIdentificationResultsViewMrzNotFoundAlertTitleTextColorV2 != null) map['idenfyIdentificationResultsViewMrzNotFoundAlertTitleTextColorV2'] = idenfyIdentificationResultsViewMrzNotFoundAlertTitleTextColorV2!.value;
     if (idenfyIdentificationResultsViewMrzNotFoundAlertDescriptionTextColorV2 != null) map['idenfyIdentificationResultsViewMrzNotFoundAlertDescriptionTextColorV2'] = idenfyIdentificationResultsViewMrzNotFoundAlertDescriptionTextColorV2!.value;
@@ -1156,8 +1240,6 @@ class IdenfyColorScheme {
     if (idenfyLanguageSelectionViewLanguageRecyclerViewItemBackgroundColor != null) map['idenfyLanguageSelectionViewLanguageRecyclerViewItemBackgroundColor'] = idenfyLanguageSelectionViewLanguageRecyclerViewItemBackgroundColor!.value;
     if (idenfyLanguageSelectionViewLanguageRecyclerViewItemBorderColor != null) map['idenfyLanguageSelectionViewLanguageRecyclerViewItemBorderColor'] = idenfyLanguageSelectionViewLanguageRecyclerViewItemBorderColor!.value;
     if (idenfyLanguageSelectionViewLanguageRecyclerViewItemTextColor != null) map['idenfyLanguageSelectionViewLanguageRecyclerViewItemTextColor'] = idenfyLanguageSelectionViewLanguageRecyclerViewItemTextColor!.value;
-    if (idenfyLanguageSelectionViewLanguageRecyclerViewItemHighlightedTextColor != null) map['idenfyLanguageSelectionViewLanguageRecyclerViewItemHighlightedTextColor'] = idenfyLanguageSelectionViewLanguageRecyclerViewItemHighlightedTextColor!.value;
-    if (idenfyLanguageSelectionViewLanguageRecyclerViewItemHighlightedBackgroundColor != null) map['idenfyLanguageSelectionViewLanguageRecyclerViewItemHighlightedBackgroundColor'] = idenfyLanguageSelectionViewLanguageRecyclerViewItemHighlightedBackgroundColor!.value;
     if (idenfyManualReviewingStatusApprovedViewBackgroundColor != null) map['idenfyManualReviewingStatusApprovedViewBackgroundColor'] = idenfyManualReviewingStatusApprovedViewBackgroundColor!.value;
     if (idenfyManualReviewingStatusApprovedCommonInformationTitleTextColor != null) map['idenfyManualReviewingStatusApprovedCommonInformationTitleTextColor'] = idenfyManualReviewingStatusApprovedCommonInformationTitleTextColor!.value;
     if (idenfyManualReviewingStatusApprovedCommonInformationDescriptionTextColor != null) map['idenfyManualReviewingStatusApprovedCommonInformationDescriptionTextColor'] = idenfyManualReviewingStatusApprovedCommonInformationDescriptionTextColor!.value;
@@ -1258,7 +1340,50 @@ class IdenfyColorScheme {
     if (idenfyBankVerificationViewBanksRecyclerViewItemBackgroundColor != null) map['idenfyBankVerificationViewBanksRecyclerViewItemBackgroundColor'] = idenfyBankVerificationViewBanksRecyclerViewItemBackgroundColor!.value;
     if (idenfyBankVerificationViewBankRecyclerViewItemTextColor != null) map['idenfyBankVerificationViewBankRecyclerViewItemTextColor'] = idenfyBankVerificationViewBankRecyclerViewItemTextColor!.value;
     if (idenfyBankVerificationViewLoadingSpinnerTintColor != null) map['idenfyBankVerificationViewLoadingSpinnerTintColor'] = idenfyBankVerificationViewLoadingSpinnerTintColor!.value;
-    if (idenfyBankVerificationViewContinueButtonLoadingSpinnerTintColor != null) map['idenfyBankVerificationViewContinueButtonLoadingSpinnerTintColor'] = idenfyBankVerificationViewContinueButtonLoadingSpinnerTintColor!.value;
+    if (idenfyBankCardCameraViewLoadingSpinnerColor != null) map['idenfyBankCardCameraViewLoadingSpinnerColor'] = idenfyBankCardCameraViewLoadingSpinnerColor!.value;
+    if (idenfyBankCardOnBoardingViewBackgroundColor != null) map['idenfyBankCardOnBoardingViewBackgroundColor'] = idenfyBankCardOnBoardingViewBackgroundColor!.value;
+    if (idenfyBankCardOnBoardingViewTitleTextColor != null) map['idenfyBankCardOnBoardingViewTitleTextColor'] = idenfyBankCardOnBoardingViewTitleTextColor!.value;
+    if (idenfyBankCardOnBoardingViewDescriptionTextColor != null) map['idenfyBankCardOnBoardingViewDescriptionTextColor'] = idenfyBankCardOnBoardingViewDescriptionTextColor!.value;
+    if (idenfyBankCardOnBoardingViewCardIconTintColor != null) map['idenfyBankCardOnBoardingViewCardIconTintColor'] = idenfyBankCardOnBoardingViewCardIconTintColor!.value;
+    if (idenfyBankCardOnBoardingViewCardBorderColor != null) map['idenfyBankCardOnBoardingViewCardBorderColor'] = idenfyBankCardOnBoardingViewCardBorderColor!.value;
+    if (idenfyBankCardOnBoardingViewCardBackgroundColor != null) map['idenfyBankCardOnBoardingViewCardBackgroundColor'] = idenfyBankCardOnBoardingViewCardBackgroundColor!.value;
+    if (idenfyBankCardOnBoardingViewCardSelectedBorderColor != null) map['idenfyBankCardOnBoardingViewCardSelectedBorderColor'] = idenfyBankCardOnBoardingViewCardSelectedBorderColor!.value;
+    if (idenfyBankCardOnBoardingViewCardSelectedBackgroundColor != null) map['idenfyBankCardOnBoardingViewCardSelectedBackgroundColor'] = idenfyBankCardOnBoardingViewCardSelectedBackgroundColor!.value;
+    if (idenfyBankCardOnBoardingViewCardSelectedTextColor != null) map['idenfyBankCardOnBoardingViewCardSelectedTextColor'] = idenfyBankCardOnBoardingViewCardSelectedTextColor!.value;
+    if (idenfyBankCardOnBoardingViewContinueButtonDisabledBackgroundColor != null) map['idenfyBankCardOnBoardingViewContinueButtonDisabledBackgroundColor'] = idenfyBankCardOnBoardingViewContinueButtonDisabledBackgroundColor!.value;
+    if (idenfyBankCardOnBoardingViewContinueButtonDisabledTextColor != null) map['idenfyBankCardOnBoardingViewContinueButtonDisabledTextColor'] = idenfyBankCardOnBoardingViewContinueButtonDisabledTextColor!.value;
+    if (idenfyBankCardOnBoardingViewContinueButtonEnabledTextColor != null) map['idenfyBankCardOnBoardingViewContinueButtonEnabledTextColor'] = idenfyBankCardOnBoardingViewContinueButtonEnabledTextColor!.value;
+    if (idenfyBankCardSelectionViewBackgroundColor != null) map['idenfyBankCardSelectionViewBackgroundColor'] = idenfyBankCardSelectionViewBackgroundColor!.value;
+    if (idenfyBankCardSelectionViewButtonDisabledBackgroundColor != null) map['idenfyBankCardSelectionViewButtonDisabledBackgroundColor'] = idenfyBankCardSelectionViewButtonDisabledBackgroundColor!.value;
+    if (idenfyBankCardSelectionViewButtonDisabledTextColor != null) map['idenfyBankCardSelectionViewButtonDisabledTextColor'] = idenfyBankCardSelectionViewButtonDisabledTextColor!.value;
+    if (idenfyBankCardSelectionViewButtonEnabledTextColor != null) map['idenfyBankCardSelectionViewButtonEnabledTextColor'] = idenfyBankCardSelectionViewButtonEnabledTextColor!.value;
+    if (idenfyBankCardSelectionViewButtonTextColor != null) map['idenfyBankCardSelectionViewButtonTextColor'] = idenfyBankCardSelectionViewButtonTextColor!.value;
+    if (idenfyBankCardUploadViewBackgroundColor != null) map['idenfyBankCardUploadViewBackgroundColor'] = idenfyBankCardUploadViewBackgroundColor!.value;
+    if (idenfyBankCardUploadViewDescriptionTextColor != null) map['idenfyBankCardUploadViewDescriptionTextColor'] = idenfyBankCardUploadViewDescriptionTextColor!.value;
+    if (idenfyBankCardUploadViewClickToUploadTextColor != null) map['idenfyBankCardUploadViewClickToUploadTextColor'] = idenfyBankCardUploadViewClickToUploadTextColor!.value;
+    if (idenfyBankCardUploadViewUploadIconTintColor != null) map['idenfyBankCardUploadViewUploadIconTintColor'] = idenfyBankCardUploadViewUploadIconTintColor!.value;
+    if (idenfyBankCardUploadViewButtonDisabledBackgroundColor != null) map['idenfyBankCardUploadViewButtonDisabledBackgroundColor'] = idenfyBankCardUploadViewButtonDisabledBackgroundColor!.value;
+    if (idenfyBankCardUploadViewButtonDisabledTextColor != null) map['idenfyBankCardUploadViewButtonDisabledTextColor'] = idenfyBankCardUploadViewButtonDisabledTextColor!.value;
+    if (idenfyBankCardUploadViewButtonEnabledTextColor != null) map['idenfyBankCardUploadViewButtonEnabledTextColor'] = idenfyBankCardUploadViewButtonEnabledTextColor!.value;
+    if (idenfyBankCardUploadReviewViewBackgroundColor != null) map['idenfyBankCardUploadReviewViewBackgroundColor'] = idenfyBankCardUploadReviewViewBackgroundColor!.value;
+    if (idenfyBankCardUploadReviewViewDescriptionTextColor != null) map['idenfyBankCardUploadReviewViewDescriptionTextColor'] = idenfyBankCardUploadReviewViewDescriptionTextColor!.value;
+    if (idenfyBankCardUploadReviewViewQuestionCardBackgroundColor != null) map['idenfyBankCardUploadReviewViewQuestionCardBackgroundColor'] = idenfyBankCardUploadReviewViewQuestionCardBackgroundColor!.value;
+    if (idenfyBankCardUploadReviewViewQuestionCardIconColor != null) map['idenfyBankCardUploadReviewViewQuestionCardIconColor'] = idenfyBankCardUploadReviewViewQuestionCardIconColor!.value;
+    if (idenfyBankCardUploadReviewViewQuestionCardTitleColor != null) map['idenfyBankCardUploadReviewViewQuestionCardTitleColor'] = idenfyBankCardUploadReviewViewQuestionCardTitleColor!.value;
+    if (idenfyBankCardUploadReviewViewNextButtonTextColor != null) map['idenfyBankCardUploadReviewViewNextButtonTextColor'] = idenfyBankCardUploadReviewViewNextButtonTextColor!.value;
+    if (idenfyBankCardUploadReviewViewRetakeButtonTextColor != null) map['idenfyBankCardUploadReviewViewRetakeButtonTextColor'] = idenfyBankCardUploadReviewViewRetakeButtonTextColor!.value;
+    if (idenfyBankCardUploadReviewViewButtonTextColor != null) map['idenfyBankCardUploadReviewViewButtonTextColor'] = idenfyBankCardUploadReviewViewButtonTextColor!.value;
+    if (idenfyBankCardVerificationPrivacyPolicyViewBackgroundColor != null) map['idenfyBankCardVerificationPrivacyPolicyViewBackgroundColor'] = idenfyBankCardVerificationPrivacyPolicyViewBackgroundColor!.value;
+    if (idenfyBankCardVerificationPrivacyPolicyCommonInformationTitleTextColor != null) map['idenfyBankCardVerificationPrivacyPolicyCommonInformationTitleTextColor'] = idenfyBankCardVerificationPrivacyPolicyCommonInformationTitleTextColor!.value;
+    if (idenfyBankCardVerificationPrivacyPolicyCommonInformationDescriptionTextColor != null) map['idenfyBankCardVerificationPrivacyPolicyCommonInformationDescriptionTextColor'] = idenfyBankCardVerificationPrivacyPolicyCommonInformationDescriptionTextColor!.value;
+    if (idenfyBankCardVerificationPrivacyPolicyCardViewTextColor != null) map['idenfyBankCardVerificationPrivacyPolicyCardViewTextColor'] = idenfyBankCardVerificationPrivacyPolicyCardViewTextColor!.value;
+    if (idenfyBankCardVerificationPrivacyPolicyCardViewBackgroundColor != null) map['idenfyBankCardVerificationPrivacyPolicyCardViewBackgroundColor'] = idenfyBankCardVerificationPrivacyPolicyCardViewBackgroundColor!.value;
+    if (idenfyBankCardVerificationPrivacyPolicyCardViewIconTintColor != null) map['idenfyBankCardVerificationPrivacyPolicyCardViewIconTintColor'] = idenfyBankCardVerificationPrivacyPolicyCardViewIconTintColor!.value;
+    if (idenfyBankCardVerificationPrivacyPolicyContinueButtonTextColor != null) map['idenfyBankCardVerificationPrivacyPolicyContinueButtonTextColor'] = idenfyBankCardVerificationPrivacyPolicyContinueButtonTextColor!.value;
+    if (idenfyBankCardVerificationResultsViewBackgroundColor != null) map['idenfyBankCardVerificationResultsViewBackgroundColor'] = idenfyBankCardVerificationResultsViewBackgroundColor!.value;
+    if (idenfyBankCardVerificationResultsCommonInformationTitleTextColor != null) map['idenfyBankCardVerificationResultsCommonInformationTitleTextColor'] = idenfyBankCardVerificationResultsCommonInformationTitleTextColor!.value;
+    if (idenfyBankCardVerificationResultsCommonInformationDescriptionTextColor != null) map['idenfyBankCardVerificationResultsCommonInformationDescriptionTextColor'] = idenfyBankCardVerificationResultsCommonInformationDescriptionTextColor!.value;
+    if (idenfyBankCardVerificationResultsContinueButtonTextColor != null) map['idenfyBankCardVerificationResultsContinueButtonTextColor'] = idenfyBankCardVerificationResultsContinueButtonTextColor!.value;
     if (idenfyCameraPermissionViewBackgroundColor != null) map['idenfyCameraPermissionViewBackgroundColor'] = idenfyCameraPermissionViewBackgroundColor!.value;
     if (idenfyCameraPermissionViewTitleTextColor != null) map['idenfyCameraPermissionViewTitleTextColor'] = idenfyCameraPermissionViewTitleTextColor!.value;
     if (idenfyCameraPermissionViewDescriptionTextColor != null) map['idenfyCameraPermissionViewDescriptionTextColor'] = idenfyCameraPermissionViewDescriptionTextColor!.value;
@@ -1290,7 +1415,6 @@ class IdenfyColorScheme {
     if (idenfyCountrySelectionViewCountryRecyclerViewItemTextColor != null) map['idenfyCountrySelectionViewCountryRecyclerViewItemTextColor'] = idenfyCountrySelectionViewCountryRecyclerViewItemTextColor!.value;
     if (idenfyCountrySelectionViewCountryRecyclerViewItemHighlightedTextColor != null) map['idenfyCountrySelectionViewCountryRecyclerViewItemHighlightedTextColor'] = idenfyCountrySelectionViewCountryRecyclerViewItemHighlightedTextColor!.value;
     if (idenfyCountrySelectionViewCountryRecyclerViewItemHighlightedBackgroundColor != null) map['idenfyCountrySelectionViewCountryRecyclerViewItemHighlightedBackgroundColor'] = idenfyCountrySelectionViewCountryRecyclerViewItemHighlightedBackgroundColor!.value;
-    if (idenfyCountrySelectionViewCountryRecyclerViewItemLoadingSpinnerTintColor != null) map['idenfyCountrySelectionViewCountryRecyclerViewItemLoadingSpinnerTintColor'] = idenfyCountrySelectionViewCountryRecyclerViewItemLoadingSpinnerTintColor!.value;
     if (idenfyCountryViewSelectionCountrySearchBarBorderColor != null) map['idenfyCountryViewSelectionCountrySearchBarBorderColor'] = idenfyCountryViewSelectionCountrySearchBarBorderColor!.value;
     if (idenfyCountrySelectionViewPredefinedCountryContinueButtonTextColor != null) map['idenfyCountrySelectionViewPredefinedCountryContinueButtonTextColor'] = idenfyCountrySelectionViewPredefinedCountryContinueButtonTextColor!.value;
     if (idenfyDocumentPhotoResultViewBackgroundColor != null) map['idenfyDocumentPhotoResultViewBackgroundColor'] = idenfyDocumentPhotoResultViewBackgroundColor!.value;
@@ -1336,7 +1460,6 @@ class IdenfyColorScheme {
     if (idenfyEmailSMSVerificationContinueButtonDisabledTextColor != null) map['idenfyEmailSMSVerificationContinueButtonDisabledTextColor'] = idenfyEmailSMSVerificationContinueButtonDisabledTextColor!.value;
     if (idenfyEmailSMSVerificationViewContinueButtonDisabledBackgroundColor != null) map['idenfyEmailSMSVerificationViewContinueButtonDisabledBackgroundColor'] = idenfyEmailSMSVerificationViewContinueButtonDisabledBackgroundColor!.value;
     if (idenfyEmailSMSVerificationContinueButtonEnabledTextColor != null) map['idenfyEmailSMSVerificationContinueButtonEnabledTextColor'] = idenfyEmailSMSVerificationContinueButtonEnabledTextColor!.value;
-    if (idenfyEmailSMSVerificationContinueButtonLoadingSpinnerTintColor != null) map['idenfyEmailSMSVerificationContinueButtonLoadingSpinnerTintColor'] = idenfyEmailSMSVerificationContinueButtonLoadingSpinnerTintColor!.value;
     if (idenfyFacePhotoResultViewBackgroundColor != null) map['idenfyFacePhotoResultViewBackgroundColor'] = idenfyFacePhotoResultViewBackgroundColor!.value;
     if (idenfyFacePhotoResultViewTitleTextColor != null) map['idenfyFacePhotoResultViewTitleTextColor'] = idenfyFacePhotoResultViewTitleTextColor!.value;
     if (idenfyFacePhotoResultViewDescriptionTextColor != null) map['idenfyFacePhotoResultViewDescriptionTextColor'] = idenfyFacePhotoResultViewDescriptionTextColor!.value;
@@ -1354,7 +1477,6 @@ class IdenfyColorScheme {
     if (idenfyMFACaptchaMethodViewCaptchaEditTextHintTitleColor != null) map['idenfyMFACaptchaMethodViewCaptchaEditTextHintTitleColor'] = idenfyMFACaptchaMethodViewCaptchaEditTextHintTitleColor!.value;
     if (idenfyMFACaptchaMethodViewCaptchaEditTextTopHintTitleColor != null) map['idenfyMFACaptchaMethodViewCaptchaEditTextTopHintTitleColor'] = idenfyMFACaptchaMethodViewCaptchaEditTextTopHintTitleColor!.value;
     if (idenfyMFACaptchaMethodViewContinueButtonTextColor != null) map['idenfyMFACaptchaMethodViewContinueButtonTextColor'] = idenfyMFACaptchaMethodViewContinueButtonTextColor!.value;
-    if (idenfyMFACaptchaMethodViewContinueButtonLoadingSpinnerColor != null) map['idenfyMFACaptchaMethodViewContinueButtonLoadingSpinnerColor'] = idenfyMFACaptchaMethodViewContinueButtonLoadingSpinnerColor!.value;
     if (idenfyMFAGeneralViewBackgroundColor != null) map['idenfyMFAGeneralViewBackgroundColor'] = idenfyMFAGeneralViewBackgroundColor!.value;
     if (idenfyMFAGeneralViewTitleTextColor != null) map['idenfyMFAGeneralViewTitleTextColor'] = idenfyMFAGeneralViewTitleTextColor!.value;
     if (idenfyMFAGeneralViewDescriptionTextColor != null) map['idenfyMFAGeneralViewDescriptionTextColor'] = idenfyMFAGeneralViewDescriptionTextColor!.value;
@@ -1365,13 +1487,11 @@ class IdenfyColorScheme {
     if (idenfyMFAGeneralViewEditTextHintTitleColor != null) map['idenfyMFAGeneralViewEditTextHintTitleColor'] = idenfyMFAGeneralViewEditTextHintTitleColor!.value;
     if (idenfyMFAGeneralViewEditTextTopHintTitleColor != null) map['idenfyMFAGeneralViewEditTextTopHintTitleColor'] = idenfyMFAGeneralViewEditTextTopHintTitleColor!.value;
     if (idenfyMFAGeneralViewContinueButtonTextColor != null) map['idenfyMFAGeneralViewContinueButtonTextColor'] = idenfyMFAGeneralViewContinueButtonTextColor!.value;
-    if (idenfyMFAGeneralViewContinueButtonLoadingSpinnerTintColor != null) map['idenfyMFAGeneralViewContinueButtonLoadingSpinnerTintColor'] = idenfyMFAGeneralViewContinueButtonLoadingSpinnerTintColor!.value;
     if (idenfyMFAMethodSelectionViewBackgroundColor != null) map['idenfyMFAMethodSelectionViewBackgroundColor'] = idenfyMFAMethodSelectionViewBackgroundColor!.value;
     if (idenfyMFAMethodSelectionViewTitleTextColor != null) map['idenfyMFAMethodSelectionViewTitleTextColor'] = idenfyMFAMethodSelectionViewTitleTextColor!.value;
     if (idenfyMFAMethodSelectionViewDescriptionTextColor != null) map['idenfyMFAMethodSelectionViewDescriptionTextColor'] = idenfyMFAMethodSelectionViewDescriptionTextColor!.value;
     if (idenfyMFAMethodSelectionViewTopHintTitleColor != null) map['idenfyMFAMethodSelectionViewTopHintTitleColor'] = idenfyMFAMethodSelectionViewTopHintTitleColor!.value;
     if (idenfyMFAMethodSelectionViewContinueButtonTextColor != null) map['idenfyMFAMethodSelectionViewContinueButtonTextColor'] = idenfyMFAMethodSelectionViewContinueButtonTextColor!.value;
-    if (idenfyMFAMethodSelectionViewContinueButtonLoadingSpinnerTintColor != null) map['idenfyMFAMethodSelectionViewContinueButtonLoadingSpinnerTintColor'] = idenfyMFAMethodSelectionViewContinueButtonLoadingSpinnerTintColor!.value;
     if (idenfyProviderLoginViewBackgroundColor != null) map['idenfyProviderLoginViewBackgroundColor'] = idenfyProviderLoginViewBackgroundColor!.value;
     if (idenfyProviderLoginViewTitleTextColor != null) map['idenfyProviderLoginViewTitleTextColor'] = idenfyProviderLoginViewTitleTextColor!.value;
     if (idenfyProviderLoginViewDescriptionTextColor != null) map['idenfyProviderLoginViewDescriptionTextColor'] = idenfyProviderLoginViewDescriptionTextColor!.value;
@@ -1382,7 +1502,6 @@ class IdenfyColorScheme {
     if (idenfyProviderLoginViewUsernameAndPasswordEditTextHintTitleColor != null) map['idenfyProviderLoginViewUsernameAndPasswordEditTextHintTitleColor'] = idenfyProviderLoginViewUsernameAndPasswordEditTextHintTitleColor!.value;
     if (idenfyProviderLoginViewUsernameAndPasswordEditTextTopHintTitleColor != null) map['idenfyProviderLoginViewUsernameAndPasswordEditTextTopHintTitleColor'] = idenfyProviderLoginViewUsernameAndPasswordEditTextTopHintTitleColor!.value;
     if (idenfyProviderLoginViewContinueButtonTextColor != null) map['idenfyProviderLoginViewContinueButtonTextColor'] = idenfyProviderLoginViewContinueButtonTextColor!.value;
-    if (idenfyProviderLoginViewContinueButtonLoadingSpinnerTintColor != null) map['idenfyProviderLoginViewContinueButtonLoadingSpinnerTintColor'] = idenfyProviderLoginViewContinueButtonLoadingSpinnerTintColor!.value;
     if (idenfyProviderSelectionViewBackgroundColor != null) map['idenfyProviderSelectionViewBackgroundColor'] = idenfyProviderSelectionViewBackgroundColor!.value;
     if (idenfyProviderSelectionViewTitleTextColor != null) map['idenfyProviderSelectionViewTitleTextColor'] = idenfyProviderSelectionViewTitleTextColor!.value;
     if (idenfyProviderSelectionViewDescriptionTextColor != null) map['idenfyProviderSelectionViewDescriptionTextColor'] = idenfyProviderSelectionViewDescriptionTextColor!.value;
@@ -1397,7 +1516,6 @@ class IdenfyColorScheme {
     if (idenfyProviderSelectionViewProviderRecyclerViewItemHighlightedTextColor != null) map['idenfyProviderSelectionViewProviderRecyclerViewItemHighlightedTextColor'] = idenfyProviderSelectionViewProviderRecyclerViewItemHighlightedTextColor!.value;
     if (idenfyProviderSelectionViewProviderRecyclerViewItemHighlightedBackgroundColor != null) map['idenfyProviderSelectionViewProviderRecyclerViewItemHighlightedBackgroundColor'] = idenfyProviderSelectionViewProviderRecyclerViewItemHighlightedBackgroundColor!.value;
     if (idenfyProviderViewSelectionProviderSearchBarBorderColor != null) map['idenfyProviderViewSelectionProviderSearchBarBorderColor'] = idenfyProviderViewSelectionProviderSearchBarBorderColor!.value;
-    if (idenfyProviderSelectionViewProviderRecyclerViewItemLoadingSpinnerTintColor != null) map['idenfyProviderSelectionViewProviderRecyclerViewItemLoadingSpinnerTintColor'] = idenfyProviderSelectionViewProviderRecyclerViewItemLoadingSpinnerTintColor!.value;
     if (idenfyAdditionalSupportViewBackgroundColor != null) map['idenfyAdditionalSupportViewBackgroundColor'] = idenfyAdditionalSupportViewBackgroundColor!.value;
     if (idenfyAdditionalSupportCommonInformationTitleTextColor != null) map['idenfyAdditionalSupportCommonInformationTitleTextColor'] = idenfyAdditionalSupportCommonInformationTitleTextColor!.value;
     if (idenfyAdditionalSupportCommonInformationDescriptionTextColor != null) map['idenfyAdditionalSupportCommonInformationDescriptionTextColor'] = idenfyAdditionalSupportCommonInformationDescriptionTextColor!.value;
@@ -1415,7 +1533,6 @@ class IdenfyColorScheme {
     if (idenfyCountryAndDocumentSelectionViewContinueButtonDisabledBackgroundColor != null) map['idenfyCountryAndDocumentSelectionViewContinueButtonDisabledBackgroundColor'] = idenfyCountryAndDocumentSelectionViewContinueButtonDisabledBackgroundColor!.value;
     if (idenfyCountryAndDocumentSelectionViewContinueButtonDisabledTextColor != null) map['idenfyCountryAndDocumentSelectionViewContinueButtonDisabledTextColor'] = idenfyCountryAndDocumentSelectionViewContinueButtonDisabledTextColor!.value;
     if (idenfyCountryAndDocumentSelectionViewContinueButtonEnabledTextColor != null) map['idenfyCountryAndDocumentSelectionViewContinueButtonEnabledTextColor'] = idenfyCountryAndDocumentSelectionViewContinueButtonEnabledTextColor!.value;
-    if (idenfyCountryAndDocumentSelectionViewContinueButtonLoadingSpinnerTintColor != null) map['idenfyCountryAndDocumentSelectionViewContinueButtonLoadingSpinnerTintColor'] = idenfyCountryAndDocumentSelectionViewContinueButtonLoadingSpinnerTintColor!.value;
     if (idenfyCountryAndDocumentSelectionViewPhysicalDocumentTitleDividerColor != null) map['idenfyCountryAndDocumentSelectionViewPhysicalDocumentTitleDividerColor'] = idenfyCountryAndDocumentSelectionViewPhysicalDocumentTitleDividerColor!.value;
     if (idenfyDocumentCameraPreviewSessionBackgroundColor != null) map['idenfyDocumentCameraPreviewSessionBackgroundColor'] = idenfyDocumentCameraPreviewSessionBackgroundColor!.value;
     if (idenfyDocumentCameraPreviewSessionBottomActionButtonsViewBackgroundColor != null) map['idenfyDocumentCameraPreviewSessionBottomActionButtonsViewBackgroundColor'] = idenfyDocumentCameraPreviewSessionBottomActionButtonsViewBackgroundColor!.value;
@@ -1434,7 +1551,6 @@ class IdenfyColorScheme {
     if (idenfyPrivacyPolicyCardViewArrowIconTintColor != null) map['idenfyPrivacyPolicyCardViewArrowIconTintColor'] = idenfyPrivacyPolicyCardViewArrowIconTintColor!.value;
     if (idenfyPrivacyPolicyCardViewIconTintColor != null) map['idenfyPrivacyPolicyCardViewIconTintColor'] = idenfyPrivacyPolicyCardViewIconTintColor!.value;
     if (idenfyPrivacyPolicyContinueButtonTextColor != null) map['idenfyPrivacyPolicyContinueButtonTextColor'] = idenfyPrivacyPolicyContinueButtonTextColor!.value;
-    if (idenfyPrivacyPolicyContinueButtonLoadingSpinnerTintColor != null) map['idenfyPrivacyPolicyContinueButtonLoadingSpinnerTintColor'] = idenfyPrivacyPolicyContinueButtonLoadingSpinnerTintColor!.value;
     if (idenfyPartnerPrivacyPolicyDialogViewBackgroundColor != null) map['idenfyPartnerPrivacyPolicyDialogViewBackgroundColor'] = idenfyPartnerPrivacyPolicyDialogViewBackgroundColor!.value;
     if (idenfySplashScreenViewTitleTextColor != null) map['idenfySplashScreenViewTitleTextColor'] = idenfySplashScreenViewTitleTextColor!.value;
     if (idenfySplashScreenViewDescriptionTextColor != null) map['idenfySplashScreenViewDescriptionTextColor'] = idenfySplashScreenViewDescriptionTextColor!.value;
@@ -1457,7 +1573,6 @@ class IdenfyColorScheme {
     if (idenfyEIDSessionViewTitleTextColor != null) map['idenfyEIDSessionViewTitleTextColor'] = idenfyEIDSessionViewTitleTextColor!.value;
     if (idenfyEIDSessionViewDescriptionTextColor != null) map['idenfyEIDSessionViewDescriptionTextColor'] = idenfyEIDSessionViewDescriptionTextColor!.value;
     if (idenfyEIDSessionViewButtonTextColor != null) map['idenfyEIDSessionViewButtonTextColor'] = idenfyEIDSessionViewButtonTextColor!.value;
-    if (idenfyEIDSessionViewButtonLoadingSpinnerTintColor != null) map['idenfyEIDSessionViewButtonLoadingSpinnerTintColor'] = idenfyEIDSessionViewButtonLoadingSpinnerTintColor!.value;
     if (idenfyEIDSessionViewCodeInputEditTextTitleColor != null) map['idenfyEIDSessionViewCodeInputEditTextTitleColor'] = idenfyEIDSessionViewCodeInputEditTextTitleColor!.value;
     if (idenfyEIDSessionViewCodeInputEditTextHintColor != null) map['idenfyEIDSessionViewCodeInputEditTextHintColor'] = idenfyEIDSessionViewCodeInputEditTextHintColor!.value;
     if (idenfyEIDSessionViewCodeInputFieldErrorMessageTextColor != null) map['idenfyEIDSessionViewCodeInputFieldErrorMessageTextColor'] = idenfyEIDSessionViewCodeInputFieldErrorMessageTextColor!.value;
