@@ -1,3 +1,7 @@
+## 2.8.1
+* iOS SDK updated to 9.2.8
+* Fixed Bank ID Sweden redirect issues
+
 ## 2.8.0
 * Android SDK updated to 9.2.1
 * iOS SDK updated to 9.2.3
